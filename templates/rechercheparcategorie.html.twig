@@ -1,0 +1,133 @@
+{# <div>
+<li onclick="afficherMenuCategorieParts(this,0)" class="textNoSelect" data-catpart="0">Armes CAT. B </li>
+</div>
+<div>
+<li onclick="afficherMenuCategorieParts(this,1)" class="textNoSelect"  data-catpart="1">Armes CAT. C </li>
+</div>
+<div>
+    <a href="/nos-produits?categories%5B%5D=3" class="noEffect"><li class="textNoSelect">Armes CAT. D</li></a>
+</div>
+<div>
+    <li onclick="afficherMenuCategorieParts(this,2)"  data-catpart="2" class="textNoSelect">Accessoires </li>
+</div>
+<div>
+    <li onclick="afficherMenuCategorieParts(this,3)"  data-catpart="3" class="textNoSelect">Équipements</li>
+</div>
+<div>
+    <li onclick="afficherMenuCategorieParts(this,4)"  data-catpart="4" class="textNoSelect">Munitions </li>
+</div>
+<div>
+    <a href="/nos-produits?categories%5B%5D=8"><li class="textNoSelect">Vente libre</li></a>
+</div>
+<div class="divex w-100 mx-auto box_shadow_all noshow">
+    <div onclick="fermerMenuCategoriesPartsMobile()" class="close_menu_categories_parts"><p class="text-light h4 text-left my-auto ml-3"><i class="fa-solid text-light fa-chevron-left"></i>Menu</p></div>
+    <section class="d-flex">
+        <section class="d-flex contenu_sous_menu">
+        </section>
+        <section class="m-4 d-flex">
+            <section>
+                <div class="bg-success p-4 mb-2 encart_sous_menu">
+                    <h3 class="text-white text-center font-weight-bold">NOUVEAUTÉS</h3>
+                    <p class="text-white">Retrouvez toutes les nouveautés</p>
+                    <a class="btn border w-100 text-white" href="/nos-produits">DÉCOUVRIR</a>
+                </div>
+                <div class="bg-primary p-4 encart_sous_menu">
+                    <h3 class="text-white text-center font-weight-bold">PROMOTIONS</h3>
+                    <p class="text-white">Retrouvez toutes les promotions</p>
+                    <a class="btn border w-100 text-white" href="{{path('app_produits_promotions')}}">DÉCOUVRIR</a>
+                </div>
+            </section>
+            {{ render(controller('App\\Controller\\HomeController::pubRechercheParCategorie')) }}
+        </section>
+    </section>
+</div> #}
+{# <div id="menuFiltreResponsive">
+    <div>
+    <li onclick="afficherMenuCategorieParts(this,0)" data-catpart="0"  class="textNoSelect nav-title">Armes de chasse </li>
+    </div>
+    <div>
+    <li onclick="afficherMenuCategorieParts(this,1)" data-catpart="1"  class="textNoSelect nav-title">Armes réglementées </li>
+    </div>
+    <div>
+        <li onclick="afficherMenuCategorieParts(this,2)"  data-catpart="2" class="textNoSelect nav-title">Armes de loisirs </li>
+    </div>
+    <div>
+        <li onclick="afficherMenuCategorieParts(this,3)"  data-catpart="3" class="textNoSelect nav-title">Armes de défense </li>
+    </div>
+    <div>
+        <li onclick="afficherMenuCategorieParts(this,4)"  data-catpart="4" class="textNoSelect nav-title">Accessoires </li>
+    </div>
+    <div>
+        <li onclick="afficherMenuCategorieParts(this,5)"  data-catpart="5" class="textNoSelect nav-title">Optique et électronique </li>
+    </div>
+    <div>
+        <li onclick="afficherMenuCategorieParts(this,6)"  data-catpart="6" class="textNoSelect nav-title">Munitions et rechargement </li>
+    </div>
+    <div>
+        <li onclick="afficherMenuCategorieParts(this,7)"  data-catpart="7" class="textNoSelect nav-title">Pièces détachées </li>
+    </div>
+    <div>
+    <li class="textNoSelect nav-title"><a href="{{path('app_menu_marque')}}" class="textNoSelect text-dark">Marques </a></li>
+    </div>
+</div> #}
+<div class="divex w-100 mx-auto box_shadow_all noshow">
+    <div onclick="fermerMenuCategoriesPartsMobile()" class="close_menu_categories_parts"><p class="text-light h4 text-left my-auto ml-3"><i class="fa-solid text-light fa-chevron-left"></i>Menu</p></div>
+    <section class="d-flex">
+        <section class="d-flex contenu_sous_menu">
+        {% if menus is defined %}
+            {% if menus|length <= 0 %}
+                <h3>Menu catégorie indisponible pour le moment</h3>
+            {% else %}
+                {% for key, menu in menus %}
+                    <div class="noShowCategories menuCategorieParts-{{key}} d-flex row">
+                    {% for me in menu %}
+                        <div class='sous_categorie mb-3'>
+                            <a class="text-dark" href='/nos-categories/{{me.subCategory.id}}-{{me.subCategory.name|replace({"â": "a","à": "a","é": "e","û": "u","è": "e","'":""," ": "-",".": "", ",": "","&": "et"})}}'><h6 id="{{me.subCategory.id}}" title="{{me.subCategory.name|replace({'&': 'et'}) }}">{{me.subCategory.name}}</h6></a>
+                            <hr class="my-1">
+                            {% for familleKey, famille in me.famille %}
+                                <div class="d-flex">
+                                <a href='/nos-categories/{{me.subCategory.id}}-{{me.subCategory.name|replace({"â": "a","à": "a","é": "e","û": "u","è": "e","'":""," ": "-",".": "", ",": "","&": "et"})}}/{{famille.id}}-{{famille|replace({"â": "a","à": "a","é": "e","û": "u","è": "e","'":""," ": "-",".": "",",":"","&": "et"})}}' title="{{famille|replace({"&": "et"})}}"><li class='textNoSelect'>{{famille}}</li></a>
+                                 {% if famille.illustration %} {# si on a inséré une image depuis le dashboard #}
+                                        <img loading="lazy" class="mx-1 imagesFiltreMenu" src="/uploads/categories/sous-categories/{{famille.illustration}}" alt="{{famille.name|replace({"&": "et"})}}"/>
+                                    {% else %} {# sinon on recherche une depuis les produits affectés à cette sous-sous-catégorie #}
+                                        {% set stop = false %}
+                                        {% for produit in famille.produits %}
+                                            {% if not stop %} {# si pas stop on continue #}
+                                                {% if produit.illustration starts with 'http'  %}
+                                                    <img loading="lazy" class="mx-1 imagesFiltreMenu" src="{{produit.illustration}}" alt="{{famille.name|replace({"&": "et"})}}"/>
+                                                    {% set stop = true %}
+                                                {% elseif produit.illustration and produit.illustration != "error/img-error.jpg" %}
+                                                    <img loading="lazy" class="mx-1 imagesFiltreMenu" src="/uploads/{{produit.illustration}}" alt="{{famille.name|replace({"&": "et"})}}"/>
+                                                    {% set stop = true %}
+                                                {% endif %}
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% endif %}
+                                    </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% else %}
+            <h3>Aucunes des catégories sont indisponible dans ce menu pour le moment</h3>
+        {% endif %}
+        </section>
+        <section class="m-4 d-flex">
+            <section>
+                <div class="bg-success p-4 mb-2 encart_sous_menu">
+                    <h3 class="text-white text-center font-weight-bold">NOUVEAUTÉS</h3>
+                    <p class="text-white">Retrouvez toutes les nouveautés</p>
+                    <a class="btn border w-100 text-white" href="/nos-produits">DÉCOUVRIR</a>
+                </div>
+                <div class="bg-primary p-4 encart_sous_menu">
+                    <h3 class="text-white text-center font-weight-bold">PROMOTIONS</h3>
+                    <p class="text-white">Retrouvez toutes les promotions</p>
+                    <a class="btn border w-100 text-white" href="{{path('app_produits_promotions')}}">DÉCOUVRIR</a>
+                </div>
+            </section>
+            {# {{ render(controller('App\\Controller\\HomeController::pubRechercheParCategorie')) }} #}
+        </section>
+    </section>
+</div>

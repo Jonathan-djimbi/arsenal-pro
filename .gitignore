@@ -1,0 +1,32 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+# symfony/framework_bundle #
+/.env.local
+/.env.test
+/.env.local.php
+/.env.*.local
+/config/secrets/prod/prod.derypt.private.php
+/public/bundles/
+/var/log/dev.log
+/var/
+/var/cache/*
+/var/log/*
+/vendor/
+.phpunit
+.phpunit.result.cache
+/phpunit.xml
+/.idea
+/sauvegarde_recherche.txt
+public/uploads/*
+/public/uploads/*
+migrations/*
+/migrations/*
+/compte/utilisateurs/document-client.tar.gz
+/factures
+/factures/*

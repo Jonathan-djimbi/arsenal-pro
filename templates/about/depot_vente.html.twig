@@ -1,0 +1,174 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Dépôt vente | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+<!-- POUR MESSAGE CONTACT -->
+{% for message in app.flashes('notice')|slice(0,1) %}
+    <div class="alert alert-info alertdisplay">{{ message }}</div>
+{% endfor %}
+{% for message in app.flashes('warning')|slice(0,1) %}
+    <div class="alert alert-danger alertdisplay">{{ message }}</div>
+{% endfor %}
+<!-- -->
+<section class="apropos">
+    <h1 class="text-center mb-3 font-weight-bold">OCCASION DÉPÔT VENTE</h1><br>
+    <div class="mb-5">
+        <p class="text-center">Tireur sportif, collectionneur, chasseur. Une arme que vous ne voulez plus ?<br>
+        Revendre votre arme pour changer de modèle.<br>
+        L’autorisation peut être libérée. Vous profitez des canaux de communication et de visibilité de l’armurerie ainsi que de son réseau.
+        <br>
+        <u id="lienDepotVenteForm" class="btn">Remplissez le formulaire</u> pour l’étude de votre vente et <u>consultez le processus de vente</u></p>
+    </div>
+   <div>
+        <img src="{{ asset('/assets/image/army-conflict-weapon-arsenal-pro.jpg') }}" class="mx-auto d-block" alt="Armurerie Haute-Savoie Suisse Arsenal Pro" draggable="false">
+   </div>
+    <div class="d-flex mb-5 mt-5">
+        <div class="apropos-text mx-auto">
+            <h2 class="font-weight-bold text-center">CE QU'ARSENAL PRO FAIT POUR VOUS</h2><br>
+            <p class="text-center">Dépôt vente (personnes avec autorisations valables)</p>
+        </div>
+    </div>
+   <div id="engagement-arsenalpro-depot" class="mb-5">
+        <div class="d-flex">
+            <div class="mx-auto">
+                <h3 class="font-weight-bold">01.</h3>
+                <h4 class="font-weight-bold">3 OPTIONS :</h4><br>
+                <li><b>La reprise</b> : faites reprendre votre ancienne arme lors d'une nouvelle acquisition</li>
+                <li><b>La facilité</b> : déposez en dépôt vente en repartant avec la nouvelle arme</li>
+                <li><b>Le dépôt</b> : Mettez en vente uniquement</li>
+            </div>
+            <div>
+                <h3 class="font-weight-bold">02.</h3>
+                <h4 class="font-weight-bold">LE RÉSEAU :</h4><br>
+                <p>Votre arme est visible par le réseau de l'armurerie</p>
+            </div>
+            <div>
+                <h3 class="font-weight-bold">03.</h3>
+                <h4 class="font-weight-bold">ARSENAL PRO NE VOUS LAISSE PAS DANS L'EMBARRAS :</h4><br>
+                <p>Vous avez besoin de libérer une autorisation pour acheter rapidement une nouvelle arme</p>
+            </div>
+        </div>
+    </div>
+    <div id="form" class="mt-5 mb-5">
+    <h2 class="text-center font-weight-bold mb-3">FORMULAIRE D'OCCASION DÉPÔT VENTE</h2>
+    {{ form_start(form, { 'attr' : {'onsubmit' : 'return verifImages();'}}) }}
+        <div class="column formDepotVente">
+            <div class="d-flex row w-100 mx-auto">
+            {% if app.user %}
+                <div>{{ form_row(form.nom, {'value': app.user.lastname}) }}</div>
+                <div>{{ form_row(form.prenom, {'value': app.user.firstname}) }}</div>
+            {% else %}
+                <div>{{ form_row(form.nom)}}</div>
+                <div>{{ form_row(form.prenom)}}</div>
+            {% endif %}
+                <div>{{ form_row(form.dateNaissance, {'id' : 'naissance'}) }}
+                    {% if erreurs and erreurs.naissance is defined %}
+                        <small class="text-danger" id="erreur_Date">{{erreurs.naissance}}</small> {# pour erreur back-end, 2ème verification #}
+                    {% else %}
+                        <small class="text-danger" id="erreur_Date"></small> {# pour erreur front-end #}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="d-flex row w-100 mx-auto">
+                {% if app.user %}
+                    <div>{{ form_row(form.adresse, {'value': adresse.adress}) }}</div>
+                    <div>{{ form_row(form.postal, {'type' : 'number', 'value': adresse.postal}) }}</div>
+                    <div>{{ form_row(form.city, {'value': adresse.city}) }}</div>
+                {% else %}
+                    <div>{{ form_row(form.adresse) }}</div>
+                    <div>{{ form_row(form.postal, {'type' : 'number'}) }}</div>
+                    <div>{{ form_row(form.city) }}</div>
+                {% endif %}
+            </div>
+            <div class="d-flex row w-100 mx-auto">
+                {% if app.user %}
+                    <div>{{ form_row(form.email, {'value': app.user.email}) }}</div>
+                    <div>{{ form_label(form.phone) }}
+                    {{ form_widget(form.phone, {'type' : 'text', 'value' : adresse.phone, 'id' : 'phoneDepot'}) }}
+                {% else %}
+                    <div>{{ form_row(form.email) }}</div>
+                    <div>{{ form_label(form.phone) }}
+                    {{ form_widget(form.phone, {'type' : 'text', 'id' : 'phoneDepot'}) }}
+                {% endif %}
+                <small class="text-danger" id="erreur_Phone"></small>{{ form_errors(form.phone)}}</div>
+            </div>
+            <div class="d-flex row w-100 mx-auto">
+                <div>{{ form_row(form.nbArmePoing, {'type' : 'number', 'id' : 'nbArmePoing'}) }}</div>
+                <div>{{ form_row(form.nbArmeEpaule, {'type' : 'number', 'id' : 'nbArmeEpaule'}) }}</div>
+            </div>
+            
+        </div>
+        <div class="w-100">{{ form_row(form.prixLot) }}</div>
+        <div class="d-flex row">
+            <p>Conseil : la première étude se base sur les photos, assurez vous qu'elles soient cadrées et nettes. Vous pouvez mettre plusieurs photos dans un seul fichier. *</p><br/>
+            <p>Taille : 6MB max par fichier | Format image : JPG/JPEG</p>
+             <div class="w-100">{{ form_widget(form.photoUn, {'id': 'photoUn'}) }}</div>
+            <div class="ml-3 text-center"><small class="text-danger" id="erreur_photoUn"></small>{{ form_errors(form.photoUn, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+            <div class="w-100">{{ form_widget(form.photoDeux, {'id': 'photoDeux'}) }}</div>
+            <div class="ml-3 text-center"><small class="text-danger" id="erreur_photoDeux"></small>{{ form_errors(form.photoDeux, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+            <div class="w-100">{{ form_widget(form.photoTrois, {'id': 'photoTrois'}) }}</div>
+            <div class="ml-3 text-center"><small class="text-danger" id="erreur_photoTrois"></small>{{ form_errors(form.photoTrois, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+            <div class="w-100">{{ form_widget(form.photoQuatre, {'id': 'photoQuatre'}) }}</div>
+            <div class="ml-3 text-center"><small class="text-danger" id="erreur_photoQuatre"></small>{{ form_errors(form.photoQuatre, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+        </div>
+        <article>
+        <div class="w-100">{{ form_row(form.description) }}</div>
+            <p id="textarealimitdisplay"><b id="textcompteur">0</b>/500</p>
+        </article>
+        <div class="col-md-12">{{ form_row(form.submit) }}</div>
+        <br/><span class="text-info">* informations obligatoires</span>
+    {{ form_end(form) }}
+    </div>
+    <div class="d-flex mt-5">
+        <div class="d-flex flex-column w-100">
+            <h2 class="text-center font-weight-bold">PROCESSUS DE VENTE</h2><br>
+            <section class="mb-5">
+                <div id="depotVenteBtnUn" class="btn btn-outline-dark margin-auto d-block">Procédure uniquement en cas d’envoi d’arme :</div>
+                <p id="depotVenteTextUn" class="noshow"><a href="{{path('app_register')}}">Créez un compte client</a> sur notre site ARSENAL Pro avant d’envoyer votre arme à notre atelier pour procéder à l’expertise.
+                <br>
+                Pour les armes de catégorie B, l’envoi se fait en 2 colis séparés, espacés de 24 heures minimum avec à l’intérieur les pièces justificatives suivantes :<br>
+                <br>
+                L’original de l’autorisation de détention, dans chacun des 2 colis. NB : votre autorisation de détention doit être valide tout au long du processus. En effet, vous restez propriétaire de l’arme jusqu’à sa revente.
+                Une copie de votre pièce d’identité en cours de validité.
+                La facture d’achat initial de l’arme si vous l’avez.
+                Que va devenir votre autorisation de détention ?
+                <br>
+                2 possibilités :<br>
+                <br>
+                Elle est libérée et nous vous la renvoyons en recommandé avec accusé de réception. Votre autorisation libérée est valable 6 mois.
+                Vous souhaitez acheter une arme. Nous utilisons l’autorisation qui a été libérée pour livrer une nouvelle arme, neuve ou d’occasion.
+                Pour les armes de catégorie C, l’envoi se fait en un seul colis.
+                <br>
+                Les pièces à joindre :<br>
+                <br>
+                Le récépissé de déclaration.
+                Une copie de votre pièce d’identité en cours de validité.
+                La facture d’achat initial de l’arme si vous l’avez.</p>
+            </section>
+            <section class="mb-5">
+                <div id="depotVenteBtnDeux" class="btn btn-outline-dark margin-auto d-block">Expertise et estimation</div>
+                <p id="depotVenteTextDeux" class="noshow">
+                    L’expertise et l’estimation sont effectuées dans notre atelier.
+                    <br>
+                    Le prix proposé prend en compte les critères suivants :<br>
+                    <br>
+                    L’état de l’arme,
+                    L’année de fabrication,
+                    La rareté,
+                    L’offre et la demande,
+                    La tendance du moment,
+                    La volonté du vendeur de vendre rapidement avec une fourchette basse ou non avec une fourchette haute.
+                    Tous les marquages et le poinçon d’épreuve sur l’arme sont obligatoires.
+                    <br>
+                    Une fois le prix fixé, le vendeur en est informé par mail. Il est libre d’accepter ou de refuser la mise en vente de son arme au prix proposé. 
+                    En cas de refus, nous lui renvoyons l’arme à nos frais. L’expertise, l’estimation, le nettoyage et le traitement administratif seront alors facturés 120€.
+                </p>
+            </section>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% block js %}
+<script src="{{ asset('assets/js/ab87d188e005e6df5cb8436d9879a8.js') }}?v={{version}}"></script>
+{% endblock %}

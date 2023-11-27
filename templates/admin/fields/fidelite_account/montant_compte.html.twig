@@ -1,0 +1,18 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% if ea.crud.currentAction == 'index' or ea.crud.currentAction == 'detail' %}
+        {% for value in field.value|slice(0,1) %}
+        <div>
+        {% if value.sommeCompte != NULL %}
+            <p>{{ (value.sommeCompte / 100)|number_format(2) }}€ | <a href="/admin?crudAction=edit&crudControllerFqcn=App%5CController%5CAdmin%5CMontantCompteCrudController&entityId={{value.id}}">Modifier</a></p>
+        {% else %}
+            <p>0.00€ | <a href="/admin?crudAction=edit&crudControllerFqcn=App%5CController%5CAdmin%5CMontantCompteCrudController&entityId={{value.id}}">Modifier</p>
+        {% endif %}
+        </div>
+        {% endfor %}
+{% else %}
+    <span class="badge badge-secondary">{{ field.formattedValue }}</span>
+{% endif %}
+
+{# https://127.0.0.1:8000/admin?crudAction=edit&crudControllerFqcn=App%5CController%5CAdmin%5CMontantCompteCrudController&entityId={{value.id}} #}

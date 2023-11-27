@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Rachat d'armes cash | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+<!-- POUR MESSAGE CONTACT -->
+{% for message in app.flashes('notice')|slice(0,1) %}
+    <div class="alert alert-info alertdisplay">{{ message }}</div>
+{% endfor %}
+{% for message in app.flashes('warning')|slice(0,1) %}
+    <div class="alert alert-danger alertdisplay">{{ message }}</div>
+{% endfor %}
+<!-- -->
+<section class="apropos">
+    <h1 class="text-center mb-3 font-weight-bold">RACHAT D’ARMES CASH</h1><br>
+    <div class="mb-5 mt-2">
+        <p class="text-center">Héritier d’une arme bien malgré vous, vendre son arme : c’est simple avec ARSENAL Pro.</p>
+    </div>
+   <div>
+        <img src="{{ asset('/assets/image/gun-tactical-handgun-arsenal-pro.jpg') }}" class="mx-auto d-block" alt="Armurerie Haute-Savoie Suisse Arsenal Pro" draggable="false">
+   </div>
+   <div id="engagement-arsenalpro-depot" class="mb-5">
+        <p class="text-center mb-5 mt-5">Un héritage, un fond de tiroir, une découverte d’arme dans une cave ou un grenier,<u id="lienDepotVenteForm" class="btn">remplissez le formulaire</u>et informez vous des démarches pour garantir un chemin légal fiable avec un accompagnement</p>
+        <div class="d-flex">
+            <div class="mx-auto">
+                <h3 class="font-weight-bold">01.</h3>
+                <p>Vous n'avez pas ou plus l'autorisation pour cette arme sur décision du préfet</p>
+            </div>
+            <div class="mx-auto">
+                <h3 class="font-weight-bold">02.</h3>
+                <p>Vous avez trouvé ou fait une découverte d'arme dont vous n'avez pas les autorisations</p>
+            </div>
+            <div class="mx-auto">
+                <h3 class="font-weight-bold">03.</h3>
+                <p>Vous avez reçu en héritage une arme dont vous n'avez pas les autorisations</p>
+            </div>
+        </div>
+    </div>
+     <div class="d-flex mb-5 mt-5">
+        <div class="apropos-text mx-auto">
+            <h2 class="font-weight-bold text-center">CE QU'ARSENAL PRO FAIT POUR VOUS</h2><br>
+            <p class="text-center">Achat cash (découverte, héritage, dessaisissement)</p>
+        </div>
+    </div>
+   <div id="engagement-arsenalpro-rachat" class="mb-5">
+        <div class="d-flex">
+            <div>
+                <h3 class="font-weight-bold">01.</h3>
+                <h4 class="font-weight-bold">ARSENAL PRO VOUS LIBÈRE JURIDIQUEMENT :</h4><br>
+                <p>En vous adressant à un armurier les formalités sont faites dans les règles</p>
+            </div>
+            <div>
+                <h3 class="font-weight-bold">02.</h3>
+                <h4 class="font-weight-bold">ARSENAL PRO SE DÉPLACE OU VOUS ACCUEILLE :</h4><br>
+                <p>Dans les 2 cas une prise de rendez vous est requise, la discrétion vous est assurée</p>
+            </div>
+            <div>
+                <h3 class="font-weight-bold">03.</h3>
+                <h4 class="font-weight-bold">ARSENAL PRO NE VOUS LAISSE PAS DANS L'EMBARRAS :</h4><br>
+                <p>Quel que soit l'état je vous prends tout ce que vous ne voulez plus même ce qui sera détruit</p>
+            </div>
+            <div>
+                <h3 class="font-weight-bold">04.</h3>
+                <h4 class="font-weight-bold">ARSENAL PRO VOUS PAIE CASH :</h4><br>
+                <p>Une fois le juste prix convenu, je vous paie et je m'occupe de l'administratif</p>
+            </div>
+        </div>
+    </div>
+    <div id="form" class="mt-5 mb-5">
+    <h2 class="text-center font-weight-bold mb-3">FORMULAIRE D'ACHAT D’ARME À REMPLIR :</h2>
+    {{ form_start(form, { 'attr' : {'onsubmit' : 'return verifImages();'}}) }}
+        <div class="column formDepotVente">
+            <div class="d-flex row w-100 mx-auto">
+            {% if app.user %}
+                <div>{{ form_row(form.nom, {'value': app.user.lastname}) }}</div>
+                <div>{{ form_row(form.prenom, {'value': app.user.firstname}) }}</div>
+            {% else %}
+                <div>{{ form_row(form.nom)}}</div>
+                <div>{{ form_row(form.prenom)}}</div>
+            {% endif %}
+                <div>{{ form_row(form.dateNaissance, {'id' : 'naissance'}) }}
+                    {% if erreurs and erreurs.naissance is defined %}
+                        <small class="text-danger" id="erreur_Date">{{erreurs.naissance}}</small> {# pour erreur back-end, 2ème verification #}
+                    {% else %}
+                        <small class="text-danger" id="erreur_Date"></small> {# pour erreur front-end #}
+                    {% endif %}
+                </div>
+            </div>
+            <div class="d-flex row w-100 mx-auto">
+                {% if app.user %}
+                    <div>{{ form_row(form.adresse, {'value': adresse.adress}) }}</div>
+                    <div>{{ form_row(form.postal, {'type' : 'number', 'value': adresse.postal}) }}</div>
+                    <div>{{ form_row(form.city, {'value': adresse.city}) }}</div>
+                {% else %}
+                    <div>{{ form_row(form.adresse) }}</div>
+                    <div>{{ form_row(form.postal, {'type' : 'number'}) }}</div>
+                    <div>{{ form_row(form.city) }}</div>
+                {% endif %}
+            </div>
+            <div class="d-flex row w-100 mx-auto">
+                {% if app.user %}
+                    <div>{{ form_row(form.email, {'value': app.user.email}) }}</div>
+                    <div>{{ form_label(form.phone) }}
+                    {{ form_widget(form.phone, {'type' : 'text', 'value' : adresse.phone, 'id' : 'phoneDepot'}) }}
+                {% else %}
+                    <div>{{ form_row(form.email) }}</div>
+                    <div>{{ form_label(form.phone) }}
+                    {{ form_widget(form.phone, {'type' : 'text', 'id' : 'phoneDepot'}) }}
+                {% endif %}
+                <small class="text-danger" id="erreur_Phone"></small>{{ form_errors(form.phone)}}</div>
+            </div>
+            <div class="d-flex row w-100 mx-auto">
+                <div>{{ form_row(form.nbArmePoing, {'type' : 'number', 'id' : 'nbArmePoing'}) }}</div>
+                <div>{{ form_row(form.nbArmeEpaule, {'type' : 'number', 'id' : 'nbArmeEpaule'}) }}</div>
+            </div>
+            
+        </div>
+        <div class="w-100">{{ form_row(form.prixLot) }}</div>
+        <div>{{form_row(form.isLegit)}}</div>
+        <div class="d-flex row">
+            <p>Conseil : la première étude se base sur les photos, assurez vous qu'elles soient cadrées et nettes. Vous pouvez mettre plusieurs photos dans un seul fichier. *</p><br/>
+            <p>Taille : 6MB max par fichier | Format image : JPG/JPEG</p>
+            <div class="w-100">{{ form_widget(form.photoUn, {'id': 'photoUn'}) }}</div>
+            <div class="ml-3 text-center"><small class="text-danger" id="erreur_photoUn"></small>{{ form_errors(form.photoUn, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+            <div class="w-100">{{ form_widget(form.photoDeux, {'id': 'photoDeux'}) }}</div>
+            <div class="ml-3 text-center"><small class="text-danger" id="erreur_photoDeux"></small>{{ form_errors(form.photoDeux, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+            <div class="w-100">{{ form_widget(form.photoTrois, {'id': 'photoTrois'}) }}</div>
+            <div class="ml-3 text-center"><small class="text-danger" id="erreur_photoTrois"></small>{{ form_errors(form.photoTrois, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+            <div class="w-100">{{ form_widget(form.photoQuatre, {'id': 'photoQuatre'}) }}</div>
+            <div class="ml-3 text-center"><small class="text-danger" id="erreur_photoQuatre"></small>{{ form_errors(form.photoQuatre, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+        </div>
+        <article>
+        <div class="w-100">{{ form_row(form.description) }}</div>
+            <p id="textarealimitdisplay"><b id="textcompteur">0</b>/500</p>
+        </article>
+        <div class="col-md-12">{{ form_row(form.submit) }}</div>
+        <br/><span class="text-info">* informations obligatoires</span>
+    {{ form_end(form) }}
+    </div>
+{% endblock %}
+{% block js %}
+<script src="{{ asset('assets/js/ab87d188e005e6df5cb8436d9879a8.js') }}?v={{version}}"></script>
+{% endblock %}

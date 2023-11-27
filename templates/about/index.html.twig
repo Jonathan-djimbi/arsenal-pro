@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>À propos de l'armurerie | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+<section class="apropos">
+    <div id="engagement-arsenalpro" class="mb-5">
+        <h1 class="text-center mb-3">LES ENGAGEMENTS ARSENAL PRO</h1><br>
+        <div class="d-flex">
+            <div>
+                <i class="fas fa-shield-alt"></i>
+                <h4 class="font-weight-bold">SÉCURITÉ :</h4><br>
+                <p>Le matériel proposé est qualifié, respectant les normes, et qui a fait ses preuves sur le terrain.</p>
+            </div>
+            <div>
+                <i class="fas fa-sort-amount-up"></i>
+                <h4 class="font-weight-bold">PERFORMANCE :</h4><br>
+                <p>Les acteurs de notre sécurité ont besoin de matériel fiable, qualitatif et performant.</p>
+            </div>
+            <div>
+                <i class="fas fa-stopwatch"></i>
+                <h4 class="font-weight-bold">RÉACTIVITÉ :</h4><br>
+                <p>Une écoute et une disponibilité de l’armurerie pour répondre le plus rapidement à vos besoins.</p>
+            </div>
+            <div>
+                <i class="fas fa-star"></i>
+                <h4 class="font-weight-bold">EXPERTISE :</h4><br>
+                <p>Les tireurs apprécieront les conseils avisés de nos essais terrain pour trouver le bon produit et répondre au mieux aux besoins spécifiques.</p>
+            </div>
+            <div>
+                <i class="fas fa-user-secret"></i>
+                <h4 class="font-weight-bold">DISCRÉTION :</h4><br>
+                <p>ARSENAL Pro se déplace dans vos stands sur rendez-vous et vous conseille par téléphone tout en respectant la confidentialité lors des échanges et livraisons.</p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex mb-5 mt-5">
+        <img src="{{ asset('/assets/image/army-conflict-weapon-arsenal-pro.jpg') }}" class="mr-2" alt="Armurerie Haute-Savoie Suisse Arsenal Pro" draggable="false">
+        <div class="apropos-text">
+            <h2 class="font-weight-bold">PAR ET POUR LES TIREURS</h2><br>
+            <p>L’armurerie et école de tir ARSENAL PRO a récemment vu le jour en 2022, créée par Stéphane PHILIPPE, moniteur de tir et armurier.
+            À 36 ans je suis tireur sportif et compétiteur en championnat de France, arbitre TAR, opérateur de rechargement de munitions pour la compétition.
+            <br>
+            L’armurerie est spécialisée dans la vente d’armes, d’équipement pour le tir et pour professionnels.
+            Tous les produits sur le site sont testés par nos soins en condition réelle d’utilisation, sans ménagement.
+            C’est ainsi que les avis d’expert dans les descriptions produits profitent de vrais retex en dehors de marketing.
+            La vente se fait exclusivement sur internet, les produits peuvent être retirés au dépôt ou envoyés.</p>
+        </div>
+    </div>
+    <hr>
+    <div class="d-flex mb-5 mt-5">
+        <img src="{{ asset('/assets/image/gun-tactical-handgun-arsenal-pro.jpg') }}" class="mr-2" alt="Armurerie Haute-Savoie Suisse Arsenal Pro" draggable="false">
+        <div class="apropos-text">
+            <h2 class="font-weight-bold">OBJECTIFS DE L'ARMURERIE</h2><br>
+            <p>L’objectif de l’armurerie est de proposer les meilleurs produits testés pour la pratique sportive et pour les professionnels.<br>
+            Tous les produits en vente sont éprouvés lors des séances de tir et d’entraînement, seul le matériel qui répond aux critères de test se hisse sur le site internet (résistance dans le temps, SAV fabricant, utilisation intensive sportive et professionnelle).</p>
+        </div>
+    </div>
+    <div class="mb-5 mt-5">
+        <h2 class="font-weight-bold">FORMATIONS : </h2><br>
+        <p>
+        La base du tir et les techniques fondamentales sont les mêmes pour les professionnels et le monde du tir sportif. Ce qui change c’est le but et le contexte dans lequel le tir s’insère et s’oriente. La base commune est d’être précis, pour les pros la tactique sera développée, pour les sportifs l’accent sera mis sur la vitesse et la régularité.
+        <br>
+        Le contenu des instructions et entraînements n’est donc pas le même selon le public, monde opérationnel ou monde civil sportif.
+        <br>
+        Les entraînements de tir sont des formations dans les domaines du tir, du secourisme tactique à destination de deux publics :
+        <br>
+        <li><b>Particuliers et tireurs sportifs</b> : initiation au tir, techniques de perfectionnement, découverte de méthodes de tir modernes et rechargement de munitions.</li>
+        <li><b>Professionnels</b> : techniques de tir, destinées aux forces de l’ordre, militaires, agents de sécurité, services de santé. Assistance et secours dans des conditions d’insécurité.</li><br>
+        <b>Secourisme</b> : La sensibilisation à la sécurité est un sujet central dans la formation des utilisateur d’armes au sein de la Fédération Française de tir, et ça fonctionne. Le prolongement de la sensibilisation est de savoir agir. La formation certifiante et reconnue (enregistrée RNCP) se déroule sur deux jours et vous permettra d’apprendre des gestes simples à travers des mises en situation : comment prévenir les secours, protéger une victime, quels gestes effectuer en attendant l’arrivée des secours. Le complément associé au tir traite la prévention, l’utilisation efficiente des trousses de secours, se préparer à savoir agir calmement et efficacement.
+        </p>
+    </div>
+    <hr>
+    <div class="mt-5 mb-5">
+        <h2 class="text-center font-weight-bold">LE DEPÔT</h2>
+        <p class="text-center">ARSENAL PRO vous accueille individuellement sur rendez-vous pour découvrir les nouveaux produits. Vous pouvez également planifier le retrait de vos commandes.<br>
+        Sur demande de groupe, une découverte d’arme peut-être organisée dans votre stand de tir.<br><br>
+        Le dépôt est accessible sur rendez-vous.</p>
+        <a id="contacter-apropos" class="mx-auto d-block bg-success p-2 text-center border_radius_all_15 box_shadow_all text-white" href="{{ path('app_contact') }}">NOUS CONTACTER</a>
+    </div>
+    <hr>
+    <div class="d-flex mt-5 mb-5">
+        <img src="{{ asset('/assets/image/0F6A8301-scaled.jpg') }}" class="mr-2" alt="Armurerie Haute-Savoie Suisse Arsenal Pro" draggable="false">
+        <div class="apropos-text">
+            <h2 class="font-weight-bold">IMPORTATION-EXPORTATION</h2><br>
+            <p>ARSENAL Pro se charge d’aller chasser des armes historiques ou peu présentes de sur le territoire dans d’autres pays. Vous avez une arme neuve ou d’occasion qui vous plait à l’étranger (Suisse, UE, USA) ? Nous traitons vos importations – exportation d’armes, du vendeur étranger jusqu’à l’acquéreur sur le territoire et inversement. Le passage en douane est sous la responsabilité d’ARSENAL Pro.
+
+Armuriers hors du territoire français, ARSENAL Pro est votre contact pour vos transactions d’import – export de matériels classés.</p>
+
+            <h2 class="font-weight-bold">EXPÉDITION :</h2>
+            <p>ARSENAL Pro travaille avec les transporteurs suivants :<br><br>
+            <b>Colissimo</b> pour une livraison à domicile ou en point relais avec une livraison comprises entre 48h à 72h ouvrables en France, 
+            il faut compter généralement un jour de plus pour la Belgique et quelques jours supplémentaire pour le dédouanement en Suisse.</p>
+        </div>
+    </div>
+    <hr>
+    <div class="mt-5">
+        <h2 class="text-center font-weight-bold">LA LOCATION ET L’ESSAI D’ARMES</h2><br>
+        <p class="text-center">
+        La difficulté de l’acheteur est de choisir le matériel qui lui est le plus adapté dans la jungle de fabricants.
+        Les tests et essais vont permettre de confirmer vos choix d’utilisation, esthétiques ou ergonomiques.
+        Pour assurer vos choix, vous avez la possibilité de louer les armes, vous choisissez l’arme, la durée, le tout sans toucher au matériel neuf.
+        Sur rendez-vous et sur demande du matériel à tester, la location est possible.</p>
+    </div>
+</section>
+{% endblock %}

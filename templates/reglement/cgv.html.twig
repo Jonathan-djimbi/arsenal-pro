@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Conditions générale de vente | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+{{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Nos condition générale de vente", 'section' : 0, 'multi' : false })) }}
+<row class="">
+    <hr>
+    <br/>
+    <article class="border text-justify">
+        <div>
+        {% for condition in cgv %}
+            <div>
+                <h4>{{condition.titre|upper}}</h4>
+                <p>{{condition.regle|raw}}</p>
+            </div>
+        {% endfor %}
+        </div>
+    </article>
+
+</row>
+
+{% endblock %}

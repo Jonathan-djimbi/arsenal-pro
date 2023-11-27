@@ -1,0 +1,21 @@
+<div class="product-item product-item-association border_radius_all_15 text-center{% if produit.id == produits.id %} selected{% endif %}">
+
+    <a href="{% if produit.id == produits.id %}#{% else %}{{ path('app_produit',{'slug': produits.slug}) }}{% endif %}">
+        <img loading="lazy" src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{ produits.illustration }}" alt="{{ produits.name }}" class="img-fluid">
+    </a>
+    {# <h5>{{ produits.name }}</h5> #}
+    {% if produits.pricepromo and produits.pricepromo != produits.price and produits.pricepromo < produits.price %}
+        {% set gagner = (produits.price - produits.pricepromo) / 100 %}
+        {% if (100 - ((produits.pricepromo)/(produits.price)) * 100) >= 5 %}
+            <div class="ruban-reduction rounded-right">
+                <p class="h5">-{{ gagner|number_format(2) }}€</p>
+            </div>
+        {% endif %}
+    {% endif %}
+    {# <section class="section-ensous">
+        <article class="d-flex flex-row justify-content-center mx-auto w-75 mb-2">
+                <a class="btn text-primary produit-panier" href="{{ path('app_produit',{'slug': produit.slug}) }}" ><i class="fa-solid fa-eye"></i></a>
+                <div class="btn text-primary produit-panier ajoutPanier" data-id='{{ produit.id }}'  data-name='{{ produit.name }}'><i class="fa-solid fa-plus"></i></div>
+        </article>
+    </section> #}
+</div>

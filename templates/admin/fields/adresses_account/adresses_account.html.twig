@@ -1,0 +1,25 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% if ea.crud.currentAction == 'detail' %}
+    <table class="table table-striped">
+        <tr>
+            <th>Adresse</th>
+            <th>Ville</th>
+            <th>Code postale</th>
+            <th>Pays</th>
+            <th>Numéro de téléphone</th>
+        </tr>
+        {% for value in field.value %}
+        <tr>
+            <td>{{ value.adress }}</td>
+            <td>{{ value.city }}</td>
+            <td>{{ value.postal }}</td>
+            <td>{{ value.country }}</td>
+            <td>{{ value.phone }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    <span class="badge badge-secondary">{{ field.formattedValue }}</span>
+{% endif %}

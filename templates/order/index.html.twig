@@ -1,0 +1,112 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Valider ma commande | Arsenal Pro</title>{% endblock %}
+
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Je passe ma commande", 'section' : 2, 'multi' : true })) }}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-danger alertdisplay">{{ message }}</div>
+    {% endfor %}
+    <p> Choisissez vos préférences avant de passer votre commande.</p>
+    <hr>
+    <div class="text-center">
+        <b> Récap de ma commande</b><br/>
+        <p> Retrouvez le récaputilatif de vos commande</p>
+    </div>
+    <div class="row order_section">
+    
+        <div  class="col-md-6 bg">
+            {% set formHtml %}
+            {{ form_start(form, {action:path('app_order_recap')}) }}
+                {{ form_row(form._token) }}
+                {{form_row(form.adresses)}}
+                {% if app.user.adresses| length <= 1 %}
+                    <a href="{{ path('app_account_address') }}">Ajouter une nouvelle adresse</a><br/><br/>
+                {% endif %}
+                {% if livraison %}
+                    {{form_row(form.carriers)}}
+                {% endif %}
+                {% if compteFidele %} 
+                    {% if compteFidele.nombreAchat >= 2 %} {# si compte fidelite et nombre achat égale ou supérieur à 2#}
+                        {{form_row(form.fidele)}}
+                    {% endif %}
+                {% endif %}               
+            {% endset %}
+            {{ formHtml|replace({'[br]':', '})|raw}}
+        </div>
+        <div class="col-md-6">            
+            <div class="order-summary">
+                {% for key,produit in cart %}
+                    {% if produit.priceVenteFlash > 0 and produit.produit.isVenteFlash and (produit.dateVenteFlash|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %}
+                        {% set produitprix = produit.priceVenteFlash %}
+                        {% set colorprix = "green" %}
+                    {% elseif produit.produit.pricepromo and produit.produit.pricepromo != produit.produit.price and produit.produit.pricepromo < produit.produit.price %}
+                        {% set produitprix = produit.produit.pricepromo %}
+                        {% set colorprix = "green" %}
+                    {% else %}
+                        {% set produitprix = produit.produit.price %}
+                        {% set colorprix = "#5a5a5a" %}
+                    {% endif %}
+
+                    {% if produit.produit.priceFDO and produit.produit.priceFDO > 1 %}
+                        {% if siProPolice %}
+                            {% if siProPolice.numeroMatricule != null %}
+                                {% set produitprix = produit.produit.priceFDO %}
+                                {% set colorprix = "green" %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                    {% if produit.produit.isDegressif and produit.quantity >= 10 %} {# GESTION PRIX PRODUIT EN DEGRESSIF #}
+                        {% set key = 1 %}
+                        {% set degressifPrixCheckStop = false %}
+                        {% for val in produit.produit.degressifValues %}
+                            {% if degressifPrixCheckStop == false %}
+                                {% if (produit.produit.degressifValues[key + 1] is defined) == false %}
+                                    {% if val <= produit.quantity %}
+                                        {% set produitprix = produitprix - (key * 50) %}
+                                        {% set degressifPrixCheckStop = true %}
+                                    {% endif %}
+                                {% else %}
+                                    {% if produit.quantity >= val and produit.quantity < produit.produit.degressifValues[key + 1] %}
+                                            {% if val == 10 %} {# si quantité prise à 20 | pour que ça fonctionne j'ai dû mettre la valeur précédente qui est de 10 #}
+                                            {% set produitprix = produitprix - (key * 50) - 20 %} {# valeur key - 20 centimes de remise en plus #}
+                                        {% else %}
+                                            {% set produitprix = produitprix - (key * 50) %} {# valeur key - 50 centimes pour affecter un prix degressif #}
+                                        {% endif %}
+                                        {% set degressifPrixCheckStop = true %}
+                                    {% endif %}
+                                
+                                    {% if degressifPrixCheckStop == false %}
+                                        {% set key = key + 1 %}
+                                    {% endif %}
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}                    
+                    <div class="row {% if key > 0 %}mt-2{% endif %}">
+                        <div class="border_radius_all_15 box_shadow_all">
+                            <strong class="order_summary_produit_quantite">x{{ produit.quantity }}</strong>
+                            <img class="order_summary_produit_image" src="{{ (produit.produit.illustration starts with "http") ? '' : '/uploads/'  }}{{ produit.produit.illustration }}" alt="{{ produit.produit.name }}">
+                        </div>
+                        <div class="col-8 my-auto">
+                            <p>{{ produit.produit.name }}</p>
+                            <strong><h5 style="color: {{ colorprix }};">{{ (produitprix / 100)|number_format(2) }}€</h5></strong>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="row mx-auto justify-content-center">
+        {{form_row(form.submit)}}
+    </div>
+    {{form_row(form.code)}}
+     {% if compteFidele %} 
+        {% if compteFidele.sommeCompte > 0 %} {# si compte a de l'argent #}
+            {{form_row(form.sommeCompte, {'label': 'Utiliser mes montants du compte : ' ~ (compteFidele.sommeCompte / 100)|number_format(2) ~ '€', 'attr' : {'type' : 'number', 'min' : 1, 'max' : (compteFidele.sommeCompte / 100)|number_format(2)}})}}
+        {% endif %}
+    {% endif %}
+    {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}

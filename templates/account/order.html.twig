@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Mes commandes | Arsenal Pro</title>{% endblock %}
+
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Mes commandes", 'section' : 0, 'multi' : false})) }}
+    <br/>
+    <p>C'est dans cet espace que vous allez pouvoir gérer toutes vos commandes. Vous avez effectué <strong>{{orders|length}}</strong> commandes en tout.</p>
+    <a href="{{ path('app_account') }}"><i class="fa-solid fa-arrow-left"></i> Retour vers mon espace client</a>
+    <hr>
+    <br/>
+    <div class="d-flex justify-content-center mx-auto">
+        <a href="#" class="mr-4 text-center"><i class="fa-solid fa-tag"></i> Mes commandes</a>
+        <a href="{{ path('app_account_reservation') }}" class="text-center"><i class="fa-solid fa-tag"></i> Mes réservations</a>
+    </div><br/>
+    {% if orders|length > 0 %}
+        <section>
+            {% for order in orders %}
+            <div class="border_radius_all_15 box_shadow_all mb-3">
+                <div class="text-center">
+                <br/>
+                <h4 class="text-dark badge badge-success border_radius_all_15" style="font-size : 90% !important;">{{ order.reference }}</h4><br/>
+                <span>Status de la commande : </span>
+                <b class="text-success">
+                    {% set orderPriceFinal = 0 %}
+                    {% if order.state == 1 %}
+                        Paiement accepté
+                    {% elseif order.state == 2 %}
+                        Préparation en cours
+                    {% elseif order.state == 3 %}
+                        Livraison en cours
+                    {% elseif order.state == 4 %}
+                        Commande livrée
+                    {% elseif order.state == -1 %}
+                        Commande remboursée
+                    {% endif %}
+                </b>
+                <br/>
+                <span>Commande passée le : <b>{{ order.createAt|date('d/m/Y') }}</b></span><br/>
+                <span>Produit(s) : <b>{{ order.orderDetails|length }}</b></span><br/>
+
+                {% set orderPriceFinal = (orderPriceFinal + order.carrierPrice + order.getTotal) %}
+
+                {% if order.pointFideliteUtilise and order.pointFideliteUtilise > 0 %} {# pour remise fidélité #}
+                    {% set orderPriceFinal = (orderPriceFinal - order.pointFideliteUtilise) %}
+                {% endif %}
+
+                {% if order.montantCompteUtilise and order.montantCompteUtilise > 0 %} {# pour remise si client a utilisé l'argent de son compte #}
+                    {% set orderPriceFinal = (orderPriceFinal - order.montantCompteUtilise) %}
+                {% endif %}
+
+                {% if order.remisePromoEuros and order.remisePromoEuros > 0 %} {# pour remise fidélité #}
+                    {% set orderPriceFinal = (orderPriceFinal - order.remisePromoEuros) %}
+                {% endif %}
+
+                <span>Total : <b>{{ ((orderPriceFinal) / 100)|number_format(2, ',', '.') }} €</b></span><br/>
+                </div><br/>
+                <a class="btn btn-block btn-success border_radius_all_15 mb-2 mx-auto w-50 text-light" href="{{ path('app_account_order_show', { 'reference' : order.reference }) }}">Voir ma commande</a><br/>
+            </div>
+            {% endfor %}
+        </section>
+        {% else %}
+        <section>
+            <h4 class="text-center">Vous n'avez effectué aucune commande.</h4>
+            <h4 class="text-center">Remplissez votre panier et commander dès maintenant !</h4>
+        </section>
+    {% endif %}
+{% endblock %}

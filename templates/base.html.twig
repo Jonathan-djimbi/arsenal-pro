@@ -1,0 +1,395 @@
+{% set version = 96 %} {# VERSION POUR CACHES CSS ET JS à UPDATE à chaque MANIPULATION #}
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="google-site-verification" content="KgNP_tHRxrb-TcihFosC5qBiLfAGH9C4Ry6vNc-qX0M" />
+<meta name="google-site-verification" content="KgNP_tHRxrb-TcihFosC5qBiLfAGH9C4Ry6vNc-qX0M" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="keywords" content="Arsenal Pro, Armurerie, arsenal, ardenal, arsenalpro, arsenal-pro, stand tir, francais, vente armes, vente de munitions, armes francaise, vente munitions, chens-sur-leman, haute savoie, haute-savoie, savoie, ain, thonon, thonon-les-bains, annecy, annemasse, annecy armurerie, thonon armurerie, annemasse armurerie, armurerie haute savoie, armurier haute savoie, armurerie savoie, armurerie ain, armurerie 74, armurerie 73, armurerie fiable, armurerie pro, armurie, armererie, armurerie professionnelle, armes suisse, armurerie geneve">
+<meta property="og:url" content="{{app.request.uri}}"/>
+<meta property="og:site_name" content="ARSENAL PRO ARMURERIE">
+{% set lapageroute = app.request.attributes.get('_route') %}
+{% block meta %}
+  {% if app.request.attributes.get('_route') == "app_produit" or app.request.attributes.get('_route') == "app_produit_bourse" %}   {# si ça correspond à la page d'un seul produit #}
+    {% if produit.pricepromo %} {# si prix promo #}
+        {% set priceFinal = produit.pricepromo %}
+    {% else %} {# sinon prix normal #}
+        {% set priceFinal = produit.price %}
+    {% endif %}
+    {% if produit.priceFDO and produit.priceFDO > 1 %} {# si prixFDO #}
+        {% set priceFinal = produit.priceFDO %}
+    {% endif %}
+    <meta name="description" content="{{ produit.name }} à {{( priceFinal / 100)|number_format(2) }} €, {{ produit.subtitle }}. {{ produit.caracteristique|replace({'\n':''})|raw }}">
+    <meta property="og:description" content="{{ produit.name }} à {{ (priceFinal / 100)|number_format(2) }} €, {{ produit.subtitle }}. {{ produit.caracteristique|replace({'\n':''})|raw }}">
+    <meta property="og:title" content="Arsenal Pro - {{ produit.name }}"/>
+    <meta property="og:image" itemprop="image" content="https://arsenal-pro.fr/uploads/{{produit.illustration}}">
+    <meta property="og:image:secure_url" itemprop="image" content="https://arsenal-pro.fr/uploads/{{produit.illustration}}" />
+    <meta property="og:image:type" content="image/jpeg"/> 
+    <meta property="og:type" content="product">
+    <meta property="product:price:amount" content="{{(priceFinal / 100)|number_format(2)}}">
+    <meta property="product:price:currency" content="EUR">
+{% elseif lapageroute == "app_products" or lapageroute == "app_occasion" or lapageroute == "app_produits_suisses" or lapageroute == "app_produits_forces_ordre" or lapageroute == "app_produits_promotions" %}
+    <meta name="description" content="Les produits : {{titre}} sont disponibles chez Arsenal Pro. Arsenal pro est une armurerie d'Haute Savoie à Chens-sur-Léman proche d'Annecy, Annemasse et de Thonon - Vente d'armes et munitions au meilleur prix en ligne">
+    <meta property="og:description" content="Les produits : {{titre}} sont disponibles chez Arsenal Pro. Arsenal pro est une armurerie d'Haute Savoie à Chens-sur-Léman proche d'Annecy, Annemasse et de Thonon - Vente d'armes et munitions au meilleur prix en ligne">
+    <meta property="og:title" content="Arsenal Pro - Nos produits : {{titre}}"/>
+    <meta property="og:image" itemprop="image" content="{{ asset('assets/image/logo3-hq.png') }}" />
+    <meta property="og:image:type" content="image/png"/> 
+    <meta property="og:type" content="website">  
+{% elseif lapageroute == "app_produits_vente_flash" %} {# si page vente flash produits #}
+    <meta name="description" content="Nos VENTE FLASH pour l'armement sont disponibles chez Arsenal Pro. Arsenal pro est une armurerie d'Haute Savoie à Chens-sur-Léman proche d'Annecy, Annemasse et de Thonon - Vente d'armes et munitions au meilleur prix en ligne">
+    <meta property="og:description" content="Nos VENTE FLASH pour l'armement sont disponibles chez Arsenal Pro. Arsenal pro est une armurerie d'Haute Savoie à Chens-sur-Léman proche d'Annecy, Annemasse et de Thonon - Vente d'armes et munitions au meilleur prix en ligne">
+    <meta property="og:title" content="Arsenal Pro - VENTE FLASH"/>
+    <meta property="og:image" itemprop="image" content="{{ asset('assets/image/logo3-hq.png') }}" />
+    <meta property="og:image:type" content="image/png"/> 
+    <meta property="og:type" content="website">  
+{% else %} {# pour le reste des pages #}
+    <meta name="description" content="Arsenal Pro - Armurerie d'Haute Savoie à Chens-sur-Léman proche d'Annecy, Annemasse et de Thonon - Vente d'armes et munitions au meilleur prix en ligne">
+    <meta property="og:description" content="Arsenal Pro - Armurerie d'Haute Savoie à Chens-sur-Léman proche d'Annecy, Annemasse et de Thonon - Vente d'armes et munitions au meilleur prix en ligne">
+    <meta property="og:title" content="Arsenal Pro - Armurerie en Haute Savoie - Vente de munitions et d'armes"/>
+    <meta property="og:image" itemprop="image" content="{{ asset('assets/image/logo3-hq.png') }}" />
+    <meta property="og:image:type" content="image/png"/> 
+    <meta property="og:type" content="website">
+  {% endif %}
+{% endblock %}
+{% block title %} {% endblock %}
+<meta name="author" content="Arsenal Pro Dev">
+<meta name="generator" content="Jekyll v4.1.1">
+    <script src="https://kit.fontawesome.com/ea0fe82c80.js" crossorigin="anonymous"></script>
+<!-- Bootstrap core CSS -->
+<link rel="preload" href="{{ asset('assets/css/style.css') }}" as="style" />
+<link rel="preload" href="{{ asset('assets/css/bootstrap.min.css') }}" as="style" />
+<link rel="preload" href="{{ asset('assets/js/customscript.js') }}" as="script" />
+<link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="{{ asset('assets/css/style.css') }}?v={{version}}">
+<link rel="icon" sizes="80x80" type="image/png" href="{{ asset('assets/image/favicon.png') }}"/>
+<link rel="shortcut icon" type="image/png" href="{{ asset('assets/image/favicon.png') }}"/>
+<link rel="apple-touch-icon" href="{{ asset('assets/image/logo3-hq.png') }}">
+<link rel="canonical" href="{{app.request.uri}}"/>
+<!-- jQuery first, Popper.js, then Bootstrap-->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- Tracking -->
+<script>
+   (function(h,o,t,j,a,r){
+        h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+        h._hjSettings={hjid:3390652,hjsv:6};
+        a=o.getElementsByTagName('head')[0];
+        r=o.createElement('script');r.async=1;
+        r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+        a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+
+   {# (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-N6JCHH6'); #}
+</script>
+<style>
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+{% if lapageroute != "app_produit" or lapageroute != "app_home" %}
+    body, html{
+        overflow-x: hidden;
+        position: relative;
+    }
+{% endif %}
+{% if lapageroute == "app_products" or lapageroute == "app_occasion" or lapageroute == "app_produits_suisses" or lapageroute == "app_produits_forces_ordre" or lapageroute == "app_produits_vente_flash" or lapageroute == "app_produits_bourse_armes" or lapageroute == "app_produits_promotions" %}
+    @media(max-width: 1200px) and (min-width: 990px){
+    .container {
+        max-width: 1050px;
+        }
+    }
+    @media(max-width: 500px){
+        .row{
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .produitbox .produit-item .section-ensous div .produit-panier .fa-cart-arrow-down{
+            display: none;
+        }
+        .container{
+            max-width: 100%;
+            display: contents;
+        }
+    }
+{% endif %}
+{% if lapageroute == "app_products" or lapageroute == "app_occasion" or lapageroute == "app_produits_suisses" or lapageroute == "app_produits_forces_ordre" or lapageroute == "app_produits_vente_flash" or lapageroute == "app_produits_bourse_armes" or lapageroute == "app_produits_promotions" %}
+    @media (min-width: 990px){
+    .container {
+        max-width: 100%;
+        }    
+    }
+    @media (max-width: 990px) and (min-width: 768px){
+    .container {
+        max-width: 75%;
+        }
+    }
+{% endif %}
+{% if lapageroute == "app_home" %}
+    .espacement_main{
+        margin-top: 0 !important;
+    }
+    @media(min-width: 576px){
+        .container{
+            max-width: 100%;
+        }
+    }
+{% endif %}
+</style>
+<!-- CSS carousel -->
+<link href="{{ asset('assets/css/carousel.css') }}" rel="stylesheet">
+
+</head>
+<body>
+<!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N6JCHH6" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+<header>
+<nav id="navbar_main" class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="{{ path('app_home') }}"><img class="logo" src="{{ asset('assets/image/logo3-hq.png') }}" alt="img logo arsenal pro"></a>
+    <div class="sousNavbarCustom">
+    <a class="navbar-brand-mobile" href="{{ path('app_home') }}"><img class="logo" src="{{ asset('assets/image/logo3-hq.png') }}" alt="img logo arsenal pro"></a>
+
+    {% if lapageroute == "app_products" or lapageroute == "app_produits_suisses" or lapageroute == "app_occasion" or lapageroute == "app_produits_forces_ordre" or lapageroute == "app_produits_vente_flash" or lapageroute == "app_produits_bourse_armes" or lapageroute == "app_produits_promotions" %}
+        <div id="navbarCustomHeaderSearch" class="showdef pageProduit">
+            {{ include('barrederecherche.html.twig') }}
+        </div>
+        {% else %}
+        {% if lapageroute != "app_systempay" %}
+            <div id="navbarCustomHeaderSearch">
+                {{ render(controller('App\\Controller\\RechercheController::barreDeRecherche',{'nomfiltre' : 'filtre', 'nomBarreRecherche': 'recherche', 'rendu' : '/barrederecherche.html.twig'})) }}
+            </div>
+        {% endif %}
+    {% endif %}
+        <div class="navbarCustom"  id="navbarCollapse">
+           <div class="navbarCustomLinks">
+                <ul>
+                <li class="nav-item active" id="sectionProduitsResponsive">
+                    <p class="nav-link" id="but_nos_produits" onclick="afficherMenuCategorie(this)">Nos produits <i class="fa-solid fa-chevron-right"></i></p>
+                    <section class="rechercherparcategorie">
+                        <div class="menu-two-position">
+                            <ul id="menu-two" class="box_shadow_all">
+                                {# {{ include('rechercheparcategorie.html.twig')}} #}
+                                {{ render(controller('App\\Controller\\MenuCategorieManagerController::rechercheParCategorie')) }}
+                            </ul>
+                        </div>
+                    </section>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-title nav-link" href="{{ path('app_produits_suisses') }}">Armes suisses </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-title nav-link" href="{{ path('app_occasion') }}">Occasion </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-title nav-link" id="prestationTitle" href="{{ path('app_prestation') }}">Prestation </a>
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    {# <a class="nav-title nav-link" href="{{ path('app_produits_forces_ordre') }}">Forces de l'ordre </a> #}
+                    <p onclick="afficherMenuCategorieParts(this,8)" data-catpart="8"  class="textNoSelect nav-title nav-link">Forces de l'ordre </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/fdo.jpg" alt="forces de l'ordre categorie arsenal pro"/>
+
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    <p onclick="afficherMenuCategorieParts(this,0)" data-catpart="0"  class="textNoSelect nav-title nav-link">Armes de chasse </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/arme-de-chasse.jpg" alt="armes de chasse categorie arsenal pro"/>
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    <p onclick="afficherMenuCategorieParts(this,1)" data-catpart="1"  class="textNoSelect nav-title nav-link">Armes réglementées </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/arme-reglementee.jpg" alt="armes réglementées categorie arsenal pro"/>
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    <p onclick="afficherMenuCategorieParts(this,2)" data-catpart="2" class="textNoSelect nav-title nav-link">Armes de loisirs </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/arme-loisir.jpg" alt="armes loisirs categorie arsenal pro"/>
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    <p onclick="afficherMenuCategorieParts(this,3)" data-catpart="3" class="textNoSelect nav-title nav-link">Armes de défense </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/defense.jpg" alt="armes défense categorie arsenal pro"/>
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    <p onclick="afficherMenuCategorieParts(this,4)"  data-catpart="4" class="textNoSelect nav-title nav-link">Accessoires </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/accessoires.jpg" alt="accessoires categorie arsenal pro"/>
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    <p onclick="afficherMenuCategorieParts(this,5)"  data-catpart="5" class="textNoSelect nav-title nav-link">Optique et électronique </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/optique.jpg" alt="point rouge optique categorie arsenal pro"/>
+                </li>
+                <li class="nav-item active">
+                    <p onclick="afficherMenuCategorieParts(this,6)"  data-catpart="6" class="textNoSelect nav-title nav-link">Munitions et rechargement </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/munitions.jpg" alt="munitions cartouches ogives categorie arsenal pro"/>
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    <p onclick="afficherMenuCategorieParts(this,7)"  data-catpart="7" class="textNoSelect nav-title nav-link">Pièces détachées </p>
+                    <img loading="lazy" class="mx-1 imagesFiltreMenu imagesAsideMenuHeaderMobile" src="/uploads/categories/pieces-detachees.jpg" alt="pièces détachées categorie arsenal pro"/>
+                </li>
+                <li class="nav-item active menuFiltreDesktop">
+                    <a href="{{path('app_menu_marque')}}" class="textNoSelect nav-link nav-title">Marques </a>
+                </li>
+            </ul>
+        </div>
+        {% if lapageroute != "app_systempay" %}
+            <div class="navbar-item-custom r mb-2">
+        {% else %}
+            <div class="navbar-item-custom navbar-item-custom-rz r mb-2">
+        {% endif %}
+            {% if app.user %} {# si utilisateur connecté #}
+            <div class="d-flex">
+                <a href="{{path('app_account')}}" aria-label="compte">
+                <g id="userconnected"></g>
+                <i class="fa-solid fa-circle-user font-weight-normal"></i>
+                </a> 
+                <a href="{{path('app_logout')}}">
+                <i class="fa-solid fa-user-large-slash"></i></a>
+            </div>
+            <div class="d-flex">
+                <a class="position-relative" href="{{ path('cart') }}">
+                    <i class="fa-solid fa-cart-arrow-down"></i>  
+                     {{ render(controller('App\\Controller\\CartController::iconePanierQuantiteShow')) }} 
+                </a>
+            </div>
+            {% else %}
+            <div class="d-flex">
+                <a href="{{path( 'app_login')}}" aria-label="connexion">
+                    <i class="fa-solid fa-circle-user font-weight-normal"></i>
+                </a>
+                <a href="{{path( 'app_register')}}">
+                    <i class="fa-solid fa-address-card"></i>
+                </a>
+            </div>
+            <div class="d-flex">
+                <a class="position-relative" href="{{ path('cart') }}">
+                    <i class="fa-solid fa-cart-arrow-down"></i>   
+                     {{ render(controller('App\\Controller\\CartController::iconePanierQuantiteShow')) }}
+                </a>
+            </div>
+        {% endif %}
+            </div>
+            <div class="navbar-item-custom but_accueil_responsive">
+                <a href="/">Arsenal Pro</a>
+            </div>
+        </div>
+       
+        </div>
+        <div class="navbarCustom-toggler" onclick="afficherMenuResponsive()">
+            <span class="navbar-toggler-icon"></span>
+        </div>
+</nav>
+<section> {# menu categorie pour mobile #}
+    <div id="rechercheparcategorieMobile">
+        <ul id="menu-two" class="">
+            {{ render(controller('App\\Controller\\MenuCategorieManagerController::rechercheParCategorie')) }}
+        </ul>
+    </div>
+</section>
+</header>
+
+<main role="main" class="espacement_main">
+{% if block('sectionDrapeau') is defined %}
+    <div class="d-flex w-100 box_shadow_all" id="sectionDrapeau">
+        <a href="{{path('app_produits_bourse_armes')}}" class="bg-primary">
+            <p class="text-light">Bourse aux munitions</p>
+        </a>
+        <a href="{{path('app_fidelite')}}" class="bg-white">
+            <p class="text-dark">Points fidélité</p>
+        </a>
+         <a href="{{path('app_produits_vente_flash')}}" class="bg-danger">
+            <p class="text-light">Ventes flash</p>
+        </a>
+    </div>
+{% endif %}
+
+{% if block('annonce') is defined %}   
+    {% if app.request.attributes.get('_route') != "app_home" %}
+        {{ render(controller('App\\Controller\\HomeController::afficherAnnonce',{'home' : true})) }}
+    {% else %}
+        {{ render(controller('App\\Controller\\HomeController::afficherAnnonce',{'home' : false})) }}
+    {% endif %}
+{% endif %}
+{% if block('bourse') is defined %}
+    {% include('product/bourse-aux-munitions/banniere.html.twig') %}
+{% endif %}
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing {% if block('sectionDrapeau') is not defined %}mt-3{% endif %}">
+
+    {% block content %}
+    {% endblock %}
+
+</div><!-- /.container -->
+
+
+</main>
+<!-- FOOTER -->
+<div class="container-fluid" style="padding-left: 0px !important; padding-right: 0px !important;">
+    <footer class="footer-custom bg-dark">
+        <section class="d-flex justify-content-center">
+            <div class="my-auto px-4">
+                <i class="fa-solid fa-bank text-light"></i>
+                <p class="font-weight-bold">Paiement 100% sécurisé</p>
+            </div>
+            <div class="my-auto px-4">
+                <i class="fa-solid fa-truck text-light"></i>
+                <p class="font-weight-bold">Livraison offerte dès 200€ d'achat (France uniquement)</p>
+            </div>
+        </section>
+        <hr class="w-75 border bg-secondary">
+        <section class="d-flex justify-content-center">
+            <div class="my-auto d-flex text-left flex-column px-4">
+                <h5 class="font-weight-bold">Informations</h5>
+                <a href="{{ path("app_reglement_cgv")}}" class="text-light">Condition générale de vente</a>
+                <a href="{{ path("app_mentions_legales")}}" class="text-light">Mentions légales</a> 
+                <a href="{{ path("app_reglement_rgpd")}}" class="text-light">RGPD</a>      
+            </div>
+            <div class="my-auto d-flex text-left flex-column px-4">
+                <h5 class="font-weight-bold">Menus</h5>
+                <a href="{{ path("app_products")}}" class="text-light">Tous nos produits</a>
+                <a href="{{ path("app_occasion")}}" class="text-light">Nos occasions</a> 
+                <a href="{{ path("app_produits_suisses")}}" class="text-light">Armes suisses</a>   
+                <a href="{{ path("app_prestation")}}" class="text-light">Prestation</a>
+                <a href="{{ path("app_produits_forces_ordre")}}" class="text-light">Forces de l'ordre</a>  
+                <a href="{{path('app_menu_marque')}}" class="text-light">Marques</a>    
+            </div>
+            <div class="my-auto d-flex text-left flex-column px-4">
+                <h5 class="font-weight-bold">À propos de l'armurerie</h5>
+                <a href="{{path('app_about')}}" class="text-light">Qui sommes-nous ?</a>
+                <a href="{{path('app_location_armes')}}" class="text-light">Location d'armes</a>
+                <a href="{{path('app_formations_specialisees')}}" class="text-light">Formations spécialisées</a>
+                <a href="{{path('app_depot_vente')}}" class="text-light">Dépôt vente</a>
+                <a href="{{path('app_rachat_cash')}}" class="text-light">Rachat d'armes</a>
+                <a href="{{path('app_heritage1')}}" class="text-light">Découverte d'arme ou héritage</a>
+                <a href="https://goo.gl/maps/5Ns7YYJoJire9ZDCA" target="_blank" class="text-light">Le dépôt</a>
+                <a href="{{ path('app_contact') }}" class="text-light">Nous contacter</a>
+            </div>
+        </section>
+        <hr class="w-75 border bg-secondary">
+        <div class="my-auto">
+            <small>Tous droits réservés &copy;2022-2023 ARSENAL PRO</small><br/>
+            <small> <a href="{{path('app_sitemap')}}">Plan du site</a></small><br/>
+        </div>
+    </footer>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="{{ asset('assets/js/bootstrap.bundle.js') }}"></script>
+<script src="{{ asset('assets/js/customscript.js') }}?v={{version}}"></script>
+<script src="{{ asset('assets/js/ff58957957fa5d8ece6d58700d1fa63.js') }}?v={{version}}"></script>
+{% block js %} {% endblock %}
+</body>
+</html>

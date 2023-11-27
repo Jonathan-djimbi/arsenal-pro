@@ -1,0 +1,43 @@
+{# <section>
+    <div onclick="afficherCreationCarteFidelite(this)" class="btn-primary btn box_shadow_all border_radius_all_15 mx-auto d-block w-75 text-center">Voulez vous adhérer au programme de fidélité ?</div>
+</section><br/>
+<section id="panelCreationCarteFidelite">
+    <h3>Rejoint les rangs ARSENAL PRO ! Créez votre propre carte pour être un adhérant de cette fidélité !</h3>
+    {{form_start(form)}}
+    {{form_row(form._token)}}
+    <div class="carteFidelite">
+        <div class="carteFidelite_bandeau">Inscription</div>
+        <section id="info_fidelite">
+            <div class="photo">
+                <img id="carteFidelite_pfp" width="90" height="90" alt="photo-profile-fidelite-arsenal-pro" src="{{asset('assets/image/image_def.png')}}"/>
+                {{form_row(form.photo)}}
+            </div>
+            <div class="ml-3">
+                <label for="name">Nom : </label>
+                <input name="name" type="text" class="inputCarteFidelite inputCarteFideliteCreation" value="{{app.user.fullname}}" disabled/><br/>
+                <label for="email">Email : </label>
+                <input name="email" type="text" class="inputCarteFidelite inputCarteFideliteCreation" value="{{app.user.email}}" disabled/>
+                {{form_row(form.telephone)}}
+                {% set formHtml %}
+                    {% if adress %}
+                        {{form_row(form.adress)}}
+                    {% else %}
+                        <a href="{{ path('app_account_address') }}">Ajouter une adresse</a>
+                    {% endif %}
+                {% endset %}
+                {{ formHtml|replace({'[br]':', '})|raw}}
+                {{form_row(form.specialite)}}
+                {{form_row(form.club)}}
+            </div>
+            </section>
+        </div>
+    <br/>
+    {{include('account/grille_fidelite.html.twig')}}
+    {% if adress %}
+        {{form_row(form.submit)}}
+    {% else %}
+        <a href="{{ path('app_account_address') }}" class="btn btn-secondary btn-block border_radius_all, box_shadow_all mb-5">Ajouter une adresse avant de devenir membre de fidélité</a>
+    {% endif %}
+    {{form_end(form, {'render_rest': false})}}
+</section>
+ #}

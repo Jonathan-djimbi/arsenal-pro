@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Mes adresses | Arsenal Pro</title>{% endblock %}
+
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Mes adresses", 'section' : 0, 'multi' : false})) }}
+    {{ app.user.firstname }}, c'est dans cet espace que vous allez pouvoir gérer toutes vos adresses.
+    <br>
+    <a href="{{ path('app_account') }}"><i class="fa-solid fa-arrow-left"></i> Retour vers mon espace client</a>
+
+    <hr>
+    {% if app.user.adresses|length == 0 %}
+        <p class="text-center">
+            Vous n'avez pas encore ajouté d'adresse dans votre compte client. Pour en ajouter une, veuillez
+            <a href="{{ path('app_account_address_add') }}">cliquer ici</a>
+
+        </p>
+    <hr>   
+    {% else %}
+        <div class="row">
+            {% for key, adress in app.user.adresses %}
+                <div class="col-md-4">
+                    <div class="card border_radius_all box_shadow_all mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ adress.name }}</h5>
+                            <p class="card-text">
+                                {{ adress.adress }},<br/>
+                                {{ adress.postal }} - {{ adress.city }} - {{ adress.country }}
+                            </p>
+                            {% if key == 0 %}
+                                <a href="{{ path('app_account_address_edit',{'id': adress.id}) }}" >Modifier</a>
+                            {% else %}
+                                <a href="{{ path('app_account_address_edit',{'id': adress.id}) }}" >Modifier</a> | <a href="{{ path('app_account_address_delete',{'id': adress.id}) }}">Suprimer</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if app.user.adresses|length <= 1 %}
+    <div class="row">
+        <a class="btn btn-success btn-lg float-lg-right mx-auto mt-4 border_radius_all" href="{{ path('app_account_address_add') }}">Ajouter une adresse</a>
+    </div>
+    {% else %}
+    <div class="row">
+        <p class="btn btn-muted btn-lg float-lg-right mx-auto mt-4 border_radius_all">Vous avez atteint la limite d'ajout d'adresse.</p>
+    </div>
+    {% endif %}
+{% endblock %}
+

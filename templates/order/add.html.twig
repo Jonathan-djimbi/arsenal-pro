@@ -1,0 +1,199 @@
+
+{% extends 'base.html.twig' %}
+ 
+{# {% block javascripts %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %} #}
+ 
+{% block title %}<title>Paiement de ma commande | Arsenal Pro</title>{% endblock %}
+ 
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': 'Recapitulatif de ma commande', 'section' : 0, 'multi' : false })) }}
+
+    {% for message in app.flashes('success')|slice(0,1) %}
+        <div class="alert alert-success alertdisplay">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('notice')|slice(0,1) %}
+        <div class="alert alert-warning alertdisplay">{{ message }}</div>
+    {% endfor %}
+    <p>Vérifiez vos informations avant de payer votre commande.</p>
+    <hr>
+    <div class="row order_section">
+        {% if carrierscheck == true %}
+        <div class="col-md-6">
+            <strong>Mon adresse de livraison</strong><br/>
+            <div class="form-check mt-4" style="padding: 25px;">
+                <p>Votre nom et prénom : <b>{{ delivery.nom }} {{ delivery.prenom }}</b></p>
+                <p>Votre numéro de téléphone : <b>{{ delivery.numero }}</b></p>
+                <p>Votre adresse : <b>{{ delivery.adresse.lieu }} - {{ delivery.adresse.postal }}, {{ delivery.adresse.ville }}</b></p>
+                <p>Code pays : <b>{{ delivery.adresse.pays }}</b></p>
+            </div>
+            <hr>
+            <strong>Mon transporteur</strong>
+            <div class="form-check" style="padding: 25px;">
+                {{ carrier.name }}
+                {{ carrier.description }}
+            </div>
+        </div>
+        {% endif %}
+        <div class="col-md-6 mx-auto">
+            <div class="text-center">
+                <b>Ma commande</b><br/>
+            </div>
+            <div class="order-summary">
+                {% set total = null %}
+                {% for key, produit in cart %}
+                    {% if produit.priceVenteFlash > 0 and produit.produit.isVenteFlash and (produit.dateVenteFlash|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %}
+                        {% set produitprix = produit.priceVenteFlash %}
+                        {% set colorprix = "green" %}
+                    {% elseif produit.produit.pricepromo and produit.produit.pricepromo != produit.produit.price and produit.produit.pricepromo < produit.produit.price %}
+                        {% set produitprix = produit.produit.pricepromo %}
+                        {% set colorprix = "green" %}
+                    {% else %}
+                        {% set produitprix = produit.produit.price %}
+                        {% set colorprix = "5a5a5a" %}
+                    {% endif %}
+
+                    {% if produit.produit.priceFDO and produit.produit.priceFDO > 1 %} 
+                        {% if siProPolice %}
+                            {% if siProPolice.numeroMatricule != null %}
+                                {% set produitprix = produit.produit.priceFDO %}
+                                {% set colorprix = "green" %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+                    <div class="row {% if key > 0 %}mt-2{% endif %}">
+                        <div class="border_radius_all_15 box_shadow_all">
+                            <strong class="order_summary_produit_quantite">x{{ produit.quantity }}</strong>
+                            <img class="order_summary_produit_image" src="{{ (produit.produit.illustration starts with "http") ? '' : '/uploads/'  }}{{ produit.produit.illustration }}" alt="{{ produit.produit.name }}">
+                        </div>
+                        <div class="col-8 my-auto">
+                            {{ produit.produit.name }}<br/>
+                            <small>
+                                {{ produit.produit.subtitle }}
+                            </small><br/>
+                            {% if produit.produit.isDegressif and produit.quantity >= 10 %} {# GESTION PRIX PRODUIT EN DEGRESSIF #}
+                                {% set key = 1 %}
+                                {% set degressifPrixCheckStop = false %}
+                                {% for val in produit.produit.degressifValues %}
+                                    {% if degressifPrixCheckStop == false %}
+                                        {% if (produit.produit.degressifValues[key + 1] is defined) == false %}
+                                            {% if val <= produit.quantity %}
+                                                {% set produitprix = produitprix - (key * 50) %}
+                                                {% set degressifPrixCheckStop = true %}
+                                            {% endif %}
+                                        {% else %}
+                                            {% if produit.quantity >= val and produit.quantity < produit.produit.degressifValues[key + 1] %}
+                                                {% if val == 10 %} {# si quantité prise à 20 | pour que ça fonctionne j'ai dû mettre la valeur précédente qui est de 10 #}
+                                                    {% set produitprix = produitprix - (key * 50) - 20 %} {# valeur key - 20 centimes de remise en plus #}
+                                                {% else %}
+                                                    {% set produitprix = produitprix - (key * 50) %} {# valeur key - 50 centimes pour affecter un prix degressif #}
+                                                {% endif %}
+                                                {% set degressifPrixCheckStop = true %}
+                                            {% endif %}
+                                        
+                                            {% if degressifPrixCheckStop == false %}
+                                                {% set key = key + 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            {# <h5 style="color: {{ colorprix }};">{{ (((produitprix * produit.quantity) - (produit.quantity * 50)) / 100) | round(2, 'ceil') | number_format(2, ',', '.') }} €</h5> #}
+                            <h5 style="color: {{ colorprix }};">{{ ((produitprix * produit.quantity) / 100) | round(2, 'ceil') | number_format(2, ',', '.') }} €</h5>
+                        </div>
+                    </div>
+                    {# {% if produit.produit.isDegressif and produit.quantity >= 10 %}
+                        {% set total = total + (produitprix * produit.quantity) - (produit.quantity) * 50 %}
+                    {% else %} #}
+                    {% set total = total + (produitprix * produit.quantity) %}
+                    {# {% endif %} #}
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <hr>
+    {% if compteFidelite.compte and compteFidelite.check == false %}
+      {% if pointGagner > 0 %}
+       <div class="row justify-content-end">
+          <strong class="text-success text-right">Cette commande vous fait gagner {{pointGagner|number_format(0)}} points !</strong><br/>
+      </div>
+      {% endif %}
+    {% endif %}
+    <div class="row justify-content-end">
+        <div class="text-right">
+        <strong>Sous-total : </strong> {{ (total / 100)|round(2, 'ceil')|number_format(2, ',', '.') }} €<br/>
+        {% if ((total / 100) >= 200 and delivery.adresse.pays == "FR") == false or (((total / 100) >= 200 and delivery.adresse.pays == "FR" and munitionscheck == false) == true) %}
+            {% set livraisonPrixMasse = prixmasse %}
+        {% else %}
+            {% set livraisonPrixMasse = 0 %}
+        {% endif %}
+        <strong>Livraison : </strong> {{ ((carrier.price  / 100) + livraisonPrixMasse)|number_format(2, ',', '.') }} €<br/>
+        {% if (pourcentage_promo and totalpromo > 0) or montant_promo %} {# si code promo inséré | totalpromo = valeur pourcentage promo total du back-end #}
+            {% if pourcentage_promo > 0 and montant_promo == 0 %}
+                {% set prix_final =  (totalpromo / 100)|round(2, 'ceil') %} {# totalpromo valeur du backend pour les produits eligible en promo (hors venteFlash et degressif) #}
+                <strong class="text-success">Remise de -{{(1 - pourcentage_promo) * 100}}% grâce au code promo !</strong><br/>
+            {% endif %}
+            {% if montant_promo > 0 %}
+                {% set prix_final =  ((total - montant_promo) / 100)|round(2, 'ceil') %} {# totalpromo valeur du backend pour les produits eligible en promo (hors venteFlash et degressif) #}
+                <strong class="text-success">Remise de -{{montant_promo / 100}}€ grâce au code promo !</strong><br/>
+            {% endif %}
+            <small>Promo non applicable pour les produits en ventes flash, en dégressif, en solde fidélité et les cartes cadeaux</small><br/>
+        {% else %}
+            {% set prix_final = (total / 100)|round(2, 'ceil') %} 
+        {% endif %}
+        {% if pourcentage_promo == false and montant_promo == false and totalpromo == 0 and compteFidelite.compte and compteFidelite.check == true and prix_final >= 200 %}
+            {% set prix_final = prix_final - (remiseFideliteEuro / 10) %}
+            {% if remiseFideliteEuro != 0 %} {# si 0 alors ça veut dire on n'a pas assez de credit ou rien #}
+                <strong class="text-success">-{{ (remiseFideliteEuro / 10) }}€ de remise fidélité ! {{ (remiseFideliteEuro)|round }} points seront utilisés dans vos {{compteFidelite.compte.points}} points</strong><br/>
+            {% else %}
+                {% if remiseMontantCompte == null %}
+                    <strong class="text-danger">Il vous faut au moins {{((prix_final * (remiseFidelitePourcent /100)) * 10)|number_format(0,',','') }} sur vos {{compteFidelite.compte.points}} points pour profiter de la reduction fidélité</strong><br/>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        {% if remiseMontantCompte and remiseMontantCompte > 0 %}
+            {% set prix_final = prix_final - (remiseMontantCompte / 100) %}
+                <strong class="text-success">-{{ (remiseMontantCompte / 100)|number_format(2) }}€ de remise depuis vos montant du compte ! {{ (remiseMontantCompte / 100)|number_format(2)}}€ seront utilisés dans votre compte ARSENAL PRO</strong><br/>
+        {% endif %}
+
+        {% if carrierscheck == true and munitionscheck == true and prix_final >= 200 and delivery.adresse.pays == "FR"%} {# on n'affiche pas ce message si c'est une prestation #}
+            <strong class="text-success">Livraison offerte dès 200€ !</strong><br/>
+        {% endif %}
+        <strong>Total : </strong> {{ ((prix_final) + (carrier.price / 100) +  livraisonPrixMasse)|number_format(2, ',', '.') }} €<br/>
+        <strong>TVA (20%) : </strong> {{ ((prix_final + (carrier.price / 100) +  livraisonPrixMasse) - (prix_final + (carrier.price / 100) +  livraisonPrixMasse) / 1.2)|number_format(2, ',', '.') }} €
+        </div>
+        {# <a href="{{ path('app_stripe_create_session', {'reference': reference}) }}" class="btn btn-success btn-block mt-3 mb-5 border_radius_all" id="checkout-button">Payer {{ ((prix_final) + (carrier.price / 100))|number_format(2, ',', '.') }} €</a> #}
+        <a href="{{ path('app_systempay', {'reference': reference}) }}" class="btn btn-success btn-block mt-3 mb-5 border_radius_all" id="checkout-button">Payer {{ ((prix_final) + (carrier.price / 100) +  livraisonPrixMasse)|number_format(2, ',', '.') }} €</a>
+    </div>
+    <br/>
+       <script type="text/javascript">
+        {# var stripe = Stripe['_ton apikey'];
+        var checkoutButton = document.getElementById("checkout-button");
+        checkoutButton.addEventListener("click", function () {
+            fetch("/commande/create-session", {
+                method: "POST",
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    return stripe.redirectToCheckout({ sessionId: session.id});
+                })
+                .then(function (result) {
+
+
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error", error);
+                })
+        }) #}
+    </script>
+{% endblock %}
+
+ 

@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Inscription | Arsenal Pro</title>{% endblock %}
+{# {% block carousel %}{% endblock %} #}
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Inscription", 'section' : 0, 'multi' : false})) }}
+    <div>
+        <p>Veuillez remplir ce formulaire pour vous s'inscrire.</p>
+    </div>
+    <hr>
+    {% if notification %}
+        <div class="alert alert-info">{{ notification }}</div>
+        <hr>
+    {% endif %}
+    <div class="block-small">
+    {{form_start(form, { 'attr' : {'onsubmit' : 'return onAddAdresseWhenCreate();'}})}}
+        <section>
+            <div>
+                <h4>Votre compte</h4>
+                 <div>
+                    <input type="checkbox" id="proAssoc" name="proAssoc"/>
+                    <label for="proAssoc">Professionnel/association ?</label>
+                    <div id="formProAssocSectionCompte" class="noshow">
+                        {{ include('account/professionnel_association_form.html.twig')}} <!-- This blocks -->
+                </div>
+                {{form_row(form.firstname)}}
+                {{form_row(form.lastname)}}
+                {{form_row(form.email)}}
+                {{form_row(form.password)}}
+                <div class="invalid-feedback d-block" id="erreur_pwd"></div>
+            </div>
+            <div>
+                {% include('register/form-two.html.twig') %}
+            </div>
+        </section>
+        <span class="text-info">* informations obligatoires</span>
+        {{form_row(form.submit)}}
+    {{form_end(form)}}
+    </div>
+
+{% endblock %}
+
+{% block js %}
+<script src="{{ asset('assets/js/01daf589f6894da46767e4646c6767d.js') }}?v={{version}}"></script>
+<script src="{{ asset('assets/js/5896da4c64a84b7f4684a8979c868ee.js') }}?v={{version}}"></script>
+{% endblock %}

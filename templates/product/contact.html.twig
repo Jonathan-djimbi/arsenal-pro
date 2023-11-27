@@ -1,0 +1,25 @@
+<h4 class="pasderecherche text-center">Vous n'avez pas trouvé ce que vous recherchez ?<br/>Décrivez-nous votre recherche depuis le formulaire, nous vous répondrons sous 48 heures.</h4>
+<div id="pasrechercheprendrecontact"><p>Avez-vous fait une faute de frappe durant la recherche ?</p><br/> 
+<br/>
+<section style="text-align: initial;" class="mt-3">
+    <h4 class="text-center">Contactez-nous depuis notre formulaire</h4>
+    <div class="col-md 9">
+        {{form_start(formcontact) }}
+        {% if app.user %} <!-- si l'utilisateur existe ou connecte -->
+        {{form_row(formcontact.nom, {'value' : app.user.lastname}) }}
+        {{form_row(formcontact.prenom, {'value' : app.user.firstname}) }}
+        {% else %}
+        {{form_row(formcontact.nom) }}
+        {{form_row(formcontact.prenom) }}
+        {% endif %}
+        {{form_row(formcontact.email) }}
+        {{ form_row(formcontact.phone) }}
+            <article>
+            {{form_row(formcontact.description)}}
+            <p id="textarealimitdisplay"><b id="textcompteur">0</b>/500</p>
+        </article><br/>
+        {{form_row(formcontact.submit)}}
+
+        {{form_end(formcontact)}}
+    </div>
+</section>

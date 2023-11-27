@@ -1,0 +1,117 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>À propos de l'armurerie | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+<section class="apropos">
+    <div id="engagement-arsenalpro" class="mb-5">
+        <h1 class="text-center mb-3">DÉCOUVERTE D'ARME OU HÉRITAGE</h1><br>
+        <div class="d-flex">
+            Vous avez trouvé ou hérité d’une arme et vous souhaitez la garder ou la vendre. Légalement vous aurez besoin d’un armurier, ARSENAL PRO s’occupe de tout avec vous.
+        </div>
+        <br>
+        <div class="d-flex">
+            <a href="https://www.service-public.fr/particuliers/vosdroits/N287" target="_blank">A consulter : Législation</a>
+        </div>
+        <div class="d-flex">
+            <a href="{{ asset('assets/pdf/1-mise-en-possession-SITE.pdf') }}">Notice d'informations</a>
+        </div>
+    </div>
+    <div class="row justify-content-end"><p class="text-secondary fs-6">Page 2 sur 3</p></div>
+    <div class="row justify-content-end">
+        <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            <li class="page-item link-success"><a class="page-link text-secondary" href="{{ path('app_heritage1') }}">1</a></li>
+            <li class="page-item active"><a class="page-link bg-success border-secondary" href="#">2 <span class="sr-only">(current)</span></a></li>     
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage3') }}">3</a></li>
+        </ul>
+        </nav>
+    </div>
+    <hr>  
+    <div class="d-flex mb-5 mt-5 container">
+        <div class="row"> 
+        <div class="col-md-4 col-sm-10">
+            <h2 class="font-weight-bold">LA DÉCOUVERTE<br> D’ARME OU HÉRITAGE</h2><br>
+            <p>Issu du décret n°2018-542 du 29 juin 2018</p>
+        </div>  
+        <div class="col-1"></div>  
+        <div class="col-md-6 col-sm-10">
+            <p>Une personne mise en possession ou découvrant une arme en devient propriétaire.
+            <br>
+            <br>
+            Toutefois, conformément à l’article 2276 du code civil, celui qui a perdu ou auquel il a été volé une chose peut la revendiquer pendant trois ans.
+            <br>
+            <br>
+            Le décret n°2018-542 du 29 juin 2018 a étendu la mise en possession d’armes par découverte aux armes de catégorie C.
+            Les conditions de conservation des armes découvertes diffèrent selon la catégorie des armes trouvées.</p>
+        </div>
+        </div>
+    </div>
+    <hr>
+    <div class="d-flex mb-5 mt-5 container">
+        <div class="row"> 
+        <div class="col-md-4 col-sm-10">
+            <h2 class="font-weight-bold">LES ARMES DE<br>CATÉGORIE A OU B</h2><br>
+            <p>La personne qui découvre une arme de catégorie A ou B fait immédiatement constater cette découverte au commissaire de police ou au commandant de la brigade de gendarmerie, qui délivre récépissé de cette déclaration de mise en possession.
+            <br><br>
+            L’arme est déposée chez l’armurier autorisé au commerce d’armes de ces catégories qui inscrit l’arme dans son registre et conserve l’arme pendant un an.
+            </p>
+        </div>  
+        <div class="col-1"></div>  
+        <div class="col-md-6 col-sm-10">
+            <h5 class="font-weight-bold">L'intéressé souhaite conserver l'arme :</h5> Le nouveau propriétaire de 
+            l’arme dispose de ce délai d’un an pour remplir les conditions à l’obtention d’une autorisation préfectorale 
+            de détention d’arme de catégorie A ou B (notamment la licence de tir sportif, le carnet de tir mentionnant les 
+            trois séances contrôlées de pratique du tir et l’avis favorable de la FFTir).
+            <br><br>
+            L’armurier renseigne les volets de l’autorisation préfectorale ainsi délivrée, remet le volet n°1 à son titulaire, 
+            transmet le volet n°2 au préfet qui l’a émis et restitue l’arme à son propriétaire.
+            <br><br>
+            <h5 class="font-weight-bold">L’intéressé NE parvient / souhaite PAS conserver l’arme :</h5>
+            Si l’intéressé n’obtient pas l’autorisation préfectorale, il s’en dessaisit dans un délai de 3 mois selon les formalités suivantes :
+            <li>vente à l’armurier (proposition de rachat) ou à un particulier autorisé (via armurier, la vente sans intermédiaire professionnel est interdite)</li>
+            <li>neutralisation (Les armes neutralisées sont classées C9° et soumises à déclaration uniquement, cette opération a un coût)</li>
+            <li>destruction par l’armurier</li>
+            </p>
+        </div>
+        </div>
+    </div>
+    <hr>
+    <div class="d-flex mb-5 mt-5 container">
+        <div class="row"> 
+        <div class="col-md-4 col-sm-10">
+            <h2 class="font-weight-bold">LES ARMES DE<br>CATÉGORIE C</h2><br>
+            <p>La personne qui trouve une arme de catégorie C fait immédiatement constater cette découverte à l’armurier qui procède aux vérifications qui lui incombent (identité de la personne mise en possession, pièces nécessaires à l’acquisition de 
+            l’arme, caractéristiques techniques de l’arme trouvée, poinçon d’épreuve et FINIADA).
+            </p>
+        </div>  
+        <div class="col-1"></div>  
+        <div class="col-md-6 col-sm-10">
+            <h5 class="font-weight-bold">L'intéressé souhaite conserver l'arme :</h5> L’armurier enregistre la mise en possession sur son registre et transmet la déclaration de mise en possession d’arme de catégorie C au préfet du domicile de l’intéressé, 
+            accompagné des pièces suivantes :
+            <br><br>
+            <li>une copie de la pièce d’identité du déclarant</li>
+            <li>une copie du permis de chasser validé de l’année en cours ou de l’année précédente</li>
+            <li>ou une copie d’une licence de tir validée (tir sportif, biathlon ou ball-trap)</li>
+            <li>ou un certificat médical placé sous pli fermé datant de moins d’un mois, attestant que l’état physique et psychique du déclarant n’est pas incompatible avec la détention d’arme</li>
+            <br><br>
+            <h5 class="font-weight-bold">L’intéressé NE parvient / souhaite PAS conserver l’arme :</h5>
+            Si l’intéressé n’obtient pas l’autorisation préfectorale, il s’en dessaisit dans un délai de 3 mois selon les formalités suivantes :
+            <li>vente à l’armurier (proposition de rachat) ou à un particulier autorisé (via armurier, la vente sans intermédiaire professionnel est interdite)</li>
+            <li>neutralisation (Les armes neutralisées sont classées C9° et soumises à déclaration uniquement, cette opération a un coût)</li>
+            <li>destruction par l’armurier</li>
+            </p>
+        </div>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            <li class="page-item link-success"><a class="page-link text-secondary" href="{{ path('app_heritage1') }}">1</a></li>
+            <li class="page-item active"><a class="page-link bg-success border-secondary" href="#">2 <span class="sr-only">(current)</span></a></li>     
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage3') }}">3</a></li>
+        </ul>
+        </nav>
+    </div>
+</section>
+{% endblock %}

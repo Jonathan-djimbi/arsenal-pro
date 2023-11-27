@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Les marques | Arsenal Pro</title>{% endblock %}
+{% block content %}
+<section>
+    <h2 class="mb-4">Les marques</h2>
+     <div class="w-100" id="pageMarquesRechercher">
+        <input value="" id="rechercherMarques" class="form-control" placeholder="Rechercher une marque..."/>
+    </div>
+</section>
+<section class="col row sectionPageSousCategories">
+    {% for menu in menus %}
+        <a href='/nos-produits/{{menu.id}}/{{menu.name|replace({"â": "a","à": "a","é": "e","û": "u","è": "e","'":""," ": "-",".": "", ",": "","&": "et","(": "-", ")": ""})}}' title="{{menu.name}}">
+            <div class="box_shadow_all border_radius_all_15 mx-3 menuPageSousCategories">
+                {% if menu.photo %}
+                    <img class="mx-auto" src="/uploads/marques/{{menu.photo}}" alt="{{menu.name}}"/>
+                    <h5 class="my-auto">{{menu.name}}</h5>
+                {% else %}
+                    <h5 class="my-auto noImage">{{menu.name}}</h5>
+                {% endif %}
+            </div>
+        </a>
+    {% endfor %}
+</section>
+{% endblock %}

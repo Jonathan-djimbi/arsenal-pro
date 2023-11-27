@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Nos produits - {{titre}} | Arsenal Pro</title>{% endblock %}
+{# {% block bourse %} {% endblock %} #}
+{% block content %}
+    {# {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre' : titre, 'section' : 2 })) }} #}
+        {% if pasderecherche or produits|length == 0 %}
+            {% block contact %}
+                <section class="container contactProduit">
+                    {{ include('product/contact.html.twig') }}
+                </section>
+            {% endblock %}
+        {% else %}
+        <div class="col sectionProduits"> 
+        {# col-md-9 ancien #}
+            <h3>Nos produits</h3>
+            {# affiche nombre de produits sur la page courrante #}
+            {% if produits|length > 1 %}
+                <h6>Nombre de produits : {{produits|length}}</h6>
+            {% else %}
+                {% if produits|length == 1 %}
+                    <h6>Nombre de produit : {{produits|length}}</h6>
+                {% endif %}
+            {% endif %}
+            <!-- POUR MESSAGE CONTACT -->
+            {% for message in app.flashes('notice')|slice(0,1) %}
+                <div class="alert alert-info alertdisplay">{{ message }}</div>
+            {% endfor %}
+            {% for message in app.flashes('warning')|slice(0,1) %}
+                <div class="alert alert-danger alertdisplay">{{ message }}</div>
+            {% endfor %}
+            <!-- -->
+            <div class="row">
+                {% for key, produit in produits %}  
+                    <div class="produitbox col-md-4 {% if key >= 30 %}noshow{% endif %}">
+                        <div class="produit-item text-center" id="{{produit.produit.slug}}-{{produit.produit.id}}">
+
+                            <a href="{{ path('app_produit_bourse',{'slug': produit.produit.slug}) }}">
+                            <i class="fa-solid fa-eye position-absolute"></i> 
+                            <img src="{{ (produit.produit.illustration starts with "http") ? '' : '/uploads/' }}{{ produit.produit.illustration }}" alt="{{ produit.produit.name }}" class="img-fluid" draggable="false"></a>
+
+                            {% if (produit.produit.isOccassion and produit.produit.quantite <= 0) == true %}
+                                <img class="produitVendu" src="/assets/image/vendu.png" alt="{{produit.produits.name}}-vendu" draggable="false">
+                            {% endif %}
+                            <h4>{{ produit.produit.name|upper }}</h4>
+                            <div style="line-height: 1.1;"><span class="produit-subtitle">{{ produit.produit.marque }}</span></div>
+                            <br/>
+                            <br/>
+                            {% if produit.produit.pricepromo and produit.produit.pricepromo != produit.produit.price and produit.produit.pricepromo < produit.produit.price %}
+                                {% set gagner = (produit.produit.price - produit.produit.pricepromo) / 100 %}
+                                {% if (100 - ((produit.produit.pricepromo)/(produit.produit.price)) * 100) >= 5 %}
+                                    <div class="ruban-reduction rounded-right">
+                                        <p class="h5">-{{ gagner|number_format(2) }}€</p>
+                                    </div>
+                                {% endif %}
+                                <section class="section-ensous">
+                                    <article class="position-relative d-flex produit-price-section">
+                                    {% if produit.produit.isForcesOrdre != true %}
+                                        <span class="produit-price d-flex text-success prixpromo"> {{((produit.produit.pricepromo /100)|number_format(2)) }} €</span>
+                                        <span class="produit-price prixbarre d-flex flex-row-reverse"> {{((produit.produit.price /100)|number_format(2)) }} €</span>
+                                    {% else %}
+                                        <span class="produit-price single-produit">Forces de l'ordre</span>
+                                    {% endif %}
+                                    </article>
+                                {% else %}
+                                <section class="section-ensous">
+                                    <article class="produit-price-section">
+                                    {% if produit.produit.isForcesOrdre != true %}
+                                        <span class="produit-price"> {{((produit.produit.price /100)|number_format(2)) }} €</span>
+                                    {% else %}
+                                        <span class="produit-price single-produit">Forces de l'ordre</span>
+                                    {% endif %}
+                                    </article>
+                                {% endif %}
+                                <div class="position-relative">
+                                    {# <a class="btn text-primary produit-panier ajoutPanier" href="{{ path('app_produit_bourse',{'slug': produit.produit.slug}) }}" data-id='{{ produit.produit.id }}' data-name='{{ produit.produit.name }}'>{{ produit.bourse.quantiteMax}} QUANTITES</a> #}
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div id="pagesuivanteproduits">
+        <div class="btn btn-success border_radius_all mt-5">Afficher plus</div>
+    </div>
+    {% endif %}
+{% endblock %}
+{% block js %}
+{% endblock %}
+

@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Occasion | Arsenal Pro</title>{% endblock %}
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "La boutique d'occasion" })) }}
+     {{form_start(form)}}
+            <article class="searchbar">
+                {{form_row(form.string)}}
+                {{form_row(form.rechercher)}}
+               </article>
+    <!-- POUR MESSAGE CONTACT -->
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info alertdisplay">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-danger alertdisplay">{{ message }}</div>
+    {% endfor %}
+    <!-- -->
+        {% block filtre %}
+            {{ include('product/filtre.html.twig') }}
+        {% endblock %}
+        <div class="col-md-8">
+            <h3>Nos produits d'occasion</h3>
+            {# affiche nombre de produits sur la page courrante #}
+            {% if produits|length > 1 %}
+                <h6>Nombre de produits : {{produits|length}}</h6>
+            {% else %}
+                {% if produits|length == 1 %}
+                    <h6>Nombre de produit : {{produits|length}}</h6>
+                {% endif %}
+            {% endif %}
+            <div class="row">
+            {% if pasderecherche or produits|length == 0 %}
+                {% block contact %}
+                    {{ include('product/contact.html.twig') }}
+                {% endblock %}
+                </div>
+            {% endif %}
+                {% for produit in produits %}
+                    <div class="produitbox col-md-4">
+                        <div class="produit-item text-center">
+                            {% if produit.quantite <= 0%}
+                                <div class="infocarre" id="precommandeinfo">Pré-commande</div>
+                            {% else %}
+                                <div class="infocarre" id="stockinfo">En stock</div>
+                            {% endif %}
+                            <a href="{{ path('app_produit',{'slug': produit.slug}) }}"> 
+                            <img src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{produit.illustration }}" alt="{{ produit.name }}" class="img-fluid" draggable="false"></a>
+                            {% if produit.isDegressif %}
+                                <b class="prixdegressif">Prix dégressif</b>
+                            {% endif %} 
+                            <h4>{{ produit.name|upper }}</h4>
+                            <span class="produit-subtitle">{{ produit.subtitle }}</span>
+                            <br/>
+                            <br/>
+                              <section class="section-ensous">
+                                <article class="position-relative d-flex produit-price-section">
+                                    <span class="produit-price"> {{((produit.price /100)|number_format(2)) }} €</span>
+                                </article>
+                                 <div class="position-relative">
+                                  {% if produit.quantite == 0 %}
+                                    <a class="btn btn-primary produit-panier" href="{{ path('add_to_cart_from_panier',{'id': produit.id}) }}" >Pré-commande <i class="fa-solid fa-cart-arrow-down"></i></a>
+                                 {% else %}
+                                    <a class="btn btn-primary produit-panier" href="{{ path('add_to_cart_from_panier',{'id': produit.id}) }}" >Ajouter au panier <i class="fa-solid fa-cart-arrow-down"></i></a>
+                                 {% endif %}
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

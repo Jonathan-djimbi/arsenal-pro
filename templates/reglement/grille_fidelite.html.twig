@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Point fidélité | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+{{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Fonctionnement points fidélités", 'section' : 0, 'multi' : false})) }}
+<br>
+{% if app.user %}
+    <a href="{{ path('app_account') }}"><i class="fa-solid fa-arrow-left"></i> Retour vers mon espace client</a>
+    <hr>
+    <h4 class="text-center">Bonjour, {{app.user.firstname}} ! Vous avez en tout {{utilisateur_fidele.points}} points !</h4>
+    <br>
+{% endif %}
+<h5 class="text-center sousTitreFidelite">On vous dit tout sur les points de fidélité</h5><br>
+<h5 class="text-center sousTitreFidelite">Gagnez vos points à partir de {{point_fidelite.montantPanier / 100}}€ d'achat et dépensez les à partir de 2 commandes achetées !</h5>
+<section id="carteFidelite_niveaux" class="mx-auto mb-5">
+	<div class="border_radius_all_15 box_shadow_all">
+        <div class="d-flex">
+            <img src="{{asset('assets/image/fidelite_niveau_un.png')}}" width="80" height="80" alt="arsenal-pro-fidelite-niveau-un">
+            <p class="my-auto">1 AMMO</p>
+        </div><br/>	
+        <div class="text-center">
+            <b>À partir de 2 achats</b><br/>	
+        	<li>5 points BONUS à chaque achat</li>
+            <li>Promos flash</li>
+        </div>
+    </div>
+    <div class="border_radius_all_15 box_shadow_all">
+        <div class="d-flex">
+            <img src="{{asset('assets/image/fidelite_niveau_deux.png')}}" width="80" height="80" alt="arsenal-pro-fidelite-niveau-deux">
+            <p class="my-auto">2 AMMOS</p>
+        </div><br/>	
+        <div class="text-center">	
+            <b>À partir de 6 achats</b><br/>	
+        	<li>10 points BONUS à chaque achat</li>
+            <li>Promos flash</li>
+        </div>
+    </div>
+    <div class="border_radius_all_15 box_shadow_all">
+        <div class="d-flex">
+            <img src="{{asset('assets/image/fidelite_niveau_trois.png')}}" width="80" height="80" alt="arsenal-pro-fidelite-niveau-trois">
+            <p class="my-auto">3 AMMOS</p>
+        </div><br/>	
+        <div class="text-center">
+            <b>À partir de 12 achats</b><br/>	
+        	<li>15 points BONUS à chaque achat</li>
+            <li>Promos flash</li>	
+            <li>Code promo personnel</li>
+        </div>
+    </div>
+</section>
+<h5 class="mx-auto text-center sousTitreFidelite">Comment on gagne des points ?</h5><br/>
+<section id="carteFidelite_points_grille" class="mx-auto text-center border_radius_all_15 box_shadow_all">
+    <p>Pour un achat de <b>1000€</b>, vous gagnerez <b>{{(1000 *(point_fidelite.remise / 100)) * 10}} points</b></p>
+    <p>soit <b>{{(point_fidelite.conversionEuroPoints / 100) * 50}}€ </b>de collecté</p>
+</section>
+<h5 class="mx-auto text-center sousTitreFidelite">Exemple d'attribution de points</h5><br/>
+<section id="carteFidelite_points_grille" class="mx-auto text-center border_radius_all_15 box_shadow_all">
+        <p>Au bout de <b>10</b> points = <b>{{(point_fidelite.conversionEuroPoints / 100) * 1}}€ </b>collecté</p>
+        <p>Au bout de <b>100</b> points = <b>{{(point_fidelite.conversionEuroPoints / 100) * 10 }}€ </b>collecté</p>
+        <p>Au bout de <b>150</b> points = <b>{{(point_fidelite.conversionEuroPoints / 100) * 15}}€ </b>collecté</p>
+        <p>Au bout de <b>300</b> points = <b>{{(point_fidelite.conversionEuroPoints / 100) * 30}}€ </b>collecté</p>
+</section>
+<h5 class="mx-auto text-center sousTitreFidelite">Avec vos points, vous dépenserez {{(point_fidelite.remise)}}% de remise à chaque commande.</h5><br/>
+<p class="text-center mb-5">Pour en savoir davantage plus sur notre programme de fidélité, cliquez <a href="{{ path('app_programme_fidelite')}}">ici.</a></p>
+
+{% endblock %}

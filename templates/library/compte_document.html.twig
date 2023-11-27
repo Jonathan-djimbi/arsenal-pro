@@ -1,0 +1,108 @@
+{% extends 'library/header_library.html.twig' %}
+
+{% block title %}<title>Documents client à insérer</title>{% endblock %}
+
+{% block content %}
+
+    <b style='color: {{notifcolor}};' id="topNotifDocuments" class="notifdocuments text-center">{{notif | raw}}</b><br/>
+
+    {{ form_start(form, { 'attr' : {'onsubmit' : 'return verifJustDocs(0);'}}) }}
+    <section>
+        <div class="row justify-content-center mb-3">
+            <div class="w-75">
+                <input value="" id="rechercherUser" class="form-control" placeholder="Trouver par nom ou ID..."/>
+            </div>
+            <select name="user" id="listeUser">
+                {% for unUser in user %}
+                    <option class="lesUsers" value="{{unUser.user.id}}">{{unUser.user.id}} - {{unUser.user.fullname}}{% if unUser.special %} - {{unUser.special}} {% endif %}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="row justify-content-center">
+            <div class="mb-2">
+                <div>{{ form_label(form.cartId) }}</div>
+                <div>{{ form_widget(form.cartId) }}</div>
+            </div>
+            <div class="ml-3">
+                {{ form_label(form.cartIdDate)}}
+                {% if erreursDepot.cni == true %} {# si erreur date #}
+                    {{ form_widget(form.cartIdDate, (erreursDepot.cni == true ? {'attr': {'class': 'is-invalid box_shadow_all_form border_radius_all'} }))}}
+                {% else %}
+                    {{ form_widget(form.cartIdDate)}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierCNI"></small>{{ form_errors(form.cartId, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+        <div class="row justify-content-center">
+            <div class="my-auto">
+                <div class="column justify-content-center justificatifDomicileDocument mb-2">
+                    <div>{{ form_label(form.justificatifDomicile)}}</div>
+                    <div>{{ form_widget(form.justificatifDomicile)}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="mb-2">
+                <div>{{ form_label(form.licenceTirId) }}</div>
+                <div>{{ form_widget(form.licenceTirId) }}</div>
+            </div>
+            <div class="ml-3">
+            {{ form_label(form.licenceTirIdDate)}}
+            {% if erreursDepot.licenceTir == true %} {# si erreur date #}
+                    {{ form_widget(form.licenceTirIdDate, (erreursDepot.licenceTir == true ? {'attr': {'class': 'is-invalid box_shadow_all_form border_radius_all'} }))}}
+                {% else %}
+                    {{ form_widget(form.licenceTirIdDate)}}
+                {% endif %}
+            </div>
+           
+        </div>
+        <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierLicence"></small>{{ form_errors(form.licenceTirId, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+        <div class="row justify-content-center">
+            <div class="mb-2">
+                <div>{{ form_label(form.certificatMedicalId) }}</div>
+                <div>{{ form_widget(form.certificatMedicalId) }}</div>
+            </div>
+            <div class="ml-3">
+                {{ form_label(form.certificatMedicalIdDate)}}
+                {% if erreursDepot.certificatMedical == true %} {# si erreur date #}
+                    {{ form_widget(form.certificatMedicalIdDate, (erreursDepot.certificatMedical == true ? {'attr': {'class': 'is-invalid box_shadow_all_form border_radius_all'} }))}}
+                {% else %}
+                    {{ form_widget(form.certificatMedicalIdDate)}}
+                {% endif %}
+            </div>
+           
+        </div>
+        <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierCertMed"></small>{{ form_errors(form.certificatMedicalId, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+        
+        {% if siPolice.typeFDO is defined %}
+            {% if siPolice.typeFDO != null %}
+                <div class="row justify-content-center">
+                    <div class="mb-2">
+                        <div>{{ form_label(form.cartPoliceId) }}</div>
+                        <div>{{ form_widget(form.cartPoliceId) }}</div>
+                    </div>                   
+                </div>
+                <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierPolice"></small>{{ form_errors(form.cartPoliceId, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+            {% endif %}
+        {% endif %}
+        <div class="row justify-content-center">
+            {{ form_row(form.numero_sea) }}
+        </div>
+         <div class="row justify-content-center">
+            <input type="checkbox" name="noNumeroSIA" id="noNumeroSIA" class="mr-2 mb-2" onchange="clientNoNum(this, 0)"/>
+            <label for"noNumeroSIA">Pas de numéro SIA</label>
+        </div>
+
+        <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierJust"></small>{{ form_errors(form.justificatifDomicile, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br/>
+        <div class="row mt-4 justify-content-center">
+            <div>{{ form_row(form.submit, {'label': 'Envoyer les documents'}) }}</div>
+        </div>    
+            <span class="mx-auto text-center text-info">* informations obligatoires minimum</span>
+        </div>
+    </section>
+    {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}
+
+{% block js %}
+    <script src="{{ asset('assets/js/6895ae8767800ff48b8e58e6d5cb8a4.js') }}?v={{version}}"></script>
+{% endblock %}

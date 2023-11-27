@@ -1,0 +1,9 @@
+<form action='' method='POST'>
+    <div class="d-flex w-75 mx-auto">
+        <input type="text" class="form-control" name="searchDocs" id="textRecherche" value="" size="80" placeholder="Rechercher à partir d'un nom de fichier">
+        <input type="submit" class="form-control w-50" name="submit" id="submit_recherche_documents" value="Rechercher">
+    </div>
+</form>
+{% if erreur != "" %}
+    <span class="text-danger text-center d-block">{{erreur}}</span>
+{% endif %}

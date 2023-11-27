@@ -1,0 +1,17 @@
+{% if ea.crud.currentAction == 'detail' %}
+        {% if field.value|length > 0 %}
+            {% for value in field.value|slice(0,1) %}
+                {% if value.typeFDO != null %}
+                    <div>
+                        <p>{{ value.fdo }}</p>
+                    </div>
+                {% else %}
+                    <p>Aucun</p>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <p>Aucun</p>
+        {% endif %}
+{% else %}
+    <span class="badge badge-secondary">{{ field.formattedValue }}</span>
+{% endif %}

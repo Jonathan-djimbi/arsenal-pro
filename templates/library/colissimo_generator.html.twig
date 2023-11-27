@@ -1,0 +1,54 @@
+{% set version = 5 %} {# VERSION POUR CACHES CSS ET JS à UPDATE à chaque MANIPULATION #}
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="keywords" content="Arsenal Pro, Armurerie, stand tir, francais, vente armes, vente de munitions, armes francaise, vente munitions, chens-sur-leman, haute savoie, savoie, ain, thonon, thonon-les-bains, annecy, annemasse, annecy armurerie, thonon armurerie, annemasse armurerie, armurerie haute savoie, armurier haute savoie, armurerie savoie, armurerie ain, armurerie 74, armurerie 73, armurerie fiable, armurerie pro, armurerie professionnelle, armes suisse, armurerie geneve">
+    <meta property="og:url" content="{{app.request.uri}}"/>
+    <meta name="description" content="Arsenal Pro - Bibliothèque">
+    <meta property="og:description" content="Arsenal Pro - Bibiliothèque">
+    <meta property="og:title" content="Arsenal Pro - Bibliothèque"/>
+    <meta property="og:image" content="{{ asset('assets/image/logo3-hq.png') }}" />
+    <meta property="og:image:type" content="image/png"/> 
+    <meta property="og:type" content="website">
+    <title>Génerer un ticket Colissimo depuis le site</title>
+    <script src="https://kit.fontawesome.com/ea0fe82c80.js" crossorigin="anonymous"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="icon" sizes="80x80" type="image/png" href="{{ asset('assets/image/favicon.png') }}"/>
+    <link rel="shortcut icon" type="image/png" href="{{ asset('assets/image/favicon.png') }}"/>
+    <link rel="apple-touch-icon" href="{{ asset('assets/image/logo3-hq.png') }}">
+    <link rel="canonical" href="{{app.request.uri}}"/>
+</head>
+<body>
+<header class="headerBibliotheque mb-4">
+    <div class="d-flex">
+        <a class="" href="{{ path('app_home') }}"><img class="logo" src="{{ asset('assets/image/logo3-hq.png') }}" alt="img logo arsenal pro"></a>
+        <h1 class="text-center mx-auto my-auto">Génerer un ticket Colissimo</h1>
+    </div>
+    <div class="d-flex mx-auto text-center justify-content-center">
+        <a class="my-auto" href="{{ path('app_library')}}">Accueil bibliothèque</a>
+        &nbsp;&nbsp;&nbsp;
+        <a class="my-auto" href="/admin">Dashboard admin</a>
+    </div>
+    <hr>
+</header>
+    <section>
+        {{form_start(form)}}
+        <div class="row justify-content-center mb-3">
+            <div class="w-75">
+                <input value="" id="rechercherUser" class="form-control" placeholder="Trouver par nom ou ID..."/>
+            </div>
+        {{form_widget(form.utilisateur)}}
+        </div>
+        <div class="row justify-content-center mb-3">
+            {{form_row(form.masse)}}
+            {{form_row(form.insuranceValue)}}
+        </div>
+        {{form_end(form)}}
+    </section>
+    <script src="{{ asset('assets/js/6895ae8767800ff48b8e58e6d5cb8a4.js') }}?v={{version}}"></script>
+</body>

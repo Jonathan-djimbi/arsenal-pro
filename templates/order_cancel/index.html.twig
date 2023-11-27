@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Erreur de paiement - Arsenal Pro</title>{% endblock %}
+
+{% block content %}
+    <h2>Erreur de paiement</h2>
+    <p>
+        Bonjour <strong>{{ order.user.firstname }} {{ order.user.lastname }}</strong>,<br/><br/>
+        Il semblerait que votre paiement a été échoué ou a été refusé lors de la transaction pour votre commande <strong>{{ order.reference }}</strong>.<br/>
+        Veuillez ressayer une autre fois.
+    </p>
+    <a href="{{ path('app_order') }}" class="btn btn-success box_shadow_all, border_radius_all_15 bg-success">Réessayer le paiement</a>
+{% endblock %}

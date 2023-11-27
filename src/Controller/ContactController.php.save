@@ -1,0 +1,74 @@
+<?php
+
+namespace App\Controller;
+
+use App\Classe\Mail;
+use App\Entity\Contact;
+use App\Form\ContactType;
+use App\Service\MailerService;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+
+class ContactController extends AbstractController
+{
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    #[Route('/contact', name: 'app_contact')]
+    public function index(Request $request, MailerService $mailer)
+    {
+        $datenow =  date('Y-m-d');
+        $visiteur = $_SERVER['REMOTE_ADDR'];
+
+        $contactez = new Contact();
+        $form = $this->createForm(ContactType::class, $contactez);
+        $messagescontacts = $this->entityManager->getRepository(Contact::class)->findBy(['visiteur'=> $visiteur, 'faitle' => $datenow], ['id'=>'desc']);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if(count($messagescontacts) >= 3 && strtotime($messagescontacts[0]->getFaitle()) === strtotime($datenow)){ //verif anti spam avec comparaison d'adresse ip et dates
+                $this->addFlash('warning', "Désolé vous avez dépassé la limite d'envoi qui est de 3 messages par jours.");
+            } else {
+                $contactez->setFaitle($datenow);
+                $contactez->setVisiteur($visiteur);
+
+                if($this->getUser()){
+                    $contactez->setUser($this->getUser());
+                }
+                $mail = new Mail();
+                $contactFormData = $form->getData();
+                $subject = 'Demande de contact sur votre site de ' . $contactFormData->getEmail();
+                // $content = "<h2>" . $contactFormData->getNom() . ' vous a envoyé le message suivant :</h2><br>' . $contactFormData->getDescription();
+                $content = "<section style='font-family: arial;'> <section style='width: 95%; border-radius: 15px; box-shadow: 2px 2px 10px black; padding: 15px 0;'>
+                    <div>
+                    <h2>". $contactFormData->getNom() ." vous a envoyé le message suivant :</h2>
+                    <h3><i>". $contactFormData->getDescription()."</i></h3>
+                    </div>
+                    <div style='background-color: #343a40 !important;'>
+                        <div style='margin: auto; display: block; position: relative; color: white; text-align: center;'>
+                            <h1><a style='color: white; text-decortation: none;' href='https://arsenal-pro.fr'>Arsenal Pro</a></h1><h2>Armurerie proche d'Annecy, d'Annemasse, de Thônon et de la Suisse.</h2>
+                            <img width='100' src='https://arsenal-pro.fr/assets/image/logo3-hq.png'>
+                        </div></div></section></section>";
+
+               /$mail->send("armurerie@arsenal-pro.com", $contactFormData->getNom(), $subject, $content);
+                $mail->send("arsenalpro74@gmail.com", $contactFormData->getNom(), $subject, $content);
+                $this->addFlash('notice', 'Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.');
+
+                $this->entityManager->persist($contactez); // MAJ BDD
+                $this->entityManager->flush();
+            }
+            return $this->redirectToRoute('app_contact');
+        }
+
+        return $this->render('contact/index.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+}

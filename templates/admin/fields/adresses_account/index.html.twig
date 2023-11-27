@@ -1,0 +1,12 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% if ea.crud.currentAction == 'index' %}
+        {% for value in field.value|slice(0,1) %}
+        <div>
+            <p>{{ value.adress }}, {{ value.city }}, {{ value.postal }}, {{ value.country }} | Numéro : {{ value.phone }} | <a href="{{ ea_url().setController('App\\Controller\\Admin\\AdressCrudController').setAction('edit').setEntityId(value.id)}}">Modifier</a></p>
+        </div>
+        {% endfor %}
+{% else %}
+    <span class="badge badge-secondary">{{ field.formattedValue }}</span>
+{% endif %}

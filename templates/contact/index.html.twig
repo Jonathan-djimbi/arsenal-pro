@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Contactez-nous | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Nous contacter", 'section' : 0, 'multi' : false })) }}
+    <p>N'hésitez pas à prendre contact avec notre équipe, nous vous répondrons dans les meilleurs délais.</p>
+    {% for message in app.flashes('notice') %}
+        <div class="alert alert-info alertdisplay">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('warning') %}
+        <div class="alert alert-danger alertdisplay">{{ message }}</div>
+    {% endfor %}
+    {{ form_start(form) }}
+    <br/>
+    <div class="row">
+        <div class="col-md-8">
+        {{ form_row(form.prenom) }}  
+        {{ form_row(form.nom) }} 
+        {{ form_row(form.email) }} 
+        {{ form_row(form.phone) }}
+         <article>
+            {{form_row(form.description)}}
+            <p id="textarealimitdisplay"><b id="textcompteur">0</b>/500</p>
+        </article>
+        <span class="text-info">* informations obligatoires</span>
+        </div>
+        <div class="col-md-4">
+            <strong>Contactez le dépôt Arsenal Pro</strong>
+            <hr>
+            <a href="tel:+33607405775">+33 (0) 6 07 40 57 75</a><br/>
+            710 Rue du Léman,<br/> 
+            74140 Chens-sur-Léman, France.
+            <br/><a href="mailTo:armurerie@arsenal-pro.com">armurerie@arsenal-pro.com</a><br/><br/>
+            <div class="w-100"><iframe class="w-100" height="300" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=ARSENAL%20PRO+(ARSENAL%20PRO)&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                <a href="https://www.maps.ie/distance-area-calculator.html">Mesurer la distance map</a></iframe></div>        
+            </div>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}  
+  

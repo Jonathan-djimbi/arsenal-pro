@@ -1,0 +1,23 @@
+<h4>Votre adresse de livraison</h4>
+<div class="mb-3">
+    <input type="text" name="adresse_compte_create" id="adresse_compte_create" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Votre adresse *" value="{{app.request.get("adresse_compte_create")}}" required/>
+</div>
+<div class="mb-3">
+    <input type="text" name="ville_compte_create" id="ville_compte_create" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Votre ville *" value="{{app.request.get("ville_compte_create")}}" required/>
+    <div class="invalid-feedback d-block" id="erreur_ville_compte"></div>
+</div>
+<div class="mb-3">
+    <input type="number" name="postal_compte_create" id="postal_compte_create" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Votre code postal *" value="{{app.request.get("postal_compte_create")}}" required/>
+    <div class="invalid-feedback d-block" id="erreur_postal_compte"></div>
+</div>
+<div class="mb-3">
+    <select name="country_compte_create" id="country_compte_create" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Votre pays *" required>
+        <option value="FR">FR</option>
+        <option value="CH">CH</option>
+        <option value="BE">BE</option>
+    </select>
+</div>
+<div class="mb-3">
+    <input type="number" name="tel_compte_create" id="tel_compte_create" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Votre numéro de téléphone *" value="{{app.request.get("tel_compte_create")}}" required/>
+    <div class="invalid-feedback d-block" id="erreur_tel_compte"></div>
+</div>

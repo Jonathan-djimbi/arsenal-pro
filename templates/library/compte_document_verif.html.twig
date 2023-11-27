@@ -1,0 +1,115 @@
+{% extends 'library/header_library.html.twig' %}
+
+{% block title %}<title>Documents client à vérifier</title>{% endblock %}
+
+{% block content %}
+    <h3 class="text-center mb-4">Document(s) de {{user.fullname}} | ID : {{user.id}}</h3>
+    {{form_start(form)}}
+    <section>
+        <div class="row justify-content-center">
+            <div class="ml-3">
+                <div class="column">
+                    <img class="imageDocumentDom border_radius_all_15 box_shadow_all" src="/uploads/documents/{{documents.cartId}}"/>
+                    <p class="text-center mt-2">Validité : {{documents.cartIdDate|date('d/m/Y')}}</p>
+                </div>            
+            </div>
+            <div class="alignCheckboxPosDocumentDom">
+                <div>{{ form_label(form.cartIdcheck) }}</div>
+                {% if documents.cartIdcheck %}
+                    <div>{{ form_widget(form.cartIdcheck, (documents.cartIdcheck == true ? {'attr': {'checked': 'checked'} })) }}</div>
+                {% else %}
+                    <div>{{ form_widget(form.cartIdcheck) }}</div>
+                {% endif %}
+
+            </div>
+        </div>
+        {# <div class="row justify-content-center">
+            <div class="my-auto">
+                <div class="column justify-content-center justificatifDomicileDocument mb-2">
+                    <div>{{ form_label(form.justificatifDomicile)}}</div>
+                    <div>{{ form_widget(form.justificatifDomicile)}}</div>
+                </div>
+            </div>
+        </div> #}
+        {% if documents.licenceTirId %}
+        <div class="row justify-content-center">
+            <div class="ml-3">
+                <div class="column">
+                    <img class="imageDocumentDom border_radius_all_15 box_shadow_all" src="/uploads/documents/{{documents.licenceTirId}}"/>
+                    <p class="text-center mt-2">Validité : {{documents.licenceTirIdDate|date('d/m/Y')}}</p>
+                </div>
+            </div>
+            <div class="alignCheckboxPosDocumentDom">
+                <div>{{ form_label(form.licenceTirIdcheck) }}</div>
+                {% if documents.licenceTirIdcheck %}
+                    <div>{{ form_widget(form.licenceTirIdcheck, (documents.licenceTirIdcheck == true ? {'attr': {'checked': 'checked'} })) }}</div>
+                {% else %}
+                    <div>{{ form_widget(form.licenceTirIdcheck) }}</div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% if documents.certificatMedicalId %}
+        <div class="row justify-content-center">
+            <div class="ml-3">
+                <div class="column">
+                    <img class="imageDocumentDom border_radius_all_15 box_shadow_all" src="/uploads/documents/{{documents.certificatMedicalId}}"/>
+                    <p class="text-center mt-2">Validité : {{documents.certificatMedicalIdDate|date('d/m/Y')}}</p>
+                </div>            
+            </div>
+            <div class="alignCheckboxPosDocumentDom">
+                <div>{{ form_label(form.certificatMedicalIdcheck) }}</div>
+                {% if documents.certificatMedicalIdcheck %}
+                    <div>{{ form_widget(form.certificatMedicalIdcheck, (documents.certificatMedicalIdcheck == true ? {'attr': {'checked': 'checked'} })) }}</div>
+                {% else %}
+                    <div>{{ form_widget(form.certificatMedicalIdcheck) }}</div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        {% if pro.typeFDO is defined %}
+            {% if pro.typeFDO != null %}
+                {% if documents.cartPoliceId %}
+                    <div class="row justify-content-center">
+                        <div class="ml-3">
+                            <div class="column">
+                                <img class="imageDocumentDom border_radius_all_15 box_shadow_all" src="/uploads/documents/{{documents.cartPoliceId}}"/>
+                            </div>
+                        </div>
+                        <div class="alignCheckboxPosDocumentDom">
+                            <div>{{ form_label(form.cartPoliceIdcheck) }}</div>
+                            {% if documents.cartPoliceIdcheck %}
+                                <div>{{ form_widget(form.cartPoliceIdcheck, (documents.cartPoliceIdcheck == true ? {'attr': {'checked': 'checked'} })) }}</div>
+                            {% else %}
+                                <div>{{ form_widget(form.cartPoliceIdcheck) }}</div>
+                            {% endif %}
+                        </div>                   
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+         {% if documents.numeroSea != "Pas de numéro SIA" %}
+        <div class="row justify-content-center">
+            <div class="d-flex docSiaAlign">
+                <p class="m-auto">Numéro SIA : {{documents.numeroSea}}</p>
+                <div class="m-auto">{{ form_label(form.numero_sia_check) }}</div>
+                {% if documents.numeroSeaCheck %}
+                    <div class="m-auto">{{ form_widget(form.numero_sia_check, (documents.numeroSeaCheck == true ? {'attr': {'checked': 'checked'} })) }}</div>
+                {% else %}
+                    <div class="m-auto">{{ form_widget(form.numero_sia_check) }}</div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+        <br/>
+         <div class="d-block mx-auto mt-2" style="width: 90%;">
+            <div>{{ form_row(form.description) }}</div>
+        </div> 
+        <br/>
+        <div class="row mt-4 justify-content-center">
+            <div>{{ form_row(form.submit, {'label': 'Vérifier les documents'}) }}</div>
+        </div>    
+        </div>
+    </section>
+    {{ form_end(form, {'render_rest': false}) }}
+{% endblock %}

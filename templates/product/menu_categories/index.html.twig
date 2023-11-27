@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>{{sousCategorie.subCategory.name|replace({"&": "et"}) }} | Arsenal Pro</title>{% endblock %}
+{% block content %}
+<section>
+    <h2 class="mb-4">{{sousCategorie.subCategory.name|replace({"&": "et"}) }}</h2>
+    {% if sousCategorie.subCategory.name == "Forces de l'ordre" %} {# condition special forces de l'ordre only #}
+        <a class="textNoSelect" href="{{ path("app_produits_forces_ordre")}}" title="Rechercher tous les {{sousCategorie.subCategory.name|replace({"&": "et"})}}">
+    {% else %}
+        <a class="textNoSelect" href='/nos-categories/groupe/{{sousCategorie.subCategory.id}}-{{sousCategorie.subCategory.name|replace({"â": "a","à": "a","é": "e","û": "u","è": "e","'":""," ": "-",".": "", ",": "","&": "et"})}}' title="Rechercher tous les {{sousCategorie.subCategory.name|replace({"&": "et"})}}">
+    {% endif %}
+            <div class="box_shadow_all border_radius_all_15 menuPageSousCategoriesTitre">
+                <h5 class="textNoSelect"><i class="fa-solid fa-magnifying-glass mr-2"></i> Rechercher : {{sousCategorie.subCategory.name|replace({"&": "et"})}}</h5>
+            </div>
+        </a>
+</section>
+<section class="col row sectionPageSousCategories">
+    {% for famille in sousSousCategorie %}
+        <a href='/nos-categories/groupe/{{sousCategorie.subCategory.id}}-{{sousCategorie.subCategory.name|replace({"â": "a","à": "a","é": "e","û": "u","è": "e","'":""," ": "-",".": "", ",": "","&": "et"})}}/{{famille.id}}-{{famille.name|replace({"â": "a","à": "a","é": "e","û": "u","è": "e","'":""," ": "-",".": "",",":"","&": "et"})}}' title="{{famille.name|replace({"&": "et"})}}">
+            <div class="box_shadow_all border_radius_all_15 mx-3 menuPageSousCategories">
+                {% if famille.illustration %} {# si on a inséré une image depuis le dashboard #}
+                    <img class="mx-auto" src="/uploads/categories/sous-categories/{{famille.illustration}}" alt="{{famille.name|replace({"&": "et"})}}"/>
+                {% else %} {# sinon on recherche une depuis les produits affectés à cette sous-sous-catégorie #}
+                    {% set stop = false %}
+                    {% for produit in famille.produits %}
+                        {% if not stop %} {# si pas stop on continue #}
+                            {% if produit.illustration starts with 'http'  %}
+                                <img class="mx-auto" src="{{produit.illustration}}" alt="{{famille.name|replace({"&": "et"})}}"/>
+                                {% set stop = true %}
+                            {% elseif produit.illustration and produit.illustration != "error/img-error.jpg" %}
+                                <img class="mx-auto" src="/uploads/{{produit.illustration}}" alt="{{famille.name|replace({"&": "et"})}}"/>
+                                {% set stop = true %}
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <h5>{{famille.name|replace({"&": "et"})}}</h5>
+            </div>
+        </a>
+    {% endfor %}
+</section>
+{% endblock %}

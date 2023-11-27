@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>{{produit.name}} | Arsenal Pro</title>{% endblock %}
+{% block content %}
+    <div class="row container produit-affichage">
+            <div class="cadre-photo-main">
+                {% if produit.illustrationun or produit.illustrationdeux or produit.illustrationtrois %}
+                <img id="produit-photo" src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{produit.illustration }}" alt="{{ produit.name }}" class="img-fluid ml-2" draggable="false">
+                    <div class="listephotos">
+                        {% for key, image in listephotos %}
+                        {% if image != NULL %}
+                            <img id="produit-photos" src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{image}}" alt="{{ produit.name }} image {{key}}" class="image-produit-aside">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                <img id="produit-photo" src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{produit.illustration}}" alt="{{ produit.name }}" class="img-fluid" draggable="false">
+                {% endif %}
+            </div>
+            <div>
+                <h1>{{ produit.name }}</h1>
+                {% if produit.illustrationun or produit.illustrationdeux or produit.illustrationtrois %}
+                <div class="col-md-6 mt-auto mb-2">
+                    {% else %}
+                    <div class="col-md-7 mt-auto mb-2">
+                    {% endif %}
+                    <div class="produit_title">
+                        {% if produit.marque.photo %}
+                        <a href="{{ path('app_produit_marque',{'name': produit.marque.name,'id': produit.marque.id})}}">
+                        <img id="logo_marque" src="/uploads/marques/{{produit.marque.photo}}" alt="{{ produit.marque}} logo"/></a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if produit.isOccassion %}
+                    <p>{{ produit.subtitle }} | {{produit.category}} | Produit d'occasion</p>
+                {% else %}
+                    <p>{{ produit.subtitle }} | {{produit.category}}</p>
+                {% endif %}
+                {% if app.user != null %}{% if "ROLE_ADMIN" in app.user.roles %}<p>ID : {{produit.id}} </p>{% endif %}{% endif %} {# affichage produit ID pour admin #}
+                <div>
+                    <h4 class="text-muted font-weight-bold">Le produit est indisponible pour le moment</h4><br/>
+                </div>
+            </div>
+        </div>
+        {% if produitsAssocies and produitsAssocies|length > 0 %}
+        <h3>Références similaires au : {{produit.name}}</h3>
+            <section class="les_accessoires row overflow-main mx-auto">
+            <div class="overflow-isbest">
+                {% for produits in produitsAssocies %}
+                    <div class="col-md-2">
+                        {% include 'product/single_produit_association.html.twig' %}
+                    </div>
+                {% endfor %}
+                </div>
+            </section>
+        {% endif %}
+    <hr>
+    <h3 class="text-center font-weight-bold">Nos meilleures ventes</h3>
+    <p class="text-center">Découvrez les articles les plus vendus.</p>
+    <section class="row overflow-main mx-auto">
+        <div class="overflow-isbest">
+            {% for produit in produits %}
+                <div class="col-md-2">
+                    {% include 'product/single1_produit.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'product/ajout_panier.html.twig' %}
+    {% include 'product/mail_alerte_restock_produit.html.twig' %}
+{% endblock %}
+
+
+
+
+
+

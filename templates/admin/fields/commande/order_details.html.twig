@@ -1,0 +1,16 @@
+{# @var ea \EasyCorp\Bundle\EasyAdminBundle\Context\AdminContext #}
+{# @var field \EasyCorp\Bundle\EasyAdminBundle\Dto\FieldDto #}
+{# @var entity \EasyCorp\Bundle\EasyAdminBundle\Dto\EntityDto #}
+{% if ea.crud.currentAction == 'detail' %}
+        {% for value in field.value %}
+        <div>
+        {% if value.pid != null and value.pid.name is defined %}
+            <p><a href="{{ ea_url().setController('App\\Controller\\Admin\\ProduitCrudController').setAction('detail').setEntityId(value.pid.id)}}">{{ value }}</a></p>
+        {% else %}
+            <p>{{value}}</p>
+        {% endif %}
+        </div>
+        {% endfor %}
+{% else %}
+    <span class="badge badge-secondary">{{ field.formattedValue }}</span>
+{% endif %}

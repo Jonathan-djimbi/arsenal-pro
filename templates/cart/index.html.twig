@@ -1,0 +1,192 @@
+    {% extends 'base.html.twig' %}
+
+    {% block title %}<title>Mon panier | Arsenal Pro</title>{% endblock %}
+    {% block annonce %} {% endblock %}
+    {% block content %}
+
+        {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre' : "Mon panier", 'section' : 2, 'multi' : true })) }}
+           <p>Retrouvez l'ensemble des produits que vous avez ajouté à votre panier</p>
+        {% if cart|length > 0 %}
+        <table class="table table_cart">
+            <tbody>
+            {% set total = null %}
+            {% set siFDO = false %}
+            {% for produit in cart %}
+                {% set affichePrix = true %}
+                {% if produit.priceVenteFlash > 0 and produit.produit.isVenteFlash and (produit.dateVenteFlash|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %} {# si produit en vente flash #}
+                    {% set produitprix = produit.priceVenteFlash %}
+                {% elseif produit.produit.pricepromo and produit.produit.pricepromo != produit.produit.price and produit.produit.pricepromo < produit.produit.price %}
+                    {% set produitprix = produit.produit.pricepromo %}
+                {% else %}
+                    {% set produitprix = produit.produit.price %}
+                {% endif %}
+
+                {% if produit.produit.isForcesOrdre %} {# si produit classé en forces de l'ordre #}
+                    {% if siProPolice %}
+                        {% if siProPolice.numeroMatricule == null %} {# prix à 0 si non police #}
+                            {% set produitprix = 0 %}
+                            {% set affichePrix = false %}
+                        {% else %}
+                            {% set produitprix = produit.produit.price %}
+                        {% endif %}
+                    {% else %}
+                        {% set produitprix = 0 %} {# prix à 0 si non police #}
+                        {% set affichePrix = false %}
+                    {% endif %}
+                {% endif %}
+
+                {% if produit.produit.priceFDO and produit.produit.priceFDO > 1 %} {# si prix special FDO appliqué pour un produit (non FDO ou oui FDO) #}
+                    {% if siProPolice %}
+                        {% if siProPolice.numeroMatricule != null %} {# modif prix si police #}
+                            {% set produitprix = produit.produit.priceFDO %}
+                        {% endif %}
+                    {% endif %}
+
+                    {% if siFDO == false %}
+                        {% set siFDO = true %} {# variable utilisé uniquement pour l'explication des documents à fournir avant de faire un achat #}
+                    {% endif %}
+                {% endif %}
+                
+                <tr>
+                    <th>
+                     {% if produit.produit.category != "Prestation" %}
+                    <a href="{{ path('app_produit',{'slug': produit.produit.slug}) }}">
+                        <div class="cart_produit border_radius_all_15 box_shadow_all">
+                            <img src="{{ (produit.produit.illustration starts with "http") ? '' : '/uploads/'  }}{{ produit.produit.illustration }}" alt="{{ produit.produit.name }}"><br/>
+                            {% if produit.produit.isDegressif %} 
+                                    <strong style="color: green;">Prix dégressif</strong>
+                            {% endif %}
+                        </div>
+                        </a>
+                        {% else %}
+                        <div class="cart_produit border_radius_all_15 box_shadow_all">
+                            <img src="{{ (produit.produit.illustration starts with "http") ? '' : '/uploads/'  }}{{ produit.produit.illustration }}" alt="{{ produit.produit.name }}"><br/>
+                        </div>
+                        {% endif %}
+                    </th>
+                    <td>
+                        <h4>{{ produit.produit.name|upper }}</h4>
+                        <p>{{produit.produit.subtitle}}</p>
+                        {% if produit.produit.category == "Prestation" %}
+                            <b>Prestation</b><br/>
+                        {% elseif produit.bourseArme %}
+                            <b class="mr-2">Quantité(s) : </b>
+                            {{ produit.quantity }}
+                        {% else %}
+                            <b class="mr-2">Quantité(s)</b>
+                            <a href="{{ path('decrease_to_cart',{'id' : produit.produit.id}) }}"><i class="fa-solid fa-circle-minus icone"></i>
+                            </a>
+                            <input type="number" min="0" class="compteurQuantiteCart" class="mx-1" value="{{ produit.quantity }}" data-pid="{{produit.produit.id}}"/>
+                            <a href="{{ path('add_to_cart',{'id': produit.produit.id}) }}"><i class="fa-solid fa-circle-plus icone"></i>
+                            </a>
+                            {% if produit.produit.quantite <= 0 %}
+                                <b>Pré-commande</b>
+                            {% endif %}
+                        {% endif %}
+
+                        <a class="ml-4" href="{{ path('delete_to_cart',{'id': produit.produit.id}) }}"><i class="fa-solid fa-trash-can icone"></i></a><br/><br/>
+                    {% if affichePrix == true %}
+                        {% if produit.produit.isDegressif and produit.quantity >= 10 %}
+                            {# <b>{{ (produitprix / 100)|number_format(2, ',','.') }} €</b> #}
+                             {% if produit.produit.isDegressif and produit.quantity >= 10 %} {# GESTION PRIX PRODUIT EN DEGRESSIF #}
+                                {% set key = 1 %}
+                                {% set degressifPrixCheckStop = false %}
+                                {% for val in produit.produit.degressifValues %}
+                                    {% if degressifPrixCheckStop == false %}
+                                        {% if (produit.produit.degressifValues[key + 1] is defined) == false %}
+                                            {% if val <= produit.quantity %}
+                                                {% set produitprix = produitprix - (key * 50) %}
+                                                {% set degressifPrixCheckStop = true %}
+                                            {% endif %}
+                                        {% else %}
+                                            {% if produit.quantity >= val and produit.quantity < produit.produit.degressifValues[key + 1] %}
+                                                {% if val == 10 %} {# si quantité prise à 20 | pour que ça fonctionne j'ai dû mettre la valeur précédente qui est de 10 #}
+                                                    {% set produitprix = produitprix - (key * 50) - 20 %} {# valeur key - 20 centimes de remise en plus #}
+                                                {% else %}
+                                                    {% set produitprix = produitprix - (key * 50) %} {# valeur key - 50 centimes pour affecter un prix degressif #}
+                                                {% endif %}
+                                                {% set degressifPrixCheckStop = true %}
+                                            {% endif %}
+                                        
+                                            {% if degressifPrixCheckStop == false %}
+                                                {% set key = key + 1 %}
+                                            {% endif %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                            <h3>{{ ((produitprix * produit.quantity) / 100)|number_format(2, ',','.') }} €</h3><br/>
+                        {% else %}
+                            {# <b>{{ (produitprix / 100)|number_format(2, ',','.') }} €</b> #}
+                            <h3>{{ ((produitprix * produit.quantity) / 100)|number_format(2, ',','.') }} €</h3><br/>
+                        {% endif %}
+                    {% endif %}
+                        
+                </td>
+                </tr>
+                {# {% if produit.produit.isDegressif and produit.quantity >= 10 %}
+                    {% set total = total + (produitprix * produit.quantity) - (produit.quantity) * 50 %}
+                {% else %} #}
+                    {% set total = total + (produitprix * produit.quantity)  %}
+                {# {% endif %} #}
+            {% endfor %}
+            </tbody>
+        </table>
+        {% if indisponible %}
+        <hr>
+        <table class="table table_cart">
+            <tbody>
+                    <p>Certains des produits présents de votre panier ne sont plus disponibles</p><br/>
+                    {% for nonAffiche in indisponible %} {# produits qui étaient dans le panier mais sont devenus non affichés #}
+                    <tr>
+                        <th>
+                        {% if nonAffiche.produit.category != "Prestation" %}
+                        <a href="{{ path('app_produit',{'slug': nonAffiche.produit.slug}) }}">
+                            <div class="cart_produit border_radius_all_15 box_shadow_all">
+                                <img src="/uploads/{{ nonAffiche.produit.illustration }}" alt="{{ nonAffiche.produit.name }}"><br/>
+                            </div>
+                            </a>
+                            {% else %}
+                            <div class="cart_produit border_radius_all_15 box_shadow_all">
+                                <img src="/uploads/{{ nonAffiche.produit.illustration }}" alt="{{ nonAffiche.produit.name }}"><br/>
+                            </div>
+                            {% endif %}
+                        </th>
+                        <td>
+                            <h4>{{ nonAffiche.produit.name|upper }}</h4>
+                            <p>{{ nonAffiche.produit.subtitle }}</p>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+        {% if app.user %}
+            {% if documentClient %}
+                {% if siFDO and documentClient.cartPoliceId == null %}
+                    <p class="text-danger font-weight-bold">La CARTE POLICE et matricule sont obligatoire pour acheter les produits classés en FORCES DE L'ORDRE. Il peut y avoir des frais qui seront appliqués en cas d'annulation. La remise n'est pas valable pour les réservistes et retraités</p>
+                {% endif %}
+                {% if documentClient.cartId %} {# si CNI enregistre #}
+                    <p class="text-success">Vous avez au moins un document enregistré : Carte nationale</p>
+                {% endif %}
+            {% else %}
+                {% if siFDO %}
+                    <p class="text-danger font-weight-bold">La CARTE POLICE et matricule sont obligatoire pour acheter les produits classés en FORCES DE L'ORDRE. Il peut y avoir des frais qui seront appliqués en cas d'annulation. La remise n'est pas valable pour les réservistes et retraités</p>
+                {% endif %}
+                <p class="text-danger font-weight-bold">Veuillez déposer vos documents pour continuer la commande. <br/><a href="{{path('app_account_documents')}}">Déposer mes documents</a></p>
+            {% endif %}
+        {% endif %}
+        <hr>
+        <div class="text-right mb-5">
+            <b>Nombre de produit :</b> {{ cart|length }}  <br/>
+            <b>Total de mon panier : </b><b>{{ (total / 100)|number_format(2, ',','.') }} €</b>
+            <a href="{{ path('app_order') }}" class="btn btn-success btn-block mt-3 border_radius_all w-50 mx-auto">Valider mon panier</a>
+        </div>
+        {% else %}
+            <hr>
+            <p><b>Votre panier est vide</b></p>
+        {% endif %}
+    {% endblock %}
+    {% block js %}
+        <script src="{{ asset('assets/js/01da8958ef564a24b0c81d684f32b80.js') }}?v={{version}}"></script>
+    {% endblock %}

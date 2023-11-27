@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Confirmation de commande</title>{% endblock %}
+
+{% block content %}
+    <h2>Confirmation de votre commande</h2>
+    <p>
+        Bonjour <strong>{{ order.user.firstname}} {{ order.user.lastname }}</strong>,<br/>
+        Nous vous remercions pour votre commande n°<strong>{{ order.reference}}</strong>.<br/>
+        Une confirmation vient de vous être envoyé par mail à l'adresse suivante : <strong>{{ order.user.email}}</strong>
+    <hr>
+    {% if order.carrierName == "Retrait au dépôt" or order.carrierName == "Atelier à Arsenal Pro" %} {# condition d'apres le nom du carrier #}
+        <div class="border_radius_all_15 box_shadow_all">
+            <h4 class="text-center retrait_au_depot_text">Veuillez nous contacter à ce numéro, afin de fixer une date de RDV pour le retrait de votre commande. <br/><small>(Veuillez ignorer ce message si vous avez uniquement commandé des cartes cadeaux)</small></h4>
+            <div class="whatsapp_contact_order d-flex justify-content-center my-auto">
+                <img width="150" src="/assets/image/whatsapp.png" alt="arsenal pro contact whatsapp">
+                <h2 class="my-auto"><a href="https://wa.me/330607405775" target="_blank"><b>+33 06 07 40 57 75</b></a></h2>
+            </div>
+        </div> 
+    {% else %}
+        Votre commande sera livrée par <strong>{{ order.carrierName }}</strong> à l'adresse suivante :<br/><br/>
+        <div class="border_radius_all_15 box_shadow_all">
+            <p>Votre nom et prénom : <b>{{ acheteur.user.lastname }} {{ acheteur.user.firstname }}</b></p>
+            <p>Votre numéro de téléphone : <b>{{ acheteur.phone }}</b></p>
+            <p>Votre adresse : <b>{{ acheteur.adress }} - {{ acheteur.postal }}, {{ acheteur.city }}</b></p>
+            <p>Code pays : <b>{{ acheteur.country }}</b></p>
+        </div>
+    {% endif %}
+    <hr>
+    <p>Pour suivre votre commande, rendez-vous dans votre <a href={{ path('app_account_order') }}> compte</a>.
+    </p>
+{% endblock %}

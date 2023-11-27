@@ -1,0 +1,167 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>À propos de l'armurerie | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+<section class="apropos">
+    <div id="engagement-arsenalpro" class="mb-5">
+        <h1 class="text-center mb-3">DÉCOUVERTE D'ARME OU HÉRITAGE</h1><br>
+        <div class="d-flex">
+            Vous avez trouvé ou hérité d’une arme et vous souhaitez la garder ou la vendre. Légalement vous aurez besoin d’un armurier, ARSENAL PRO s’occupe de tout avec vous.
+        </div>
+        <br>
+        <div class="d-flex">
+            <a href="https://www.service-public.fr/particuliers/vosdroits/N287" target="_blank">A consulter : Législation</a>
+        </div>
+        <div class="d-flex">
+            <a href="{{ asset('assets/pdf/1-mise-en-possession-SITE.pdf') }}">Notice d'informations</a>
+        </div>
+    </div>
+    <div class="row justify-content-end"><p class="text-secondary fs-6">Page 1 sur 3</p></div>
+    <div class="row justify-content-end">
+        <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            <li class="page-item  active"><a class="page-link bg-success border-secondary" href="#">1<span class="sr-only">(current)</span></a></li>
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage2') }}">2</a></li>
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage3') }}">3</a></li>
+        </ul>
+        </nav>
+    </div>
+    <hr>  
+    <div class="d-flex mb-5 mt-5 container">
+        <p>Nous pouvons hériter des armes à feu des membres de notre famille sans nécessairement
+        être nous-mêmes des chasseurs ou des tireurs. Cela conduit à une énigme pour beaucoup
+        d'entre nous : que faisons-nous avec notre nouvelle arme à feu ? Nous avons parlé avec le manager et
+        armurier d'Arsenal Pro : Stéphane PHILIPPE qui nous a aidés à commencer à répondre à cette
+        question.<br><br>
+
+        <strong>Q : Est-ce que je peux hériter des armes à feu de ma famille sans être chasseur ou tireur ?</strong><br>
+        R : Oui, c'est possible.<br><br>
+
+        <strong>Q : Que dois-je faire si j'hérite d'une arme à feu ?</strong><br>
+        R : Vous pouvez parler avec le manager et armurier d'Arsenal Pro Stéphane PHILIPPE pour obtenir des conseils sur les prochaines étapes.<br><br>
+
+        <strong>Q : Quelles sont les normes juridiques en France pour la possession d'armes à feu ?</strong><br>
+        R : Les normes varient en fonction de la catégorie de l'arme à feu. Chaque type d'arme a son propre ensemble de formalités. Par exemple, les
+        personnes avec des armes de poing doivent suivre un ensemble de règles différentes de celles
+        avec des fusils de chasse.<br><br>
+
+        <strong>Q : Combien de temps ai-je pour déclarer la possession d'une nouvelle arme héritée ?</strong><br>
+        R : Vous avez un délai de six mois pour la déclarer à la gendarmerie ou à la police.<br><br>
+
+        <strong>Q : Quels permis dois-je obtenir si je possède une arme à feu ?</strong><br>
+        R : Si vous souhaitez utiliser l'arme à feu, vous devez obtenir un permis de chasse ou un permis de tir sportif.<br><br>
+
+        <strong>Q : Que dois-je faire si je ne prévois pas d'utiliser l'arme à feu ?</strong><br>
+        R : Vous pouvez contacter un armurier pour qu'il la neutralise et vous délivre un certificat. Cette option est particulièrement recommandée si l'arme a une valeur sentimentale.<br><br>
+
+        <strong>Q : Je trouve cela trop compliqué, comment puis-je obtenir de l'aide pour gérer une arme à feu héritée ?</strong><br>
+        R : Vous pouvez contacter l'Armurerie Arsenal pro pour obtenir une évaluation de vos options et bénéficier de leur aide pour les démarches administratives et techniques nécessaires. Ils proposent également des déplacements sur rendez-vous.<br></p>
+    </div>
+    <hr><br>
+    <h1 class="text-center mb-3">Qu'est-ce qu'une arme à feu ?</h1><br>
+    <div>
+        <p>Une arme à feu est une arme visant originellement à toucher une cible à grande distance via des projectiles, au moyen de gaz produits par une déflagration (combustion rapide et confinée d'un composé chimique détonant).</p>
+        <h3>Chargement du projectile</h3>
+        <p>Selon le type d'arme et son degré d'évolution, le fût comporte ou non un système permettant l'insertion du projectile autrement que par la bouche du canon, éventuellement complété par un système permettant de répéter l'opération automatiquement :</p>
+        <ul>
+            <li>Fût monobloc (premiers canons, arquebuses),</li>
+            <li>Culasse Amovible (canons d'artillerie, fusils de chasse),</li>
+            <li>Barillet (Revolvers) : cylindre percé de part en part, chaque lumière constituant une section de chambre dans laquelle une munition est placée lors du chargement,</li>
+            <li>Culasse à verrou (fusil de précision),</li>
+            <li>Culasse avec mécanisme de chargement et fenêtre d'éjection qui chambre une munition (la place dans la chambre) après avoir, si nécessaire, éjecté l'étui vide de la précédente.</li>
+        </ul>
+        <h3>Mise à feu du mélange déflagrant</h3>
+        <p>Avec les premières armes à feu, la mise à feu s'effectuait manuellement, par embrasement d'une mèche en étoupe à l'aide d'une pierre à briquet ou d'une torche.</p>
+        <p>Dans les armes à feu modernes, les projectiles contiennent leur propre mélange déflagrant, enfermé dans le fond d'un étui ou d'une douille. Inaccessible à une flamme nue, sa déflagration est déclenchée par un choc brutal produit par un percuteur ou bien par une décharge électrique.</p>
+    </div><br>
+    <hr><br><br>
+    <h1 class="text-center mb-3">Types d'armes à feu / Marques et termes célèbres</h1><br><br>
+    <h3>Types d'armes à feu :</h3><br>
+    <ul>
+        <li>Arme à feu sous-marine</li>
+        <li>Arquebuse</li>
+        <li>Bâton à feu</li>
+        <li>Carabine</li>
+        <li>Fusil</li>
+        <li>Fusil d'assaut</li>
+        <li>Fusil de chasse</li>
+        <li>Fusil mitrailleur</li>
+        <li>Fusil à pompe</li>
+        <li>Fusil à poudre noire</li>
+        <li>Fusil de précision</li>
+        <li>Lance-roquette</li>
+        <li>Mitrailleuse</li>
+        <li>Mousquet</li>
+        <li>Pistolet</li>
+        <li>Pistolet mitrailleur</li>
+        <li>Poivrière</li>
+        <li>Revolver</li>
+        <li>Tromblon</li>
+    </ul><br>
+    <h3>Marques et termes célèbres :</h3><br>
+    <ul>
+        <li>Armalite</li>
+        <li>Arminius</li>
+        <li>Armscor</li>
+        <li>Baikal</li>
+        <li>British Small Arms</li>
+        <li>Beretta</li>
+        <li>Browning</li>
+        <li>Colt</li>
+        <li>Caracal</li>
+        <li>Česká Zbrojovka ou CZ</li>
+        <li>Darne</li>
+        <li>Derringer</li>
+        <li>Desert Eagle</li>
+        <li>Dum-dum</li>
+        <li>Enfield</li>
+        <li>Famas</li>
+        <li>Gasser</li>
+        <li>Glock</li>
+        <li>Hämmerli</li>
+        <li>Heckler &amp; Koch ou H&amp;K</li>
+        <li>FN Herstal</li>
+        <li>Jericho</li>
+        <li>Kalashnikov, AK ou AK-47</li>
+        <li>Krico</li>
+        <li>Krupp Ag</li>
+        <li>Llama</li>
+        <li>Makarov</li>
+        <li>Manufacture d'armes de Saint-Étienne</li>
+        <li>Manurhin</li>
+        <li>Manufrance</li>
+        <li>Mauser</li>
+        <li>Nexter</li>
+        <li>North American Arms</li>
+        <li>Purdey</li>
+        <li>Radom</li>
+        <li>Remington</li>
+        <li>Robar</li>
+        <li>Ruger</li>
+        <li>Schmeisser</li>
+        <li>SIG</li>
+        <li>Swiss Arms</li>
+        <li>Smith &amp; Wesson</li>
+        <li>Springfield Armory</li>
+        <li>Star</li>
+        <li>Steyr</li>
+        <li>Tanfoglio</li>
+        <li>Taurus</li>
+        <li>Tokarev</li>
+        <li>Uberti</li>
+        <li>Unique</li>
+        <li>Valtro</li>
+        <li>Winchester</li>
+    </ul>
+    <div class="row justify-content-end">
+        <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            <li class="page-item  active"><a class="page-link bg-success border-secondary" href="#">1<span class="sr-only">(current)</span></a></li>
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage2') }}">2</a></li>
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage3') }}">3</a></li>
+        </ul>
+        </nav>
+    </div>
+</section>
+{% endblock %}

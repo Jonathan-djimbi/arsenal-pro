@@ -1,0 +1,9 @@
+{% if uneAnnonce %}
+    {% if home %}
+    <div class="annonce bump text-center mx-auto">
+    {% else %}
+    <div class="annonce text-center mx-auto">
+    {% endif %}
+        <span>⚠ {{ uneAnnonce.contenu }} ⚠</span>
+    </div>
+{% endif %}

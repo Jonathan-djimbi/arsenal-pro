@@ -1,0 +1,88 @@
+{# {{include('account/grille_fidelite.html.twig')}} #}
+<section id="sectionFidelite">
+    <div class="carteFidelite">
+        <div class="carteFidelite_bandeau">ARSENAL PRO</div>
+        {{form_start(form)}}
+        {{form_row(form._token)}}
+            <img width="80" id="carteFidelite_imageLogo" src="{{asset('assets/image/icon-logo-arsenal-pro.png')}}" alt="arsenal-pro-logo-icon" draggable="false"/>
+            {# affichage niveau fidelite avec une image #}
+            {% if utilisateur_fidele.nombreAchat >= 2 and utilisateur_fidele.nombreAchat < 6 %}
+                <img width="60" id="carteFidelite_imageNiveau" src="{{asset('assets/image/fidelite_niveau_un.png')}}" alt="arsenal-pro-logo-level" draggable="false"/>
+            {% endif %}
+            {% if utilisateur_fidele.nombreAchat >= 6 and utilisateur_fidele.nombreAchat < 12 %}
+                <img width="60" id="carteFidelite_imageNiveau" src="{{asset('assets/image/fidelite_niveau_deux.png')}}" alt="arsenal-pro-logo-level" draggable="false"/>
+            {% endif %}
+            {% if utilisateur_fidele.nombreAchat >= 12 %}
+                <img width="60" id="carteFidelite_imageNiveau" src="{{asset('assets/image/fidelite_niveau_trois.png')}}" alt="arsenal-pro-logo-level" draggable="false"/>
+            {% endif %}
+            {# #}
+            <section id="info_fidelite">
+            <div class="photo">
+                <div>
+                    <img id="carteFidelite_pfp" width="90" height="90" alt="photo-profile-fidelite-arsenal-pro" src="{{pfp}}" draggable="false"/>
+                    {{form_row(form.photo)}}
+                </div>
+                {% for unPays in pays %}
+                    {% if unPays.nom == utilisateur_fidele.adress|split(', ')[3] %}
+                        <img id="paysImage" width="90" height="60" alt="votre pays drapeaux flag" class="" src={{unPays.image}} draggable="false" />
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="ml-3">
+                <fieldset>
+                    <label for="name">Nom : </label>
+                    <input name="name" type="text" class="inputCarteFidelite" value="{{app.user.fullname}}" disabled/>
+                </fieldset>
+                <fieldset>
+                    <label for="email">Email : </label>
+                    <input name="email" type="text" class="inputCarteFidelite" value="{{app.user.email}}" disabled/>
+                </fieldset>
+                <fieldset>
+                    <label for="tel">Téléphone : </label>
+                    <input name="tel" type="number" class="inputCarteFidelite" value="{{utilisateur_fidele.telephone}}" disabled/>
+                </fieldset>
+                {% set formHtml %}
+                <fieldset>
+                    <label for="adress">Adresse : </label>
+                    <input name="adress" type="text" class="inputCarteFidelite" value="{{utilisateur_fidele.adress|split(', ')[1]}}, {{utilisateur_fidele.adress|split(', ')[2]}}" disabled/><br/>
+                </fieldset>
+                {% endset %}
+                {{ formHtml|replace({'[br]':', '})|raw}}
+                {% if utilisateur_fidele.specialite %}
+                <fieldset>
+                    <label for="spe">Spécialité : </label>
+                    <input name="spe" type="text" class="inputCarteFidelite" value="{{utilisateur_fidele.specialite}}" disabled/>
+                </fieldset>
+                {% else %}
+                <fieldset>
+                    <div class="mb-3 d-flex">
+                        {{form_row(form.specialite)}}
+                    </div>
+                </fieldset>
+                {% endif %}
+                {% if utilisateur_fidele.club %}
+                <fieldset>
+                    <label for="club">Club de tir : </label>
+                    <input name="club" type="text" class="inputCarteFidelite" value="{{utilisateur_fidele.club}}" />
+                </fieldset>
+                {% else %}
+                <fieldset>
+                    <label for="clubInput">Club de tir : </label>
+                    <input name="clubInput" type="text" class="inputCarteFidelite bg-white" placeholder="Votre club"/>
+                </fieldset>
+                {% endif %}
+            <div class="mb-2"></div>
+        </div>
+        <div id="carteFidelite_points">
+            <div>Vos points : {{utilisateur_fidele.points}}</div>
+        </div>
+    </div>
+    {% if datenow|date('m') >= '09' and datenow|date('m') <= '12' %} {# message affiché uniquement entre septembre et décembre #}
+        <p class="text-success mx-auto text-center"><i class="fa-solid fa-triangle-exclamation"></i> faites vous plaisir avec vos points jusqu'au 31 décembre {{datenow|date('Y')}}</p>
+    {% endif %}
+     {{form_row(form.submit)}}
+    {{form_end(form, {'render_rest': false})}}
+    <a class="btn btn-success btn-block border_radius_all_15 w-50 mx-auto box_shadow_all mb-5" href="{{path('app_PDFCarteFidelite')}}">Imprimer ma carte</a> 
+    </section>
+
+</section><br/>

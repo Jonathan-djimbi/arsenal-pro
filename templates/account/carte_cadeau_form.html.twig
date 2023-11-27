@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Carte cadeau | Arsenal Pro</title>{% endblock %}
+
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Montant du compte", 'section' : 0, 'multi' : false})) }}
+    <br>
+    <a href="{{ path('app_account') }}"><i class="fa-solid fa-arrow-left"></i> Retour vers mon espace client</a>
+    {% for message in app.flashes('success')|slice(0,1) %}
+        <div class="alert alert-success alertdisplay">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('warning')|slice(0,1) %}
+        <div class="alert alert-danger alertdisplay">{{ message }}</div>
+    {% endfor %}
+    <section>
+        <div class="d-flex">
+            <p class="mx-auto h3 text-center">Vous avez en tout <b class="h1">{{(compte.sommeCompte / 100)|number_format(2)}}€</b><br/>sur votre compte</p>
+        </div>
+    </section>
+    {{ form_start(form) }}
+    {{ form_end(form) }}
+    <div class="mt-4 mx-auto">
+        <h4 class="text-center">Cartes cadeaux bientôt disponibles</h4>
+        <img class="mx-auto w-100" id="carte_cadeau_access_compte" src="{{ asset('assets/image/cartes_cadeaux_display.jpg') }}"/>
+    </div>
+{% endblock %}

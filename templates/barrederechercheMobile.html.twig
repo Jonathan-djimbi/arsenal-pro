@@ -1,0 +1,54 @@
+{# {% if filtreMobile %}
+    {{form_start(filtreMobile)}}
+    <section class="grande_section_recherche box_shadow_all">
+        <div>
+        {% if filtreMobile %}
+            <br/>  
+            <div onclick="fermerLesFiltres()" class="btn close_newsletter_x"><i class="fa-solid text-dark fa-xmark"></i></div>
+            <section class="partie-filtres-mobile">
+                <div class="btn-block btn-filtre-mobile">CATÉGORIES<div class="arrow fa-solid fa-chevron-down"></div></div>
+                <div class="filtres" id="partie-categorie">
+                    <div>{{form_row(filtreMobile.categories)}}</div>
+                </div>
+                <div class="btn-block btn-filtre-mobile mt-3">PRIX<div class="arrow fa-solid fa-chevron-down"></div></div>
+                <div class="filtres mt-4" id="partie-prix">
+                    <div class="prixaffiche">
+                        <span id="displayMinPrixMobile"></span>
+                        <span id="displayMaxPrixMobile"></span>
+                    </div>
+                    <div class="d-flex align-items-start middle">
+                        <div class="multi-range-slider">
+                            {{form_row(filtreMobile.minprice, { 'id': 'minpriceMobile' })}}
+                            {{form_row(filtreMobile.maxprice, { 'id': 'maxpriceMobile' })}} 
+                        </div>
+                    </div>
+                </div>
+                <div class="btn-block btn-filtre-mobile mt-3">MARQUES<div class="arrow fa-solid fa-chevron-down"></div></div>
+                <div class="filtres" id="partie-marque">
+                    <input value="" id="filtrer_marque_recherche_mobile" class="form-control" placeholder="Rechercher une marque..."/>
+                    <div>{{form_row(filtreMobile.marques)}}</div>
+                </div>
+                {{form_row(filtreMobile.famille)}}
+                <div>
+                    {{form_row(filtreMobile.isOccasion)}}
+                    {{form_row(filtreMobile.isPromo)}}
+                </div>
+                <div>
+                    <div class="mt-2 btn btn-block border  text-light bg-secondary mt-3" id="reset_filtre_mobile">Réinitialiser les filtres</div>
+                </div>
+                <div class="mt-2">
+                    {{form_row(filtreMobile.submit)}}
+                </div> 
+            </section>
+        {% endif %}
+        </div>
+    </section>
+
+    <article class="searchbar homerecherche position-relative searchbar_header">        
+        <div class="barderecherche_filtrer" onclick="afficherLesFiltres()" aria-label="filtre"><p class="mx-auto my-auto">Filtrer</p></div>
+            {{form_row(filtreMobile.string)}}
+            {{form_row(filtreMobile.rechercher, {'id' : 'rechercherMobile'})}}
+    </article>
+    {{form_end(filtreMobile)}}
+
+{% endif %} #}

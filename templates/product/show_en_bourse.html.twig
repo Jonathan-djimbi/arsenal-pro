@@ -1,0 +1,254 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>{{produit.name}} en bourse | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+    {% for message in app.flashes('warning')|slice(0,1) %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+    <div class="row container produit-affichage">
+            <div class="produit_title produit_title_bourse mx-auto">
+                <h1 class="text-center">En bourse : {{ produit.name }}</h1>
+            </div>
+            <div class="cadre-photo-main">
+                {% if produit.pricepromo and produit.pricepromo != produit.price and produit.pricepromo < produit.price %}
+                    {% set gagner = (produit.price - bourse.prixFinal) / 100 %}
+                        <div class="ruban-reduction rounded-left" id="produit-page-price-promo">
+                            <span class="produit-page-price">-{{ gagner|number_format(2) }}€</span>   
+                        </div>     
+                {% endif %}
+                {% if produit.illustrationun or produit.illustrationdeux or produit.illustrationtrois %}
+                <img id="produit-photo" src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{produit.illustration }}" alt="{{ produit.name }}" class="img-fluid produit-photo-bourse ml-2" draggable="false">
+                    <div class="listephotos">
+                        {% for key, image in listephotos %}
+                        {% if image != NULL %}
+                            <img id="produit-photos" src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{image}}" alt="{{ produit.name }} image {{key}}" class="image-produit-aside">
+                        {% endif %}
+                        {% endfor %}
+                    </div>
+                {% else %}
+                <img id="produit-photo" src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{produit.illustration}}" alt="{{ produit.name }}" class="img-fluid produit-photo-bourse" draggable="false">
+                {% endif %}
+            </div>
+             <div class="mb-3 produit-section-bourse">
+                    <div class="mb-2">
+                        <div class="d-flex">
+                            <small class="text-muted text-center d-block textVertical">Prix en temps réel (euros)</small>
+                            <div id="charteBourse"></div>
+                        </div>
+                        <small class="text-muted text-center d-block" style="width:100%; max-width:900px; max-height: 400px;">Quantité(s) commandée(s) en temps réel</small>
+                    </div>
+                    <div class="my-auto ml-3">
+                        <h4 class="text-center">Clients</h4>
+                        <div id="bourseUsers">
+                            {% set quantiteAvant = null %}
+                            {% for key, quantite in bourse.quantiteArray %}
+                                {% if quantiteAvant == null %}
+                                    <p><strong>User {{key}}</strong> | {{bourse.prixArray[key]|number_format(2,',','')}} <small>EUR</small> pour {{quantite}} <small>qtés</small></p>
+                                {% else %}
+                                    <p><strong>User {{key}}</strong> | {{bourse.prixArray[key]|number_format(2,',','')}} <small>EUR</small> pour {{ -1 * (quantiteAvant - quantite)}} <small>qtés</small></p>
+                                {% endif %}
+                                {% set quantiteAvant = quantite %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+        {% if produit.illustrationun or produit.illustrationdeux or produit.illustrationtrois %}
+        <div class="d-flex col-md-9 mt-auto mb-2 bourseInfosProduit">
+        {% else %}
+        <div class="d-flex col-md-10 mt-auto mb-2 bourseInfosProduit">
+        {% endif %}
+        <div class="w-100">
+            {% if produit.isDegressif %}
+                <p class="prixdegressifshow">Prix dégressif</p>
+            {% endif %}
+            <div class="d-flex">
+                {# <p class="description caracteristique"> {{caracteristique|raw}} </p> #}
+                <div>
+                    {% if produit.isOccassion %}
+                        <p>{{ produit.subtitle }} | {{produit.category}} | Produit d'occasion</p>
+                    {% else %}
+                        <p>{{ produit.subtitle }} | {{produit.category}}</p>
+                    {% endif %}
+                    <section class="prixetquantite">
+                        <span class="produit-page-price text-success"> {{((bourse.prixFinal /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((bourse.prixFinal /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                    {# {% if produit.isForcesOrdre != true %}
+                        {% if produit.pricepromo and produit.pricepromo != produit.price and produit.pricepromo < produit.price %}
+                            {% else %}
+                            <span class="produit-page-price"> {{((produit.price /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.price /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                        {% endif %}
+                    {% endif %} #}
+                    </section>
+                </div>
+                {% if marque.photo %}
+                    <div class="ml-4">
+                        <a href="{{ path('app_produit_marque',{'name': marque.name,'id': marque.id})}}">
+                        <img id="logo_marque" src="/uploads/marques/{{marque.photo}}" alt="{{produit.marque}} logo"/></a>
+                    </div>
+                {% endif %}
+            </div>
+            {% if app.user != null %}{% if "ROLE_ADMIN" in app.user.roles %}<p>ID : {{produit.id}} </p>{% endif %}{% endif %} {# affichage produit ID pour admin #}
+            <div>{{bourse.quantiteMax}} quantité(s) avant déclenchement de la commande</div>
+            <div class="d-flex row ml-1">
+                <div><i class="fa-solid fa-circle-minus icone text-primary" id="enleverQuantiteBourse"></i></div>
+                <input type="number" min="0" id="compteurQuantiteBourse" class="mx-1" value="0"/>
+                <div><i class="fa-solid fa-circle-plus icone text-primary" id="ajouterQuantiteBourse"></i></div>
+            </div>
+            <a href="{{ path('add_to_cart_bourse', {'id' : produit.id, 'quantite' : 0}) }}" class="btn btn-primary position-relative mt-2 mb-3 btn-acheter-page-produit noshow" data-id="{{produit.id}}" data-qtm="{{bourse.quantiteMax}}"><i class="fa-solid fa-cart-arrow-down"></i> Ajouter au panier</a>
+        </div>
+        </div>
+    </div>
+    <hr> <!-- pour faire trait gris -->
+    <h3 class="text-center border_radius_all_15 text-light bg-dark py-2 px-3 d-block">La bourse aux munitions : c'est quoi ?</h3>
+    
+    <div class="mt-4 mx-auto">
+        <p>La bourse aux munitions, c'est la possibilité de :</p>
+        <ul class="list-unstyled">
+            <li><i class="fa-solid fa-check"></i> De passer des <b>précommandes</b></li>
+            <li><i class="fa-solid fa-check"></i> De manière <b>individuelle</b></li>
+            <li><i class="fa-solid fa-check"></i> En <b>grande quantité</b></li>
+            <li><i class="fa-solid fa-check"></i> Sur une <b>période de temps limité</b></li>
+        </ul>
+        <br/>
+        <b class="text-danger">Pour avoir des prix attractifs sur les munitions il faut des quantités, pour vous, comme pour nous.</b>
+        <br/>
+        <p>Soyons clair, commander 10 boîtes de munitions...</p>
+        <ul>
+            <li>Pour un tireur : Il n'y aura pas de tarif attractif en raison de la logistique, des frais de port...</li>
+            <li>Pour un armurier : Ce n'est tout bonnement pas possible de commander 10 boîtes chez un grossiste</li>
+        </ul>
+        <br/>
+        <p>En règle générale les tireurs se réunissent par club ou par groupe, pour faire des économies.</p>
+        <br/>
+        <p>Parfois il n'y a pas assez de tireurs sur une commande ou des différends de logistique (qui encaisse ? qui livre ? qui coordonne ? etc).</p>
+    </div>
+    <div class="d-flex mt-4 mx-auto sectionInfosBourse">
+        <div>
+            <img class="imageDescriptionBourseMunitions img-fluid" src="{{ asset('assets/image/bourseMunitions-image2.jpg') }}" alt="Bourse aux munition image munition 1"/>
+        </div>
+        <div class="ml-2">  
+            <h3 class="text-center border_radius_all_15 text-light bg-dark py-2 px-3 d-block">Le principe</h3>
+            <img src="{{ asset('assets/image/bourseMunitions-hr.jpg') }}" class="img-fluid mx-auto d-block" draggable="false">
+            <div>
+                <p>Le <b class="text-success">prix affiché</b> est le prix final d'achat une fois la commande déclenchée.</p><br/>
+                <p>La commande est déclenchée (donc livrable) <b>lorsque la quantité requise est atteinte.</b></p><br/>
+                <p>Le paiement se fait par empreinte de carte bleue comme pour une réservation d'hôtel (le plafond de la carte bancaire est affecté mais vous n'êtes débité environ que 30 jours après votre achat, lorsque la commande est déclenchée).</p>
+            </div>
+        </div>
+    </div>
+    <div class="d-flex mt-4 mx-auto sectionInfosBourse">
+        <div>  
+            <h3 class="text-center border_radius_all_15 text-light bg-dark py-2 px-3 d-block">Comment ça fonctionne ?</h3>
+            <img src="{{ asset('assets/image/bourseMunitions-hr.jpg') }}" class="img-fluid mx-auto d-block" draggable="false">
+            <div class="mr-2">
+                <p><i class="fa-solid fa-check"></i> Après avoir créé un compte (documents déposés), les tireurs achètent une ou plusieurs quantité(s) de munitions.</p><br/>
+                <p><i class="fa-solid fa-check"></i> Vous n'êtes pas débité tout de suite.</p><br/>
+                <p><i class="fa-solid fa-check"></i> Vous pouvez suivre l'évolution des commandes sur le graphique.</p>
+                <p><i class="fa-solid fa-check"></i> Il n'y a pas de demi-commande à demi prix d'objectif :</p>
+                <ul>
+                    <li>Soit le volume est atteint et tout le monde est livré en ayant fait une bonne affaire</li>
+                    <li>Soit le volume n'est pas atteint et la vente est annulée, tout le monde est remboursé</li>
+                </ul>
+                <p><i class="fa-solid fa-check"></i> Il n'est pas possible de se désengager d'une vente une fois les quantités précommandées.</p><br/>
+                <p><i class="fa-solid fa-check"></i> Vous ne serez pas livré dans les 48 heures, il faut compter 35 jours en moyenne.</p>
+            </div>
+        </div>
+        <div>
+            <img class="imageDescriptionBourseMunitions img-fluid" src="{{ asset('assets/image/bourseMunitions-image1.jpg') }}" alt="Bourse aux munition image munition 2"/>
+        </div>
+    </div><br/>
+    <p><u>NB </u>: Pour éviter qu'un vente ne s'annule si l'objectif de quantité n'est pas atteint (donc déclenché), le plus simple est d'en parler autour de vous. Les prix parlent d'eux-mêmes.</p>
+    <hr>
+    <div>
+        <article>
+            {# {% if produit.fournisseurs %}
+                <p>Fournisseur : {{ produit.fournisseurs.name }}</p>
+            {% endif %} #}
+            <h3>Description du produit</h3>
+            <p class="description">
+            {{ ladescription|raw }}
+            </p>
+        </article>
+    </div>
+
+    {% if (idcategory == 1 or idcategory == 2 or idcategory == 3) or (idcategory == 11 or idcategory == 12 or idcategory == 13) or produit.isForcesOrdre %}
+    <hr>
+    <section class="norme_categorie"> <!-- Catégories aux normes -->
+        {% if produit.isForcesOrdre %}
+            <h3>Pour ce produit classé <b>forces de l'ordre</b></h3>
+            <ul>
+                <li><i>Vente soumise à conditions - Livraison en Mairie ou copie de votre carte professionnelle obligatoire.</i></li>
+            </ul>
+        {% endif %}
+        {% if idcategory == 1 or idcategory == 12 %}
+            <h3>Documents à fournir pour CAT.C</h3>
+            <ul>
+                <li>Pièce d’identité en cours de validité</li>
+                <li>Certificat médical de moins d’un mois (Armes à projectile non métallique Cat.C3°)</li>
+                <ul style="margin-top: 5px;">
+                    <li>Licence de tir d’une des fédérations agréées validée avec cachet du médecin</li>
+                    <li style="list-style: none; font-weight: 500;">OU</li>
+                    <li>Carte du collectionneur</li>
+                </ul>
+            </ul>
+        {% endif %}
+        {% if idcategory == 2 or idcategory == 11 %}
+              <h3>Documents à fournir pour CAT.B</h3>
+              <ul>
+                <li>Les 2 volets originaux de l’autorisation d’acquisition et de détention, de moins de 6 mois, délivrés par la Préfecture</li>
+                <li>Pièce d’identité en cours de validité</li>
+              </ul>
+        {% endif %}
+        {% if idcategory == 3 or idcategory == 13 %}
+            <h3>Documents à fournir pour CAT.D</h3>
+            <li>Pièce d’identité en cours de validité</li>
+            <br/>
+        {% endif %}
+        <div><a class="btn-primary btn" href="{{ path('app_account_documents') }}">Fournir vos documents</a></div>
+    </section>
+    {% endif %}
+    {% if accessoires and accessoires|length > 0 %}
+    <hr>
+    <h3>Accessoire(s) compatible pour {{produit.name}}</h3>
+        <section class="les_accessoires row overflow-main mx-auto">
+           <div class="overflow-isbest">
+            {% for produit in accessoires %}
+                <div class="col-md-2">
+                    {% include 'product/single1_produit.html.twig' %}
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+    <hr>
+    <h3 class="text-center font-weight-bold">Les meilleures ventes</h3>
+    <p class="text-center">Découvrez les articles les plus vendus.</p>
+    <section class="row overflow-main mx-auto">
+        <div class="overflow-isbest">
+            {% for produit in produits %}
+                <div class="col-md-2">
+                    {% include 'product/single1_produit.html.twig' %}
+                </div>
+            {% endfor %}
+        </div><!-- /.row -->
+    </section>
+
+    {% include 'product/ajout_panier.html.twig' %}
+    {% include 'product/mail_alerte_restock_produit.html.twig' %}
+{% endblock %}
+{% block js %}
+<script>
+    const prixEvolution = JSON.parse('{{ bourse.prixArray | json_encode | raw }}');
+    const quantiteNombre = JSON.parse('{{ bourse.quantiteArray | json_encode | raw }}');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+{# <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script> chartjs pour faire des graphes #}
+{# <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-annotation/1.4.0/chartjs-plugin-annotation.js"></script>  chartjs pour faire des graphes #}
+<script src="{{ asset('assets/js/ff7986b8a05cc4968cfd486fe4e04df.js') }}?v={{version}}"></script>
+
+{% endblock %}
+
+
+
+
+
+

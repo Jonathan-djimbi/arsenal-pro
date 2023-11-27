@@ -1,0 +1,192 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Vos documents | Arsenal Pro</title>{% endblock %}
+
+{% block content %}
+{{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Gérer mes documents", 'section' : 0,
+'multi' : false})) }}
+<a href="{{ path('app_account') }}"><i class="fa-solid fa-arrow-left"></i> Retour vers mon espace client</a>
+
+<hr>
+{% for message in app.flashes('notice') %}
+<div id="topNotifDocuments" class="alert alert-info {{notifcolor}} alertdisplay notifdocuments">{{ message }}</div>
+{% endfor %}
+<b style='color: {{notifcolor}};' id="topNotifDocuments" class="notifdocuments text-center">{{notifnow | raw}}</b><br />
+<span class="mx-auto text-center text-info">* informations obligatoires minimum</span>
+{% if mesdocs != null %} {# section affichage des documents sélectionnés #}
+<section id="affichageDocument" class="noshow">
+    <div onclick="fermerPanelDocuments()" id="fermer_affichage_documents"
+        class="btn close_document_affiche_x text-light"><i class="fa-solid fa-xmark"></i></div>
+    <div class="mx-auto">
+    </div>
+    <div onclick="fermerPanelDocuments()" class="mx-auto d-block fondDocuments"></div>
+</section>
+{% endif %}
+{{ form_start(form, { 'attr' : {'onsubmit' : 'return verifJustDocs(0);'}}) }}
+<section>
+    <div class="row justify-content-center">
+        <div class="mb-2">
+            <div>{{ form_label(form.cartId) }}</div>
+            <div>{{ form_widget(form.cartId, {
+                'attr': {
+                'id': 'cartIdInput',
+                'onchange': 'affichePreviewClient(this, "preview-fichierCNI")',
+                'onclick': 'checkImageExists(this, "preview-fichierCNI")'
+                }
+                }) }}
+            </div>
+            <div class="image-preview" id="preview-fichierCNI"></div>
+        </div>
+        <div class="ml-3">
+            {{ form_label(form.cartIdDate)}}
+            {% if erreursDepot.cni == true %} {# si erreur date #}
+            {{ form_widget(form.cartIdDate, (erreursDepot.cni == true ? {'attr': {'class': 'is-invalid
+            box_shadow_all_form border_radius_all'} }))}}
+            {% else %}
+            {{ form_widget(form.cartIdDate)}}
+            {% endif %}
+        </div>
+        {% if mesdocs != null %}
+        <img data-title="Carte nationale" src="{{docsDispo[0].cni}}" data-docid="{{docsDispo[0].cni}}"
+            onclick="afficheDocumentsClient(this)" class='liendocs' />
+        {% endif %}
+    </div>
+    <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierCNI"></small>{{ form_errors(form.cartId,
+        {'attr' : {'class' : 'font-weight-bold'}})}}</div><br />
+    <div class="row justify-content-center">
+        <div class="my-auto">
+            <input type="checkbox" id="adresseCNI" name="adresseCNI" onchange="verifJustDocs(1)" />
+            <label for="adresseCNI">Adresse CNI à jour ?</label>
+        </div>
+    </div>
+    <div
+        class="row justify-content-center justificatifDomicileDocument mb-2 {% if form.justificatifDomicile.vars.errors|length <= 0 %}noshow{% endif %}">
+        <div class="mx-auto text-center">
+            <br /><b class="text-danger text-center">Adresse CNI pas à jour ? </b>
+            {{ form_label(form.justificatifDomicile)}} {{ form_widget(form.justificatifDomicile)}}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="mb-2">
+            <div>{{ form_label(form.licenceTirId) }}</div>
+            <div>{{ form_widget(form.licenceTirId, {
+                'attr': {
+                'id': 'licenceTirInput',
+                'onchange': 'affichePreviewClient(this, "preview-fichierLicence")'
+                }
+                }) }}
+            </div>
+            <div class="image-preview" id="preview-fichierLicence"></div>
+        </div>
+        <div class="ml-3">
+            {{ form_label(form.licenceTirIdDate)}}
+            {% if erreursDepot.licenceTir == true %} {# si erreur date #}
+            {{ form_widget(form.licenceTirIdDate, (erreursDepot.licenceTir == true ? {'attr': {'class': 'is-invalid
+            box_shadow_all_form border_radius_all'} }))}}
+            {% else %}
+            {{ form_widget(form.licenceTirIdDate)}}
+            {% endif %}
+        </div>
+        {% if mesdocs != null %}
+        {% for docs in docsDispo %}
+        {% if docs.licenceTir is defined %}
+        <img class='liendocs' src="{{docs.licenceTir}}" data-title="Licence de tir" data-docid="{{docs.licenceTir}}"
+            onclick="afficheDocumentsClient(this)" />
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {# todo #}
+    </div>
+
+    <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierLicence"></small>{{
+        form_errors(form.licenceTirId, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br />
+    <div class="row justify-content-center">
+        <div class="mb-2">
+            <div>{{ form_label(form.certificatMedicalId) }}</div>
+            <div>{{ form_widget(form.certificatMedicalId, {
+                'attr': {
+                'id': 'certificatMedicalInput',
+                'onchange': 'affichePreviewClient(this, "preview-fichierCertMed")'
+                }
+                }) }}
+            </div>
+            <div class="image-preview" id="preview-fichierCertMed"></div>
+
+        </div>
+        <div class="ml-3">
+            {{ form_label(form.certificatMedicalIdDate)}}
+            {% if erreursDepot.certificatMedical == true %} {# si erreur date #}
+            {{ form_widget(form.certificatMedicalIdDate, (erreursDepot.certificatMedical == true ? {'attr': {'class':
+            'is-invalid box_shadow_all_form border_radius_all'} }))}}
+            {% else %}
+            {{ form_widget(form.certificatMedicalIdDate)}}
+            {% endif %}
+        </div>
+        {% if mesdocs != null %}
+        {% for docs in docsDispo %}
+        {% if docs.cm is defined %}
+        <img class='liendocs' src="{{docs.cm}}" data-title="Certificat médical" data-docid="{{docs.cm}}"
+            onclick="afficheDocumentsClient(this)" />
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        {# todo #}
+    </div>
+
+    <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierCertMed"></small>{{
+        form_errors(form.certificatMedicalId, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br />
+    {% if siPolice.typeFDO is defined %}
+    {% if siPolice.typeFDO != null %}
+    <div class="row justify-content-center">
+        <div class="mb-2">
+            <div>{{ form_label(form.cartPoliceId) }}</div>
+            <div>{{ form_widget(form.cartPoliceId, {
+                'attr': {
+                'id': 'cartPoliceInput',
+                'onchange': 'affichePreviewClient(this, "preview-fichierPolice")'
+                }
+                }) }}
+            </div>
+            <div class="image-preview" id="preview-fichierPolice"></div>
+        </div>
+        {% if mesdocs != null %}
+        {% for docs in docsDispo %}
+        {% if docs.cp is defined %}
+        <img class='liendocs' data-title="Carte de police" src="{{docs.cp}}" data-docid="{{docs.cp}}"
+            onclick="afficheDocumentsClient(this)" />
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierPolice"></small>{{
+        form_errors(form.cartPoliceId, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br />
+    {% endif %}
+    {% endif %}
+    <div class="row justify-content-center">
+        {{ form_row(form.numero_sea) }}
+    </div>
+    <div class="row justify-content-center">
+        <input type="checkbox" name="noNumeroSIA" id="noNumeroSIA" class="mr-2 mb-2" onchange="clientNoNum(this, 0)" />
+        <label for"noNumeroSIA">Je n'ai pas de numéro SIA</label>
+    </div>
+
+    <div class="ml-3 text-center"><small class="text-danger" id="erreur_fichierJust"></small>{{
+        form_errors(form.justificatifDomicile, {'attr' : {'class' : 'font-weight-bold'}})}}</div><br />
+    <div class="row mt-4 justify-content-center">
+        {% if mesdocs != null %}
+        <div>{{ form_row(form.submit, {'label': 'Mettre mes documents à jour'}) }}</div>
+        {% else %}
+        <div>{{ form_row(form.submit, {'label': 'Envoyer mes documents'}) }}</div>
+        {% endif %}
+    </div>
+    </div>
+    <b id="notifverifMessage" class="notifdocuments text-center">{{notifverif | raw}}</b>
+    <!-- raw pour transformer le HTML côté serveur en vrai HTML statique -->
+</section>
+{{ form_end(form, {'render_rest': false}) }}
+<hr>
+{% endblock %}
+
+{% block js %}
+<script src="{{ asset('assets/js/6895ae8767800ff48b8e58e6d5cb8a4.js') }}?v={{version}}"></script>
+{% endblock %}

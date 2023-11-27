@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Mes réservations | Arsenal Pro</title>{% endblock %}
+
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Mes réservations", 'section' : 0, 'multi' : false})) }}
+    <br/>
+    <p>C'est dans cet espace que vous allez pouvoir voir toutes vos réservations. Vous avez effectué <strong>{{orders|length}}</strong> réservations en tout.</p>
+    <a href="{{ path('app_account') }}"><i class="fa-solid fa-arrow-left"></i> Retour vers mon espace client</a>
+    <hr>
+    <br/>
+    <div class="d-flex justify-content-center mx-auto">
+        <a href="{{ path('app_account_order') }}" class="mr-4 text-center"><i class="fa-solid fa-tag"></i> Mes commandes</a>
+        <a href="#" class="text-center"><i class="fa-solid fa-tag"></i> Mes réservations</a>
+    </div><br/>
+    {% if orders|length > 0 %}
+        <section>
+            {% for order in orders %}
+            <div class="border_radius_all_15 box_shadow_all mb-3">
+                <div class="text-center">
+                <br/>
+                <h4 class="text-dark badge badge-success border_radius_all_15" style="font-size : 90% !important;">{{ order.reference }}</h4><br/>
+                <span>Status de la commande : </span>
+                <b class="text-success">
+                    {% if order.state == 1 %}
+                        Paiement accepté
+                    {% elseif order.state == 2 %}
+                        Réservation accepté
+                    {% elseif order.state == -1 %}
+                        Réservation remboursée
+                    {% endif %}
+                </b>
+                <br/>
+                <span>Commande passée le : <b>{{ order.createAt|date('d/m/Y') }}</b></span><br/>
+                <span>Réservation : <b>{{ order.activite.name }}</b></span><br/>
+                {% if order.typeFormation == 0 %}
+                    <span>Type formation : <b>Fondamental F</b></span><br/>
+                {% elseif order.typeFormation == 1 %}
+                    <span>Type formation : <b>Basic B</b></span><br/>
+                {% elseif order.typeFormation == 2 %}
+                    <span>Type formation : <b>Expert E</b></span><br/>
+                {% endif %}
+                <span>Total : <b>{{ ((order.total) / 100)|number_format(2, ',', '.') }} €</b></span><br/>
+                </div><br/>
+            </div>
+            {% endfor %}
+        </section>
+        {% else %}
+        <section>
+            <h4 class="text-center">Vous n'avez effectué aucune réservation.</h4>
+        </section>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'library/header_library.html.twig' %}
+
+{% block title %}<title>{{titre}}</title>{% endblock %}
+
+{% block content %}
+    <h4 class="text-center">{{titre}} {{sousTitre|raw}}</h4><br/>
+    <div class="bibliothequeAfficherFichiers">
+        {% for key, ae in docs|sort %}
+            <div class="d-flex justify-content-center">
+                <p></p><a href="{{ path('app_library_documents_clients_one_dl', { 'src' : parent, 'fichier' : ae.src}) }}" target="_blank">{{ae.src}}</a>
+            </div>
+        {% endfor %}
+      </div>
+{% endblock %}

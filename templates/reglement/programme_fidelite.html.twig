@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Programme de fidélité | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+{{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Notre programme de fidélité", 'section' : 0, 'multi' : false })) }}
+<row class="">
+    <hr>
+    <br/>
+    <article class="border text-justify">
+        <div>
+        {% for condition in programme %}
+            <div>
+                <h4>{{condition.titre|upper}}</h4>
+                <p>{{condition.conditions|raw}}</p>
+            </div>
+        {% endfor %}
+        </div>
+    </article>
+
+</row>
+
+{% endblock %}

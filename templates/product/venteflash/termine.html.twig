@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>{{produit.name}} | Arsenal Pro</title>{% endblock %}
+{% block content %}
+    <div class="row container produit-affichage">
+            <div class="cadre-photo-main">
+                <img id="produit-photo" src="{{ (produit.illustration starts with "http") ? '' : '/uploads/' }}{{produit.illustration}}" alt="{{ produit.name }}" class="img-fluid" draggable="false">
+            </div>
+            <div>
+                <h1>{{ produit.name }}</h1>
+                {% if produit.isOccassion %}
+                    <p>{{ produit.subtitle }} | {{produit.category}} | Produit d'occasion</p>
+                {% else %}
+                    <p>{{ produit.subtitle }} | {{produit.category}}</p>
+                {% endif %}
+                <div id="venteFlashTimer" data-ptime="{{venteflash.temps|date('Y-m-d H:i:s')}}"></div>
+            </div>
+        </div>
+    <hr>
+    <h3 class="text-center font-weight-bold">Nos meilleures ventes</h3>
+    <p class="text-center">Découvrez les articles les plus vendus.</p>
+    <section class="row overflow-main mx-auto">
+        <div class="overflow-isbest">
+            {% for produit in produits %}
+                <div class="col-md-2">
+                    {% include 'product/single1_produit.html.twig' %}
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% include 'product/ajout_panier.html.twig' %}
+    {% include 'product/mail_alerte_restock_produit.html.twig' %}
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('assets/js/598ad46404464df46c64a54c-flash.js') }}"></script>
+{% endblock %}
+
+
+
+
+
+

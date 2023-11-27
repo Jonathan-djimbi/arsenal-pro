@@ -1,0 +1,100 @@
+<section class="newsletter box_shadow_all">
+    <div onclick="fermerPanelNewsletter()" id="fermer_newsletter" class="btn close_newsletter_x"><i class="fa-solid fa-xmark"></i></div>
+    <div class="newsletter_image">
+        <img src="{{asset('assets/image/newsletter.jpg')}}" alt="newsletter arsenal pro armurerie"/>
+    </div>
+    <br/>
+    <div class="my-auto">
+        <h2 class="text-center">Rejoignez les rangs d'ARSENAL PRO !</h2><br/>
+        <div class="newsletter_form mx-auto">
+            <input name="email_newsletter" type="input" placeholder="steven.wakenhut@exemple.fr" value="" id="email_newsletter" class="border_radius_all_15 box_shadow_all w-75 mx-auto text-center" required/><br/>
+            <span id="erreur_save_newsletter" class="mx-auto text-center text-danger"></span>
+            <input type="submit" value="Rejoindre" id="submit_newsletter" class="btn btn-primary border_radius_all_15 w-50 mx-auto" required/>
+            <div class="newsletter_accept text-center">
+                <i>En rejoignant, j'accepte de partager mon adresse mail</i>
+            </div>
+            <b class="mx-auto text-success" id="success_newsletter" style="display: none;">Vous avez rejoint les rangs !</b>
+        </div>
+        <br/>
+        <div class="mx-auto text-center newsletter_texte_offre">
+            <h4>Profitez pleinement de nos offres exceptionnelles !</h4>
+            <h4>Ne ratez jamais les nouveautés !</h4>
+            <h4>Obtenez des coupons de réduction !</h4>
+        </div>
+            <i class="text-center text-muted mx-auto" id="stop_newsletter">Ne plus m'afficher l'inscription à la newsletter</i>
+    </div>
+</section>
+<section onclick="fermerPanelNewsletter()" class="ecranBloque"></section>
+
+<script type="text/javascript">
+    
+    let newsletter = document.querySelector('.newsletter');
+    let ecranBloque = document.querySelector('.ecranBloque');
+ 
+    window.addEventListener("load", () => {
+        setTimeout(() => {
+            ecranBloque.style.display = "block";
+            newsletter.style.display = "block"; //affiche le panel newsletter dans 5 secondes après le chargement de la fenetre du siteweb
+        },5000);
+    })
+
+    function fermerPanelNewsletter(){
+        newsletter.remove(); //enève completement le HTML du panel newsletter
+        ecranBloque.remove();
+    }
+
+     $('#submit_newsletter').click( function() {
+            that = $(this);
+            let checkEmail = /^[a-zA-Z0-9][-\._a-zA-Z0-9]*@[a-zA-Z0-9][-\.a-zA-Z0-9]+$/; //regex, check typage email
+
+            if($('#email_newsletter').val() == ""){
+
+                //console.log("input vide");
+                $('#erreur_save_newsletter').text("Veuillez insérer votre adresse email.");
+
+            } else if(!checkEmail.test($('#email_newsletter').val()) ){
+
+                $('#erreur_save_newsletter').text("Veuillez insérer une adresse email valide.");
+
+            } else {
+
+                $('#erreur_save_newsletter').text(""); //vider le texte s'il n'y a erreur
+                $.ajax({ //Sauvegarde email à la BDD
+                    url:'{{ path('sauvegarde_newsletter_mail') }}',
+                    type: "POST",
+                    dataType: "text",
+                    data: {
+                        "email" : $('#email_newsletter').val(),
+                        "abonne" : 1
+                    },
+                    async: true,
+                    success: function (data)
+                    { 
+                        $('#submit_newsletter').remove();
+                        $('#success_newsletter').css("display", "block"); //message success
+                    }
+                });
+            }
+            return false;
+
+        });
+
+         $('#stop_newsletter').click( function() {
+            that = $(this);
+            $.ajax({ //Sauvegarde email à la BDD
+                url:'{{ path('stop_newsletter_cookie') }}',
+                type: "POST",
+                dataType: "text",
+                data : { },
+                async: true,
+                success: function ()
+                { 
+                    $('.newsletter').remove();
+                    $('.ecranBloque').remove();
+
+                }
+            });
+            return false;
+
+        });
+</script>

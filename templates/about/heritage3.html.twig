@@ -1,0 +1,110 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>À propos de l'armurerie | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+<section class="apropos">
+    <div id="engagement-arsenalpro" class="mb-5">
+        <h1 class="text-center mb-3">DÉCOUVERTE D'ARME OU HÉRITAGE</h1><br>
+        <div class="d-flex">
+            Vous avez trouvé ou hérité d’une arme et vous souhaitez la garder ou la vendre. Légalement vous aurez besoin d’un armurier, ARSENAL PRO s’occupe de tout avec vous.
+        </div>
+        <br>
+        <div class="d-flex">
+            <a href="https://www.service-public.fr/particuliers/vosdroits/N287" target="_blank">A consulter : Législation</a>
+        </div>
+        <div class="d-flex">
+            <a href="{{ asset('assets/pdf/1-mise-en-possession-SITE.pdf') }}">Notice d'informations</a>
+        </div>
+    </div>
+    <div class="row justify-content-end"><p class="text-secondary fs-6">Page 3 sur 3</p></div>
+    <div class="row justify-content-end">
+        <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage1') }}">1</a></li>
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage2') }}">2</a></li>     
+            <li class="page-item active"><a class="page-link bg-success border-secondary" href="{{ path('app_heritage3') }}">3<span class="sr-only">(current)</span></a></li>
+        </ul>
+        </nav>
+    </div>
+    <hr><br>
+    <h1 class="text-center mb-3">Conditions de détention d'une arme</h1><br><br>
+    <h2>Age minimum pour détenir une arme à feu</h2><br>
+    <p>Un mineur de plus de 9 ans peut uniquement détenir l'arme suivante de catégorie D, et ses munitions : arme ou lanceur dont le projectile est propulsé de manière non pyrotechnique avec une énergie à la bouche comprise entre 2 et 20 joules. Par exemple, un lanceur de paintball, une carabine à air comprimé.</p>
+    <p>L'enfant doit remplir les 2 conditions suivantes :</p>
+    <ul>
+        <li>Avoir l'autorisation d'une personne exerçant l'autorité parentale : Ensemble de droits et de devoirs ayant pour finalité l'intérêt de l'enfant. Elle appartient aux parents ou à une tierce personne sur décision du juge, jusqu'à la majorité ou l'émancipation de l'enfant. Elle sert à protéger l'enfant dans sa sécurité, sa santé et sa moralité, pour assurer son éducation et permettre son développement, dans le respect dû à sa personne. Non inscrite au FNIADA : fichier national des interdits d'acquisition et de détention d'armes</li>
+        <li>Avoir une licence en cours de validité de la Fédération Française de Tir ou du Balltrap</li>
+    </ul>
+    <p>Ne pas respecter cette réglementation est puni d'une amende pouvant aller jusqu'à 750 €.</p>
+    <p>Un mineur de 12 ans ou plus peut détenir une arme de catégorie C s'il remplit les 2 conditions suivantes :</p>
+    <ul>
+        <li>Avoir l'autorisation d'une personne exerçant l'autorité parentale : Ensemble de droits et de devoirs ayant pour finalité l'intérêt de l'enfant. Elle appartient aux parents ou à une tierce personne sur décision du juge, jusqu'à la majorité ou l'émancipation de l'enfant. Elle sert à protéger l'enfant dans sa sécurité, sa santé et sa moralité, pour assurer son éducation et permettre son développement, dans le respect dû à sa personne. Non inscrite au FNIADA : fichier national des interdits d'acquisition et de détention d'armes</li>
+        <li>Avoir une licence en cours de validité de la Fédération française de tir, du ball-trap ou du biathlon</li>
+    </ul>
+    <p>Ne pas respecter cette réglementation est sanctionné par une amende pouvant aller jusqu'à 750 €.</p>
+    <p>Un mineur de 12 ans ou plus peut être autorisé à détenir une arme à feu de poing à percussion annulaire à 1 coup (classée en catégorie B) s'il remplit toutes les conditions suivantes :</p>
+    <ul>
+        <li>Avoir l'autorisation d'une personne exerçant l'autorité parentale : Ensemble de droits et de devoirs ayant pour finalité l'intérêt de l'enfant. Elle appartient aux parents ou à une tierce personne sur décision du juge, jusqu'à la majorité ou l'émancipation de l'enfant. Elle sert à protéger l'enfant dans sa sécurité, sa santé et sa moralité, pour assurer son éducation et permettre son développement, dans le respect dû à sa personne. Non inscrite au FNIADA : fichier national des interdits d'acquisition et de
+    détention d'armes attestant que l'arme est détenue pour la pratique du tir sportif par
+    un mineur ne participant pas à des compétitions internationales</p>
+    <ul>
+        <li>Être membre d'une association sportive agréée</li>
+        <li>Avoir une licence en cours de validité de la Fédération Française de Tir</li>
+        <li>Avoir l'avis favorable de la Fédération Française de Tir</li>
+    </ul>
+    <p>Le jeune peut détenir au maximum 3 armes à feu de poing à percussion annulaire à 1 coup.
+    Ne pas respecter cette réglementation est sanctionné par une amende pouvant aller jusqu'à
+    750 €.</p><br><hr><br>
+
+    <h2>Classification des armes</h2>
+    <p>Les armes sont classées en 4 catégories en fonction de leur dangerosité :</p>
+    <ul>
+        <li>Catégorie A : armes interdites sauf dérogation</li>
+        <li>Catégorie B : armes soumises à autorisation</li>
+        <li>Catégorie C : armes soumises à déclaration</li>
+        <li>Catégorie D : armes pouvant être achetées et détenues librement</li>
+    </ul><br>
+    <h3>Catégorie A, (A1/A2)</h3>
+    <p>Il est interdit d'acquérir ou de détenir une arme classée en catégorie A, sauf exceptions. Les armes de catégorie A sont certaines armes à feu (catégorie A1) et les matériels de guerre (catégorie A2). Dans ce cas voir : L’intéressé NE parvient / souhaite PAS conserver l’arme.</p>
+    <h3>Catégorie B</h3>
+    <p>Vous devez remplir toutes les conditions suivantes pour détenir une arme de catégorie B pour pratiquer le tir sportif :</p>
+    <ul>
+        <li>Être majeur ou, si vous êtes mineur, être un tireur sélectionné participant à des compétitions internationales ou avoir au moins 12 ans</li>
+        <li>Ne pas être inscrit au FNIADA : fichier national des interdits d'acquisition et de détention d'armes</li>
+        <li>Ne pas avoir sur votre bulletin n°2 du casier judiciaire de condamnations pour certaines infractions : meurtre, assassinat, tortures, actes de barbarie, violences volontaires, viol, agressions sexuelles, trafic de stupéfiants... La demande de bulletin est faite par la préfecture.</li>
+        <li>Ne pas avoir un comportement laissant craindre une utilisation de l'arme dangereuse pour vous-même ou pour autrui</li>
+        <li>Ne pas être soumis à une interdiction de détenir ou de porter une arme dans le cadre d'une ordonnance de protection de victimes de violences</li>
+        <li>Ne pas avoir été où être admis en soins psychiatriques sans consentement sauf si vous présentez un certificat médical de moins d'1 mois. Le certificat médical doit être délivré par un des professionnels de santé suivants : psychiatre praticien, enseignant hospitalier, médecin de l'infirmerie psychiatrique de la préfecture de police pour Paris, expert agréé par les tribunaux, médecin spécialisé</li>
+        <li>Être dans un état physique ou psychique compatible avec la détention d'une arme de catégorie B</li>
+        <li>Présenter une licence en cours de validité de la Fédération Française de Tir (pour certaines armes de la catégorie B)</li>
+    </ul>
+    <h3>Catégorie C</h3>
+    <p>Vous devez lui remettre un dossier constitué des documents suivants :</p>
+    <ul>
+        <li>Une copie de la pièce d’identité du déclarant</li>
+        <li>Une copie du permis de chasser valider de l’année en cours ou de l’année précédente</li>
+        <li>Ou une copie d’une licence de tir validée (tir sportif, biathlon ou ball-trap)</li>
+        <li>Ou un certificat médical attestant que votre état de santé physique et psychique est compatible avec la détention des armes de catégorie C, ou permis de chasser délivré en France ou à l'étranger, avec le titre de validation annuel ou temporaire ou le titre de validation de l'année précédente, ou licence en cours de validité d'une fédération sportive ayant reçu une délégation ministérielle pour la pratique du tir, du ball-trap ou du biathlon (+ attestation certifiant que vous pratiquez l'un de ces sports si la fédération a également une délégation ministérielle pour d'autres disciplines sportives), ou carte de collectionneur</li>
+    </ul>
+    <p>L'armurier ou le courtier se charge de transmettre votre dossier à la préfecture de votre domicile. Si vous avez été admis en soins psychiatriques sans consentement, le préfet peut vous demander de fournir un certificat médical de moins d'1 mois délivré par un psychiatre.</p>
+    <h2>Arme à feu des catégories A, B ou C neutralisé</h2>
+    <p>Pour acheter une arme des catégories A, B ou C neutralisée, vous devez remplir les 3 conditions suivantes :</p>
+    <ul>
+        <li>Ne pas être inscrit au FNIADA : fichier national des interdits d'acquisition et de détention d'armes</li>
+        <li>Ne pas avoir sur votre bulletin n°2 du casier judiciaire de condamnations pour certaines infractions. Par exemple, meurtre, assassinat, violence volontaire, viol, agression sexuelle, trafic de stupéfiant... C'est la préfecture qui fait la demande de bulletin.</li>
+        <li>Abstenez-vous de manifester des comportements qui suscitent la crainte que votre utilisation de l'arme puisse entraîner des blessures à vous-même ou à autrui.</li>
+    </ul>
+    <p>Toute arme des catégories A, B ou C neutralisée doit être détruite ou rendue dans un délai de 3 mois si vous ne souhaitez pas la conserver.</p>
+    <br>
+    <div class="row justify-content-end">
+        <nav aria-label="...">
+        <ul class="pagination pagination-sm">
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage1') }}">1</a></li>
+            <li class="page-item"><a class="page-link text-secondary" href="{{ path('app_heritage2') }}">2</a></li>     
+            <li class="page-item active"><a class="page-link bg-success border-secondary" href="{{ path('app_heritage3') }}">3<span class="sr-only">(current)</span></a></li>
+        </ul>
+        </nav>
+    </div>
+</section>
+{% endblock %}

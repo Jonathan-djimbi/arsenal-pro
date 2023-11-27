@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>Arsenal Pro - Armurerie en Haute-Savoie à Thonon proche de Annecy</title>{% endblock %}
+{% block sectionDrapeau %} {% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+{% if inscrit_newsletter == false %}
+    {{include('/newsletter.html.twig')}}
+{% endif %}
+    <!-- textes en sous du carousel -->
+    <h4 class="text-center mx-auto my-4">Votre fidélité récompensée : -{{fidelite.remise}}% sur tout le site à partir de {{fidelite.montantPanier /100}} €</h4><br/>
+    <h3 class="text-center font-weight-bold">Meilleures ventes</h3>
+    <section class="row overflow-main mx-auto">
+        <div class="overflow-isbest" id="overflow-allisbest">
+            {% for product in products %}
+                {% if (product.isOccassion and product.quantite <= 0) == false %}
+                    <div class="col-md-2">
+                        {% include 'product/single_produit.html.twig' %}
+                    </div>
+                {% endif %}
+            {% endfor %}                                                                   
+        </div><!-- /.row -->
+        <div id="scroll-isbest">
+            <div class="scroll-isbest-gauche"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="scroll-isbest-droite"><i class="fa-solid fa-chevron-right"></i></div>
+        </div> 
+    </section>
+    <div class="featurette-divider"></div>
+    
+    <div class="row featurette">
+        <div class="mx-auto position-relative text-light">
+            <h2 class="featurette-heading text-center">Importation-Exportation ARSENAL Pro</h2>
+            <p class="h4 w-75 mx-auto text-justify"> Se charge d’aller chasser des armes historiques ou peu présente sur le territoire dans d’autres pays.
+                Il est aussi possible de traiter vos importations - exportations d’armes, du vendeur étranger jusqu’à l’acquéreur 
+                sur le territoire et inversement. Le passage en douane est réalisé par ARSENAL Pro.</p>
+        </div>
+        <img src="{{ asset('/assets/image/armurerie-hq.jpg') }}" class="position-absolute" alt="Armurerie Haute-Savoie Suisse Arsenal Pro" draggable="false">
+    </div>
+
+    <hr class="featurette-divider featurette-divider-bold">
+    <h3 class="text-center font-weight-bold">Découvrez nos produits</h3>
+    <section class="row overflow-main mx-auto">
+        <div class="overflow-isbest" id="overflow-allproduits">
+            {% for product in allproduits|slice(allproduits|length - 20, allproduits|length) %} {# tous les produits #}
+                {% if (product.isOccassion and product.quantite <= 0) == false %} {# pas afficher occasion avec 0 quantite #}
+                    <div class="col-md-2">
+                        {% include 'product/single_produit.html.twig' %}
+                    </div>
+                {% endif %}
+            {% endfor %}  
+            {# {% if allproduits|length >= 20 %}  
+            <a class="mx-auto my-auto text-decoration-none" href="{{ path('app_products') }}">
+            <div class="overflow-allproduits-home">
+                <div>Voir plus</div>
+                <i class="fa-solid fa-plus"></i>
+            </div></a>
+            {% endif %}                                                                  #}
+        </div><!-- /.row -->
+        <div id="scroll-isbest">
+            <div class="scroll-isbest-gauche"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="scroll-isbest-droite"><i class="fa-solid fa-chevron-right"></i></div>
+        </div> 
+    </section>
+    <div class="featurette-divider"></div>
+
+    <div class="row featurette">
+            <div class="mx-auto position-relative text-light">
+            <h2 class="featurette-heading text-center">Location d’armes</span></h2>
+            <p class="h4 w-75 mx-auto text-justify">Un tir occasionnel dans une discipline ou le flou total dans une jungle de fabricants. 
+                L’armurerie met en place la possibilité d’essayer des armes et les matériels disponibles sur le site,
+                sans toucher au matériel neuf. Sur rendez-vous et sur demande,
+                du matériel est proposé à la location pour vous permettre de faire votre choix...</p>
+            </div>
+            <img src="{{ asset('/assets/image/pexels-specna-arms-886454.jpg') }}" class="position-absolute" alt="Armurerie Haute-Savoie Thonon Arsenal Pro" draggable="false">
+    </div>
+              
+    <hr class="featurette-divider featurette-divider-bold">
+    <h3 class="text-center font-weight-bold">En vedettes</h3>
+     <section class="row overflow-main mx-auto">
+        <div class="overflow-isbest" id="overflow-allproduits-promo">
+            {% for product in promoproduits|slice(promoproduits|length - 20, promoproduits|length) %} {# produit en promo #}
+            {% if (product.isOccassion and product.quantite <= 0) == false %}
+                <div class="col-md-2">
+                    {% include 'product/single_produit.html.twig' %}
+                </div>
+            {% endif %}
+            {% endfor %}
+            {% if promoproduits|length >= 20 %}  
+            <a class="mx-auto my-auto text-decoration-none" href="{{ path('app_products') }}">
+            <div class="overflow-allproduits-home">
+                <div>Voir plus</div>
+                <i class="fa-solid fa-plus"></i>
+            </div></a>
+            {% endif %}                                                                 
+        </div><!-- /.row -->
+        <div id="scroll-isbest">
+            <div class="scroll-isbest-gauche"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="scroll-isbest-droite"><i class="fa-solid fa-chevron-right"></i></div>
+        </div> 
+    </section>
+
+    <div class="featurette-divider"></div>
+
+    <div class="row featurette">
+            <div class="mx-auto position-relative text-light">
+            <h2 class="featurette-heading text-center">L'armurerie</span></h2>
+            <p class="h4 w-75 mx-auto text-justify">L'objectif de l’armurerie est de proposer les meilleurs produits disponibles pour la pratique sportive et en milieu professionnel au meilleur prix, en privilégiant le service et la qualité.</p>
+            </div>
+            <img src="{{ asset('/assets/image/pexels-nur-andi-ravsanjani-gusma-3678428.jpg') }}" class="position-absolute" alt="Armurerie Haute-Savoie Annemasse Arsenal Pro" draggable="false">
+    </div>
+    {% include 'product/ajout_panier.html.twig' %}
+{% endblock %}
+
+

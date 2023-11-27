@@ -1,0 +1,63 @@
+<article class="alerte_restock_produit border_radius_all_15 my-auto mx-auto box_shadow_all">
+    <div onclick="fermerAlerteRestockPanel()" class="btn close_panier_x"><i class="fa-solid fa-xmark"></i></div>
+    <div class="my-auto zone_champs_email">
+        <h4 class="text-center mt-3 mx-auto" style="width: 85%; height: auto;">Mail alerte restock pour <b id="titre_produit_alerte_restock"></b></h4>        
+        <div>
+            <input name="emailalerte" id="email_alerte_restock" class="border_radius_all box_shadow_all mx-auto w-75 d-block text-center" style="height: 35px;" size="100" type="email" placeholder="Votre adresse mail ici *" value=""/>
+            <span id="erreur_save_alerte" class="text-danger text-center mx-auto d-block"></span>
+        </div><br/>
+        <div class="d-flex justify-content-around">
+            <div class="alerte_restock_envoyer btn-primary btn border_radius_all_15"><i class="fa-solid fa-bell"></i> Sauvegarder l'alerte</div>
+        </div>
+        <br/><span class="mx-auto text-center text-success noshow" id="success_email_sent">Votre alerte a été enregistrée !</span>
+    </div>
+</article>
+
+<script type="text/javascript">
+    function fermerAlerteRestockPanel(){
+        document.querySelector('.alerte_restock_produit').classList.remove('show');
+        document.getElementById('email_alerte_restock').value = "";
+    }
+
+    function ouvrirAlerteRestockPanel(but){
+        document.querySelector('.alerte_restock_produit').classList.add('show');
+        let produitName = but.dataset.name;
+        document.getElementById('titre_produit_alerte_restock').innerText = produitName; //remplacer le titre du AlerteRestockPanel par le nom du produit
+    }
+
+    $('.alerte_restock_envoyer').click( function() {
+            that = $(this);
+            let checkEmail = /^[a-zA-Z0-9][-\._a-zA-Z0-9]*@[a-zA-Z0-9][-\.a-zA-Z0-9]+$/; //regex
+            if($('#email_alerte_restock').val() == ""){
+
+                //console.log("input vide");
+                $('#erreur_save_alerte').text("Veuillez insérer votre adresse email.");
+
+            } else if(!checkEmail.test($('#email_alerte_restock').val()) ){
+
+                $('#erreur_save_alerte').text("Veuillez insérer une adresse email valide.");
+
+            } else {
+
+                $('#erreur_save_alerte').text(""); //vider le texte s'il n'y a erreur
+                let produitId = $('#alerte_restock_button')[0].dataset.id;
+                $.ajax({ //Sauvegarde email à la BDD
+                    url:'{{ path('sauvegarde_alerte_restock_produit_mail') }}',
+                    type: "POST",
+                    dataType: "text",
+                    data: {
+                        "id": produitId,
+                        "email" : $('#email_alerte_restock').val()
+                    },
+                    async: true,
+                    success: function (data)
+                    { 
+                        $('#success_email_sent').removeClass('noshow'); //message success
+                        $('#success_email_sent').css('display','block'); //message success
+                    }
+                });
+            }
+            return false;
+
+        });
+</script> 

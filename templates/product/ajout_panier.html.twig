@@ -1,0 +1,55 @@
+<article class="ajout_panier_success border_radius_all_15 my-auto mx-auto box_shadow_all">
+    <h4 class="text-center mt-3 mx-auto" style="width: 85%; height: 15%;">Le produit <b id="titre_produit_panier">-</b> a été ajouté au panier ! </h4>
+    <div onclick="fermerPanierSuccessPanel()" class="btn close_panier_x"><i class="fa-solid fa-xmark"></i></div>
+    <p class="text-center">Ces articles peuvent vous intéresser !</p>
+    <section class="mb-4">
+    <div class="overflow-isbest">
+        {% if products is not defined %}
+            {% set products = produits %}
+        {% endif %}
+        {% for product in products|slice(0,50) %}
+            {% if (product.isOccassion and product.quantite <= 0) == false %}
+                    <div class="col-md-2">
+                        {% include 'product/single_produit.html.twig' %}
+                    </div>
+                {% endif %}
+        {% endfor %}
+    </div>
+    <div id="scroll-isbest">
+            <div class="scroll-isbest-gauche"><i class="fa-solid fa-chevron-left"></i></div>
+            <div class="scroll-isbest-droite"><i class="fa-solid fa-chevron-right"></i></div>
+    </div> 
+    </section>
+    <div class="d-flex justify-content-around">
+        <div onclick="fermerPanierSuccessPanel()" class="close_panier_success btn-primary btn border_radius_all_15">Continuer mes achats</div>
+        <a href="{{ path('cart') }}" class="close_panier_success btn-primary btn border_radius_all_15">Voir mon panier</a>
+    </div>
+</article>
+
+<script type="text/javascript">
+    function fermerPanierSuccessPanel(){
+        document.querySelector('.ajout_panier_success').classList.remove('show');
+    }
+
+    $('.ajoutPanier').click( function(){
+            that = $(this);
+            $('#titre_produit_panier').text(that[0].dataset.name);
+            $('#cart_quantite').text(parseInt($('#cart_quantite').text()) + 1); //remplacer en temps réel quantite panier icone
+            $('.ajout_panier_success').addClass('show');
+            let produitId = that[0].dataset.id;
+            $.ajax({ //A sauvegarde du panier sans retourner vers la page du panier
+                url:'{{ path('add_to_cart_from_panier') }}',
+                type: "POST",
+                dataType: "json",
+                data: {
+                    "id": produitId
+                },
+                async: true,
+                success: function (data)
+                { // 
+                }
+            });
+            return false;
+
+        });
+</script> 

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Mot de passe oublié | Arsenal Pro</title>{% endblock %}
+
+{% block content %}
+    <div class="block-small">
+        {% for message in app.flashes('notice') %}
+            <div class="alert alert-info">{{ message }}</div>
+        {% endfor %}
+        <form method="post">
+            <h1 class="h3 mb-3 font-weight-normal">Réinitialiser mon mot de passe</h1>
+            <input type="email" name="email" id="inputEmail" class="form-control border_radius_all box_shadow_all" placeholder="Votre adresse email" required autofocus>
+
+            <button class="btn btn-lg btn-info btn-block mt-3 border_radius_all mx-auto" type="submit">
+                Valider
+            </button>
+            <hr>
+            <p class="text-center">Ou souhaitez-vous <a href="{{ path('app_login') }}">vous connecter</a> ?</p>
+        </form>
+    </div>
+{% endblock %}
+                                                                    

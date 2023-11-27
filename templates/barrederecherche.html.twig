@@ -1,0 +1,60 @@
+{{form_start(filtre)}}
+<section class="grande_section_recherche box_shadow_all">
+    <div>
+    {% if filtre %}
+        <br/>
+        <div class="mt-2">
+            {{form_row(filtre.submit)}}
+            <div class="mt-2 btn btn-block border text-light bg-secondary mt-3" id="reset_filtre">Réinitialiser les filtres</div>
+        </div>
+        <div onclick="fermerLesFiltres()" class="btn close_filtre close_newsletter_x"><i class="fa-solid text-dark fa-xmark"></i></div>
+        <section class="partie-filtres">
+            <div class="btn-block btn-filtre">CATÉGORIES<div class="arrow fa-solid fa-chevron-down"></div></div>
+            <div class="filtres" id="partie-categorie">
+                <div>{{form_row(filtre.categories)}}</div>
+            </div>
+            <div class="btn-block btn-filtre mt-3">PRIX<div class="arrow fa-solid fa-chevron-down"></div></div>
+            {{form_row(filtre.orderPrices)}}
+            <div class="filtres mt-2" id="partie-prix">
+                <div class="prixaffiche">
+                    <span id="displayminprix"></span>
+                    <span id="displaymaxprix"></span>
+                </div>
+                <div class="d-flex align-items-start middle">
+                    <div class="multi-range-slider">
+                        {{form_row(filtre.minprice)}}
+                        {{form_row(filtre.maxprice)}} 
+                    </div>
+                </div>
+            </div>
+            <div class="btn-block btn-filtre mt-3">MARQUES<div class="arrow fa-solid fa-chevron-down"></div></div>
+            <div class="filtres" id="partie-marque">
+                <input value="" id="filtrer_marque_recherche" class="form-control" placeholder="Rechercher une marque..."/>
+                <div>{{form_row(filtre.marques)}}</div>
+            </div>
+            <div id="btn-filtre-calibres-uniq" class="">
+                <div class="btn-block btn-filtre mt-3">CALIBRES<div class="arrow fa-solid fa-chevron-down"></div></div>
+                <div class="filtres" id="partie-calibres">
+                    {{form_row(filtre.calibre)}}
+                </div>
+            </div>
+                {{form_row(filtre.subCategories)}}
+                {{form_row(filtre.famille)}}
+            <div>
+                {{form_row(filtre.isOccasion)}}
+                {{form_row(filtre.isPromo)}}
+                {{form_row(filtre.isFDO)}}
+            </div> 
+        </section>
+    {% endif %}
+    </div>
+</section>
+{{form_end(filtre)}}
+ <article class="searchbar homerecherche position-relative searchbar_header">
+        <div class="barderecherche_filtrer" onclick="afficherLesFiltres()" aria-label="filtre"><p class="mx-auto my-auto">Filtrer</p></div>
+        {{form_start(recherche, { 'attr' : {'class' : 'd-flex'}})}}
+            {{form_row(recherche.string)}}
+            {{form_row(recherche.rechercher)}}
+        {{form_end(recherche)}}
+
+</article>

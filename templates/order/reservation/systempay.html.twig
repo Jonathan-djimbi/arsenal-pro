@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Paiement de ma réservation | Arsenal Pro</title>{% endblock %}
+  
+{% block content %}
+     <script 
+        src="{{ endpoint }}/static/js/krypton-client/V4.0/stable/kr-payment-form.min.js" 
+        kr-public-key="{{ publicKey }}" 
+        kr-post-url-success="{{ path("app_reservation_order_validate",{ 'reference': referenceId}) }}">
+    </script>
+    <!-- add google font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+  <!-- payment form -->
+  {# {{ dump(response["answer"]["formToken"]) }} #}
+  <section class="zone_paiement">
+    <section class="zone_liste_produits_systempay">
+      <div>
+        <div class="liste_produits_systempay">
+          <div>
+            <img width="120" height="120" src="/uploads/{{activite.illustration}}"/>
+          </div>
+          <div class="my-auto">
+            <b class="my-auto w-100">{{activite.name}}</b><br/>
+            <b class="my-auto w-100">Prix : {{(activite.price / 100)|number_format(2)}}€</b>
+          </div>
+        </div>
+        <hr>
+    </section>
+    <br/>
+    <div>
+    <div id="form_paiement" class="kr-embedded d-block bg-light border_radius_all mx-auto box_shadow_all p-4" kr-form-token="{{ response["answer"]["formToken"] }}">
+        <!-- payment form fields -->
+        <div class="form-group">
+          <label for="">Carte de crédit</label>
+          <div class="kr-pan form-control"></div>
+        </div>
+        <div class="form-group">
+          <label for="">Date d'expiration</label>
+          <div class="kr-expiry form-control"></div>
+        </div>
+        <div class="form-group">
+          <label for="">Nom sur la carte</label>
+          <div class="kr-card-holder-name form-control"></div>
+        </div>
+        <div class="form-group">
+          <label for="">Code de sécurité</label>
+          <div class="kr-security-code form-control"></div>
+        </div>
+
+        <!-- payment form submit button -->
+        <button class="kr-payment-button btn btn-primary mx-auto w-75 d-block"></button>
+
+        <!-- error zone -->
+        <div class="kr-form-error"></div>
+        </div>
+        <div class="mx-auto">
+          <img id="image_cartes" src="/assets/image/systempaybp.png" alt="moyen de paiement securise"/>
+        </div>
+      </div>
+    </section>
+
+        <!-- add loader -->
+      <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', function() {
+          KR.button.onClick(function() {
+            var spinner = document.createElement('span');
+            spinner.className = 'spinner-grow spinner-grow-sm ml-2';
+            document.querySelector('.kr-payment-button').appendChild(spinner);
+            return true;
+          });
+        });
+      </script>
+
+{% endblock %}
+

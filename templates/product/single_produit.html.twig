@@ -1,0 +1,55 @@
+<div class="product-item text-center">
+{# {% if product.quantite <= 0%}
+    <div class="infocarre" id="precommandeinfo">Pré-commande</div>
+{% else %}
+    <div class="infocarre" id="stockinfo">En stock</div>
+{% endif %} #}
+    <a href="{{ path('app_produit',{'slug': product.slug}) }}">
+        <img loading="lazy" src="{{ (product.illustration starts with "http") ? '' : '/uploads/'  }}{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid" draggable="false">
+        {# {% if product.isDegressif %}
+        <p class="prixdegressif overflow-prixdegressif">Prix dégressif</p>
+        {% endif %}  #}
+    </a>
+    <h5>{{ product.name }}</h5>
+    <span class="product-subtitle"></span>
+    {% if product.pricepromo and product.pricepromo != product.price and product.pricepromo < product.price %}
+        {% set gagner = (product.price - product.pricepromo) / 100 %}
+        {% if (100 - ((product.pricepromo)/(product.price)) * 100) >= 5 %}
+            <div class="ruban-reduction rounded-right">
+                <p class="h5">-{{ gagner|number_format(2) }}€</p>
+            </div>
+        {% endif %}
+        <section class="section-ensous">
+            <article class="position-relative d-flex produit-price-section">
+                {% if product.isForcesOrdre != true %}
+                    <span class="produit-price d-flex text-success prixpromo"> {{((product.pricepromo /100)|number_format(2)) }} €</span>
+                    <span class="produit-price prixbarre d-flex flex-row-reverse"> {{((product.price /100)|number_format(2)) }} €</span>
+                {% else %}
+                    <span class="produit-price single-produit">Forces de l'ordre</span>
+                {% endif %}
+            </article>
+            <article class="d-flex flex-row justify-content-center mx-auto w-75 mb-2">
+                <a class="btn text-primary produit-panier" href="{{ path('add_to_cart',{'id': product.id}) }}" ><i class="fa-solid fa-cart-arrow-down"></i></a>
+                <a class="btn text-primary produit-panier" href="{{ path('app_produit',{'slug': product.slug}) }}" ><i class="fa-solid fa-eye"></i></a>
+                <div class="btn text-primary produit-panier ajoutPanier" data-id='{{ product.id }}' data-name='{{ product.name }}'><i class="fa-solid fa-plus"></i></div>
+                {# <a class="btn text-primary produit-panier" href="{{ path('add_to_cart',{'id': product.id}) }}" ><i class="fa-solid fa-plus"></i></a> #}
+            </article>
+        </section>
+        {% else %}
+        <section class="section-ensous">
+            <article class="produit-price-section">
+                {% if product.isForcesOrdre != true %}
+                    <span class="produit-price single-produit"> {{((product.price /100)|number_format(2)) }} €</span>
+                {% else %}
+                    <span class="produit-price single-produit">Forces de l'ordre</span>
+                {% endif %}
+            </article>
+            <article class="d-flex flex-row justify-content-center mx-auto w-75 mb-2">
+                <a class="btn text-primary produit-panier" href="{{ path('add_to_cart',{'id': product.id}) }}" ><i class="fa-solid fa-cart-arrow-down"></i></a>
+                <a class="btn text-primary produit-panier" href="{{ path('app_produit',{'slug': product.slug}) }}" ><i class="fa-solid fa-eye"></i></a>
+                <div class="btn text-primary produit-panier ajoutPanier" data-id='{{ product.id }}'  data-name='{{ product.name }}'><i class="fa-solid fa-plus"></i></div>
+                {# <a class="btn text-primary produit-panier" href="{{ path('add_to_cart',{'id': product.id}) }}" ><i class="fa-solid fa-plus"></i></a> #}
+            </article>
+        </section>
+    {% endif %}
+</div>

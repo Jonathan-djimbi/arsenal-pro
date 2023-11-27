@@ -1,0 +1,249 @@
+<?php
+
+namespace App\Controller;
+
+use App\Classe\Mail;
+use App\Classe\Search;
+use App\Entity\Product;
+use App\Entity\Produit;
+use App\Entity\Category;
+use App\Entity\Contact;
+use App\Entity\Marque;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SearchType;
+use App\Form\ContactType;
+use App\Service\MailerService;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Mailer;
+use Symfony\Component\Routing\Annotation\Route;
+
+class ProductController extends AbstractController
+{
+    private EntityManagerInterface $entityManager;
+
+    public function __construct(EntityManagerInterface $entityManager)
+    {
+        $this->entityManager = $entityManager;
+    }
+
+    public function verifMessageContact($visiteur, $messagescontacts, $contactez, $datenow, $formcontact, $mailing){ //fonctionne uniquement si paramètres sont définis dans la fonction mère
+      	$mail = new Mail();
+	if(count($messagescontacts) >= 3 && strtotime($messagescontacts[0]->getFaitle()) === strtotime($datenow)){
+            $this->addFlash('warning', "Désolé vous avez dépassé la limite d'envoi qui est de 3 messages par jours.");
+        } else {
+            $contactez->setFaitle(date('Y-m-d'));
+            $contactez->setVisiteur($visiteur);
+            if($this->getUser()){
+                $contactez->setUser($this->getUser());
+            }
+            $contactFormData = $formcontact->getData();
+            $subject = 'Demande de recherche de produit sur votre site de ' . $contactFormData->getEmail();
+            $content = $contactFormData->getNom() . ' vous a envoyé le message suivant: ' . $contactFormData->getDescription();
+            $mail->seect: $subject, content: $content);
+            $this->addFlash('notice', 'Merci de nous avoir contacté. Notre équipe va vous répondre dans les meilleurs délais.');
+            $this->entityManager->persist($contactez); // création ligne BDD dans la table $contactez
+            $this->entityManager->flush(); //MAJ BDD
+        }
+    }
+
+    public function verifSiImage($prod){
+        foreach($prod as $unProduit){
+            if(!file_exists("./../public/uploads/" . $unProduit->getIllustration())){ //il faut set perm fichier 755
+                $unProduit->setIllustration("error/img-error.jpg");
+                // $unProduit->setIllustrationUn("error/img-error.jpg");
+                // $unProduit->setIllustrationDeux("error/img-error.jpg");
+                // $unProduit->setIllustrationTrois("error/img-error.jpg");
+                //no entityManager->flush() pas de MAJ BDD, juste remplacer pendant une session client
+            }
+        }
+    }  
+    public function saveRecherche($search, $titre){
+        if(!empty($search->string)){
+            $fichier_donnees = fopen("./../sauvegarde_recherche.txt", "a+"); //ouverture fichier en mode écriture
+            if (!$fichier_donnees){
+                die ("Erreur : sauvegarde pas enregistré.");
+            }
+            fwrite($fichier_donnees,"Recherche par " . $titre . " : " .$search->string."\n"); //AJOUT DONNE DANS FICHIER
+            fclose($fichier_donnees);
+        }
+    }
+
+    #[Route('/nos-produits', name: 'app_products')]
+     public function index(Request $request, MailerService $mailing): Response
+    {
+        $titre = "La boutique";
+        $visiteur = $_SERVER['REMOTE_ADDR'];
+        $datenow =  date('Y-m-d');
+        $produits = $this->entityManager->getRepository(Produit::class)->findProduit();
+
+        $search = new Search();
+        $contactez = new Contact();
+        $form = $this->createForm(\App\Form\SearchType::class, $search);
+        $formcontact = $this->createForm(ContactType::class, $contactez); //pour la page de contact intégré depuis la page de produits si aucun produit n'est trouvé
+        $messagescontacts = $this->entityManager->getRepository(Contact::class)->findBy(['visiteur'=> $visiteur, 'faitle' => $datenow], ['id'=>'desc']); //orderby id
+        $form->handleRequest($request);
+        $formcontact->handleRequest($request);
+        $searchnotfound = false;
+        $this->verifSiImage($produits);
+        if ($form->isSubmitted() && $form->isValid()) { //requete recherche produit
+            // dd($search);
+                $produits = $this->entityManager->getRepository(Produit::class)->findWithSearch($search,0);
+                // dd($produits);
+                if(count($produits) <= 0){ //si rien à été trouvé alors
+                    $searchnotfound = true;
+                } 
+                $this->saveRecherche($search, $titre);
+        }
+        else if($formcontact->isSubmitted() && $formcontact->isValid()){ //requete contact
+            $this->verifMessageContact($visiteur, $messagescontacts, $contactez, $datenow, $formcontact, $mailing);
+        }
+
+
+        return $this->render('product/index.html.twig', [
+            'titre' => $titre,
+            'produits' => $produits,
+            'pasderecherche' => $searchnotfound,
+            'form'=> $form->createView(),
+            'formcontact' => $formcontact->createView(),
+        ]);
+    }
+
+    #[Route('/nos-produits-occasion', name: 'app_occasion')]
+    function occassion(Request $request, MailerService $mailing): Response
+   {
+       $titre = "La boutique d'occasion";
+       $visiteur = $_SERVER['REMOTE_ADDR'];
+       $datenow =  date('Y-m-d');
+       $produits = $this->entityManager->getRepository(Produit::class)->findOccassion();
+
+       $search = new Search();
+       $contactez = new Contact();
+       $form = $this->createForm(\App\Form\SearchOccasionType::class, $search);
+       $formcontact = $this->createForm(ContactType::class, $contactez); //pour la page de contact intégré depuis la page de produits si aucun produit n'est trouvé
+       $messagescontacts = $this->entityManager->getRepository(Contact::class)->findBy(['visiteur'=> $visiteur, 'faitle' => $datenow], ['id'=>'desc']); //orderby id
+       $form->handleRequest($request);
+       $formcontact->handleRequest($request);
+       $searchnotfound = false;
+       $this->verifSiImage($produits);
+
+       if ($form->isSubmitted() && $form->isValid()) { //requete recherche produit
+           // dd($search);
+               $produits = $this->entityManager->getRepository(Produit::class)->findWithSearch($search,1);
+               // dd($produits);
+               if(count($produits) <= 0){ //si rien à été trouvé alors
+                   $searchnotfound = true;
+               }
+               $this->saveRecherche($search, $titre);
+       }
+       else if($formcontact->isSubmitted() && $formcontact->isValid()){ //requete contact
+            $this->verifMessageContact($visiteur, $messagescontacts, $contactez, $datenow, $formcontact, $mailing);
+    }
+
+       return $this->render('product/index.html.twig', [
+           'titre' => $titre,
+           'produits' => $produits,
+           'pasderecherche' => $searchnotfound,
+           'form'=> $form->createView(),
+           'formcontact' => $formcontact->createView(),
+       ]);
+   }
+
+
+    #[Route("/produit/{slug}", name: "app_produit")]
+    public function show(Request $request, Produit $produit, $slug): Response
+    {
+        $ppap = [];
+        $idlist = [];
+        $produit = $this->entityManager->getRepository(Produit::class)->findOneBy(['slug' => $slug]);
+        $produits = $this->entityManager->getRepository(Produit::class)->findIsBest(1,1); //isBest,isAffiche
+        $isallaccessoire = $this->entityManager->getRepository(Produit::class)->findBy([/*'accessoireLieA' => $produit->getId(),*/ 'category' => 6]);
+        $isaccessoirelier = '';
+        $this->verifSiImage($produits);
+
+        if(!file_exists("./../public/uploads/" . $produit->getIllustration())){ 
+            $produit->setIllustration("error/img-error.jpg");
+        }
+        //rechercher et trier par accessoires | code complexe xD
+        foreach($isallaccessoire as $isa){
+            $ppap[] = ['id' => $isa->getId(), 'liaison' => explode(',',$isa->getAccessoireLieA())]; //récupere ID accessoire + ID produit(s) correspondant du AccessoireLierA
+        }
+        //dd($ppap);
+        foreach($ppap as $pa){
+            foreach($pa['liaison'] as $mdr){
+                if( intval($mdr) === $produit->getId()){ //si ID produits collectés AccessoireLierA égale à notre produit id
+                   $idlist[] = $pa['id']; //on récupere tous les ID accessoires du tableau $ppap
+                }
+            }
+        }
+        if(count($idlist) > 0){
+            $isaccessoirelier = $this->entityManager->getRepository(Produit::class)->findBy(['id' => $idlist]); 
+        }
+        // dd($isaccessoirelier);
+        $caracteristique = $produit->getCaracteristique();
+
+        $caracteristiquemiseneforme = str_replace('~','●', $caracteristique);
+        // dd($caracteristiquemiseneforme);
+
+        return $this->render('product/show.html.twig',[
+            'produit' => $produit,
+            'produits'=> $produits,
+            'ladescription' => $produit->getDescription(),
+            'caracteristique' => $caracteristiquemiseneforme,
+            'listephotos' => array($produit->getIllustrationUn(),$produit->getIllustrationDeux(),$produit->getIllustrationTrois()),
+            'idcategory' => $produit->getCategory()->getId(),
+            'marque' => $produit->getMarque(),
+            'accessoires' => $isaccessoirelier,
+            'url_domain' => $request->getHost()
+        ]);
+    }
+
+
+    #[Route("/nos-produits/{id}/{name}", name: "app_produit_marque")]
+
+    public function marque(Marque $marque, $id) : Response {
+
+        $produits = $this->entityManager->getRepository(Produit::class)->findBy(['marque' => $id]);
+
+        return $this->redirect('/nos-produits?marques%5B%5D='. $id .''); //au lieu de copier coller un long code, mieux faire comme ça avec un lien ajax existant
+    }
+
+    #[Route("/nos-produits-suisses", name: "app_produits_suisses")]
+    public function suisses(Request $req, MailerService $mailing): Response {
+
+        $titre = "La boutique suisse";
+        $visiteur = $_SERVER['REMOTE_ADDR'];
+        $datenow =  date('Y-m-d');
+        $produits = $this->entityManager->getRepository(Produit::class)->findIsSuisse(1);
+ 
+        $search = new Search();
+        $contactez = new Contact();
+        $form = $this->createForm(\App\Form\SearchSuisseType::class, $search);
+        $formcontact = $this->createForm(ContactType::class, $contactez); //pour la page de contact intégré depuis la page de produits si aucun produit n'est trouvé
+        $messagescontacts = $this->entityManager->getRepository(Contact::class)->findBy(['visiteur'=> $visiteur, 'faitle' => $datenow], ['id'=>'desc']);
+        $form->handleRequest($req);
+        $formcontact->handleRequest($req);
+        $searchnotfound = false;
+        $this->verifSiImage($produits);
+ 
+        if ($form->isSubmitted() && $form->isValid()) { //requete recherche produit
+                $produits = $this->entityManager->getRepository(Produit::class)->findWithSearch($search,2);
+                if(count($produits) <= 0){ //si rien à été trouvé alors
+                    $searchnotfound = true;
+                } 
+                $this->saveRecherche($search, $titre);
+        }
+        else if($formcontact->isSubmitted() && $formcontact->isValid()){ //requete contact
+            $this->verifMessageContact($visiteur, $messagescontacts, $contactez, $datenow, $formcontact, $mailing);
+        }
+ 
+        return $this->render('product/index.html.twig', [
+            'titre' => $titre,
+            'produits' => $produits,
+            'pasderecherche' => $searchnotfound,
+            'form'=> $form->createView(),
+            'formcontact' => $formcontact->createView(),
+        ]);
+    }
+}

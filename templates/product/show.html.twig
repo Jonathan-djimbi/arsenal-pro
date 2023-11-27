@@ -1,0 +1,350 @@
+{% extends 'base.html.twig' %}
+{% block title %}<title>{{produit.name}} | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+{% set isPrixFDO = false %}
+    <div class="row container produit-affichage">
+            <div class="cadre-photo-main">
+                {% if siPro %}
+                    {% if siPro.numeroMatricule != null %} {# si police #}
+                        {% if produit.priceFDO and produit.priceFDO > 1 %} 
+                            {% set isPrixFDO = true %}
+                            {% set gagner = (produit.price - produit.priceFDO) / 100 %}
+                            {% if (100 - ((produit.priceFDO)/(produit.price)) * 100) >= 5 %}
+                                <div class="ruban-reduction rounded-left" id="produit-page-price-promo">
+                                    <span class="produit-page-price">-{{ gagner|number_format(2) }}€</span>   
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if isPrixFDO == false %}
+                    {% if venteflash and produit.venteflash and venteflash.isAffiche and (venteflash.temps|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %}
+                        {% set gagner = (produit.price - venteflash.newPrice) / 100 %}
+                            <div class="ruban-reduction rounded-left" id="produit-page-price-promo">
+                                <span class="produit-page-price">-{{ gagner|number_format(2) }}€</span>   
+                            </div>      
+                    {% else %}
+                    {% if produit.pricepromo and produit.pricepromo != produit.price and produit.pricepromo < produit.price %}
+                        {% set gagner = (produit.price - produit.pricepromo) / 100 %}
+                            <div class="ruban-reduction rounded-left" id="produit-page-price-promo">
+                                <span class="produit-page-price">-{{ gagner|number_format(2) }}€</span>   
+                            </div>     
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+                {% if produit.illustrationun or produit.illustrationdeux or produit.illustrationtrois %}
+                    {% if produit.illustration starts with 'http' or produit.illustrationun starts with 'http' or produit.illustrationdeux starts with 'http' or produit.illustrationtrois starts with 'http' %}
+                   <img id="produit-photo" src="{{produit.illustration }}" alt="{{ produit.name }}" class="img-fluid ml-2" draggable="false">
+                        <div class="listephotos">
+                            {% for key, image in listephotos %}
+                                {% if image != NULL %}
+                                    <img id="produit-photos" src="{{image}}" alt="{{ produit.name }} image {{key}}" class="image-produit-aside">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% else %}
+                    <img id="produit-photo" src="/uploads/{{produit.illustration }}" alt="{{ produit.name }}" class="img-fluid ml-2" draggable="false">
+                        <div class="listephotos">
+                            {% for key, image in listephotos %}
+                                {% if image != NULL %}
+                                    <img id="produit-photos" src="/uploads/{{image}}" alt="{{ produit.name }} image {{key}}" class="image-produit-aside">
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    {% if produit.illustration starts with 'http' %}
+                        <img id="produit-photo" src="{{produit.illustration}}" alt="{{ produit.name }}" class="img-fluid" draggable="false">
+                    {% else %}
+                        <img id="produit-photo" src="/uploads/{{produit.illustration}}" alt="{{ produit.name }}" class="img-fluid" draggable="false">
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% if produit.illustrationun or produit.illustrationdeux or produit.illustrationtrois %}
+        <div class="col-md-6 mt-auto mb-2">
+        {% else %}
+        <div class="col-md-7 mt-auto mb-2">
+        {% endif %}
+        {% if produit.isDegressif %}
+            <p class="prixdegressifshow">Prix dégressif</p>
+        {% endif %}
+        <div class="produit_title">
+            <h1>{{ produit.name }}</h1>
+            {% if marque.photo %}
+            <a href="{{ path('app_produit_marque',{'name': marque.name|replace({"â": "a","à": "a","é": "e","û": "u","è": "e","'":""," ": "-",".": "", ",": "","&": "et","(": "-", ")": ""}),'id': marque.id})}}">
+            <img id="logo_marque" src="/uploads/marques/{{marque.photo}}" alt="{{ produit.marque}} logo"/></a>
+            {% endif %}
+        </div>
+    {% if produit.isOccassion %}
+        <p>{{ produit.subtitle }} | {{produit.category}} | Produit d'occasion</p>
+    {% else %}
+        <p>{{ produit.subtitle }} | {{produit.category}}</p>
+    {% endif %}
+    {% if produitsAssocies and produitsAssocies|length > 1 %}
+        {# <section class="les_accessoires row overflow-main mx-auto"> #}
+           <div> 
+            {% if produitsAssocies|length > 1 %}
+                <select id="listeAssociationProduits" class="border_radius_all box_shadow_all">
+                {% for produits in produitsAssocies %}
+                    {# <div class="col-md-2">
+                        {% include 'product/single_produit_association.html.twig' %}
+                    </div> #}
+                    {% if produits.calibres.calibre is defined %} {# nom par rapport à la taille ou au calibre #}
+                        {% set produitname = produits.calibres.calibre %}
+                    {% elseif produits.taille.taille is defined %}
+                        {% set produitname = produits.taille.taille %}
+                    {% else %}
+                        {% set produitname = produits.name %}
+                    {% endif %}
+                    {% if produits.id == produit.id %}
+                        <option selected value="{{produits.slug}}" id="{{produits.id}}">{{produitname}}</option>
+                    {% else %}
+                        <option value="{{produits.slug}}" id="{{produits.id}}">{{produitname}}</option>
+                    {% endif %}
+                {% endfor %}
+                </select>
+            {% endif %}
+            </div>
+        {# </section> #}
+    {% endif %}
+    {% if app.user != null %}{% if "ROLE_ADMIN" in app.user.roles %}<a href="{{ ea_url().setController('App\\Controller\\Admin\\ProduitCrudController').setAction('detail').setEntityId(produit.id)}}">ID : {{produit.id}} </a>{% endif %}{% endif %} {# affichage produit ID pour admin #}
+    {% if produit.calibres is defined and produit.calibres != null %}
+        <p>Calibre : {{produit.calibres.calibre}}</p>
+    {% endif %}
+    {% if produit.taille is defined and produit.taille != null %}
+        <p>Taille : {{produit.taille.taille}}</p>
+    {% endif %}
+    {% if venteflash and produit.venteflash and venteflash.isAffiche and (venteflash.temps|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s')) %}
+        <div id="venteFlashTimer" data-ptime="{{venteflash.temps|date('Y-m-d H:i:s')}}">
+        </div>
+    {% endif %}
+
+    {# GESTION PRIX : PRIX TTC, PRIX PROMO TTC, PRIX VENTES FLASH et PRIX FDO #}
+    <section class="prixetquantite">
+    {% if produit.priceFDO and produit.priceFDO > 1 %}
+        {% if siPro %}
+            {% if siPro.numeroMatricule != null %}
+                <span class="produit-page-price text-success"> {{((produit.priceFDO /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.priceFDO /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+            {% else %}
+                {% if produit.isForcesOrdre != true %}
+                    {% if venteflash and produit.venteflash and venteflash.isAffiche and (venteflash.temps|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %}
+                        <span class="produit-page-price text-success"> {{((venteflash.newPrice /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((venteflash.newPrice /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                    {% else %}
+                        {% if produit.pricepromo and produit.pricepromo != produit.price and produit.pricepromo < produit.price %}
+                            <span class="produit-page-price text-success"> {{((produit.pricepromo /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.pricepromo /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                            {% else %}
+                            <span class="produit-page-price"> {{((produit.price /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.price /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    <span class="d-block" style="height: 50px;"></span>
+                {% endif %}
+            {% endif %}
+        {% else %}
+        {% if produit.isForcesOrdre != true %}
+                {% if venteflash and produit.venteflash and venteflash.isAffiche and (venteflash.temps|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %}
+                    <span class="produit-page-price text-success"> {{((venteflash.newPrice /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((venteflash.newPrice /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                {% else %}
+                    {% if produit.pricepromo and produit.pricepromo != produit.price and produit.pricepromo < produit.price %}
+                        <span class="produit-page-price text-success"> {{((produit.pricepromo /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.pricepromo /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                        {% else %}
+                        <span class="produit-page-price"> {{((produit.price /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.price /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                    {% endif %}
+                {% endif %}
+            {% else %}
+                <span class="d-block" style="height: 50px;"></span>
+            {% endif %}
+        {% endif %}
+    {% else %} {# si pas de prix FDO #}
+        {% if produit.isForcesOrdre != true %}
+            {% if venteflash and produit.venteflash and venteflash.isAffiche and (venteflash.temps|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %}
+                <span class="produit-page-price text-success"> {{((venteflash.newPrice /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((venteflash.newPrice /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+            {% else %}
+                {% if produit.pricepromo and produit.pricepromo != produit.price and produit.pricepromo < produit.price %}
+                    <span class="produit-page-price text-success"> {{((produit.pricepromo /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.pricepromo /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                    {% else %}
+                    <span class="produit-page-price"> {{((produit.price /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.price /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                {% endif %}
+            {% endif %}
+        {% else %} {# si isForcesOrdre true #}
+             {% if siPro %}
+                {% if siPro.numeroMatricule != null %} {# si police, peut voir les prix #}
+                     {% if venteflash and produit.venteflash and venteflash.isAffiche and (venteflash.temps|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %}
+                        <span class="produit-page-price text-success"> {{((venteflash.newPrice /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((venteflash.newPrice /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                    {% else %}
+                        {% if produit.pricepromo and produit.pricepromo != produit.price and produit.pricepromo < produit.price %}
+                            <span class="produit-page-price text-success"> {{((produit.pricepromo /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.pricepromo /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                        {% else %}
+                            <span class="produit-page-price"> {{((produit.price /100)|split('.')[0]) }}<span class="produit-page-centimes  position-relative ml-1">{{((produit.price /100)|number_format(2)|split('.')[1]) }}</span><span class="currency position-relative">€</span></span>
+                        {% endif %}
+                    {% endif %}
+                {% else %} {# si pas police, ne peut pas voir les prix #}
+                    <span class="d-block" style="height: 50px;"></span>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endif %}
+        
+        {% if produit.category != "Prestation" %} {# si pas prestation #}
+            {% if produit.quantite >= 4 %}
+                <p class="quantitedisplay"> <b>{{ produit.quantite }}</b> quantités disponible</p>    
+            {% else %}
+                {% if produit.quantite < 4 and produit.quantite >= 2 %}
+                    <b class="quantitedisplay text-warning">Plus que {{ produit.quantite }} quantités disponible</b> 
+                {% else %}
+                    {% if produit.quantite >= 1 %}
+                        <b class="quantitedisplay text-danger">Plus qu'une seule quantité disponible !</b> 
+                    {% else %}
+                        {% if produit.quantite == 0 %}
+                            {% if produit.isOccassion %}
+                                <b class="quantitedisplay text-muted">Article indisponible</b> 
+                            {% else %}
+                                <b class="quantitedisplay text-info">Pré-commande</b> 
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    </section>
+    {% if produit.quantite <= 0 %}
+        {% if produit.isOccassion %}
+            <a href="#" style="pointer-events: none;" class="btn btn-secondary position-relative mb-3">Vendu</a>
+        {% else %}
+            <a href="{{ path('add_to_cart', {'id' : produit.id}) }}" id="precommande_button" class="btn btn-primary position-relative mb-3 btn-acheter-page-produit"><i class="fa-solid fa-cart-arrow-down"></i> Pré-commande</a>
+            <div onclick="ouvrirAlerteRestockPanel(this)" id="alerte_restock_button" class="btn btn-primary position-relative mb-3" data-name="{{produit.name}}" data-id="{{produit.id}}"><i class="fa-solid fa-bell"></i> Être alerter de la disponibilité</div>
+        {% endif %}
+    {% else %}
+        <a href="{{ path('add_to_cart', {'id' : produit.id}) }}" class="btn btn-primary position-relative mb-3 btn-acheter-page-produit"><i class="fa-solid fa-cart-arrow-down"></i> Ajouter au panier</a>
+        <br/><p>Livraison sous 3 à 5 jours ouvrés</p>
+    {% endif %}
+        <b class="description caracteristique">{{caracteristique|raw}} </b>
+    </div>
+    </div>
+    <br/>
+    {% if produit.isDegressif and produit.munitionNbBoite and produit.munitionNbBoite > 0 %} {# si degressif et munition #}
+        {# affichage prix pour le tableau degressif #}
+        {% if produit.pricepromo and produit.pricepromo != produit.price and produit.pricepromo < produit.price %}
+            {% set prixManipuler = produit.pricepromo %} {# si prix promo #}
+        {% else %}
+            {% set prixManipuler = produit.price %}
+        {% endif %}
+        {% if venteflash and produit.venteflash and venteflash.isAffiche and (venteflash.temps|date('Y-m-d H:i:s') > date|date('Y-m-d H:i:s') ) %}
+            {% set prixManipuler = venteflash.newPrice %} {# si prix ventes flash #}
+        {% endif %}
+        {% set tableau = produit.degressifValues %}
+        <table class="table table-striped table-bordered">
+            <thead class="">
+                <h6 class="font-weight-bold">Dégressif : remise par boîte de {{produit.munitionNbBoite}}</h6>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Boîte</th>
+                    <th>Pièces</th>
+                    <th>Prix par boîte</th>
+                    <th>Remise %</th>
+                </tr>
+                {% for key, tab in tableau %}
+                    {% if key == 0 %}
+                        <tr>
+                            <td>{{tab}}</td><td>{{tab * produit.munitionNbBoite}}</td><td>{{(prixManipuler)/100|number_format(2)}}€</td><td>-</td>
+                        </tr>
+                    {% elseif key == 2 %} {# index 2 = quantité de 20 dans le tableau #}
+                            <td>{{tab}}</td><td>{{tab * produit.munitionNbBoite}}</td><td>{{(prixManipuler - (key * 50) - 20)/100|number_format(2)}}€</td><td>-{{(100 - (prixManipuler - (key * 50) - 20)/(prixManipuler) * 100)|number_format(2)}}%</td>
+                    {% else %}
+                        <tr>
+                            <td>{{tab}}</td><td>{{tab * produit.munitionNbBoite}}</td><td>{{(prixManipuler - (key * 50))/100|number_format(2)}}€</td><td>-{{(100 - (prixManipuler - (key * 50))/(prixManipuler) * 100)|number_format(2)}}%</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+    <hr> <!-- pour faire trait gris -->
+    <div>
+        <article>
+            {% if produit.priceFDO and produit.priceFDO > 1 %}
+                <i>Pour profiter de l'offre des forces de l'ordre, il faut avoir un compte et avoir renseigné votre numéro de matricule et avoir déposé votre carte de police.</i>
+            {% endif %}
+            <h3>Description</h3>
+            <p class="description">
+            {{ ladescription|raw }}
+            </p>
+        </article>
+    </div>
+
+    {% if (idcategory == 1 or idcategory == 2 or idcategory == 3) or (idcategory == 11 or idcategory == 12 or idcategory == 13) or produit.isForcesOrdre %}
+    <hr>
+    <section class="norme_categorie"> <!-- Catégories aux normes -->
+        {% if produit.isForcesOrdre %}
+            <h3>Pour ce produit classé <b>forces de l'ordre</b></h3>
+            <ul>
+                <li><i>Vente soumise à conditions - Livraison en Mairie ou copie de votre carte professionnelle obligatoire.</i></li>
+            </ul>
+        {% endif %}
+        {% if idcategory == 1 or idcategory == 12 %}
+            <h3>Documents à fournir pour CAT.C</h3>
+            <ul>
+                <li>Pièce d’identité en cours de validité</li>
+                <li>Certificat médical de moins d’un mois (Armes à projectile non métallique Cat.C3°)</li>
+                <ul style="margin-top: 5px;">
+                    <li>Licence de tir d’une des fédérations agréées validée avec cachet du médecin</li>
+                    <li style="list-style: none; font-weight: 500;">OU</li>
+                    <li>Carte du collectionneur</li>
+                </ul>
+            </ul>
+        {% endif %}
+        {% if idcategory == 2 or idcategory == 11 %}
+              <h3>Documents à fournir pour CAT.B</h3>
+              <ul>
+                <li>Les 2 volets originaux de l’autorisation d’acquisition et de détention, de moins de 6 mois, délivrés par la Préfecture</li>
+                <li>Pièce d’identité en cours de validité</li>
+              </ul>
+        {% endif %}
+        {% if idcategory == 3 or idcategory == 13 %}
+            <h3>Documents à fournir pour CAT.D</h3>
+            <li>Pièce d’identité en cours de validité</li>
+            <br/>
+        {% endif %}
+        <div><a class="btn-primary btn" href="{{ path('app_account_documents') }}">Fournir vos documents</a></div>
+    </section>
+    {% endif %}
+    {% if accessoires and accessoires|length > 0 %}
+    <hr>
+    <h3>Accessoire(s) compatible pour {{produit.name}}</h3>
+        <section class="les_accessoires row overflow-main mx-auto">
+           <div class="overflow-isbest">
+            {% for produit in accessoires %}
+                <div class="col-md-2">
+                    {% include 'product/single1_produit.html.twig' %}
+                </div>
+            {% endfor %}
+            </div>
+        </section>
+    {% endif %}
+    <hr>
+    <h3 class="text-center font-weight-bold">Les meilleures ventes</h3>
+    <p class="text-center">Découvrez les articles les plus vendus.</p>
+    <section class="row overflow-main mx-auto">
+        <div class="overflow-isbest">
+            {% for produit in produits %}
+                <div class="col-md-2">
+                    {% include 'product/single1_produit.html.twig' %}
+                </div>
+            {% endfor %}
+        </div><!-- /.row -->
+    </section>
+
+    {% include 'product/ajout_panier.html.twig' %}
+    {% include 'product/mail_alerte_restock_produit.html.twig' %}
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('assets/js/598ad46404464df46c64a54c-flash.js') }}?v={{version}}"></script>
+{% endblock %}
+
+
+
+
+
+

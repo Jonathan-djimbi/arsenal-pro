@@ -1,0 +1,20 @@
+{% extends 'library/header_library.html.twig' %}
+
+{% block title %}<title>{{titre}}</title>{% endblock %}
+
+{% block content %}
+    {{ include("library/recherche_documents.html.twig")}}
+    <div class="bibliothequeAfficherFichiers">
+        {% for key, ae in src|sort|reverse %}
+            <div class="d-flex justify-content-center">
+                {% if app.request.attributes.get('_route') == "app_library_factures" %} 
+                    <p></p><a href="{{ path('app_library_pdf_factures', { 'mois' : ae.mois, 'src' : ae.nom }) }}" target="_blank">{{ae.nom}}</a>
+                {% elseif app.request.attributes.get('_route') == "app_library_colissimo" %}
+                    <p></p><a href="{{ path('app_library_pdf_colissimo', {'jour' : ae.date, 'src' : ae.nom }) }}" target="_blank">{{ae.nom}}</a>
+                {% elseif app.request.attributes.get('_route') == "app_library_factures_mensuel" %}
+                    <p></p><a href="{{ path('app_library_dl_factures_mensuel', {'fichier' : ae.nom}) }}">{{ae.nom}}</a>
+                {% endif %}
+            </div>
+        {% endfor %}
+      </div>
+{% endblock %}

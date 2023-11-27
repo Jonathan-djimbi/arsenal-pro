@@ -1,0 +1,151 @@
+{% extends 'stats/header_stats.html.twig' %}
+{% block title %}<title>Statistique du site e-commerce</title>{% endblock %}
+
+{% block content %}
+    <section class="mx-auto mb-5 w-100">
+        <div>
+            <h3 class="text-center mx-auto">Évolution du chiffre d'affaires</h3>
+            {# <small class="text-muted text-center d-block textVertical">Prix du chiffre d'affaires (euros)</small> #}
+            <canvas id="charteCA" class="w-100 mx-auto" style="max-width:1000px; max-height: 400px;"></canvas>
+            <small class="text-muted text-center d-block">Période (mois-année)</small>
+        </div>
+    </section>
+    <h3 class="text-center mx-auto mb-3">Statistiques essentiels</h3>
+    <h4 class="text-center mx-auto">Les commandes</h4>
+    <section class="d-flex row lesStats">
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Chiffre d'affaires de ce mois</h3>
+            <p>{{(caNow / 100)|number_format(2)}} €</p><br/>
+            <h3>Le mois dernier : {{(caLastMonth / 100)|number_format(2)}} €</h3>
+        </div>
+        <div class="border_radius_all_15 box_shadow_all p-4 statsComplement">
+            <h3>Ratio ventes effectuées et abandons total</h3>
+            <canvas id="camembertRatioVentes" data-success={{ratioVente.success}} data-total={{ratioVente.failed}} class="mx-auto"></canvas>
+            <h3>Total : {{ratioVente.success + ratioVente.failed}}</h3>
+            <small>Seulement {{ratioVente.success}} commandés</small>
+        </div>
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Nombre de commande(s) effectuée(s) ce mois</h3>
+            <p>{{nombreCommandeNow}}</p><br/>
+            <h3>Le mois dernier : {{nombreCommandeLastMonth}}</h3>
+        </div>
+    </section>
+    <section class="d-flex row lesStats">
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Panier moyen total</h3>
+            <p>{{(prixCommande.prixMoyenCommande / 100)|number_format(2)}} €</p>
+        </div>
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Panier construit moyen global</h3>
+            <p>{{(prixCommande.prixMoyenPanierGlobal / 100)|number_format(2)}} €</p>
+        </div>
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Quantité moyenne panier globale</h3>
+            <p>{{(quantiteMoyennePanier|number_format(2))}}</p>
+        </div>
+    </section>
+    <h4 class="text-center mx-auto">Les utilisateurs</h4>
+    <section class="d-flex row lesStats">
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Nombre total d'utilisateurs</h3>
+            <p>{{utilisateurs.nombreTotal}}</p>
+        </div>
+         <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Top 5 clients</h3>
+            {% for topClient in utilisateurs.topClient %}
+                <b>{{topClient.firstname}} {{topClient.lastname}} </b>
+                {% if topClient.dernier_achat %}
+                    <small> Achat le : {{topClient.dernier_achat|date('d/m/Y')}}</small><br/>
+                {% else %}
+                    <small> Achat le : Aucune donnée</small><br/>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Dernier achat effectué il y a </h3>
+             {# {% elseif utilisateurs.dernierAchatClientSite <  0 %}
+                <h4>Erreur : date du futur non acceptée</h4> #}
+            {% if utilisateurs.dernierAchatClientSite.dernierAchatClientDate < 60 %}
+                <h3>{{utilisateurs.dernierAchatClientSite.dernierAchatClientDate}} secondes</h3>
+            {% elseif utilisateurs.dernierAchatClientSite.dernierAchatClientDate < 3600 %}
+                <h3>{{(utilisateurs.dernierAchatClientSite.dernierAchatClientDate / 60)|number_format(0)}} minutes</h3>
+            {% elseif utilisateurs.dernierAchatClientSite.dernierAchatClientDate <  3600 * 24 %}
+                <h3>{{(utilisateurs.dernierAchatClientSite.dernierAchatClientDate / 3600)|number_format(0)}} heure(s)</h3>
+            {% elseif utilisateurs.dernierAchatClientSite.dernierAchatClientDate >  3600 * 24 %}
+                <h3>{{(utilisateurs.dernierAchatClientSite.dernierAchatClientDate / (3600 * 24))|number_format(0)}} jour(s)</h3>
+            {% endif %}
+            <br/><h4>Par <a href="/admin?crudAction=detail&crudControllerFqcn=App%5CController%5CAdmin%5CUserCrudController&entityId={{utilisateurs.dernierAchatClientSite.id}}">{{utilisateurs.dernierAchatClientSite.prenom}} {{utilisateurs.dernierAchatClientSite.nom}}</a></h4>
+        </div>
+    </section>
+    <section class="d-flex row lesStats">
+        <div class="border_radius_all_15 box_shadow_all p-4 statsComplement">
+            <h3>Ratio utilisateurs ayant commandés</h3>
+            <canvas id="camembertRatioUserCommandes" data-ratio={{utilisateurs.utilisateursCommande}} class="mx-auto"></canvas>
+            <h3>En tout {{utilisateurs.utilisateursCommande}} % ont commandé</h3>
+        </div>
+            <div class="border_radius_all_15 box_shadow_all p-4 statsComplement">
+            <h3>Ratio documents envoyés par utilisateurs</h3>
+            <canvas id="camembertRatioUserDocuments" data-ratio={{utilisateurs.ratioDocuments}} class="mx-auto"></canvas>
+            <h4>Seulement {{utilisateurs.ratioDocuments}} % ont déposé leurs documents</h4>
+        </div>
+    </section>
+    <h4 class="text-center mx-auto">Concernant les produits</h4>
+    <section class="d-flex row lesStats">
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Top 5 produits commandés</h3>
+            {% for topProduit in produits.topProduitsCommandes %}
+                <small class="textEllipsis">{{topProduit.product}}</small><br/>
+            {% endfor %}
+        </div>
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Top 5 produits en euros</h3>
+            {% for topEuros in produits.topProduitsEuros %}
+                <small>ID : <a href="/admin?crudAction=detail&crudControllerFqcn=App%5CController%5CAdmin%5CProduitCrudController&entityId={{topEuros.id}}">{{topEuros.id}}</a>, Prix :  {{(topEuros.price /100)|number_format(2,',','')}} €</small><br/>
+            {% endfor %}
+        </div>
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Top 5 produits en volume</h3>
+            {% for topQuantite in produits.topProduitsQuantite %}
+                <small>ID : <a href="/admin?crudAction=detail&crudControllerFqcn=App%5CController%5CAdmin%5CProduitCrudController&entityId={{topQuantite.id}}">{{topQuantite.id}}</a>, Qté : {{topQuantite.quantite}}</small><br/>
+            {% endfor %}
+        </div>
+    </section>
+    <section class="d-flex row lesStats">
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Top 5 produits les moins cher en euros</h3>
+            {% for bottomEuros in produits.bottomProduitsEuros %}
+                <small>ID : <a href="/admin?crudAction=detail&crudControllerFqcn=App%5CController%5CAdmin%5CProduitCrudController&entityId={{bottomEuros.id}}">{{bottomEuros.id}}</a>, Prix :  {{(bottomEuros.price /100)|number_format(2,',','')}} €</small><br/>
+            {% endfor %}
+        </div>
+         <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Top 5 prestations livrées</h3>
+            {% for topPrestations in produits.topPrestations %}
+                <small class="textEllipsis">{{topPrestations.product}}</small><br/>
+            {% endfor %}
+        </div>
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Top 5 codes promo utilisés</h3>
+            {% for topCodePromo in codepromo.topCodePromo %}
+                <small>{{topCodePromo.code}} : {{topCodePromo.utilisation}} fois</small><br/>
+            {% endfor %}
+        </div>
+        
+    </section>
+    {# <section  class="d-flex row lesStats">
+        <div class="border_radius_all_15 box_shadow_all p-4">
+            <h3>Top 5 comptes ayant le plus de montant</h3>
+            {% for topMontant in panier.topMontant %}
+            <small>
+                <a href="/admin?crudAction=detail&crudControllerFqcn=App%5CController%5CAdmin%5CUserCrudController&entityId={{topMontant.id}}">
+                    {{topMontant.firstname}} {{topMontant.lastname}} 
+                </a>: {{(topMontant.sommeCompte /100)|number_format(2,',','')}} €
+            </small><br />
+            {% endfor %}
+        </div>
+    </section> #}
+    <script>
+        const prixEvolution = JSON.parse('{{ caGlobal | json_encode | raw }}');
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.8.0/chart.js"></script> {# chartjs pour faire des graphes #}
+    <script src="{{ asset('assets/js/ff7986b8a05cc4968cfd486fe409999.js') }}?v={{version}}"></script>
+{% endblock %}

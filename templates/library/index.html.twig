@@ -1,0 +1,92 @@
+{% extends 'library/header_library.html.twig' %}
+{% block title %}<title>Bibliothèques de documents</title>{% endblock %}
+
+{% block content %}
+    {% for message in app.flashes('notice')|slice(0,1) %}
+        <div class="alert alertdisplay">{{ message }}</div>
+    {% endfor %}
+    <section class="accueilBibliotheque">
+        <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_factures') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="factures"><br/>
+                Consulter les factures</a>
+            </div>
+        </div><br/>
+        <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_livraison') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="livraison"><br/>
+                Consulter les tickets de livraisons</a>
+            </div>
+        </div><br/>
+        <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_factures_mensuel') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="factures-mensuel"><br/>
+                Factures mensuel</a>
+            </div><br/>
+    </section>
+    <section class="accueilBibliotheque mt-3">
+        <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_dl_commande_clients') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="commande-clients"><br/>
+                Journal des ventes client complet</a>
+            </div>
+        </div><br/>
+         <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_dl_commande_clients_mensuel') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="commande-clients-mensuel"><br/>
+                Journal des ventes client mensuel</a>
+            </div>
+        </div><br/>
+         <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_dl_commande_clients_annuel') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="commande-clients-annuel"><br/>
+                Journal des ventes client annuel</a>
+            </div>
+        </div><br/>
+    </section>
+    <section class="accueilBibliotheque mt-3">
+        <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_clients') }}">
+                <img src="{{ asset('assets/image/carnet-dadresses-2.png') }}" alt="clients"><br/>
+                Récapitulatif client</a>
+            </div>
+        </div><br/>
+        <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_dl_newsletter') }}">
+                <img src="{{ asset('assets/image/carnet-dadresses-2.png') }}" alt="newsletter"><br/>
+                Liste email newsletter</a>
+            </div>
+        </div><br/>
+          <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_colissimo_generator') }}">
+                <img src="{{ asset('assets/image/carnet-dadresses-2.png') }}" alt="clients"><br/>
+                Génerer un Colissimo pour un client</a>
+            </div>
+        </div><br/>
+    </section>
+    <section class="accueilBibliotheque mt-3">
+        <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_document_client_dl') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="clients_docs"><br/>
+                Télécharger une archive des documents clients</a>
+            </div>
+        </div><br/>
+        <div class="row ml-5">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_documents_clients') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="clients_docs_view"><br/>
+                Consulter les documents clients du serveur</a>
+            </div>
+        </div><br/>
+    </section>
+{% endblock %}

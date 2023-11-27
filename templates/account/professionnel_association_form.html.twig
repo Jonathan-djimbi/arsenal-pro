@@ -1,0 +1,30 @@
+{#  #}
+<div class="mb-3">
+    <input type="text" name="pro_raisonSocial" id="pro_raisonSocial" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Raison sociale *"/>
+</div>
+<div class="mb-3">
+    <input type="number" name="pro_siret" id="pro_siret" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Siret *" />
+</div>
+<div class="mb-3">
+    <input type="number" name="pro_noTVA" id="pro_noTVA" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Numéro de TVA *"/>
+</div>
+ <div class="mb-3">
+        <input type="checkbox" id="fdo" name="fdo"/>
+        <label for="fdo">Forces de l'ordre ?</label>
+        <div id="fdoSection" class="noshow">
+        <div class="mb-3 d-flex">
+            <select name="pro_typeFDO" id="pro_typeFDO" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="FDO *">
+                <option value="0">Armée</option>
+                <option value="1">Administration penitentiaire</option>
+                <option value="2">Convoyeurs de fonds</option>
+                <option value="3">Douanes</option>
+                <option value="4">Gendarmerie</option>
+                <option value="5">Police</option>
+                <option value="6">Police ferroviaire</option>
+                <option value="7">Police municipale</option>
+                <option value="8">Police nationale</option>
+            </select>
+            <input type="text" name="pro_numeroMatricule" id="pro_numeroMatricule" class="border_radius_all box_shadow_all mx-auto form-control" placeholder="Numéro de matricule *"/>
+        </div> 
+    </div>
+</div>

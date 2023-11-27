@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Mon compte | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+    {{ render(controller('App\\Controller\\HomeController::banniereShow',{ 'titre': "Mon compte", 'section' : 0, 'multi' : false})) }}
+    {% if is_granted('ROLE_ADMIN') %}
+        <small><a href="/admin">Vous êtes un administrateur, accéder au backoffice ?</a></small><br/>
+    {% endif %}
+    Bienvenue <strong>{{ app.user.firstname }}</strong> dans votre compte.<br/>
+    C'est dans cet espace que vous allez pouvoir gérer toutes vos informations personnelles.
+    <hr>
+    <section class="accueil_account">
+        <section class="d-flex">
+            <ul class="p-4 mb-5 bg-light box_shadow_all border_radius_all_15">
+                <li class="mb-2 accountbox">
+                    <a href="{{ path('app_account_password') }}"><i class="fa-solid fa-lock"></i> Mon mot de passe</a>
+                </li>
+                <li class="mb-2 accountbox">
+                    <a href="{{ path('app_account_address') }}"><i class="fa-solid fa-address-book"></i> Gérer mes adresses</a>
+                </li>
+                <li class="mb-2 accountbox">
+                    <a href="{{ path('app_account_documents') }}"><i class="fa-solid fa-file"></i> Gérer mes documents</a>
+                </li>
+                <li class="mb-2 accountbox">
+                        <a href="{{ path('app_account_order') }}"><i class="fa-solid fa-tag"></i> Mes commandes</a>
+                </li>
+                <li class="mb-2 accountbox">
+                    <a href="{{ path('app_fidelite') }}"><i class="fa-sharp fa-regular fa-dollar-sign"></i> Points de fidélité</a>
+                </li>
+                <li class="mb-2 accountbox">
+                    <a href="{{ path('app_account_gift_card') }}"><i class="fa-sharp fa-regular fa-dollar-sign"></i> Carte cadeau</a>
+                </li>
+            </ul>
+        </section>
+        {{ include('account/afficher_cartefidelite.html.twig')}}
+        {% if proAssoc %}
+            <hr>
+            {% if proAssoc.raisonSocial %}
+                <h4>Je suis un professionnel/je vais partie d'une association</h4><br>
+                <p>Raison social : {{proAssoc.raisonSocial}}</p>
+                <p>Numéro SIRET : {{proAssoc.siret}}</p>
+                {% if proAssoc.noTVA %}
+                    <p>Numéro TVA : {{proAssoc.noTVA}}</p>
+                {% endif %} 
+            {% endif %} 
+            {% if proAssoc.typeFDO %}
+                <h4>Je suis : <strong>{{proAssoc.intituleFDO}}</strong></h4><br>
+                <p>Numéro matricule : {{proAssoc.numeroMatricule}}</p>
+            {% endif %}     
+        {% endif %}
+    </section>
+{% endblock %}
+{% block js %}
+<script src="{{ asset('assets/js/5896da4c64a84b7f4684a8979c868ee.js') }}?v={{version}}"></script>
+{% endblock %}

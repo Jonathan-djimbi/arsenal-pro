@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Réserver votre {% if activite.type == 1 %}formation{% endif %}{% if activite.type == 0 %}location{% endif %} | Arsenal Pro</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+{% for message in app.flashes('warning')|slice(0,1) %}
+    <div class="alert alert-danger alertdisplay">{{ message }}</div>
+{% endfor %}
+<div id="reserverActiviteDiv">
+    <div class="d-flex row">
+        <img src="/uploads/{{activite.image}}"/>
+        <h3>Réserver : {{activite.name}} à partir de {{activite.price /100|number_format(2)}}€</h3>
+    </div>
+</div>
+{{form_start(form)}}
+    {{form_row(form.reservationPourLe)}}
+    {% if activite.type == 1 %} {# si formation spécialisée #}
+        {{form_row(form.typeFormation)}}
+    {% endif %}
+    {{form_row(form.submit)}}
+{{ form_end(form, {'render_rest': false}) }}
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'library/header_library.html.twig' %}
+{% block title %}<title>Les livraisons</title>{% endblock %}
+
+{% block content %}
+    <section class="accueilBibliotheque">
+        <div class="row">
+            <div class="text-center border_radius_all box_shadow_all p-4">
+                <a class="text-dark" href="{{ path('app_library_colissimo') }}">
+                <img src="{{ asset('assets/image/mes-documents.png') }}" alt="factures"><br/>
+                Documents Colissimo</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

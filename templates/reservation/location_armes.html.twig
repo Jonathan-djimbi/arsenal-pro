@@ -1,0 +1,150 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}<title>Location d'armes</title>{% endblock %}
+{% block annonce %} {% endblock %}
+{% block content %}
+    <div>
+        <h3 class="text-center">[🏗️ Page bientôt disponible 🏗️]</h3><br><br>
+    </div>
+    <div class="d-flex container">
+        <div class="row justify-content-center">
+            <div class="col-md-4 col-sm-10">
+                <h1 class="font-weight-bold">LOCATION D’ARMES</h1><br>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-md-4 col-sm-10">
+                <p>Une location? Pour quoi faire ?
+                    <br>
+                    <br>
+                    Vous n’êtes pas sûr de votre choix, vous avez lu plein de belles choses sur votre future arme utilisée par les forces spéciales et par les meilleurs du GIGN, mais la dernière fois que vous vous êtes fiés à ce descriptif marketing ça n’a pas été une réussite, 6 mois après vous avez revendu l’arme. Visiblement vous n’avez pas les mêmes goûts que nos forces d’élite ou que vos amis qui vous ont conseillés.</p>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <br>
+    <div>
+        <div>
+            <h2 class="font-weight-bold text-center">NOS ARMES</h2><br><br>
+        </div>
+        <div class="container">
+            <div class="row justify-content-around ligne-locations">
+                {% for arme in armes %}
+                    <div class="col-md-5 col-sm-10">
+                    <img src="{{ asset('uploads/'~ arme.image) }}" alt="photo pub arsenal pro" class="responsive-img"/>
+                    <div class="ligne-locations"><h3 class="font-weight-bold">{{ arme.name }}</h3><br>
+                        <div class="dropdown">
+                            <button class="dropbtn">▶ Usage</button>
+                            <div class="dropdown-content">
+                                <p>{{ arme.descriptionUn }}</p>
+                            </div>
+                        </div><hr>
+                        <div class="dropdown">
+                                <button class="dropbtn">▶ Fonctionnement</button>
+                                <div class="dropdown-content">
+                                    <p>{{ arme.descriptionDeux }}</p>
+                                </div>
+                            </div><hr>
+                        <div class="dropdown">
+                                <button class="dropbtn">▶ Particularité</button>
+                                <div class="dropdown-content">
+                                    <p>{{ arme.descriptionTrois }}</p>
+                                </div>
+                            </div><hr>
+                        <div class="dropdown">
+                                <button class="dropbtn">▶ Avis d'expert</button>
+                                <div class="dropdown-content">
+                                    <p>{{ arme.descriptionQuatre }}</p>
+                                </div>
+                            </div><hr>
+                    {% if arme.isOccupe == false %}
+                        <a href="{{ path('app_reservation_activite', {'id': arme.id, 'name' : arme.name}) }}" title="{{arme.name}}" class="btn btn-primary">JE RÉSERVE</a>
+                    {% else %}
+                        <p class="btn btn-secondary">Cette arme est louée pour l'instant</p>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <br><br>
+    </div>
+    <br><br>
+    <hr>
+    <br><br>
+    <div>
+        <div>
+            <h2 class="font-weight-bold text-center mb-3">PRIX DES ARMES EN LOCATION</h2><br>
+        </div>
+        <table class="table table-bordered">
+        <thead>
+            <tr>
+            <th scope="col"></th>
+            <th scope="col">Arme d'épaule cat C</th>
+            <th scope="col">Arme de poing cat B</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="bg-light">   
+            <td class="text-center">JOURNALIER<br>Demi-journée</td>
+            <td>50 €</td>
+            <td>30 €</td>
+            </tr>
+
+            <tr>
+            <td class="text-center">WEEK-END<br>Du vendredi soir (19h) au lundi matin (10h)</td>
+            <td>100 €</td>
+            <td>-</td>
+            </tr>
+
+            <tr class="bg-light">   
+            <td class="text-center">SEMAINE<br>Du lundi (10h) au lundi suivant (10h)</td>
+            <td>290 €</td>
+            <td>-</td>
+            </tr>
+
+            <tr>   
+            <td class="text-center">JOUR SUPPLÉMENTAIRE</td>
+            <td>40 € / jour</td>
+            <td>-</td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+
+<style>
+.dropbtn {
+    background-color: white;
+    color : rgb(90 90 90);
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    margin-left : 30%;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 300px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    padding: 15px;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+</style>
+
+{% endblock %}
