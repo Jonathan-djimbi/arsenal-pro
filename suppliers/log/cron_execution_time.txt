@@ -1,0 +1,62 @@
+2023-11-13 15:33:45 - Temps d'exécution total : 91.900527032216 minutes
+Temps d'exécution update produits europ-arm : 73.76817681392 minutes
+Temps d'exécution update produits simac : 18.132219497363 minutes
+
+2023-11-21 10:15:24 - Temps d'exécution total : 97.306072298686 minutes
+Temps d'exécution delete produits europ-arm : 0.53371548255285 minutes
+Temps d'exécution delete produits simac : 0.1559868812561 minutes
+Temps d'exécution update produits europ-arm : 86.154101185004 minutes
+Temps d'exécution update produits simac : 4.4788792173068 minutes
+Temps d'exécution insert nouveaux produits europ-arm : 2.7940757830938 minutes
+Temps d'exécution insert nouveaux produits simac : 3.1892088810603 minutes
+
+2023-11-21 12:06:37 - Temps d'exécution total : 97.036085148652 minutes
+Temps d'exécution delete produits europ-arm : 0.65442339976629 minutes
+Temps d'exécution delete produits simac : 0.16940148274104 minutes
+Temps d'exécution update produits europ-arm : 85.577181565762 minutes
+Temps d'exécution update produits simac : 4.62988336881 minutes
+Temps d'exécution insert nouveaux produits europ-arm : 2.8038215478261 minutes
+Temps d'exécution insert nouveaux produits simac : 3.2012990156809 minutes
+
+2023-11-23 12:54:17 - Temps d'exécution total Stock : 49.262119420369 minutes
+
+2023-11-24 03:40:30 - Temps d'exécution total : 95.483019932111 minutes
+Temps d'exécution delete produits europ-arm : 0.54974397023519 minutes
+Temps d'exécution delete produits simac : 0.15645798047384 minutes
+Temps d'exécution update produits europ-arm : 83.578559501966 minutes
+Temps d'exécution update produits simac : 4.3891267855962 minutes
+Temps d'exécution insert nouveaux produits europ-arm : 3.0554973999659 minutes
+Temps d'exécution insert nouveaux produits simac : 3.7535320321719 minutes
+
+2023-11-24 12:53:52 - Temps d'exécution total Stock : 48.860736600558 minutes
+
+2023-11-25 03:42:47 - Temps d'exécution total : 97.766547083855 minutes
+Temps d'exécution delete produits europ-arm : 0.56659861405691 minutes
+Temps d'exécution delete produits simac : 0.15622965097427 minutes
+Temps d'exécution update produits europ-arm : 85.600066649914 minutes
+Temps d'exécution update produits simac : 4.2905233184497 minutes
+Temps d'exécution insert nouveaux produits europ-arm : 3.4476722160975 minutes
+Temps d'exécution insert nouveaux produits simac : 3.7053479830424 minutes
+
+2023-11-25 12:53:54 - Temps d'exécution total Stock : 48.870758835475 minutes
+
+2023-11-26 03:41:55 - Temps d'exécution total : 96.901021198432 minutes
+Temps d'exécution delete produits europ-arm : 0.56110874811808 minutes
+Temps d'exécution delete produits simac : 0.15271743138631 minutes
+Temps d'exécution update produits europ-arm : 84.512363298734 minutes
+Temps d'exécution update produits simac : 4.4599426468213 minutes
+Temps d'exécution insert nouveaux produits europ-arm : 3.389563413461 minutes
+Temps d'exécution insert nouveaux produits simac : 3.8252446492513 minutes
+
+2023-11-26 12:54:31 - Temps d'exécution total Stock : 49.499919680754 minutes
+
+2023-11-27 03:43:12 - Temps d'exécution total : 98.188940397898 minutes
+Temps d'exécution delete produits europ-arm : 0.5586528301239 minutes
+Temps d'exécution delete produits simac : 0.16317799886068 minutes
+Temps d'exécution update produits europ-arm : 85.976570999622 minutes
+Temps d'exécution update produits simac : 4.4050337354342 minutes
+Temps d'exécution insert nouveaux produits europ-arm : 3.3489956974983 minutes
+Temps d'exécution insert nouveaux produits simac : 3.7364253004392 minutes
+
+2023-11-27 12:55:27 - Temps d'exécution total Stock : 50.435739584764 minutes
+
