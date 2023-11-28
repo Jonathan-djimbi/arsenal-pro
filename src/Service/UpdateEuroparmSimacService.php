@@ -413,6 +413,7 @@ class UpdateEuroparmSimacService extends AbstractController
         $data = $sheet->toArray(); //conversion excel en tableau
         $batchSize = 20; // Nombre d'enregistrements à insérer à la fois
         $count = 0;
+        $this->entityManager->clear();
         $this->entityManager->beginTransaction();
         try {
             foreach (array_slice($data, 1) as $row) {
@@ -470,9 +471,7 @@ class UpdateEuroparmSimacService extends AbstractController
                         $nomImage = strtolower(str_replace(' ', '-', $this->enleverCaracSpecial($row[1])));
 
                         for ($y = 18; $y <= 20; $y++) {
-                            if (
-                                $row[$y] !== null
-                            ) {
+                            if ($row[$y] !== null) {
                                 file_get_contents($urlImage . $row[$y]);
                                 file_put_contents('./public/uploads/' . $nomImage . '-' . $row[$y],  file_get_contents($urlImage . $row[$y]));
                             }
@@ -564,11 +563,14 @@ class UpdateEuroparmSimacService extends AbstractController
                         $this->entityManager->flush();
                     }
                 }
-                /* $count++;
+                $count++;
                 if ($count % $batchSize == 0) {
                     $this->entityManager->flush();
+                    $this->entityManager->commit();
+                    echo $count . " produits insérés\n";
                     $this->entityManager->clear(); // Libère les objets pour éviter la surcharge mémoire
-                } */
+                    $this->entityManager->beginTransaction();
+                }
             }
             $this->entityManager->flush(); // Insérer les produits restants
             $this->entityManager->commit(); // Valider la transaction
