@@ -60,3 +60,11 @@ Temps d'exécution insert nouveaux produits simac : 3.7364253004392 minutes
 
 2023-11-27 12:55:27 - Temps d'exécution total Stock : 50.435739584764 minutes
 
+2023-11-28 03:43:30 - Temps d'exécution total : 98.477008450031 minutes
+Temps d'exécution delete produits europ-arm : 0.55336405038834 minutes
+Temps d'exécution delete produits simac : 0.16765019893646 minutes
+Temps d'exécution update produits europ-arm : 86.143526999156 minutes
+Temps d'exécution update produits simac : 4.3434625307719 minutes
+Temps d'exécution insert nouveaux produits europ-arm : 3.3827881018321 minutes
+Temps d'exécution insert nouveaux produits simac : 3.8861329356829 minutes
+
