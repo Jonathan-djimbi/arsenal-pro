@@ -100,3 +100,5 @@ Temps d'exécution insert nouveaux produits simac : 3.8861329356829 minutes
 
 2023-12-16 04:12:59 - Temps d'exécution total : 127.96423761845 minutes
 
+2023-12-16 12:54:41 - Temps d'exécution total Stock : 49.661422467232 minutes
+
