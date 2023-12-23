@@ -46,7 +46,7 @@ HO16270;"Carabine HOWA Black Cal.270win Can.56 5+1";1
 G1110;"Gamo New Delta Noir Synth 7.5 joules";10
 G1300C;"Black Shadow Combo 4.5mm 14 Joules + Lunette 4x32+ Plombs";10
 G1560;"Gamo Cfx Royal 4.5mm <19.9joules";10
-G2155;"Gamo PT85 Blowback 4.5mm 3.98 Joules Co2";3
+G2155;"Gamo PT85 Blowback 4.5mm 3.98 Joules Co2";1
 G2153;"Gamo PT85 KAKI Blowback 4.5mm 3.98 Joules Co2";0
 G2105;"Gamo P25 Blowback 4.5mm 3.98 Joules Co2";10
 G2300;"Gamo Compact 4.5mm 3.65 Joules A.C";10
@@ -229,7 +229,7 @@ CHF012;"Choke FAIR Cal.12 Court 3/4";3
 CHF013;"Choke FAIR Cal.12 Court 1/2";3
 CHF014;"Choke FAIR Cal.12 Court 1/4";3
 CHF015;"Choke FAIR Cal.12 Court Lisse";3
-CHF021;"Choke FAIR Cal.20 Court Full";3
+CHF021;"Choke FAIR Cal.20 Court Full";10
 CHF022;"Choke FAIR Cal.20 Court 3/4";3
 CHF023;"Choke FAIR Cal.20 Court 1/2";10
 CHF024;"Choke FAIR Cal.20 Court 1/4";3
@@ -1008,7 +1008,7 @@ PM1090;"Point de Mire Fibre Optique Longitudinal BH 9";3
 PM1095;"Point de Mire Fibre Optique Longitudinal BH 9.5";3
 PM1100;"Point de Mire Fibre Optique Longitudinal BH 10";1
 PM2007;"Point de Mire Fibre Optique Transversal H 7";1
-PM2008;"Point de Mire Fibre Optique Transversal H 8";3
+PM2008;"Point de Mire Fibre Optique Transversal H 8";1
 PM2009;"Point de Mire Fibre Optique Transversal H 9";1
 PM2011;"Point de Mire Fibre Optique Transversal H 11";3
 PM2012;"Point de Mire Fibre Optique Transversal H 12";1
@@ -1135,7 +1135,7 @@ SPM002;"Adaptateur prisme 21 (weaver) à prisme de 11 mm ";1
 57080-3019;"Embase Avant Weaver Remington Seven";1
 57080-3023;"Embase Avant Weaver Weatherby Mark V";1
 57080-302G;"Embase Avant Weaver Titan 16";1
-57080-301K;"Embase Avant Weaver Express Sabatti";1
+57080-301K;"Embase Avant Weaver Express Sabatti";3
 57080-3040;"Embase Avant Weaver SHR 970";1
 57080-3015;"Embase Avant Weaver Sauer 80/90";1
 57080-3016;"Embase Avant Weaver Sauer 200";0
@@ -1191,7 +1191,7 @@ SPM168;"Colliers Sports Match Diam.30 coude 25 BH 21 prisme 11 mm";0
 46126-1012;"Montage Basculant Levier Lateral Ssk II Prisme 12 Diam.26 Bh 20";0
 46126-0557;"Montage Basculant Levier Lateral SskII Prisme 21 Diam.26 Bh 15";0
 46126-1057;"Montage Basculant Levier Lateral SskII Prisme 21 Diam.26 Bh 20";0
-57530-0601;"Colliers Diam.30 Prisme 21 Serrage À Levier BH 6";3
+57530-0601;"Colliers Diam.30 Prisme 21 Serrage À Levier BH 6";1
 57530-0951;"Colliers Diam.30 Prisme 21 serrage A Levier BH 9.5";1
 57530-1401;"Colliers Diam.30 Prisme 21 Serrage À Levier BH 14 (la Paire)";1
 57530-1901;"Collier Diam.30 Prisme 21 Serrage A Levier BH 19 ( La Paire )";1
@@ -2774,6 +2774,7 @@ DDAR12V4;"*B* Daniel Defense DD5 V4 barrel 18' cal. 6.5 Creedmoor semi-auto";3
 DDZR10;"Garde main multi-rails Picatinny 10'";10
 DDZR15;"Garde main multi-rails Picatinny 15'";10
 DDZ007;"06-048-01109 Cache Flame Flash Supress type A2 Daniel Defense 1/2x28";10
+SMB00036V;"Steyr Monobloc Cal.30-06 Spr. crosse vert canon 56 cm";0
 SMB00036N;"Steyr Monobloc Cal.30-06 Spr. crosse noire canon 56 cm";0
 SMB00036M;"Steyr Monobloc Cal.30-06 Spr. crosse marron canon 56 cm";1
 SMBC0010;"Set insert cuir noir Steyr Monobloc";1
@@ -3662,7 +3663,7 @@ NUM885;"NUM'AXES - Chargeur pour 2 ou 4 piles AA HR6/ AAA HR3, Ni-MH ou Ni-Cd";1
 DC110CI;"Super. Premier Acier Eject DD Cal.12/76 Can.71 CI (3ch)";0
 DC110MCI;"Super. Premier Acier Eject MD Cal.12/76 Can.71 CI (3ch)";0
 DC0123CI;"Super. Ext.Premier Ergal DD Cal.20/76 Can.61 CI (2ch+1 rayé)";0
-DC0123MCI;"Super. Ext.Premier Ergal MD Cal.20/76 Can.61 CI (2ch+1 rayé)";1
+DC0123MCI;"Super. Ext.Premier Ergal MD Cal.20/76 Can.61 CI (2ch+1 rayé)";0
 DC0520CI;"Super Ext Premier ERGAL EJECTEUR DD Cal.20/76 Can. 68 CI (3ch)";1
 DC0520MCI;"Super Ext Premier ERGAL EJECTEUR MDS Cal.20/76 Can. 68 CI (3ch)";1
 DC0520AMCI;"Super Ext Premier ERGAL EJECTEUR MDS Cal.20/76 Can. 68 CI (3ch) ANGLA";0
@@ -4878,7 +4879,7 @@ FAP19;"Pack pour STF12 et Martial ( OHR30 + Support 4 c + Bretelle + lampe )";0
 NUM645;"NUM'AXES - Jumelles 8x42 JUM1015 - Vertes";1
 G1650P;"Gamo ARROW PCP 4.5mm 19.9J + lunette 3-9x40wr + Plombs + pompe";30
 AEM4111P;"PACK M4E1 Carabine M-4 barrel 11.5' M-Lok Semi-Auto Cal.5.56 + OPA13";0
-N1466;"XXAPXX 201100003 Nig Bretelle universelle Carbone*";1
+N1466;"XXAPXX 201100003 Nig Bretelle universelle Carbone*";0
 MA73325;"HH0003/N Frein de bouche HAMMERHEAD cal.338 - 5/8x24unef";3
 MA73225;"HH0001/N Frein de bouche HAMMERHEAD cal.30 - 5/8x24 UNEF ";1
 MA73240;"HH0002/N Frein de bouche HAMMERHEAD cal.30 - M18x1";10
@@ -5273,7 +5274,7 @@ PFAB124;"INSERT ARRIERE DU GARDE MAIN STF";1
 PFAG014;"RESSORT DE COMMANDE DE VERROU SEMI AUTO";3
 PFAG015;"TIGE DE RESSORT COMMANDE DE VERROU SEMI AUTO";1
 PFAG010;"PERCUTEUR SEMI AUTOMATIQUE";1
-PFAG011;"RESSORT DE PERCUTEUR ELLEGI EURO3";10
+PFAG011;"RESSORT DE PERCUTEUR ELLEGI EURO3";3
 PFAG012;"GOUPILLE DE RETENUE PERCUTEUR SEMI AUTO";10
 PFAG008;"GOUPILLE EXTRACTEUR SEMI AUTO";3
 PFAG009;"TIGE RESSORT EXTRACTEUR SEMI AUTO";10
