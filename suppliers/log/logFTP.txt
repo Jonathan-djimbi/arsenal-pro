@@ -1,1 +1,1 @@
-82023-12-23 03:59:37 - Le fichier ./suppliers/simacListeProduits.csv a été écrit avec succès
+82023-12-24 03:52:55 - Le fichier ./suppliers/simacListeProduits.csv a été écrit avec succès
