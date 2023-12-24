@@ -487,7 +487,7 @@ SMC13420;"STEYR CL II SX Cal.270 Win. can. 560mm";0
 SMC13423;"STEYR CL II SX Cal.243 Win. can. 560mm";0
 G1630;"gamo coyote pcp 5.5";3
 G2170;"Gamo GP-20 COMBAT 4.5mm 3.98 Joules CO2";30
-G2178;"Gamo Révolver PR-776 4.5mm 3.8Joules Co2";1
+G2178;"Gamo Révolver PR-776 4.5mm 3.8Joules Co2";0
 G5190;"Gamo Cible Plinking Target";30
 N2460;"XXAPXX 141100022 Nig Longe Chien de Sang Fluo 3 couleurs 12m*";0
 N1730;"151100001 Nig Insert Crosse 6 Balles Loden ";3
@@ -1167,7 +1167,7 @@ SPM168;"Colliers Sports Match Diam.30 coude 25 BH 21 prisme 11 mm";0
 60560-5000;"MAK MasterLock picatinny";0
 60563-3005;"MAK MasterLock diam.30 coudé";0
 57050-2010;"Rail Long Picatinny Mauser 98 20 Moa";1
-57050-2012;"Rail Long Picatinny Remington 700 Short Sps 20 M.O.A";3
+57050-2012;"Rail Long Picatinny Remington 700 Short Sps 20 M.O.A";1
 57050-2059;"Rail Long Picatinny Howa 1500 Short 20 Moa";1
 57050-2081;"Rail Long Picatinny Tikka T3 Incline 20 Moa";1
 57050-2093;"Rail Long Picatinny Savage accutriger Short 20 M.O.A";1
@@ -4910,7 +4910,7 @@ OC31256;"Lunette d'affut 3-12x56 illuminée MICRODOT";30
 EAA61602;"Fourreau Housse Noir 105x32cm";0
 CAM110;"XXAPXX-TACTACAM caméra 5.0";10
 CAM111;"XXAPXX-TACTACAM remote pour caméra 5.0";10
-CAM200;"XXAPXX-FTS support video pour lunette";3
+CAM200;"XXAPXX-FTS support video pour lunette";1
 CAM305;"XXAPXX-Support picatinny pour CAMERA 5.0 serrage sous lunette";10
 CAM325;"XXAPXX-Support stabilisateur pour CAMERA 5.0";3
 CAM320;"XXAPXX-Support universel pour CAMERA 5.0";10
@@ -5470,7 +5470,7 @@ CAFJ96;"Cal.12/76 Juxta FAIR Canon 71 cm CI";0
 CAF90;"Cal.12/76 Juxta FAIR Canon 76 cm CI";0
 CAF91;"Can.FAIR Juxtaposé Eject Cal.20/76 Can.62 lisse 1/2";0
 NO700;"Norinco NR15 Carabine 22LR crosse Synth CR714";10
-PILELR44;"Pile Alcaline Bouton LR44 NX Pour Viseur Laser (par 2 Pces)";10
+PILELR44;"Pile Alcaline Bouton LR44 NX Pour Viseur Laser (par 2 Pces)";3
 ALP42206080;"ALPEN Telescope WINGS 20-60x80";1
 G13901;"Gamo Viper PRO 10X IGT- 4x32wr cal 4.5mm - 19.9 joules";30
 G3250CP;"Plombs Gamo Pistol PRO 250 x 100 4.5g";30
