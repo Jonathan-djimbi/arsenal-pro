@@ -1,1 +1,1 @@
-82024-01-12 02:13:10 - Le fichier ./suppliers/europarmListeProduits.csv a été écrit avec succès
+82024-01-13 02:12:47 - Le fichier ./suppliers/europarmListeProduits.csv a été écrit avec succès
