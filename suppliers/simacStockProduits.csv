@@ -948,7 +948,7 @@ G3760;"Plombs Gamo BB's 4.5 Boites de 500 plombs";30
 28040-0200;"Vis Renfort de Crosse Butee de Recul Preparee (sans Ecrou)";1
 28060-0100;"Ecrou Renfort de Crosse M 6";1
 30040-0000;"Detente Directe K 98 Acier Standard";1
-30040-0200;"Detente Directe K 98 Alu Standard";3
+30040-0200;"Detente Directe K 98 Alu Standard";1
 47620-0150;"Support H1 Basculant Prisme 15";3
 47675-0123;"Support Basculant Nikko Stirling XT4 Pro-T4 Prisme 12";10
 49060;"Collier Weawer Diam.26 déporté BH 8.5";30
@@ -2539,7 +2539,7 @@ WER023130;"Tournevis vis 6 pans creux 8 mm";3
 5054-3600;"Makuick Brno 14.5  Diam.36 colliers BH 5";0
 5092-26193;"Makuick Blaser R93 Diam.26";0
 5092-30193;"Makuick Blaser R93 Diam.30";1
-5092-40193;"Makuick Blaser R93 Rail 70°";1
+5092-40193;"Makuick Blaser R93 Rail 70°";0
 5092-70193;"Makuick Blaser R93 Rail Convex";1
 5094-34193;"Makuick Blaser R93 Collier BH 5 Diam.34";1
 5094-26193;"Makuick Blaser R93 Collier BH 5 Diam.25.4";0
@@ -3695,7 +3695,7 @@ NUM800;"NUM'AXES - Blister 1 pile CR2 lithium 3 V (Equival. : CR17355-DLCR2)";30
 NUM810;"NUM'AXES - Blister 1 pile CR123 A lithium 3 V(Equival.: CR17345-DL123";30
 NUM815;"NUM'AXES - Blister 1 pile CR2032 lithium 3 V (Equivalence : DL2032)";30
 NUM825;"NUM'AXES - Blister 1 pile CR2450 lithium 3 V (Equivalence : DL2450)";3
-NUM830;"NUM'AXES - Blister 1 pile CR1632 lithium 3 V (Equivalence : DL1632)";10
+NUM830;"NUM'AXES - Blister 1 pile CR1632 lithium 3 V (Equivalence : DL1632)";3
 NUM835;"NUM'AXES - Blister 4 piles AAA LR03 alcalines 1,5 V";10
 NUM840;"NUM'AXES - Blister 4 piles AA LR06 alcalines 1,5 V";10
 NUM845;"NUM'AXES - Blister 2 piles C LR14 alcalines 1,5 V";3
