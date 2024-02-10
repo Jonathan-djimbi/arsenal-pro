@@ -112,7 +112,7 @@ SMC11038;"STEYR CL II Standard 308Win. can.560mm";0
 SMC11020;"STEYR CL II Standard 270Win. can.560mm";0
 SMC11023;"STEYR CL II Standard 243Win can.560mm";0
 SMC31023;"STEYR CL II Stutzen 243 Win. Can.508mm";1
-SMC31074;"STEYR CL II Stutzen 7x64 Can.508mm";1
+SMC31074;"STEYR CL II Stutzen 7x64 Can.508mm";0
 SMC31036;"STEYR CL II Stutzen 30-06 Spr. Can.508mm";0
 SMC31038;"STEYR CL II Stutzen 308 Win. Can.508mm";0
 SMC31022R;"STEYR CL II Stutzen 222 Rem. Can.508mm";0
@@ -553,7 +553,7 @@ G4130;"Gamo Lunette LC4X32WR";30
 57050-002V;"Rail Long Picatinny Winchester XPR short";1
 57050-0051;"Rail Long Picatinny STEYR M et S";1
 57050-0059;"Rail Long Picatinny Howa 1500 Short";1
-57050-0062;"Rail Long Picatinny BRNO PRISME 19.5 BH 12";3
+57050-0062;"Rail Long Picatinny BRNO PRISME 19.5 BH 12";1
 57050-0069;"Rail Long Picatinny Winchester 70 WSSM";1
 57050-0076;"Rail Long Picatinny Benelli Argo";0
 57050-0080;"Rail Long Picatinny Sauer 202 Standard";1
@@ -1989,7 +1989,7 @@ BONPROT5;"Bonnette Diamond Pro T5";30
 G6710;"Gamo Silencieux Coyote PCP 4.5mm et 5.5 mm";30
 MK5191;"Montage monobloc weaver coudé diam.30 bh 27";10
 MK5291;"Montage monobloc weaver coudé diam.34 bh 26";10
-MK5141;"Collier à levier weaver diam.30 bh 4.5";10
+MK5141;"Collier à levier weaver diam.30 bh 4.5";3
 MK5142;"Collier à levier weaver diam.30 bh 8.6";30
 MK5143;"Collier à levier weaver diam.30 bh 14.4";30
 MK1133;"Colliers diam. 30 prisme 11 BH 22";30
@@ -2252,7 +2252,7 @@ PR215;"PLAQUE DE COUCHE 15MM - LUX - VENTILEE - NOIRE";30
 PR220;"PLAQUE DE COUCHE 20MM - LUX - VENTILEE - NOIRE";30
 PR225;"PLAQUE DE COUCHE 25MM - LUX - VENTILEE - NOIRE";30
 PR230;"PLAQUE DE COUCHE 30MM - LUX - VENTILEE - NOIRE";30
-DDM4142;"!B! M4A1-NM, Mil Spec Brown 14.5' Barrel. Semi-Auto. Cal.5.56";10
+DDM4142;"!B! M4A1-NM, Mil Spec Brown 14.5' Barrel. Semi-Auto. Cal.5.56";3
 DDM4101;"!B! MK18-NM Black 10.3' Barrel Semi-Auto Cal.5.56";10
 DDM301;"!B! Daniel Defense M4-300S Cal.300 AAC Blk canon 10.3' Semi Auto";1
 DDV7181;"!B! Daniel Defense DDM4V7-Pro Black 18' Barrel. Semi-Auto. Cal.5.56";3
@@ -2719,7 +2719,7 @@ MA70000;"Frein de bouche Imperium cal.5.56 1/2x28 unef";0
 MA50205;"HM0010/B Frein de bouche HMB noir cal.30 1/2x20 unef";3
 MA50220;"HM0006/B Frein de bouche HMB noir cal.30 M15x1";30
 MA50225;"HM0002/B Frein de bouche HMB noir cal.30 5/8x24 unef";10
-MA50215;"HM0008/B Frein de bouche HMB noir cal.30 M14x1";10
+MA50215;"HM0008/B Frein de bouche HMB noir cal.30 M14x1";3
 MA50415;"JF0004/B  Frein de bouche HMB noir Diam.9.5mm M14x1";3
 MA50420;"JF0005/B Frein de bouche HMB noir Diam.9.5mm M15x1";0
 MA50425;"HM0021/B Frein de bouche HMB noir Diam.9.5mm 5-8x24 UNEF";1
