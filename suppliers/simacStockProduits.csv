@@ -561,7 +561,7 @@ G4130;"Gamo Lunette LC4X32WR";30
 57050-0089;"Rail Long Picatinny Zoli 1900";1
 57050-0092;"Rail Long Picatinny Rosler Titan 3/6 // SAVAGE AXIS";3
 57050-0093;"Rail Long Picatinny Savage Short BH 6.5";1
-57050-0098;"Rail Long Picatinny Merkel SR1";3
+57050-0098;"Rail Long Picatinny Merkel SR1";1
 57050-0112;"Rail Long Picatinny Remington 700 Long";3
 57050-0114;"Rail Long Picatinny Sako 85";1
 57050-011N;"Rail Long Picatinny Remington 700 Police (vis 840 )";0
@@ -934,7 +934,7 @@ G3760;"Plombs Gamo BB's 4.5 Boites de 500 plombs";30
 21205-3022;"Grenadiere Bois Standard Anneau Us";0
 21630-1000;"Grenadiere Can.A Visser Convex Standard";1
 21630-3000;"Grenadiere Can.Juxta A Visser Anneau Large";0
-23000-0000;"Grenadiere A Billes Detachage Rapide";3
+23000-0000;"Grenadiere A Billes Detachage Rapide";1
 23000-1010;"Support Grenadiere A Billes Bois Concave A Visser";1
 23100-5010;"Support Grenadiere A Bille Devant A Encastrer";0
 24020-0200;"Calotte Plate Acier Fixation Par Deux Vis";1
@@ -1108,7 +1108,7 @@ DC107MT;"Super. Ext Traqueur B.Battue MD Cal.12/76 Can.55cm Lisse 1/2 ";3
 OC1824F;"Lunette de battue 1-8x24 illumination FIBRE OPTIQUE MICRODOT";30
 ONS50;"2.5-10x50 Ret.4 Lumineux Diam.30 Nikko Stirling";10
 SPM001;"Adaptateur prisme de 11 à 21 (weaver)";0
-SPM002;"Adaptateur prisme 21 (weaver) à prisme de 11 mm ";1
+SPM002;"Adaptateur prisme 21 (weaver) à prisme de 11 mm ";0
 57090-302V;"Embase Arriere winchester XPR";10
 57080-3013;"Embase Avant Weaver Remington 7400";1
 57080-301Q;"Embase Avant Weaver BW T-Bolt";1
@@ -2665,7 +2665,7 @@ BCR6036;"BCM - RUBIS trou de pouce Cal.30-06 Spr. canon 56cm fileté";10
 BCR6070;"BCM - RUBIS trou de pouce Cal.7 Rem. /76 canon 61cm fileté";1
 BCR6074;"BCM - RUBIS trou de pouce Cal.7x64. canon 56cm fileté";1
 DDM4141;"!B! M4A1-NM Black FDE 14.5' Barrel Semi-Auto Cal.5.56";3
-DDM4102;"!B! MK18-NM Marron 10.3' Barrel Semi-Auto Cal.5.56 ";10
+DDM4102;"!B! MK18-NM Marron 10.3' Barrel Semi-Auto Cal.5.56 ";3
 F70126;"Pochette à cartouches avec ceinture New 2019";10
 G1112;"Gamo Delta blue Synth 7.5 joules New 2019";30
 G2500;"Winchester Revolver CO2 4.5";10
@@ -5501,7 +5501,7 @@ MSD104;"!B! Pistolet 1911 Messerschmitt 9x19 Inox";0
 MSD105;"Messerschmitt cal. 9x19 - MP5 arme d'épaule ME09A2";0
 DDZ020-2;"02-050-09303 Percuteur -  AR15 -  Firing Pin";10
 KU104;"!B!Kalashnikov USA Semi-Auto - KR-103 SFS cal 7.62x39 crosse pliante";0
-A69898;"Lampe tactical nx 300 - Nuprol";1
+A69898;"Lampe tactical nx 300 - Nuprol";0
 OCT6151;"Lunette de tir MICRODOT 6-24x50 ; FFP ; MRAD";30
 MEL301803;"47002301802421 EAW à levier 30mm- BH18mm - weaver coudes avants";0
 MEL301003;"47002301002421 EAW à levier 30mm- BH10mm - weaver coudes avants";1
