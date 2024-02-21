@@ -478,3 +478,9 @@ Login au FTP avec succès.
 Connexion au FTP avec succès.
 Login au FTP avec succès.
 [2024-02-20 12:39:24] Le fichier ./suppliers/simacStockProduits.csv a été écrit avec succès
+Connexion au FTP avec succès.
+Login au FTP avec succès.
+[2024-02-21 12:05:02] Le fichier ./suppliers/europarmStockProduits.csv a été écrit avec succès
+Connexion au FTP avec succès.
+Login au FTP avec succès.
+[2024-02-21 12:40:20] Le fichier ./suppliers/simacStockProduits.csv a été écrit avec succès
