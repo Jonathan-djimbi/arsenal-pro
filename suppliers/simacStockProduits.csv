@@ -444,7 +444,7 @@ CG592G;"INVICTUS 1Trap IMPACT Cal.12/70 76cm CI 1/2 haute réglable CR Gaucher";
 CG598;"INVICTUS 1 Ascent Sporting 12/76 81cm CI Mi-haute fixe - CR";0
 CG598G;"INVICTUS 1 Ascent Sporting 12/76 81cm CI Mi-haute fixe - CR Gaucher";0
 JPX450;"Holster JPX-4";0
-JPX250;"Munition Oc Pour JPX-4 ";0
+JPX250;"Munition Oc Pour JPX-4 ";1
 DC128MCI;"Super. Ext. MD Cal.28 Small Can.71 CI ";1
 VFG.M;"Gilet de Tir FAIR bleu marine T.M";3
 VFG.L;"Gilet de Tir FAIR bleu marine T.L";10
@@ -503,7 +503,7 @@ N1907;"XXAPXX 16110001 Nig Bretelles Pantalon Loden Brown";3
 G15405;"GAMO CFX 5.5 mm 19.9 joules ";0
 GA500J;"Holster GaII Pour Le Poignet";3
 GA500K;"Holster GaII Pour La Jambe";0
-JPX260;"Munition Oc Pour JPX-4 Entrainement";0
+JPX260;"Munition Oc Pour JPX-4 Entrainement";1
 JPX101;"Jet Protecteur Noir ( livre avec 1 cartouche OC)";0
 JPX101L;"Jet Protecteur Noir LASER( livre avec 1 cartouche OC)";0
 EN6500;"BRUNOX GUN CARE CLOTH - BOX  5 x 6g (Carton x 12)";10
@@ -698,7 +698,7 @@ HVERX2;"57055-0347 Embase Fixe Prisme 21 Express Verney-Carron/ bde plate";30
 HSABAX;"57055-001K Embase Longue Express Sabatti Bande de Battue";3
 HREM;"57055-0013 Embase Fixe Prisme 21 Remington 7400";30
 57055-003D;"Rail Long Semi-Picatinny CZ 455 / 57; 30 MOA";30
-57055-003F;"Rail Long Semi-Picatinny TIKKA T1 ; 30 MOA";1
+57055-003F;"Rail Long Semi-Picatinny TIKKA T1 ; 30 MOA";0
 57055-0061;"Rail Long Semi-Picatinny CZ 527; 30 MOA";10
 57055-003G;"Rail Long Picatinny Winchester SXP";30
 HBARC;"57055-0103 Réglette courte Browning Bar";30
@@ -2585,7 +2585,7 @@ WER023130;"Tournevis vis 6 pans creux 8 mm";3
 83-00191;"83-00191 Rail Picatinny Acier Krieghoff Semprio";0
 83-00197;"83-00197 Rail Picatinny Acier Sauer 101";0
 83-00202/1;"83-00202/1 Rail Picatinny Acier Steyr SBS96 E=62mm";0
-83-00202/2;"83-00202/2 Rail Picatinny Acier Steyr SBS96 E=69mm";1
+83-00202/2;"83-00202/2 Rail Picatinny Acier Steyr SBS96 E=69mm";0
 83-00202/3;"83-00202/3 Rail Picatinny Acier Steyr SBS96 E=73.5mm";0
 83-00202/4;"83-00202/4 Rail Picatinny Acier Steyr SBS96 E=76mm";0
 83-00206;"418310376 Rail Picatinny Acier Heym Sr30 sans prisme";1
@@ -4389,7 +4389,7 @@ PVI0313;"rail picatinny pour interface anshutz QD";0
 PVI0314;"RAIL PICATINNY COMPATIBILE M-LOK® SYSTEM L115";0
 PVI0315;"RAIL PICATINNY COMPATIBILE M-LOK® SYSTEM L75";0
 PVI0318;"PlCATINNY RAIL ANSCHUTZ-TYPE FOR GLADIO X L75";0
-PVI0319;"PlCATINNY RAIL ANSCHUTZ-TYPE FOR GLADIO X L275";1
+PVI0319;"PlCATINNY RAIL ANSCHUTZ-TYPE FOR GLADIO X L275";0
 PVI0033;"kit uprade démontable decumanus M1/M3/M5";0
 PVI0034;"kit uprade démontable  DECUMANUS M2/M4/M6";0
 PVI0001;"Rail additionnel RAUC H10 L55";1
