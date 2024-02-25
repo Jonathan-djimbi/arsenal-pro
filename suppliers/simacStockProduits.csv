@@ -520,7 +520,7 @@ G4130;"Gamo Lunette LC4X32WR";30
 57050-0003;"Rail Long Picatinny Browning Bar";3
 57050-0006;"Rail Long Picatinny Krico 600/700/900/902";1
 57050-0008;"Rail Long Picatinny SLB2000 / SR1 5 Trous";10
-57050-0010;"Rail Long Picatinny Mauser 98";10
+57050-0010;"Rail Long Picatinny Mauser 98";3
 57050-0012;"Rail Long Picatinny Remington 700 Short SPS";3
 57050-0013;"Rail Long Picatinny Remington 7400";3
 57050-0014;"Rail Long Picatinny Sako 85 Short";1
@@ -628,7 +628,7 @@ VG3;"Gilet de Tir NOIR Caesar GUERINI Taille L";1
 VG3G;"Gilet de Tir NOIR Caesar GUERINI Taille L Gaucher";1
 VG4;"Gilet de Tir NOIR Caesar GUERINI Taille XL";0
 VG41G;"Gilet de Tir NOIR Caesar GUERINI Taille XL Gaucher";0
-VG42;"Gilet de Tir NOIR Caesar GUERINI Taille 2XL";1
+VG42;"Gilet de Tir NOIR Caesar GUERINI Taille 2XL";0
 VG42G;"Gilet de Tir NOIR Caesar GUERINI Taille 2XL Gaucher";1
 VG43;"Gilet de Tir NOIR Caesar GUERINI Taille 3XL";1
 VG43G;"Gilet de Tir NOIR Caesar GUERINI Taille 3XL Gaucher";1
@@ -5441,7 +5441,7 @@ CAF90;"Cal.12/76 Juxta FAIR Canon 76 cm CI";0
 CAF91;"Can.FAIR Juxtaposé Eject Cal.20/76 Can.62 lisse 1/2";0
 NO700;"Norinco NR15 Carabine 22LR crosse Synth CR714";10
 PILELR44;"Pile Alcaline Bouton LR44 NX Pour Viseur Laser (par 2 Pces)";3
-G13901;"Gamo Viper PRO 10X IGT- 4x32wr cal 4.5mm - 19.9 joules";1
+G13901;"Gamo Viper PRO 10X IGT- 4x32wr cal 4.5mm - 19.9 joules";0
 G3250CP;"Plombs Gamo Pistol PRO 250 x 100 4.5g";30
 MA43100;"TR0001/A Trépied AUDERE";1
 NO705;"Norinco JW15 Carabine 22LR crosse Bois CR715";30
