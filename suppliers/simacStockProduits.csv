@@ -640,7 +640,7 @@ G3300;"Plombs Gamo TS10 Chasse 200 X 100 4.5 ( 100 Boîtes)";30
 G3320;"Plombs Gamo Rocket Chasse 150 X 48 4.5 (48 Boîtes )";30
 G3520;"Plombs Gamo Rocket 100 X 48 5.5 (48 Boîtes)";30
 G5025;"Gamo Pompe Haute Performance PCP";30
-GA510R;"NEW Guardian Angel 3 ROSE avec clip de fixation";3
+GA510R;"NEW Guardian Angel 3 ROSE avec clip de fixation";1
 GA510N;"Guardian Angel 3 NOIR avec clip fixation";0
 G1395;"XXAPXX Gamo Replay 10 Maxxim Cal 4.5 <19.9Joules + lunette 4x32";30
 G14555;"XXAPXX Gamo Grizzly 1250 Cal.5.5 45Joules";0
@@ -2203,7 +2203,7 @@ SMC11465;"STEYR CL II Standard 6.5x55 SE can.560mm sans visée filetée";0
 96728-381K;"Sabatti Express Pivot G9+ Rail Convex V38";0
 96728-382P;"Verney-Carron LA Pivot G9+ Rail Convex V38";0
 96728-3825;"Winchester 70 Magnum Pivot G9+ Rail Convex V38";0
-SMM18636;"STEYR SM12 CARBON Cal.30-06 Spr. can. 560mm";1
+SMM18636;"STEYR SM12 CARBON Cal.30-06 Spr. can. 560mm";0
 SMM18620;"STEYR SM12 CARBON Cal.270 Win. can. 560mm";1
 VGD1;"Doudoune Noir manches courtes GUERINI T.M";0
 VGD2;"Doudoune Noir manches courtes GUERINI T.L";0
@@ -3791,7 +3791,7 @@ NUMP0089;"Télécommande seule Canicom 5.1500";0
 NUMP0123;"Sangle polyuréthane ORANGE - Largeur 18,5 mm";3
 ON3950;"NIKKO mountmaster AO 3-9x50 avec montage";0
 ONP4040;"Lunette PANAMAX PRECISION Diam.1' 4-12x40  mildot";10
-NUMP0107;"Sangle nylon bleu - Largeur 25 mm - Longueur 76 cm";1
+NUMP0107;"Sangle nylon bleu - Largeur 25 mm - Longueur 76 cm";0
 NUMP0108;"Sangle nylon noir - Largeur 25 mm - Longueur 76 cm";1
 NUMP0062;"Lot de 2 bouchons cache-réglages en PVC noir pour collier anti-aboiem";1
 NUMP0022;"Lot de 2 électrodes court pour  Canicalm ";3
@@ -4997,7 +4997,7 @@ MK5165;"XXAPXX Collier weaver diam.30; 6 vis a levier bh 12.7";30
 MK5065;"Collier weaver diam.25.4; 6 vis a levier bh 12.7";30
 MET2250-1;"482053018021 Montage monobloc à levier dim.30mm bh18mm";1
 MET2450-1;"482053415021  Montage monobloc à levier dim.34mm bh15mm";1
-AKP010;"Support prise picatinny pour bipied AK0600";3
+AKP010;"Support prise picatinny pour bipied AK0600";1
 AKP011;"Support prise picatinny pour bipied AK0600 à levier ";10
 AKP012;"Support prise sur grenadiere pour bipied AK0600";10
 AEC1510;"!B!Aero Mini AC15 carbine semi-auto calibre 5.56 black 10.5' barrel";3
@@ -5406,7 +5406,7 @@ CAF90;"Cal.12/76 Juxta FAIR Canon 76 cm CI";0
 CAF91;"Can.FAIR Juxtaposé Eject Cal.20/76 Can.62 lisse 1/2";0
 NO700;"Norinco NR15 Carabine 22LR crosse Synth CR714";10
 PILELR44;"Pile Alcaline Bouton LR44 NX Pour Viseur Laser (par 2 Pces)";3
-G13901;"Gamo Viper PRO 10X IGT- 4x32wr cal 4.5mm - 19.9 joules";10
+G13901;"Gamo Viper PRO 10X IGT- 4x32wr cal 4.5mm - 19.9 joules";3
 G3250CP;"Plombs Gamo Pistol PRO 250 x 100 4.5g";30
 MA43100;"TR0001/A Trépied AUDERE";1
 NO705;"Norinco JW15 Carabine 22LR crosse Bois CR715";30
