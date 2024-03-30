@@ -431,8 +431,8 @@ JPX250;"Munition Oc Pour JPX-4 ";1
 DC128MCI;"Super. Ext. MD Cal.28 Small Can.71 CI ";3
 VFG.M;"Gilet de Tir FAIR bleu marine T.M";3
 VFG.L;"Gilet de Tir FAIR bleu marine T.L";10
-VFG.XL;"Gilet de Tir FAIR bleu marine T.XL";1
-VFG.2XL;"Gilet de Tir FAIR bleu marine T.XXL";1
+VFG.XL;"Gilet de Tir FAIR bleu marine T.XL";0
+VFG.2XL;"Gilet de Tir FAIR bleu marine T.XXL";0
 VFG.3XL;"Gilet de Tir FAIR bleu marine T.XXXL";0
 VFG.S;"Gilet de Tir FAIR bleu marine S";10
 MF01;"Mallette FAIR 1 Fusil";1
@@ -567,7 +567,7 @@ BASES54;"Base 54 acier";0
 57090-302T;"Embase Arriere Weaver A Bolt III";3
 57090-3078;"Embase Avant Weaver Eurobolt";0
 57090-3056;"Embase Arriere Weaver BW European";1
-57090-301P;"Embase Arriere Weaver X-Bolt";3
+57090-301P;"Embase Arriere Weaver X-Bolt";1
 57090-3005;"Embase Arrière Weaver Carl Gustav/ Zoli";3
 57090-3029;"Embase Arriere Weaver Express Chapuis";3
 57090-3023;"Embase Arriere Weaver Weatherby Mark V";1
@@ -1087,7 +1087,7 @@ SPM002;"Adaptateur prisme 21 (weaver) à prisme de 11 mm ";0
 57080-302T;"Embase Avant Weaver A Bolt III";1
 57080-3078;"Embase Arriere Weaver Eurobolt";0
 57080-3056;"Embase Avant Weaver BW European";1
-57080-301P;"Embase Avant Weaver X-Bolt";3
+57080-301P;"Embase Avant Weaver X-Bolt";1
 57080-3005;"Embase Avant Weaver Carl gustav/ Zoli";1
 57080-3029;"Embase Avant Weaver Express Chapuis";3
 57080-3024;"Embase Avant Weaver Winchester 70 Standard";3
@@ -2542,7 +2542,7 @@ WER023130;"Tournevis vis 6 pans creux 8 mm";3
 83-00015;"418310046 Rail Acier Picatnny Sauer 80-90 - E=107.4mm";0
 83-00017;"83-00017 Rail Acier Picatnny Steyr SL";0
 83-00018;"418310059 Rail Acier Picatnny Steyr Mod S";0
-83-00023;"418310070 Rail Picatinny Acier Weatherby Mark V";1
+83-00023;"418310070 Rail Picatinny Acier Weatherby Mark V";0
 83-00036;"418310103 Rail Picatinny Acier Marlin 336-444";0
 83-00059;"418310159 Rail Acier Picatnny Sauer 200 - E = 94.1mm";0
 83-00074;"Rail Picatinny Acier Remington 7400-750-7600";0
@@ -2656,7 +2656,7 @@ PHO51138;"Chargeur MDT 10 cps cal.308 Win.";0
 DC0112CI;"Super. Ext Premier ERGAL DD Cal.12/76 Can. 71 CI (3ch)";3
 DC0112MCI;"Super Ext Premier ERGAL Ext MDS Cal.12/76 Can.71 CI (3ch)";0
 DC0120CI;"Super Ext Premier ERGAL DD Cal.20/76 Can. 68 CI (3ch)";0
-DC0120MCI;"Super Ext Premier ERGAL MDS Cal.20/76 Can. 68 CI (3ch)";1
+DC0120MCI;"Super Ext Premier ERGAL MDS Cal.20/76 Can. 68 CI (3ch)";0
 DC0120AMCI;"Super Ext Premier ERGAL MDS Cal.20/76 Can. 68 CI Anglaise (3ch)";3
 CRF320;"Supplément Crosse Sport Gravée ";0
 DC383;"Super. Express Ext. Classic MD Cal.30R Blaser Can.55";3
@@ -3601,7 +3601,7 @@ NUM610;"NUM'AXES - Carte micro SD 32 Go Classe 10 avec adaptateur  ";10
 NUM615;"NUM'AXES - Carte micro SD 64 Go Classe 10 avec adaptateur";30
 NUM667;"NUM'AXES - Lampe Torche à LED rechargeable LMP1018";3
 NUM670;"NUM'AXES - Lampe torche à LED multicolores  rechargeable LMP1019";1
-NUM675;"NUM'AXES - Télémètre laser TEL1050     ";3
+NUM675;"NUM'AXES - Télémètre laser TEL1050     ";1
 NUM680;"XXAPXX NUM'AXES - Monoculaire vision de nuit VIS1012";3
 NUM690;"NUM'AXES - Monoculaire vision thermique VIS1053**";1
 NUM695;"NUM'AXES - Talkie Walkie TLK1022";10
