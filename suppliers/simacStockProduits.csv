@@ -51,7 +51,7 @@ G2153;"Gamo PT85 KAKI Blowback 4.5mm 3.98 Joules Co2";0
 G2105;"Gamo P25 Blowback 4.5mm 3.98 Joules Co2";10
 G2300;"Gamo Compact 4.5mm 3.65 Joules A.C";0
 G2300G;"Gamo Compact Gaucher 4.5mm 3.65 Joules A.C";3
-G2310;"Gamo PR45 4.5mm 3.65 Joules A.Comp.";10
+G2310;"Gamo PR45 4.5mm 3.65 Joules A.Comp.";3
 G2321C;"Gamo P900 IGT Gunset 4.5mm 2.55 Joules + 1 Porte cible plat.";10
 G3000;"Plombs Gamo Match 250 X 100 4.5 (100 Boîtes)";30
 G3050;"Plombs Gamo Match 500 x 100 4.5 ( 100 boites)";30
@@ -297,7 +297,7 @@ CRG80;"Kinetic System";3
 BR460HS;"Cartouche HS460 à l'unité";30
 DC9323;"Juxta Express F.Corps MD Cal.30RBL Can.55";1
 DC93236;"Juxta Express F.Corps MD Cal.30.06 Can.55";0
-DC9328;"Juxta Express F.Corps MD Cal.8x57 JRS Can.55";1
+DC9328;"Juxta Express F.Corps MD Cal.8x57 JRS Can.55";0
 DC9329;"Juxta Express F.Corps MD Cal.9.3x74r Can.55";1
 DC0812CI;"Super. Lusso Eject. Ergal DD Cal.12/76 Can.70 CI ";1
 DC0812MCI;"Super. Lusso Eject. Ergal MD Cal.12/76 Can.70 CI ";0
@@ -906,7 +906,7 @@ G3760;"Plombs Gamo BB's 4.5 Boites de 500 plombs";30
 21630-1000;"Grenadiere Can.A Visser Convex Standard";1
 21630-3000;"Grenadiere Can.Juxta A Visser Anneau Large";0
 23000-0000;"Grenadiere A Billes Detachage Rapide";3
-23000-1010;"Support Grenadiere A Billes Bois Concave A Visser";1
+23000-1010;"Support Grenadiere A Billes Bois Concave A Visser";0
 23100-5010;"Support Grenadiere A Bille Devant A Encastrer";0
 24020-0200;"Calotte Plate Acier Fixation Par Deux Vis";1
 24020-0400;"Calotte Poignee Plate Deux Vis de Serrage";1
@@ -1977,7 +1977,7 @@ MK5043;"Collier à levier weaver diam.25.4 bh 14.4";30
 5520-0120;"Mak Rail Prisme 12mm Marlin";1
 5520-0500;"Mak Rail Prisme 12mm Chapuis Express Super. ";1
 5520-0502;"Mak Rail Prisme12mm Express B Rizzini";1
-5520-0503;"Mak Rail Prisme 12mm Chapuis Express Juxtapose";1
+5520-0503;"Mak Rail Prisme 12mm Chapuis Express Juxtapose";0
 5092-90193;"MAKuick Blaser R93 Docter";1
 5092-10193;"MAKuick Blaser R93 H1";1
 5092-00193;"Socle Blaser Makuick BH12";3
@@ -4725,7 +4725,7 @@ CHG021;"Maxischoke GUERINI Cal.12 Sporting Full F";3
 CHG022;"Maxischoke GUERINI Cal.12 Sporting Light Full LF";3
 CHG023;"Maxischoke GUERINI Cal.12 Sporting 3/4 IM";1
 CHG024;"Maxischoke GUERINI Cal.12 Sporting 1/2 M";1
-CHG025;"Maxischoke GUERINI Cal.12 Sporting Light LM";1
+CHG025;"Maxischoke GUERINI Cal.12 Sporting Light LM";0
 CHG026;"Maxischoke GUERINI Cal.12 Sporting 1/4 IC";30
 CHG027;"Maxischoke GUERINI Cal.12 Sporting Skeet S";30
 CHG028;"Maxischoke GUERINI Cal.12 Sporting Cyl C";30
