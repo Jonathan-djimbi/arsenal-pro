@@ -55,7 +55,7 @@ G2310;"Gamo PR45 4.5mm 3.65 Joules A.Comp.";3
 G2321C;"Gamo P900 IGT Gunset 4.5mm 2.55 Joules + 1 Porte cible plat.";10
 G3000;"Plombs Gamo Match 250 X 100 4.5 (100 Boîtes)";30
 G3050;"Plombs Gamo Match 500 x 100 4.5 ( 100 boites)";30
-G3150;"Plombs Gamo Pro Match Lisse 500 X 100 4.5 ( 100 Boîtes)";3
+G3150;"Plombs Gamo Pro Match Lisse 500 X 100 4.5 ( 100 Boîtes)";0
 G3200;"Plombs Gamo Pro Mag P 250 X 100 4.5 (100 Boîtes)";30
 G3250;"Plombs Gamo Pro Mag Pointu 500 X 100 4.5 ( 100 Boîtes)";30
 G3850;"Plombs Chasse Gamo TS22  X 100 5.5 New";30
@@ -251,7 +251,7 @@ F21110;"Fourreau FAIR Noir 122cm Carabine";0
 F60120;"Fourreau FAIR Gold 130cm Fusil";30
 F70140;"Sac Tireur Guerini";30
 G1300;"Gamo Black Shadow 4.5mm 14 Joules";30
-G5380;"Fourreau Gamo New noir et rouge ";30
+G5380;"Fourreau Gamo New noir et rouge ";10
 G5385;"housse pistolet";30
 G6100;"Chargeur P25 & PT85 Blow Back";30
 G6110;"Chargeur C-15 / P27 BLOWBACK 'BARILLET'";30
@@ -427,7 +427,7 @@ CG592G;"INVICTUS 1Trap IMPACT Cal.12/70 76cm CI 1/2 haute réglable CR Gaucher";
 CG598;"INVICTUS 1 Ascent Sporting 12/76 81cm CI Mi-haute fixe - CR";0
 CG598G;"INVICTUS 1 Ascent Sporting 12/76 81cm CI Mi-haute fixe - CR Gaucher";0
 JPX450;"Holster JPX-4";0
-JPX250;"Munition Oc Pour JPX-4 ";1
+JPX250;"Munition Oc Pour JPX-4 ";0
 DC128MCI;"Super. Ext. MD Cal.28 Small Can.71 CI ";3
 VFG.M;"Gilet de Tir FAIR bleu marine T.M";3
 VFG.L;"Gilet de Tir FAIR bleu marine T.L";3
@@ -505,7 +505,7 @@ G4130;"Gamo Lunette LC4X32WR";30
 57050-0006;"Rail Long Picatinny Krico 600/700/900/902";1
 57050-0008;"Rail Long Picatinny SLB2000 / SR1 5 Trous";10
 57050-0010;"Rail Long Picatinny Mauser 98";10
-57050-0012;"Rail Long Picatinny Remington 700 Short SPS";3
+57050-0012;"Rail Long Picatinny Remington 700 Short SPS";1
 57050-0013;"Rail Long Picatinny Remington 7400";3
 57050-0014;"Rail Long Picatinny Sako 85 Short";1
 57050-001P;"Rail Long Picatinny X Bolt Short";3
@@ -520,7 +520,7 @@ G4130;"Gamo Lunette LC4X32WR";30
 57050-002H;"Rail Long Picatinny Remington 870 TAC";1
 57050-002K;"Rail Long Picatinny Sauer 101 & 100";10
 57050-002L;"Rail Long Picatinny  Mauser M12";1
-57050-002S;"Rail Long Picatinny Remington 783 Short";1
+57050-002S;"Rail Long Picatinny Remington 783 Short";0
 57050-002T;"Rail Long Picatinny Browning A Bolt III Short";1
 57050-002V;"Rail Long Picatinny Winchester XPR short";1
 57050-0051;"Rail Long Picatinny STEYR M et S";1
@@ -533,8 +533,8 @@ G4130;"Gamo Lunette LC4X32WR";30
 57050-0089;"Rail Long Picatinny Zoli 1900";1
 57050-0092;"Rail Long Picatinny Rosler Titan 3/6 // SAVAGE AXIS";3
 57050-0093;"Rail Long Picatinny Savage Short BH 6.5";0
-57050-0098;"Rail Long Picatinny Merkel SR1";3
-57050-0112;"Rail Long Picatinny Remington 700 Long";3
+57050-0098;"Rail Long Picatinny Merkel SR1";1
+57050-0112;"Rail Long Picatinny Remington 700 Long";1
 57050-0114;"Rail Long Picatinny Sako 85";1
 57050-011N;"Rail Long Picatinny Remington 700 Police (vis 840 )";0
 57050-011P;"Rail Long Picatinny X Bolt Long";3
@@ -912,14 +912,14 @@ G3760;"Plombs Gamo BB's 4.5 Boites de 500 plombs";30
 24020-0400;"Calotte Poignee Plate Deux Vis de Serrage";1
 24060-0200;"Calotte Poignee Squelette 2 Pointes";1
 24060-2100;"Calotte Ajouree Bombee 2 Percages";0
-24350-0010;"Medaillon de Crosse Bombe arrondi ";1
+24350-0010;"Medaillon de Crosse Bombe arrondi ";0
 24700-0000;"Plaque Squelette Standard";1
 24700-0040;"Plaque Squelette Entaillage Pointu Standard";1
 28040-0100;"Vis Renfort de Crosse Butee de Recul Cylindrique (sans Ecrou)";1
 28040-0200;"Vis Renfort de Crosse Butee de Recul Preparee (sans Ecrou)";1
 28060-0100;"Ecrou Renfort de Crosse M 6";1
 30040-0000;"Detente Directe K 98 Acier Standard";1
-30040-0200;"Detente Directe K 98 Alu Standard";3
+30040-0200;"Detente Directe K 98 Alu Standard";1
 47620-0150;"Support H1 Basculant Prisme 15";3
 47675-0123;"Support Basculant Nikko Stirling XT4 Pro-T4 Prisme 12";10
 49060;"Collier Weawer Diam.26 déporté BH 8.5";30
@@ -951,7 +951,7 @@ G3760;"Plombs Gamo BB's 4.5 Boites de 500 plombs";30
 57553-1800;"Montage Basculant Socle Prisme Weaver Serrage Rapide Rail SR BH 13";0
 57600-3000;"Makmilmont Monobloc Diam.30 BH 17 0 MOA";0
 57600-3400;"Makmilmont Monobloc Diam.34 BH 17 0 MOA";0
-57570-0400;"Montage Basculant à Levier Prisme Weaver  Rail 70° BH 12";1
+57570-0400;"Montage Basculant à Levier Prisme Weaver  Rail 70° BH 12";0
 57570-0900;"Montage Basculant à Levier Prisme Weaver  Rail 70° BH 17";0
 PS2400050502;"Chargeur Rotatif STEYR M 7 X 64";10
 PS2400050503;"Chargeur Rotatif STEYR M 30-06";1
@@ -992,7 +992,7 @@ PS2900030025;"Sous Garde Plastique STEYR L / SSG 69";1
 PS2700030001;"Sous Garde STEYR S";1
 PS2400030025;"Sous Garde Plastique STEYR M";3
 3405/1140/45;"3405/1140/45 Pied Avant Rail Convex S&B Magnum Coude 45 Bh 14";1
-3405/1170/20;"3405/1170/20 Pied Avant Rail Convex S&B Magnum Coude 21bh 17";0
+3405/1170/20;"3405/1170/20 Pied Avant Rail Convex S&B Magnum Coude 21bh 17";1
 3405/1170/32;"3405/1170/32 Pied Avant Rail Convex Bh 17 Coude 32";1
 3405/1120/45;"3405/1120/45 Pied Avant Rail Convex S&B Magnum Coude 45 Bh 12";1
 T5063-0020;"Eratac Monobloc II Diam. 30 Réglable 0 à 70 MOA BH 20";1
@@ -1122,7 +1122,7 @@ SPM002;"Adaptateur prisme 21 (weaver) à prisme de 11 mm ";0
 57080-302V;"Embase Avant Weaver Winchester XPR";3
 AK0600;"Bi-pied Lourd KASTELBERG montage sur rail Picatinny";30
 SPM158;"Colliers Sports Match Diam.25.4 coude 25 BH 24 prisme 11 mm";10
-SPM168;"Colliers Sports Match Diam.30 coude 25 BH 21 prisme 11 mm";10
+SPM168;"Colliers Sports Match Diam.30 coude 25 BH 21 prisme 11 mm";3
 60520-1000;"MAK MasterLock Aimpoint Micro BH10";0
 60580-1000;"MAK MasterLock Aimpoint Micro BH23";0
 60520-9000;"MAK MasterLock Docter BH10";0
@@ -1178,7 +1178,7 @@ MA4002;"SL0002/A Rail additionnel ADVERSUS BH 25mm Long. 80mm";3
 47620-003A;"Support H1 Basculant Sauer 404";1
 2700/026;"4110011 Adaptateur Aimpoint Micro Prisme 11";1
 2700/800;"4830111 Support Prisme 21 Aimpoint Micro H 1";1
-2700/800/365;"4830211 Support Prisme 21 Aimpoint Micro H 1 à levier";0
+2700/800/365;"4830211 Support Prisme 21 Aimpoint Micro H 1 à levier";1
 2700/152;"403040111 Adaptateur Micro H1 Blaser";1
 2700/352;"404610111 Adaptateur H1 Blaser R8";1
 2300/026;"4110110 Adaptateur Docter Sight Pour Prisme de 11";1
@@ -1196,8 +1196,8 @@ MA4002;"SL0002/A Rail additionnel ADVERSUS BH 25mm Long. 80mm";3
 43600-061R;"Support Docter BH 6 Sauer 303";1
 47600-001U;"Support KR1 Pour Docter";1
 47675-0150;"Support Basculant Nikko Stirling XT4 Pro-T4 Prisme 15";10
-MP3012003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; 30mm; Pied Bh12; Coude 26mm";3
-MP3012010;"Pivot Compl. EAW Mauser K98,Heym Sr20; 30mm; Pied Bh12; Coude 26mm";1
+MP3012003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; 30mm; Pied Bh12; Coude 26mm";10
+MP3012010;"Pivot Compl. EAW Mauser K98,Heym Sr20; 30mm; Pied Bh12; Coude 26mm";0
 MP3012012;"Pivot Compl. EAW Rem. 700; 30mm; Pied Bh12; Coude 26mm";1
 MP3012059;"Pivot Compl. EAW Sauer 200; 30mm; Pied Bh12; Coude 26mm";1
 MP3012206;"Pivot Compl. EAW Heym SR30; 30mm; Pied Bh12; Coude 26mm";1
@@ -1211,31 +1211,31 @@ MP3012143;"Pivot Compl. EAW BW European; 30mm; Pied Bh12; Coude 26mm";1
 MP3012196;"Pivot Compl. EAW BW A-BOLT II (222Rem); 30mm; Pied Bh12; Coude 26mm";1
 MP3012203;"Pivot Compl. EAW BW Bar Gaucher; 30mm; Pied Bh12; Coude 26mm";1
 MP3012267;"Pivot Compl. EAW BW A-BOLT III; 30mm; Pied Bh12; Coude 26mm";1
-MP3012187;"Pivot Compl. EAW SLB2000 SR1 Basic; 30mm; Pied Bh12; Coude 26mm";0
+MP3012187;"Pivot Compl. EAW SLB2000 SR1 Basic; 30mm; Pied Bh12; Coude 26mm";1
 MP3012006;"Pivot Compl. EAW Krico 700 900; 30mm; Pied Bh12; Coude 26mm";1
 MP3012186;"Pivot Compl. EAW SR1 Standard; 30mm; Pied Bh12; Coude 26mm";1
 MP3012074;"Pivot Compl. EAW Remington 7400...; 30mm; Pied Bh12; Coude 26mm";1
 MP3012414;"Pivot Compl. EAW Sako 85M; 30mm; Pied Bh12; Coude 26mm";1
-MP3012086;"Pivot Compl. EAW Steyr M, Luxus...; 30mm; Pied Bh12; Coude 26mm";0
+MP3012086;"Pivot Compl. EAW Steyr M, Luxus...; 30mm; Pied Bh12; Coude 26mm";1
 MP3012202;"Pivot Compl. EAW Steyr SBS96; 30mm; Pied Bh12; Coude 26mm";1
 MP3012264;"Pivot Compl. EAW Voere Richter; 30mm; Pied Bh12; Coude 26mm";1
 MP3012005;"Pivot Compl. EAW Zoli 1900; 30mm; Pied Bh12; Coude 26mm";1
-MP3012023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 30mm; Pied Bh12; Coude 26mm";0
+MP3012023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 30mm; Pied Bh12; Coude 26mm";1
 MP3012107;"Pivot Compl. EAW Mini Mauser; 30mm; Pied Bh12; Coude 26mm";1
 MP3012156;"Pivot Compl. EAW Mauser 94 96 AM; 30mm; Pied Bh12; Coude 26mm";1
-MP3012062;"Pivot Compl. EAW Parker Hale Midland; 30mm; Pied Bh12; Coude 26mm";1
+MP3012062;"Pivot Compl. EAW Parker Hale Midland; 30mm; Pied Bh12; Coude 26mm";0
 MP3012155;"Pivot Compl. EAW Sabatti Rover 870; 30mm; Pied Bh12; Coude 26mm";0
 MP3012063;"Pivot Compl. EAW Mauser 77; 30mm; Pied Bh12; Coude 26mm";1
-MP3012110;"Pivot Compl. EAW Mauser K98 avec Oeuilleton; 30mm; Pied Bh12; Coude 2";1
+MP3012110;"Pivot Compl. EAW Mauser K98 avec Oeuilleton; 30mm; Pied Bh12; Coude 2";0
 MP3012710;"Pivot Compl. EAW Remington 710; 30mm; Pied Bh12; Coude 26mm";0
 MP3012013;"Pivot Compl. EAW Rem. 742,760; 30mm; Pied Bh12; Coude 26mm";1
 MP2612003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; 25.4mm; Pied Bh12; Coude 26mm";1
-MP2612010;"Pivot Compl. EAW Mauser K98,Heym Sr20 ; 25.4mm; Pied Bh12; Coude 26mm";1
+MP2612010;"Pivot Compl. EAW Mauser K98,Heym Sr20 ; 25.4mm; Pied Bh12; Coude 26mm";0
 MP2612238;"Pivot Compl. EAW Tikka T3; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612002;"Pivot Compl. EAW BW A-BOLT II; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612143;"Pivot Compl. EAW BW European; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612267;"Pivot Compl. EAW BW A-BOLT III; 25.4mm; Pied Bh12; Coude 26mm";1
-MP2612187;"Pivot Compl. EAW SLB2000 SR1 Basic; 25.4mm; Pied Bh12; Coude 26mm";0
+MP2612187;"Pivot Compl. EAW SLB2000 SR1 Basic; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612206;"Pivot Compl. EAW SR30; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612006;"Pivot Compl. EAW Krico 700 900; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612186;"Pivot Compl. EAW SR1 standard; 25.4mm; Pied Bh12; Coude 26mm";1
@@ -1244,18 +1244,18 @@ MP2612074;"Pivot Compl. EAW Remington 7400...; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612414;"Pivot Compl. EAW Sako 85 M; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612059;"Pivot Compl. EAW Sauer200; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612659;"Pivot Compl. EAW Sauer202; 25.4mm; Pied Bh12; Coude 26mm";1
-MP2612086;"Pivot Compl. EAW Steyr M, Luxus...; 25.4mm; Pied Bh12; Coude 26mm";0
+MP2612086;"Pivot Compl. EAW Steyr M, Luxus...; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612202;"Pivot Compl. EAW Steyr SBS96; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612405;"Pivot Compl. EAW Impact A.M; 25.4mm; Pied Bh12; Coude 26mm";0
 MP2612226;"Pivot Compl. EAW Verney LA; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612264;"Pivot Compl. EAW Voere Richter; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612005;"Pivot Compl. EAW Zoli 1900; 25.4mm; Pied Bh12; Coude 26mm";1
-MP2612023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 25.4mm; Pied Bh12; Coude 26";0
+MP2612023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 25.4mm; Pied Bh12; Coude 26";1
 MP2612107;"Pivot Compl. EAW Mini Mauser; 25.4mm; Pied Bh12; Coude 26mm";1
 MP2612156;"Pivot Compl. EAW Mauser94 96 AM ; 25.4mm; Pied Bh12; Coude 26mm";0
 MP2612062;"Pivot Compl. EAW Parker Hale Midland; 25.4mm; Pied Bh12; Coude 26mm";0
-MP2612155;"Pivot Compl. EAW Sabatti Rover 870; 25.4mm; Pied Bh12; Coude 26";0
-MP2612110;"Pivot Compl. EAW 98k avec Oeuilleton ; 25.4mm; Pied Bh12; Coude 26mm";1
+MP2612155;"Pivot Compl. EAW Sabatti Rover 870; 25.4mm; Pied Bh12; Coude 26";1
+MP2612110;"Pivot Compl. EAW 98k avec Oeuilleton ; 25.4mm; Pied Bh12; Coude 26mm";0
 MP2612710;"Pivot Compl. EAW Remington 710; 25.4mm; Pied Bh12; Coude 26mm";0
 MP2612013;"Pivot Compl. EAW Rem. 742,760; 25.4mm; Pied Bh12; Coude 26mm";1
 MP3422003;"Pivot Compl. EAW BW Bar; 34mm; Pied Bh14; Coude 21mm";3
@@ -1265,23 +1265,23 @@ MP3422238;"Pivot Compl. EAW Tikka T3; 34mm; Pied Bh14; Coude 21mm";1
 MP3422002;"Pivot Compl. EAW BW A-BOLT II; 34mm; Pied Bh14; Coude 21mm";1
 MP3422143;"Pivot Compl. EAW BW European; 344mm; Pied Bh14; Coude 21mm";1
 MP3422267;"Pivot Compl. EAW BW A-BOLT III; 34mm; Pied Bh14; Coude 21mm";1
-MP3422187;"Pivot Compl. EAW SLB2000 SR1 Basic; 34mm; Pied Bh14; Coude 21mm";0
+MP3422187;"Pivot Compl. EAW SLB2000 SR1 Basic; 34mm; Pied Bh14; Coude 21mm";1
 MP3422006;"Pivot Compl. EAW Krico 700 900; 34mm; Pied Bh14; Coude 21mm";1
-MP3422010;"Pivot Compl. EAW Mauser 98K; 34mm; Pied Bh14; Coude 21mm";1
+MP3422010;"Pivot Compl. EAW Mauser 98K; 34mm; Pied Bh14; Coude 21mm";0
 MP3422186;"Pivot Compl. EAW SR1 Standard; 34mm; Pied Bh14; Coude 21mm";1
 MP3422074;"Pivot Compl. EAW Remington 7400...; 34mm; Pied Bh14; Coude 21mm";1
 MP3422414;"Pivot Compl. EAW Sako 85M; 34mm; Pied Bh14; Coude 21mm";1
 MP3422059;"Pivot Compl. EAW Sauer200; 34mm; Pied Bh14; Coude 21mm";1
-MP3422086;"Pivot Compl. EAW Steyr M, Luxus...; 34mm; Pied Bh14; Coude 21mm";0
+MP3422086;"Pivot Compl. EAW Steyr M, Luxus...; 34mm; Pied Bh14; Coude 21mm";1
 MP3422202;"Pivot Compl. EAW Steyr SBS96; 34mm; Pied Bh14; Coude 21mm";1
 MP3422264;"Pivot Compl. EAW Voere Richter; 34mm; Pied Bh14; Coude 21mm";1
 MP3422005;"Pivot Compl. EAW Zoli 1900; 34mm; Pied Bh14; Coude 21mm";1
-MP3422023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 34mm; Pied Bh14; Coude 21mm";0
+MP3422023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 34mm; Pied Bh14; Coude 21mm";1
 MP3422107;"Pivot Compl. EAW Mini Mauser; 34mm; Pied Bh14; Coude 21mm";1
 MP3422156;"Pivot Compl. EAW Mauser 94 96 AM; 34mm; Pied Bh14; Coude 21mm";0
 MP3422062;"Pivot Compl. EAW Parker Hale Midland; 34mm; Pied Bh14; Coude 21mm";0
-MP3422155;"Pivot Compl. EAW Sabatti Rover 870; 34mm; Pied Bh14; Coude 21mm";0
-MP3422110;"Pivot Compl. EAW K98 avec Oeuilleton; 34mm; Pied Bh14; Coude 21mm";1
+MP3422155;"Pivot Compl. EAW Sabatti Rover 870; 34mm; Pied Bh14; Coude 21mm";1
+MP3422110;"Pivot Compl. EAW K98 avec Oeuilleton; 34mm; Pied Bh14; Coude 21mm";0
 MP3422710;"Pivot Compl. EAW Remington 710; 34mm; Pied Bh14; Coude 21mm";0
 MP3422013;"Pivot Compl. EAW Rem. 742,760; 34mm; Pied Bh14; Coude 21mm";1
 MP3422659;"Pivot Compl. EAW Sauer 202; 34mm; Pied Bh14; Coude 21mm";1
@@ -1290,10 +1290,10 @@ MP3622003;"Pivot Compl. EAW BW Bar; 36mm; Pied Bh14; Coude 21mm";1
 MP3622002;"Pivot Compl. EAW BW A-BOLT II; 36mm; Pied Bh14; Coude 21mm";1
 MP3622143;"Pivot Compl. EAW BW European; 36mm; Pied Bh14; Coude 21mm";1
 MP3622267;"Pivot Compl. EAW BW A-BOLT III; 36mm; Pied Bh14; Coude 21mm";1
-MP3622187;"Pivot Compl. EAW SLB2000 SR1 Basic; 36mm; Pied Bh14; Coude 21mm";0
+MP3622187;"Pivot Compl. EAW SLB2000 SR1 Basic; 36mm; Pied Bh14; Coude 21mm";1
 MP3622206;"Pivot Compl. EAW SR 30; 36mm; Pied Bh14; Coude 21mm";1
 MP3622006;"Pivot Compl. EAW Krico 700 900; 36mm; Pied Bh14; Coude 21mm";1
-MP3622010;"Pivot Compl. EAW Mauser 98K; 36mm; Pied Bh14; Coude 21mm";1
+MP3622010;"Pivot Compl. EAW Mauser 98K; 36mm; Pied Bh14; Coude 21mm";0
 MP3622186;"Pivot Compl. EAW SR1 Standard; 36mm; Pied Bh14; Coude 21mm";1
 MP3622012;"Pivot Compl. EAW Remington 700; 36mm; Pied Bh14; Coude 21mm";1
 MP3622074;"Pivot Compl. EAW Remington 7400...; 36mm; Pied Bh14; Coude 21mm";1
@@ -1301,28 +1301,28 @@ MP3622414;"Pivot Compl. EAW Sako 85M; 36mm; Pied Bh14; Coude 21mm";1
 MP3622059;"Pivot Compl. EAW Sauer200; 36mm; Pied Bh14; Coude 21mm";1
 MP3622238;"Pivot Compl. EAW Tikka T3; 36mm; Pied Bh14; Coude 21mm";1
 MP3622659;"Pivot Compl. EAW Sauer202; 36mm; Pied Bh14; Coude 21mm";1
-MP3622086;"Pivot Compl. EAW Steyr M, Luxus...; 36mm; Pied Bh14; Coude 21mm";0
+MP3622086;"Pivot Compl. EAW Steyr M, Luxus...; 36mm; Pied Bh14; Coude 21mm";1
 MP3622202;"Pivot Compl. EAW Steyr SBS96; 36mm; Pied Bh14; Coude 21mm";1
 MP3622405;"Pivot Compl. EAW Impact A.M.; 36mm; Pied Bh14; Coude 21mm";0
 MP3622226;"Pivot Compl. EAW Verney LA; 36mm; Pied Bh14; Coude 21mm";1
 MP3622264;"Pivot Compl. EAW Voere Richter; 36mm; Pied Bh14; Coude 21mm";1
 MP3622005;"Pivot Compl. EAW Zoli 1900; 36mm; Pied Bh14; Coude 21mm";1
-MP3622023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 36mm; Pied Bh14; Coude 21mm";0
+MP3622023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 36mm; Pied Bh14; Coude 21mm";1
 MP3622107;"Pivot Compl. EAW BW Mini Mauser; 36mm; Pied Bh14; Coude 21mm";1
 MP3622156;"Pivot Compl. EAW Mauser 94 96 AM; 36mm; Pied Bh14; Coude 21mm";0
 MP3622062;"Pivot Compl. EAW Parker Hale Midland; 36mm; Pied Bh14; Coude 21mm";0
-MP3622155;"Pivot Compl. EAW Sabatti Rover 870; 36mm; Pied Bh14; Coude 21mm";0
-MP3622110;"Pivot Compl. EAW K98 avec Oeuilleton; 36mm; Pied Bh14; Coude 21mm";1
+MP3622155;"Pivot Compl. EAW Sabatti Rover 870; 36mm; Pied Bh14; Coude 21mm";1
+MP3622110;"Pivot Compl. EAW K98 avec Oeuilleton; 36mm; Pied Bh14; Coude 21mm";0
 MP3622710;"Pivot Compl. EAW Remington 710; 36mm; Pied Bh14; Coude 21mm";1
 MP3622013;"Pivot Compl. EAW Rem. 742,760; 36mm; Pied Bh14; Coude 21mm";1
 MP4022003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; 40mm; Pied Bh14; Coude 21mm";1
 MP4022002;"Pivot Compl. EAW BW A-BOLT II; 40mm; Pied Bh14; Coude 21mm";1
 MP4022143;"Pivot Compl. EAW BW European; 40mm; Pied Bh14; Coude 21mm";1
 MP4022267;"Pivot Compl. EAW BW A-BOLT III; 40mm; Pied Bh14; Coude 21mm";1
-MP4022187;"Pivot Compl. EAW SLB2000 SR1 Basic; 40mm; Pied Bh14; Coude 21mm";0
+MP4022187;"Pivot Compl. EAW SLB2000 SR1 Basic; 40mm; Pied Bh14; Coude 21mm";1
 MP4022206;"Pivot Compl. EAW SR 30; 40mm; Pied Bh14; Coude 21mm";1
 MP4022006;"Pivot Compl. EAW Krico 700 900; 40mm; Pied Bh14; Coude 21mm";1
-MP4022010;"Pivot Compl. EAW Mauser K98,Heym Sr20; 40mm; Pied Bh14; Coude 21mm";1
+MP4022010;"Pivot Compl. EAW Mauser K98,Heym Sr20; 40mm; Pied Bh14; Coude 21mm";0
 MP4022186;"Pivot Compl. EAW SR1 Standard; 40mm; Pied Bh14; Coude 21mm";1
 MP4022012;"Pivot Compl. EAW Remington 700; 40mm; Pied Bh14; Coude 21mm";1
 MP4022074;"Pivot Compl. EAW Remington 7400...; 40mm; Pied Bh14; Coude 21mm";1
@@ -1330,50 +1330,50 @@ MP4022414;"Pivot Compl. EAW Sako 85M; 40mm; Pied Bh14; Coude 21mm";1
 MP4022059;"Pivot Compl. EAW Sauer200; 40mm; Pied Bh14; Coude 21mm";1
 MP4022238;"Pivot Compl. EAW Tikka T3; 40mm; Pied Bh14; Coude 21mm";1
 MP4022659;"Pivot Compl. EAW Sauer202; 40mm; Pied Bh14; Coude 21mm";1
-MP4022086;"Pivot Compl. EAW Steyr M, Luxus...; 40mm; Pied Bh14; Coude 21mm";0
+MP4022086;"Pivot Compl. EAW Steyr M, Luxus...; 40mm; Pied Bh14; Coude 21mm";1
 MP4022202;"Pivot Compl. EAW Steyr SBS96; 40mm; Pied Bh14; Coude 21mm";1
 MP4022405;"Pivot Compl. EAW Impact A.M.; 40mm; Pied Bh14; Coude 21mm";0
 MP4022226;"Pivot Compl. EAW Verney LA; 40mm; Pied Bh14; Coude 21mm";1
 MP4022264;"Pivot Compl. EAW Voere Richter; 40mm; Pied Bh14; Coude 21mm";1
 MP4022005;"Pivot Compl. EAW Zoli 1900; 40mm; Pied Bh14; Coude 21mm";1
-MP4022023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 40mm; Pied Bh14; Coude 21mm";0
+MP4022023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 40mm; Pied Bh14; Coude 21mm";1
 MP4022107;"Pivot Compl. EAW Mini Mauser; 40mm; Pied Bh14; Coude 21mm";1
 MP4022156;"Pivot Compl. EAW Mauser 94 96 AM; 40mm; Pied Bh14; Coude 21mm";0
 MP4022062;"Pivot Compl. EAW Parker Hale Midland; 40mm; Pied Bh14; Coude 21mm";0
-MP4022155;"Pivot Compl. EAW Sabatti Rover 870; 40mm; Pied Bh14; Coude 21mm";0
-MP4022110;"Pivot Compl. EAW K98 avec Oeuilleton; 40mm; Pied Bh14; Coude 21mm";1
+MP4022155;"Pivot Compl. EAW Sabatti Rover 870; 40mm; Pied Bh14; Coude 21mm";1
+MP4022110;"Pivot Compl. EAW K98 avec Oeuilleton; 40mm; Pied Bh14; Coude 21mm";0
 MP4022710;"Pivot Compl. EAW Remington 710; 40mm; Pied Bh14; Coude 21mm";1
 MP4022013;"Pivot Compl. EAW Rem. 742,760; 40mm; Pied Bh14; Coude 21mm";1
-MP5012003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; ZM; Pied Bh12; Coude 22mm";0
-MP5012012;"Pivot Compl. EAW Rem. 700; ZM; Pied Bh12; Coude 22mm";0
-MP5012074;"Pivot Compl. EAW Rem. 7400; ZM; Pied Bh12; droit";0
-MP5012226;"Pivot Compl. EAW Impact L.A.; ZM; Pied Bh12; Coude 22mm";0
-MP5012238;"Pivot Compl. EAW Tikka T3; ZM; Pied Bh12; Coude 22mm";0
-MP5012002;"Pivot Compl. EAW BW A-BOLT II; Z.M.; Pied Bh12; Coude 22mm";0
-MP5012143;"Pivot Compl. EAW BW European; Z.M.; Pied Bh12; Coude 22mm";0
-MP5012267;"Pivot Compl. EAW BW A-BOLT III; Z.M.; Pied Bh12; Coude 22mm";0
-MP5012187;"Pivot Compl. EAW SLB2000 SR1 Basic; ZM; Pied Bh12; Coude 22mm";0
-MP5012206;"Pivot Compl. EAW SR 30; ZM; Pied Bh12; Coude 22mm";0
-MP5012006;"Pivot Compl. EAW Krico 700 900; ZM; Pied Bh12; Coude 22mm";0
+MP5012003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; ZM; Pied Bh12; Coude 22mm";1
+MP5012012;"Pivot Compl. EAW Rem. 700; ZM; Pied Bh12; Coude 22mm";1
+MP5012074;"Pivot Compl. EAW Rem. 7400; ZM; Pied Bh12; droit";1
+MP5012226;"Pivot Compl. EAW Impact L.A.; ZM; Pied Bh12; Coude 22mm";1
+MP5012238;"Pivot Compl. EAW Tikka T3; ZM; Pied Bh12; Coude 22mm";1
+MP5012002;"Pivot Compl. EAW BW A-BOLT II; Z.M.; Pied Bh12; Coude 22mm";1
+MP5012143;"Pivot Compl. EAW BW European; Z.M.; Pied Bh12; Coude 22mm";1
+MP5012267;"Pivot Compl. EAW BW A-BOLT III; Z.M.; Pied Bh12; Coude 22mm";1
+MP5012187;"Pivot Compl. EAW SLB2000 SR1 Basic; ZM; Pied Bh12; Coude 22mm";1
+MP5012206;"Pivot Compl. EAW SR 30; ZM; Pied Bh12; Coude 22mm";1
+MP5012006;"Pivot Compl. EAW Krico 700 900; ZM; Pied Bh12; Coude 22mm";1
 MP5012010;"Pivot Compl. EAW Mauser K98,Heym Sr20; ZM; Pied Bh12; Coude 22mm";0
-MP5012186;"Pivot Compl. EAW SR1 Standard; ZM; Pied Bh12; Coude 22mm";0
-MP5012059;"Pivot Compl. EAW Sauer200; ZM; Pied Bh12; Coude 22mm";0
-MP5012414;"Pivot Compl. EAW Sako 85M; ZM; Pied Bh12; Coude 22mm";0
-MP5012659;"Pivot Compl. EAW Sauer202; ZM; Pied Bh12; Coude 22mm";0
-MP5012086;"Pivot Compl. EAW Steyr M, Luxus; ZM; Pied Bh12; Coude 22mm";0
-MP5012202;"Pivot Compl. EAW Steyr SBS96; ZM; Pied Bh12; Coude 22mm";0
-MP5012405;"Pivot Compl. EAW Impact A.M.; ZM; Pied Bh12; Coude 22mm";0
-MP5012264;"Pivot Compl. EAW Voere Richter; ZM; Pied Bh12; Coude 22mm";0
-MP5012005;"Pivot Compl. EAW Zoli 1900; ZM; Pied Bh12; Coude 22mm";0
-MP5012023;"Pivot Compl. EAW Weatherby MK V,Vanguard; ZM; Pied Bh12; Coude 22mm";0
-MP5012107;"Pivot Compl. EAW BW Mini Mauser; ZM; Pied Bh12; Coude 22mm";0
+MP5012186;"Pivot Compl. EAW SR1 Standard; ZM; Pied Bh12; Coude 22mm";1
+MP5012059;"Pivot Compl. EAW Sauer200; ZM; Pied Bh12; Coude 22mm";1
+MP5012414;"Pivot Compl. EAW Sako 85M; ZM; Pied Bh12; Coude 22mm";1
+MP5012659;"Pivot Compl. EAW Sauer202; ZM; Pied Bh12; Coude 22mm";1
+MP5012086;"Pivot Compl. EAW Steyr M, Luxus; ZM; Pied Bh12; Coude 22mm";1
+MP5012202;"Pivot Compl. EAW Steyr SBS96; ZM; Pied Bh12; Coude 22mm";1
+MP5012405;"Pivot Compl. EAW Impact A.M.; ZM; Pied Bh12; Coude 22mm";1
+MP5012264;"Pivot Compl. EAW Voere Richter; ZM; Pied Bh12; Coude 22mm";1
+MP5012005;"Pivot Compl. EAW Zoli 1900; ZM; Pied Bh12; Coude 22mm";1
+MP5012023;"Pivot Compl. EAW Weatherby MK V,Vanguard; ZM; Pied Bh12; Coude 22mm";1
+MP5012107;"Pivot Compl. EAW BW Mini Mauser; ZM; Pied Bh12; Coude 22mm";1
 MP5012156;"Pivot Compl. EAW Mauser 94 96 AM; ZM; Pied Bh12; Coude 22mm";0
 MP5012062;"Pivot Compl. EAW Parker Hale Midland; ZM; Pied Bh12; Coude 22mm";0
-MP5012155;"Pivot Compl. EAW Sabatti Rover 870; ZM; Pied Bh12; Coude 22mm";0
-MP5012214;"Pivot Compl. EAW SAKO 85; ZM; Pied Bh12; Coude 22mm";0
+MP5012155;"Pivot Compl. EAW Sabatti Rover 870; ZM; Pied Bh12; Coude 22mm";1
+MP5012214;"Pivot Compl. EAW SAKO 85; ZM; Pied Bh12; Coude 22mm";1
 MP5012110;"Pivot Compl. EAW K98 avec Oeuilleton; ZM; Pied Bh12; Coude 22mm";0
-MP5012710;"Pivot Compl. EAW Remington 710; ZM; Pied Bh12; Coude 22mm";0
-MP5012013;"Pivot Compl. EAW Rem. 742,760; ZM; Pied Bh12; droit";0
+MP5012710;"Pivot Compl. EAW Remington 710; ZM; Pied Bh12; Coude 22mm";1
+MP5012013;"Pivot Compl. EAW Rem. 742,760; ZM; Pied Bh12; droit";1
 MP6012003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; SR; Pied Bh12; Coude 21mm";3
 MP6012012;"Pivot Compl. EAW Rem. 700; SR; Pied Bh12; Coude 21mm";1
 MP6012226;"Pivot Compl. EAW Impact L.A.; SR; Pied Bh12; Coude 21mm";1
@@ -1381,34 +1381,34 @@ MP6012238;"Pivot Compl. EAW Tikka T3; SR; Pied Bh12; Coude 21mm";1
 MP6012002;"Pivot Compl. EAW BW A-BOLT II; S.R.; Pied Bh12; Coude 21mm";1
 MP6012143;"Pivot Compl. EAW BW European; S.R.; Pied Bh12; Coude 21mm";1
 MP6012267;"Pivot Compl. EAW BW A-BOLT III; S.R.; Pied Bh12; Coude 21mm";1
-MP6012010;"Pivot Compl. EAW Mauser K98,Heym Sr20; SR; Pied Bh12; Coude 21mm";1
-MP6012187;"Pivot Compl. EAW SLB2000 SR1 Basic; SR; Pied Bh12; Coude 21mm";0
+MP6012010;"Pivot Compl. EAW Mauser K98,Heym Sr20; SR; Pied Bh12; Coude 21mm";0
+MP6012187;"Pivot Compl. EAW SLB2000 SR1 Basic; SR; Pied Bh12; Coude 21mm";1
 MP6012206;"Pivot Compl. EAW sr 30; SR; Pied Bh12; Coude 21mm";1
 MP6012006;"Pivot Compl. EAW Krico 700 900; SR; Pied Bh12; Coude 21mm";1
 MP6012074;"Pivot Compl. EAW Remington 7400...; SR; Pied Bh12; Coude 21mm";1
 MP6012059;"Pivot Compl. EAW Sauer200; SR; Pied Bh12; Coude 21mm";1
 MP6012659;"Pivot Compl. EAW Sauer202; SR; Pied Bh12; Coude 21mm";1
-MP6012086;"Pivot Compl. EAW Steyr M, Luxus...; SR; Pied Bh12; Coude 21mm";0
+MP6012086;"Pivot Compl. EAW Steyr M, Luxus...; SR; Pied Bh12; Coude 21mm";1
 MP6012202;"Pivot Compl. EAW Steyr SBS96; SR; Pied Bh12; Coude 21mm";1
 MP6012405;"Pivot Compl. EAW Ipact A.M.; SR; Pied Bh12; Coude 21mm";1
 MP6012264;"Pivot Compl. EAW Voere Richter; SR; Pied Bh12; Coude 21mm";1
 MP6012005;"Pivot Compl. EAW Zoli 1900; SR; Pied Bh12; Coude 21mm";1
-MP6012023;"Pivot Compl. EAW Weatherby MK V,Vanguard; SR; Pied Bh12; Coude 21mm";0
+MP6012023;"Pivot Compl. EAW Weatherby MK V,Vanguard; SR; Pied Bh12; Coude 21mm";1
 MP6012107;"Pivot Compl. EAW Mini Mauser; SR; Pied Bh12; Coude 21mm";1
 MP6012156;"Pivot Compl. EAW Mauser 94 96 AM; SR; Pied Bh12; Coude 21mm";0
-MP6012062;"Pivot Compl. EAW Parker Hale Midland; SR; Pied Bh12; Coude 21mm";1
-MP6012155;"Pivot Compl. EAW Sabatti Rover 870; SR; Pied Bh12; Coude 21mm";0
-MP6012110;"Pivot Compl. EAW K98 avec Oeuilleton; SR; Pied Bh12; Coude 21mm";1
+MP6012062;"Pivot Compl. EAW Parker Hale Midland; SR; Pied Bh12; Coude 21mm";0
+MP6012155;"Pivot Compl. EAW Sabatti Rover 870; SR; Pied Bh12; Coude 21mm";1
+MP6012110;"Pivot Compl. EAW K98 avec Oeuilleton; SR; Pied Bh12; Coude 21mm";0
 MP6012710;"Pivot Compl. EAW Remington 710; SR; Pied Bh12; Coude 21mm";0
 MP6012013;"Pivot Compl. EAW Rem. 742,760; SR; Pied Bh12; Coude 21mm";1
 MP6012414;"Pivot Compl. EAW Sako 85M; SR; Pied Bh12; Coude 21mm";1
 MP7012003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; 70°; Pied Bh12; Coude 20mm";1
 MP7012002;"Pivot Compl. EAW BW A-BOLT II; 70°; Pied Bh12; Coude 20mm";1
 MP7012267;"Pivot Compl. EAW BW A-BOLT III; 70°; Pied Bh12; Coude 20mm";1
-MP7012187;"Pivot Compl. EAW SLB2000 SR1 Basic; 70°; Pied Bh12; Coude 20mm";0
+MP7012187;"Pivot Compl. EAW SLB2000 SR1 Basic; 70°; Pied Bh12; Coude 20mm";1
 MP7012206;"Pivot Compl. EAW SR 30; 70°; Pied Bh12; Coude 20mm";1
 MP7012006;"Pivot Compl. EAW Krico 700 900; 70°; Pied Bh12; Coude 20mm";1
-MP7012010;"Pivot Compl. EAW Mauser K98,Heym Sr20; 70°; Pied Bh12; Coude 20mm";1
+MP7012010;"Pivot Compl. EAW Mauser K98,Heym Sr20; 70°; Pied Bh12; Coude 20mm";0
 MP7012186;"Pivot Compl. EAW SR1 Standard; 70°; Pied Bh12; Coude 20mm";1
 MP7012012;"Pivot Compl. EAW Remington 700; 70°; Pied Bh12; Coude 20mm";1
 MP7012074;"Pivot Compl. EAW Remington 7400...; 70°; Pied Bh12; Coude 20mm";1
@@ -1416,18 +1416,18 @@ MP7012059;"Pivot Compl. EAW Sauer200; 70°; Pied Bh12; Coude 20mm";1
 MP7012414;"Pivot Compl. EAW Sako 85M; 70°; Pied Bh12; Coude 20mm";1
 MP7012238;"Pivot Compl. EAW Tikka T3; 70°; Pied Bh12; Coude 20mm";1
 MP7012659;"Pivot Compl. EAW Sauer202; 70°; Pied Bh12; Coude 20mm";1
-MP7012086;"Pivot Compl. EAW Steyr M, Luxus...; 70°; Pied Bh12; Coude 20mm";0
+MP7012086;"Pivot Compl. EAW Steyr M, Luxus...; 70°; Pied Bh12; Coude 20mm";1
 MP7012202;"Pivot Compl. EAW Steyr SBS96; 70°; Pied Bh12; Coude 20mm";1
 MP7012405;"Pivot Compl. EAW Impact A.M.; 70°; Pied Bh12; Coude 20mm";0
 MP7012226;"Pivot Compl. EAW Verney LA; 70°; Pied Bh12; Coude 20mm";1
 MP7012264;"Pivot Compl. EAW Voere Richter; 70°; Pied Bh12; Coude 20mm";1
-MP7012023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 70°; Pied Bh12; Coude 20mm";0
+MP7012023;"Pivot Compl. EAW Weatherby MK V,Vanguard; 70°; Pied Bh12; Coude 20mm";1
 MP7012005;"Pivot Compl. EAW Zoli 1900; 70°; Pied Bh12; Coude 20mm";1
 MP7012107;"Pivot Compl. EAW Mini Mauser; 70°; Pied Bh12; Coude 20mm";1
 MP7012156;"Pivot Compl. EAW Mauser 94 96 AM; 70°; Pied Bh12; Coude 20mm";0
 MP7012062;"Pivot Compl. EAW Parker Hale Midland; 70°; Pied Bh12; Coude 20mm";0
-MP7012155;"Pivot Compl. EAW Sabatti Rover 870; 70°; Pied Bh12; Coude 20mm";0
-MP7012110;"Pivot Compl. EAW K98 avec Oeuilleton; 70°; Pied Bh12; Coude 20mm";1
+MP7012155;"Pivot Compl. EAW Sabatti Rover 870; 70°; Pied Bh12; Coude 20mm";1
+MP7012110;"Pivot Compl. EAW K98 avec Oeuilleton; 70°; Pied Bh12; Coude 20mm";0
 MP7012710;"Pivot Compl. EAW Remington 710; 70°; Pied Bh12; Coude 20mm";1
 MP8012003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; CX; Pied Bh12; Coude 21mm";0
 MP8012002;"Pivot Compl. EAW BW A-BOLT II; C.X.; Pied Bh12; Coude 21mm";0
@@ -1466,10 +1466,10 @@ MP8810003;"Pivot Compl. EAW BW Bar,SXR,Argo,Iris; HOLO; Pied Bh12";3
 MP8810002;"Pivot Compl. EAW BW A-BOLT II; HOLO; Pied Bh12";1
 MP8810143;"Pivot Compl. EAW BW European; HOLO; Pied Bh12";1
 MP8810267;"Pivot Compl. EAW BW A-BOLT III; HOLO; Pied Bh12";1
-MP8810187;"Pivot Compl. EAW SLB2000 SR1 Basic; HOLO; Pied Bh12";0
+MP8810187;"Pivot Compl. EAW SLB2000 SR1 Basic; HOLO; Pied Bh12";1
 MP8810206;"Pivot Compl. EAW SR 30; HOLO; Pied Bh12";1
 MP8810006;"Pivot Compl. EAW Krico 700 900; HOLO; Pied Bh12";1
-MP8810010;"Pivot Compl. EAW Mauser K98,Heym Sr20; HOLO; Pied Bh12";1
+MP8810010;"Pivot Compl. EAW Mauser K98,Heym Sr20; HOLO; Pied Bh12";0
 MP8810186;"Pivot Compl. EAW SR1 Standard; HOLO; Pied Bh12";1
 MP8810012;"Pivot Compl. EAW Reminton 700; HOLO; Pied Bh12";1
 MP8810074;"Pivot Compl. EAW Remington 7400...; HOLO; Pied Bh12";1
@@ -1477,18 +1477,18 @@ MP8810059;"Pivot Compl. EAW Sauer200; HOLO; Pied Bh12";1
 MP8810414;"Pivot Compl. Sako 85M Bar; HOLO; Pied Bh12";1
 MP8810238;"Pivot Compl. EAW Tikka T3; HOLO; Pied Bh12";1
 MP8810659;"Pivot Compl. EAW Sauer202; HOLO; Pied Bh12";1
-MP8810086;"Pivot Compl. EAW Steyr M, Luxus; HOLO; Pied Bh12";0
+MP8810086;"Pivot Compl. EAW Steyr M, Luxus; HOLO; Pied Bh12";1
 MP8810202;"Pivot Compl. Steyr SBS96 Bar; HOLO; Pied Bh12";1
 MP8810405;"Pivot Compl. EAW Impact A.M.; HOLO; Pied Bh12";1
 MP8810226;"Pivot Compl. EAW Verney LA; HOLO; Pied Bh12";1
 MP8810264;"Pivot Compl. EAW Voere Richter; HOLO; Pied Bh12";1
-MP8810023;"Pivot Compl. EAW Weatherby MK V,Vanguard; HOLO; Pied Bh12";0
+MP8810023;"Pivot Compl. EAW Weatherby MK V,Vanguard; HOLO; Pied Bh12";1
 MP8810005;"Pivot Compl. EAW Zoli 1900; HOLO; Pied Bh12";1
 MP8810107;"Pivot Compl. EAW Mini Mauser; HOLO; Pied Bh12";1
 MP8810156;"Pivot Compl. EAW Mauser 94 96 AM; HOLO; Pied Bh12";0
 MP8810062;"Pivot Compl. EAW Parker Hale Midland; HOLO; Pied Bh12";0
-MP8810155;"Pivot Compl. EAW Sabatti Rover 870; HOLO; Pied Bh12";0
-MP8810110;"Pivot Compl. EAW K98 avec Oeuilleton; HOLO; Pied Bh12";1
+MP8810155;"Pivot Compl. EAW Sabatti Rover 870; HOLO; Pied Bh12";1
+MP8810110;"Pivot Compl. EAW K98 avec Oeuilleton; HOLO; Pied Bh12";0
 MP8810710;"Pivot Compl. EAW Remington 710; HOLO; Pied Bh12";3
 MP8810013;"Pivot Compl. EAW Rem. 742,760; HOLO; Pied Bh12";1
 2614/0050;"204140050 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 5";1
@@ -1497,8 +1497,8 @@ MP8810013;"Pivot Compl. EAW Rem. 742,760; HOLO; Pied Bh12";1
 2614/0065;"204140065 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 6.5";1
 2614/0070;"204140070 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 7";1
 2614/0075;"204140075 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH7.5";1
-2614/0080;"204140080 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 8";1
-2614/0085;"204140085 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 8.5";0
+2614/0080;"204140080 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 8";3
+2614/0085;"204140085 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 8.5";1
 2614/0090;"204140090 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 9";1
 2614/0095;"204140095 Verrou A Levier Reglable Prisme 1 4.5 Coude 16 BH 9.5";1
 2614/0100;"204140100 Verrou A Levier Reglable Prisme 1 4.5 Coude 7 BH 10";1
@@ -1542,7 +1542,7 @@ JPX230;"Munition OC Pour JPX 6 (4 Charges)";0
 JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/35001;"1020001 Embase Arriere Pivot Petit Cal.Prisme de 11";1
 0/35002;"1020005 Embase Arriere Browning BBR ABolt ";1
-0/35003;"1020003 Embase Arriere Browning Bar Acera";3
+0/35003;"1020003 Embase Arriere Browning Bar Acera";10
 0/35005;"1020021 Embase Arriere Carl Gustav 1900";1
 0/35006;"1020022 Embase Arriere Krico 600 700 900 902";1
 0/35009;"1020028 Embase Arriere Mauser 66";1
@@ -1555,7 +1555,7 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/35018;"1020053 Embase Arriere STEYR S Jagdmatch / L Sl SBS 96";1
 0/35019;"0/35019 Embase Arriere Pivot Schönauer 72";1
 0/35020;"1020063 Embase Arriere Voere 2140 Titan I";1
-0/35023;"1020069 Embase Arriere Weatherby Mark V";0
+0/35023;"1020069 Embase Arriere Weatherby Mark V";1
 0/35024;"0/35024 Embase Arriere Winchester 70 standard";1
 0/35025;"0/35025 Embase Arriere Winchester 88 100 ";1
 0/35026;"0/35026 Embase Arriere Pivot Prisme 11";1
@@ -1579,7 +1579,7 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/35078;"0/35078 Embase Arriere Remington Seven";1
 0/35082;"1020190 Embase Arriere Berreta Media";1
 0/35085;"0/35085 Embase Arriere Winchester 70 Entreaxe 8.3";1
-0/35086;"1020194 Embase Arriere STEYR M Luxus L / M / S";0
+0/35086;"1020194 Embase Arriere STEYR M Luxus L / M / S";1
 0/35087;"0/35087 Embase Arriere Hk SL7";1
 0/35089;"0/35089 Embase Arriere Grünig Et Elmiger";1
 0/35093;"1020208 Embase Arriere Eaw STEYR L";1
@@ -1605,7 +1605,7 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/35169;"0/35169 Embase Arriere Pivot Marlin Mr7";1
 0/35175;"0/35175 Embase Arriere Carabine SHR 970";1
 0/35186;"1020348 Embase Arriere Pivot Merkel SR1";1
-0/35187;"1020349 Embase Arriere HK SLB 2000";0
+0/35187;"1020349 Embase Arriere HK SLB 2000";1
 0/35191;"1020355 Embase Arriere KRIEGHOFF Semprio";1
 0/35196;"0/35196 Embase Arriere Browning A Bolt Cal.222";1
 0/35202;"1020362 Embase Arriere STEYR SBS 96 Classique Export";1
@@ -1618,11 +1618,11 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/35226;"1020403 Embase Arriere Verney-Carron L.A.";1
 0/15001;"10100001 Embase Avant Eaw Pivot Petit Cal.Prisme 11";1
 0/15002;"10100005 Embase Avant Browning BBR A-Bolt ";1
-0/15003;"10100003 Embase Avant Pivot Browning Bar";3
+0/15003;"10100003 Embase Avant Pivot Browning Bar";10
 0/15005;"10100021 Embase Avant Carl Gustav 1900";1
 0/15006;"10100022 Embase Avant Krico 600 700 900 902";1
 0/15009;"10100028 Embase Avant Mauser 66 (BH 6)";1
-0/15010;"10100010 Embase Avant Mauser 98 Sans Oeilleton";1
+0/15010;"10100010 Embase Avant Mauser 98 Sans Oeilleton";0
 0/15012;"10100036 Embase Avant Remington 700";3
 0/15013;"10100041 Embase Avant Remington 742/760";1
 0/15015;"10100045 Embase Avant Sauer 80/90 SSG 2000";0
@@ -1631,7 +1631,7 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/15018;"10100053 Embase Avant STEYR S Jagdmatch L/Sl SBS 96";1
 0/15019;"0/15019 Embase Avant STEYR Manlicher Schönauer M72";1
 0/15020;"10100063 Embase Avant Voere 2140/Titan I";1
-0/15023;"10100069 Embase Avant Weatherby Mark V Europa 300 Vanguard";0
+0/15023;"10100069 Embase Avant Weatherby Mark V Europa 300 Vanguard";1
 0/15024;"10100075 Embase Avant Winchester 70 standard 770";1
 0/15025;"0/15025 Embase Avant Winchester 88 / 100 ";1
 0/15026;"0/15026 Embase Avant Pivot Prisme 11";1
@@ -1657,7 +1657,7 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/15078;"10100186 Embase Avant Remington Seven";1
 0/15080;"0/15080 Embase Avant Ruger M77 Prisme 12mm";1
 0/15082;"0/15082 Embase Avant Berreta Media";1
-0/15086;"10100194 Embase Avant STEYR M Luxus L / M / S";0
+0/15086;"10100194 Embase Avant STEYR M Luxus L / M / S";1
 0/15087;"10100198 Embase Avant HK SL7";1
 0/15089;"0/15089 Embase Avant Grünig et Elmiger";1
 0/15093;"10100208 Embase Avant STEYR L";1
@@ -1674,7 +1674,6 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/15139;"0/15139 Embase Avant Pivot Lakelander 389 BH 6mm";0
 0/15143;"10100285 Embase Avant Browning European";1
 0/15147;"10100291 Embase Avant Pivot Express Beretta Silver Sable II";1
-0/15149;"0/15149 Embase Avant Kettner Rep.L83";1
 0/15150;"10100301 Embase Avant Chapuis Express";0
 0/15156;"0/15156 Embase Avant Mauser 94 96 N° Jusqu'à 96011999";0
 0/15162;"0/15162 Embase Avant FN BW Canon Octogonal";0
@@ -1690,7 +1689,7 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/15186;"10100348 Embase Avant Merkel SR1";1
 0/15187;"10100349 Embase Avant HK SLB 2000";1
 0/15191;"10100355 Embase Avant Pivot KRIEGHOFF Semprio";1
-0/15109;"10100235 Embase Avant Mauser 66 (BH 8)";0
+0/15109;"10100235 Embase Avant Mauser 66 (BH 8)";1
 0/15226;"10100403 Embase Avant Verney-Carron L.A.";1
 2611/0050;"204110050 Verrou A Levier Reglable Prisme 11 Coude 16 BH 5";1
 2611/0060;"204110060 Verrou A Levier Reglable Prisme 11 Coude 16 BH 6";1
@@ -1721,8 +1720,8 @@ MP4023182;"Pivot Compl. EAW express Fair; 40mm; Pied Bh14; Coude 33mm";1
 MP4023150;"Pivot Compl. EAW express Chapuis; 40mm; Pied Bh14; Coude 33mm";0
 MP4023172;"Pivot Compl. EAW Verney carron express; 40mm; Pied Bh14; Coude 33mm";0
 MP5013150;"Pivot Compl. EAW Chapuis Ex..; ZM; Pied Bh12; Coude 32mm";0
-MP5013147;"Pivot Compl. EAW Brertta Silver Sable II; Z.M.; Pied Bh12; Coude 32mm";0
-MP5013182;"Pivot Compl. EAW express Fair; ZM; Pied Bh12; Coude 32mm";0
+MP5013147;"Pivot Compl. EAW Brertta Silver Sable II; Z.M.; Pied Bh12; Coude 32mm";1
+MP5013182;"Pivot Compl. EAW express Fair; ZM; Pied Bh12; Coude 32mm";1
 MP5013172;"Pivot Compl. EAW Verney carron express; ZM; Pied Bh12; Coude 32mm";0
 310/0510/22;"1070301022 Pied Avant Diam.30 BH 10 Coude 22";0
 310/0510/38;"1070301038 Pied Avant Diam.30 BH 10 Coude 38";1
@@ -1754,7 +1753,7 @@ DC0361AFMCI;"Super. Fx Corps Eject. Ergal MD Cal.410 Can.71 CI Anglaise";0
 310/0514/38;"1070301438 Pied Avant Diam.30 BH 14 Coude 38";1
 310/0514/45;"1070301445 Pied Avant Diam.30 BH 14 Coude 45";3
 310/0517/17;"1070301717 Pied Avant Diam.30 BH 17 Coude 17";1
-310/0517/26;"1070301726 Pied Avant Diam.30 BH 17 Coude 26";1
+310/0517/26;"1070301726 Pied Avant Diam.30 BH 17 Coude 26";3
 310/0517/38;"1070301738 Pied Avant Diam.30 BH 17 Coude 38";1
 310/0517/45;"1070301745 Pied Avant Diam.30 BH17 Coude 45";1
 310/0010/22;"1070261022 Pied Avant Diam.26 BH10 Coude 22";1
@@ -1776,7 +1775,7 @@ CG210M;"Tempio Acier Eject. MD 20/76 71cm CI ";0
 310/0017/45;"1070261745 Pied Avant Diam.25.4 BH 17 Coude 45";1
 CG241M;"Tempio Ergal Eject. MD 410 71cm CI ";0
 310/1714/21;"1071341421 Pied Avant Pivot Diam.34 Coude 21 BH 14";3
-310/1714/33;"1071341433 Pied Avant Pivot Diam.34 Coude 33 BH 14";3
+310/1714/33;"1071341433 Pied Avant Pivot Diam.34 Coude 33 BH 14";1
 310/1714/45;"1071341445 Pied Avant Pivot Diam.34 Coude 45 BH14";0
 CG315A;"Magnus F.Corps Ergal Eject. DD 20/76 68cm CI Cr.Ang.";0
 CG315M;"Magnus F.Corps Ergal Eject. MD 20/76 68cm CI ";0
@@ -1789,7 +1788,7 @@ CG503G;"Summit Sporting Black Eject. 12/76 76cm CI Gaucher.";1
 CG503GR;"Summit Sporting Black Eject. 12/76 76cm CI Crosse Gaucher  Réglable ";1
 CG504GR;"Summit Sporting Eject. 12/76 81cm CI Gaucher Réglable";0
 CG503R;"Summit Sporting Black Eject. 12/76 76cm CI Crosse Réglable ";10
-CG504R;"Summit Sporting Eject. 12/76 81cm CI Réglable";1
+CG504R;"Summit Sporting Eject. 12/76 81cm CI Réglable";0
 CG504G;"Summit Sporting Eject. 12/76 81cm CI Gaucher";0
 CG504;"Summit Black Sporting Eject. 12/76 81cm CI ";3
 310/1814/21;"1071361421 Pied Avant Pivot Diam.36 Coude 21 BH 14";1
@@ -1816,7 +1815,7 @@ CG504;"Summit Black Sporting Eject. 12/76 81cm CI ";3
 311/1714;"10713414 Pied Avant Droit Diam.34 BH 14";1
 311/1717;"10713417 Pied Avant Droit Diam.34 BH 17";0
 311/1814;"10713614 Pied Avant Pivot droit Diam.36  BH 14";1
-1405/1120/22;"1070031222 Pied Avant Rail ZM Coude 22 BH 12";0
+1405/1120/22;"1070031222 Pied Avant Rail ZM Coude 22 BH 12";1
 1405/1120/32;"1070031232 Pied Avant Rail ZM Coude 32 BH 12";1
 1405/1120/39;"1070031239 Pied Avant Rail ZM Coude 39 BH 12";1
 1405/1120/45;"1070031245 Pied Avant Rail ZM Coude 45 BH 12";1
@@ -1828,7 +1827,7 @@ CG504;"Summit Black Sporting Eject. 12/76 81cm CI ";3
 1405/1140/22;"1070031422 Pied Avant Rail ZM Coude 22 BH 14";1
 1406/1120;"10700312 Pied Avant Droit Rail ZM BH 12";1
 1406/1170;"10700317 Pied Avant Droit Rail ZM BH 17";0
-2406/0120;"10700412 Pied Avant Droit Rail SR BH 12";0
+2406/0120;"10700412 Pied Avant Droit Rail SR BH 12";1
 3406/1120;"3406/1120 Pied Avant Droit Rail Convex S&B Bh 12";1
 318/5040;"10630040 Partie Superieure Pied Arriere Diam.30 BH 4";1
 318/5045;"10630045 Partie Superieure Pied Arriere Diam.30 BH 4.5";1
@@ -1880,7 +1879,7 @@ CG504;"Summit Black Sporting Eject. 12/76 81cm CI ";3
 318/9100;"10640100 Collier Arriere Diam.40 BH 10";0
 1412/0040;"1060304011 Partie Superieure Pied Arriere Rail ZM BH 4";1
 1412/0045;"1060304511 Partie Superieure Pied Arriere Rail ZM BH 4.5";1
-1412/0050;"1060305011 Partie Superieure Pied Arriere Rail ZM BH 5";0
+1412/0050;"1060305011 Partie Superieure Pied Arriere Rail ZM BH 5";1
 1412/0055;"1412/0055 Partie Superieure Pied Arriere Rail ZM BH 5.5";1
 1412/0060;"1060306011 Partie Superieure Pied Arriere Rail ZM BH 6";1
 1412/0065;"1060306511 Partie Superieure Pied Arriere Rail ZM BH 6.5";1
@@ -2212,7 +2211,7 @@ DDM4103;"!B! MK18-NM Tornado 10.3' Barrel Semi-Auto Cal.5.56";3
 DDM4102;"!B! MK18-NM Marron 10.3' Barrel Semi-Auto Cal.5.56 ";1
 DDM4101;"!B! MK18-NM Black 10.3' Barrel Semi-Auto Cal.5.56";1
 DDM301;"!B! Daniel Defense M4-300S Cal.300 AAC Blk canon 10.3' Semi Auto";0
-DDV7181;"!B! Daniel Defense DDM4V7-Pro Black 18' Barrel. Semi-Auto. Cal.5.56";3
+DDV7181;"!B! Daniel Defense DDM4V7-Pro Black 18' Barrel. Semi-Auto. Cal.5.56";1
 DDV7181R;"!B! DanielDefense DDM4V7-Pro Rattlecan18' Barrel. Semi-Auto. Cal.5.56";0
 DDV7181G;"!B! Daniel Defense V7 Pro Metal Gray cal. 5.56 Semi-Auto 18' barrel";3
 DDV7161;"!B! Daniel Defense DDM4V7-Black 16'Barrel Semi-Auto. Cal.5.56";3
@@ -2250,7 +2249,7 @@ PR630;"PLAQUE DE COUCHE 30MM - ELASTIC - INT.SE 82MM - VENTILEE - INCURVEE";30
 PR650;"PLAQUE DE COUCHE 15MM - ELASTIC - INT.SE 82MM - PLEINE - ORANGE";30
 PR652;"PLAQUE DE COUCHE 20MM - ELASTIC - INT.SE 82MM - PLEINE - ORANGE";10
 PR655;"PLAQUE DE COUCHE 25MM - ELASTIC - INT.SE 82MM - PLEINE - ORANGE";10
-PR680;"PLAQUE DE COUCHE 10MM - ELASTIQUE - INT.SE 82MM - PLEINE - LEVRIERO";3
+PR680;"PLAQUE DE COUCHE 10MM - ELASTIQUE - INT.SE 82MM - PLEINE - LEVRIERO";1
 PR800;"PLAQUE DE COUCHE 15MM - ELASTIQUE - INT.SE 82MM - PLEINE - SKEET";30
 PR802;"PLAQUE DE COUCHE 20MM - ELASTIQUE - INT.SE 82MM - PLEINE - SKEET";30
 PR805;"PLAQUE DE COUCHE 25MM - ELASTIQUE - INT.SE 82MM - PLEINE - SKEET";30
@@ -2649,7 +2648,7 @@ HOX0010;"Howa ORYX, cal. 308Win , 24 '";0
 HOX0050;"Howa ORYX, cal. 6.5 Creedmoor , 24 '";0
 HOXP05;"Pack Howa ORYX, lunette, bipied Kastelberg, malette, cal. 6.5 Creedmo";0
 PHO51138;"Chargeur MDT 10 cps cal.308 Win.";0
-DC0112CI;"Super. Ext Premier ERGAL DD Cal.12/76 Can. 71 CI (3ch)";3
+DC0112CI;"Super. Ext Premier ERGAL DD Cal.12/76 Can. 71 CI (3ch)";1
 DC0112MCI;"Super Ext Premier ERGAL Ext MDS Cal.12/76 Can.71 CI (3ch)";0
 DC0120CI;"Super Ext Premier ERGAL DD Cal.20/76 Can. 68 CI (3ch)";0
 DC0120MCI;"Super Ext Premier ERGAL MDS Cal.20/76 Can. 68 CI (3ch)";0
@@ -2766,7 +2765,7 @@ DC490SP;"Racing Sporting Eject. Mds Cal.20/76 Can.76 CI ";1
 DC500;"Racing Sporting Eject. Mds Cal.20/76 Can.81 CI ";3
 DC490SPCR;"Racing Sporting Eject. Mds Cal20/76 Can76ci CR";1
 DC92420M;"Juxta Eject. MD Cal.20/76 Can.71 CI Steel";3
-DC92412;"Juxta Eject. DD Cal.12/76 Can.71 CI Steel";3
+DC92412;"Juxta Eject. DD Cal.12/76 Can.71 CI Steel";1
 DC92412M;"Juxta Eject. MDS Cal.12/76 Can.71 CI Steel";1
 DC92412R;"Juxta Eject. DD Cal.12/76 Can.61 CI Steel +1rayé";1
 DC92420;"Juxta Eject. DD Cal.20/76 Can.71 CI Steel";0
@@ -3917,7 +3916,7 @@ ME301021;"471003010021 EAW colliers fixe diam.30mm - BH10mm - weaver";10
 ME301821;"471003018021 EAW colliers fixe diam.30mm - BH18mm - weaver";30
 ME341021;"471003410021 EAW colliers fixe diam.34mm - BH10mm - weaver";30
 ME341521;"471003415021 EAW colliers fixe diam.34mm - BH15mm - weaver";10
-ME300521;"471003005021 EAW colliers fixe diam.30mm - BH5mm - weaver";10
+ME300521;"471003005021 EAW colliers fixe diam.30mm - BH5mm - weaver";30
 ME340521;"471003405021 EAW colliers fixe diam.34mm - BH5mm - weaver";3
 ME261221;"471002612021 EAW colliers fixe diam.25.4mm - BH12mm - weaver";1
 ME262021;"471002620021 EAW colliers fixe diam.25.4mm - BH20mm - weaver";0
@@ -3925,7 +3924,7 @@ FA2001;"XXAPXX FABARM Pompe SDASS 2 BLACK Cal 12/76 Can 71 cm  RAYE CI 4+1";10
 FA20016;"XXAPXX FABARM Pompe SDASS 2 BLACK Cal 12/76 Can 76 cm  RAYE CI 4+1";3
 FA2006;"XXAPX FABARM Pompe SDASS 2 TRAQ. CAM Cal 12/76 Can 61 cm  RAYE CI 4+1";3
 FA5050;"FABARM Super AXIS SPORTING & HUNTING Eject 12/76 76cm- 3CI+3CEXT ";0
-FA5200;"FABARM Super Eject  ELOS N2 SPORTING AS Cal 12/76  76 cm- 4 CI CR";3
+FA5200;"FABARM Super Eject  ELOS N2 SPORTING AS Cal 12/76  76 cm- 4 CI CR";1
 FA5200G;"FABARM Super Eject  ELOS N2 SPORTING AS Cal 12/76  76 cm  Gaucher CR";1
 FA1995V;"FABARM Pompe STF/12  PISTOLGRIP VIPER Cal 12/76 Can 61cm Rayé";0
 FA1995F;"FABARM Pompe STF/12  PISTOLGRIP F.E Cal 12/76 Can 61cm Rayé";0
@@ -3970,7 +3969,6 @@ OHR30;"Nikko Stirling Flash red dot 1x30";30
 LDT105P;"!B!Pack AR15 LDT 10.5'+ point rouge LDTF3";1
 LDT145P;"!B!Pack AR-15 LDT 14.5' + Point rouge LDTF3";1
 FA2052G;"FABARM Super Ergal Ext Elos A2Traqueur Classic Gold Cal12/76 51 cm ";3
-FA1987CT;"XXAPXX FABARM Pompe MARTIAL CANT. cal 12/76 - Canon 61CM Rayé  4+1";0
 MPS2612003;"Part. Sup EAW; 25.4mm; pied bh12; coude 26mm; Bar-Argo-L.A.A Bolt3";1
 MPS2612012;"Part. Sup EAW; 25.4mm; pied bh12; coude 26mm; Rem700,Rover870,RWS89";1
 MPS2612010;"Part. Sup EAW; 25.4mm; pied bh12; coude 26mm; Mauser K98, HeymSR20/10";1
@@ -4186,9 +4184,9 @@ SI30702;"STALON SILENCIEUX XE108, M17X1 MAX CAL. .30";1
 SI30802;"STALON SILENCIEUX XE108, M18X1 MAX CAL. .30";1
 SI318021;"STALON SILENCIEUX XE149, M18X1 MAX CAL. .8mm";0
 SI31406;"STALON SILENCIEUX XE149, M14X1 MAX CAL. 6.5";3
-SI31302;"STALON SILENCIEUX XE149, 5/8-24 UNEF MAX CAL. .30";3
+SI31302;"STALON SILENCIEUX XE149, 5/8-24 UNEF MAX CAL. .30";1
 SI31402;"STALON SILENCIEUX XE149, M14X1 MAX CAL. .30";3
-SI31502;"STALON SILENCIEUX XE149, M15X1 MAX CAL. .30";10
+SI31502;"STALON SILENCIEUX XE149, M15X1 MAX CAL. .30";3
 SI31802;"STALON SILENCIEUX XE149, M18X1 MAX CAL. .30";3
 SIP2039;"STALON GRAISSE POUR SILENCIEUX, 25G";30
 SIP0310;"STALON SUPPORT DE CANON, VICTOR-SERIES, 13MM";10
@@ -4661,7 +4659,7 @@ DM00088-4;"DENTLER - Base STEYR SM12 WSM";0
 DM00090;"DENTLER - Base HEYM SR30";1
 DM00144;"DENTLER - Base SAUER 404";1
 DM00162;"DENTLER - Base MERKEL K3/K4/K5/B3/B4";1
-DM00163;"DENTLER - Base MERKEL RX HELIX";0
+DM00163;"DENTLER - Base MERKEL RX HELIX";1
 DM00193;"DENTLER - Base BLASER";1
 DM00194;"DENTLER - Base BLASER R8";1
 DM00247;"DENTLER - Base VERNEY CARRON L.A.";1
@@ -4683,7 +4681,7 @@ DM20253;"DENTLER - COLLIER 25.4mm BH 3.5 / à l'unité";0
 DM20256;"DENTLER - COLLIER 25.4mm BH 6.5 / à l'unité";1
 DM20259;"DENTLER - COLLIER 25.4mm BH 9.5 / à l'unité";0
 DM20303;"DENTLER - COLLIER 30mm BH 3.5 / à l'unité";0
-DM20306;"DENTLER - COLLIER 30mm BH 6.5 / à l'unité";1
+DM20306;"DENTLER - COLLIER 30mm BH 6.5 / à l'unité";0
 DM20309;"DENTLER - COLLIER 30mm BH 9.5 / à l'unité";0
 DM20343;"DENTLER - COLLIER 34mm BH 3.5 / à l'unité";0
 DM20346;"DENTLER - COLLIER 34mm BH 6.5 / à l'unité";1
@@ -4761,7 +4759,7 @@ CHG031;"Choke Selecta GUERINI Cal.20 Court Full";1
 CHG032;"Choke Selecta GUERINI Cal.20 Court 3/4";1
 CHG033;"Choke Selecta GUERINI Cal.20 Court 1/2";1
 CHG034;"Choke Selecta GUERINI Cal.20 Court 1/4";1
-CHG035;"Choke Selecta GUERINI Cal.20 Court Cyl.";1
+CHG035;"Choke Selecta GUERINI Cal.20 Court Cyl.";0
 CHG049-1;"Clef SelectaChoke Cal.20 Guerini chasse";0
 CHG062;"Choke GUERINI Selecta Chasse Cal.410 Full";3
 CHG063;"Choke GUERINI Selecta Chasse Cal.410 3/4";3
@@ -4850,7 +4848,7 @@ SIP3036;"STALON, FREIN DE BOUCHE SS, M14X1 MAX 7.62MM";3
 SIP2078;"STALON, FREIN DE BOUCHE, M15X1 MAX 7.62MM";1
 SIP2077;"STALON, FREIN DE BOUCHE, M14X1 MAX 7.62MM";1
 SIP2080;"STALON, FREIN DE BOUCHE, M14X1 MAX 9.3MM";0
-SIP2081;"STALON, FREIN DE BOUCHE, M15X1 MAX 9.3MM";0
+SIP2081;"STALON, FREIN DE BOUCHE, M15X1 MAX 9.3MM";1
 FA1379;"FABARM SEMI-AUTO XLR COLUMBA PALUMBUS - 12/76 - 71 CM - 4 CI";3
 FA1380;"FABARM SEMI-AUTO XLR COLUMBA PALUMBUS - 12/76 - 76 CM - 4 CI";3
 FA4000M;"FABARM Juxtaposé CLASSIS MDS Cal 12/76 - 71cm - Crosse Anglaise ";3
@@ -4931,7 +4929,7 @@ CG663;"INVICTUS IX Sporting Bande plate Cal 12/76 can 76 cm CR";0
 CG664;"INVICTUS IX Sporting Bande plate Cal 12/76 can 81 cm CR";1
 OC1624;"XXAPXX Lunette de battue 1-6x24 illuminée MICRODOT Premium";30
 NUM502P;"NUM'AXES - PACK PIE1059 (fourni avec piles et carte SD)";0
-NUM505P;"NUM'AXES - PACK PIEGES PIE1048 (avec piles et carte SD)";10
+NUM505P;"NUM'AXES - PACK PIEGES PIE1048 (avec piles et carte SD)";3
 NUM545P;"NUM'AXES - PACK Piège PIE1060 (avec piles et carte SD)";3
 NUM535P;"NUM'AXES - PACK Piège PIE1051 4G (avec piles,avec SD,avec carte SIM)";3
 NUM501P;"NUM'AXES - Piège photographique PIE1066 (avec piles et SD)";30
@@ -4992,7 +4990,7 @@ OI5030;"INFIRAY monoculaire thermique Eye II series E6pro V3";0
 ME501002;"470000310021 EAW fixe ZM - BH10mm - weaver coudes intérieurs";3
 ME601002;"470000410021 EAW fixe SR - BH10mm - weaver coudes intérieurs";3
 MEL301000;"471023010021 EAW à levier 30mm- BH10mm - weaver ";3
-MEL301001;"47002301002124 EAW à levier 30mm- BH10mm - weaver coudes arrières";0
+MEL301001;"47002301002124 EAW à levier 30mm- BH10mm - weaver coudes arrières";1
 MEL301800;"471023018021 EAW à levier 30mm- BH18mm - weaver ";1
 MEL301801;"47002301802124 EAW à levier 30mm- BH18mm - weaver coudes arrières";1
 MEL301802;"470023018021 EAW à levier 30mm- BH18mm - weaver coudes intérieurs";1
@@ -5025,7 +5023,7 @@ VI02202P85;"Victrix Venus pro 6.5x47 lapua 1/8.5";0
 VI02203P75;"Victrix Venus pro 6.5 creedmore 1/7.5";0
 VI02203P85;"Victrix Venus pro 6.5 creedmore 1/8.5";0
 VI02204P;"Victrix Venus pro 6XC 1/8";0
-VI02422;"Victrix Gladio SB 22lr black 22'";1
+VI02422;"Victrix Gladio SB 22lr black 22'";0
 VI02422G;"Victrix Gladio SB 22lr Gris  22'";0
 VI02422M;"Victrix Gladio SB 22lr Marron 22'";0
 VI02422V;"Victrix Gladio SB 22lr vert 22'";0
@@ -5054,7 +5052,7 @@ G1675P;"Gamo Pack RISER 5.5mm 40j + 3-9x40 + pompe + plomb";30
 G1675C;"Gamo Pack RISER 5.5MM 40J + 3-9X40 + SUPRESSEUR + PLOMB";10
 SHM240;"!B! Carabine semi auto Schmeisser cal. 223 DMR full FDE";1
 ON0701;"Collier Nikko Stirling, 1', weaver, Bh medium";30
-SHR910SIL;"!B! Schmeisser AR9-S4F Standard cal. 9mm MLok 10,5' SILENCIEUX";0
+SHR910SIL;"!B! Schmeisser AR9-S4F Standard cal. 9mm MLok 10,5' SILENCIEUX";1
 OI4020;"INFIRAY holographique HL25";0
 OI2220;"INFIRAY lunette thermique TUBE TH50 V2";0
 OI6020;"INFIRAY télémétre thermique FH35R";0
@@ -5082,7 +5080,7 @@ OI0210;"INFIRAY clip on MATE series MAL25";1
 PACKLIBERTY;"D.Defense DDM4V7-S Black 11.5' Barrel Semi-Auto. Cal.5.56+OPA14+OPAZ2";30
 PFAP020;"GOUPILLE SURETE MONO DETENTE N?2 ELOS";3
 PFAP116;"SELECTEUR MONO COMPLET  NOIR";3
-PFAV236A;"TIGE D EJECTEUR GAUCHE  AXIS  STL  ELOS";3
+PFAV236A;"TIGE D EJECTEUR GAUCHE  AXIS  STL  ELOS";1
 PFAP022;"GOUPILLE ARRET VERROU SUPERPOSE";3
 PFAP018;"RESSORT DE PERCUTEUR AXIS -ELOS - MIXTE DUAL - ASPER";10
 PFAP004DX;"PERCUTEUR DROIT AXIS - ELOS";3
@@ -5281,7 +5279,7 @@ DDT023HM;"Sweat vert Daniel Defense Don't Tread serpent T-M";1
 DDT023HS;"Sweat vert Daniel Defense Don't Tread serpent T-S";3
 DDT023HL;"Sweat vert Daniel Defense Don't Tread serpent T-L";0
 ONT630;"XXAPXX Monoculaire 6 x 30 Nikko Stirling";3
-GMA147;"XXNHXX !B! Mauser AK47 omega cal. 22lr canon 45cm semi-auto";1
+GMA147;"XXNHXX !B! Mauser AK47 omega cal. 22lr canon 45cm semi-auto";0
 GMA151;"XXNHXX !B! Mauser M15 Tac OP cal.22 black canon 30cm 22 coups";3
 GMA151P;"XXNHXX !B! Pack Mauser M15 Tac OP + cartouches .22Lr +Brunox";3
 GMA152;"XXNHXX !B! Mauser M15 Tac OP cal.22 TAN canon 30cm 22 coups";10
@@ -5324,7 +5322,7 @@ MA2264;"XXAPXX Colliers PSR Diam.36mm BH 18mm";3
 MA2284;"XXAAPX PR0023/A Colliers PSR Diam.40mm BH 16mm";3
 MA2282;"XAPXX PR0022/A Colliers PSR Diam.40mm BH 12mm";3
 SI37200;"STALON SILENCIEUX RF, 1/2-28 UNEF 4,5-5,6MM";0
-SI37100;"STALON SILENCIEUX RF, 1/2-20 UNF 4,5-5,6MM";0
+SI37100;"STALON SILENCIEUX RF, 1/2-20 UNF 4,5-5,6MM";1
 FA5215;"FABARM Super Eject ELOS N2 RS SPORTING AS Cal 12/76";0
 FA3112M;"FABARM Super Elos 2 ELITE MDS Cal 12 - 71cm ";1
 FA1970;"FABARM Pompe SDASS Pro Forces cal 12/76 - canon 61cm - 4+1- New 2024";0
@@ -5355,7 +5353,7 @@ VI0252416;"Victrix Scepter SB 22 lr 1/16 24'";1
 VI0252410;"Victrix Scepter SB 22 lr 1/10 24'";0
 VI0252410F;"Victrix Scepter SB 22 lr 1/10 24' filete";0
 SI28202;"STALON SILENCIEUX X108, 1/2-28 UNEF MAX CAL. .30";3
-SI28806;"STALON SILENCIEUX X108, M18X1 MAX CAL. 6.5";1
+SI28806;"STALON SILENCIEUX X108, M18X1 MAX CAL. 6.5";0
 SI28506;"STALON SILENCIEUX X108, M15X1 MAX CAL. 6.5";1
 SI28400;"STALON SILENCIEUX X108, M14X1 MAX CAL. .223";1
 SI28206;"STALON SILENCIEUX X108, 1/2-28 UNEF MAX CAL. 6.5";1
@@ -5395,7 +5393,7 @@ CG5902;"INVICTUS ArtCO  IMPACT Cal.12/70 76cm CI 1/2 haute réglable - CR";0
 A69898;"Lampe tactical nx 300 - Nuprol";0
 OCT6151;"Lunette de tir MICRODOT  Tac   6-24x50 ; FFP ; MRAD";30
 MEL301803;"47002301802421 EAW à levier 30mm- BH18mm - weaver coudes avants";1
-MEL301003;"47002301002421 EAW à levier 30mm- BH10mm - weaver coudes avants";0
+MEL301003;"47002301002421 EAW à levier 30mm- BH10mm - weaver coudes avants";1
 FDR009;"!A! AR15 pliant en 3 - FoldAR calibre 5.56 canon 9' Mo Betta";1
 FDR0125;"!B! AR15 pliant en 3 - FoldAR calibre 5.56 canon 12.5 Mo Betta";3
 FA13786;"FABARM SEMI-AUTO XLR (Hunter) - 12/76 - 76 cm -3 CI";0
