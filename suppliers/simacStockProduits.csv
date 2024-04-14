@@ -569,7 +569,7 @@ BASES54;"Base 54 acier";0
 57090-301P;"Embase Arriere Weaver X-Bolt";3
 57090-3005;"Embase Arrière Weaver Carl Gustav/ Zoli";3
 57090-3029;"Embase Arriere Weaver Express Chapuis";3
-57090-3023;"Embase Arriere Weaver Weatherby Mark V";1
+57090-3023;"Embase Arriere Weaver Weatherby Mark V";0
 57090-3024;"Embase Arriere Weaver Winchester 70 Standard";10
 57090-302C;"Embase Arriere Weaver Jaeger 10 Apres N° 000921";1
 57090-3008;"Embase Arriere Weaver SLB 2000";1
@@ -1100,7 +1100,7 @@ SPM002;"Adaptateur prisme 21 (weaver) à prisme de 11 mm ";0
 57080-3097;"Embase Avant Weaver Mauser 96 97 N°>12000";1
 57080-3012;"Embase Avant Weaver Remington 700";30
 57080-3019;"Embase Avant Weaver Remington Seven";1
-57080-3023;"Embase Avant Weaver Weatherby Mark V";1
+57080-3023;"Embase Avant Weaver Weatherby Mark V";0
 57080-302G;"Embase Avant Weaver Titan 16";1
 57080-301K;"Embase Avant Weaver Express Sabatti";1
 57080-3040;"Embase Avant Weaver SHR 970";1
@@ -1109,7 +1109,7 @@ SPM002;"Adaptateur prisme 21 (weaver) à prisme de 11 mm ";0
 57080-3080;"Embase Avant Weaver Sauer 202";1
 57080-3035;"Embase Avant Weaver Savage 110";1
 57080-3093;"Embase Avant Weaver Savage accutrigger";1
-57080-3051;"Embase Avant Weaver STEYR M";3
+57080-3051;"Embase Avant Weaver STEYR M";1
 57080-3088;"Embase Avant Weaver STEYR SBS 96 Export/Pro Hunter";1
 57080-3092;"Embase Avant Weaver Titan 3/6 Rößler";1
 57080-3047;"Embase Avant Weaver Verney Impact Plus";1
@@ -2707,7 +2707,7 @@ AEV762E;"8-15421-02624-5 Frein de bouche VG6 7.62 muzzlebreak  - 5/8-24 Black";3
 AEV919E;"8-15421-02622-1 VG6 Epsilon cal. 9mm muzzlebreak 1/2-28 Black";3
 AEM5651;"!B!M5E1 carabine semi auto AR10 canon de 16' M-lok calibre 6,5 Cr Bla";0
 AEM5652;"!B!5E1 carabine semi auto AR10 canon de 16' M-lok calibre 6,5 Cr TAN";1
-PS6600070410;"Partie Superieure Pivot STEYR Diam.30";1
+PS6600070410;"Partie Superieure Pivot STEYR Diam.30";0
 AEU301;"!B!M4E1-E Complet Upper, canon 8' .300 Blackout Anodisé noir M-Lok";3
 AEU302;"!B!M4E1-E Complet Upper, canon 8' .300 Blackout Cerakote FDE M-Lok";0
 AEU303;"!B!M4E1-E Complet Upper, canon 10' .300 Blackout Anodisé noir M-Lok";10
@@ -4928,7 +4928,7 @@ CG663;"INVICTUS IX Sporting Bande plate Cal 12/76 can 76 cm CR";1
 CG664;"INVICTUS IX Sporting Bande plate Cal 12/76 can 81 cm CR";1
 OC1624;"XXAPXX Lunette de battue 1-6x24 illuminée MICRODOT Premium";30
 NUM502P;"NUM'AXES - PACK PIE1059 (fourni avec piles et carte SD)";0
-NUM505P;"NUM'AXES - PACK PIEGES PIE1048 (avec piles et carte SD)";1
+NUM505P;"NUM'AXES - PACK PIEGES PIE1048 (avec piles et carte SD)";0
 NUM545P;"NUM'AXES - PACK Piège PIE1060 (avec piles et carte SD)";3
 NUM535P;"NUM'AXES - PACK Piège PIE1051 4G (avec piles,avec SD,avec carte SIM)";1
 NUM501P;"NUM'AXES - Piège photographique PIE1066 (avec piles et SD)";30
