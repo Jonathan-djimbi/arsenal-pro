@@ -505,7 +505,7 @@ G4130;"Gamo Lunette LC4X32WR";30
 57050-0008;"Rail Long Picatinny SLB2000 / SR1 5 Trous";3
 57050-0010;"Rail Long Picatinny Mauser 98";10
 57050-0012;"Rail Long Picatinny Remington 700 Short SPS";1
-57050-0013;"Rail Long Picatinny Remington 7400";3
+57050-0013;"Rail Long Picatinny Remington 7400";1
 57050-0014;"Rail Long Picatinny Sako 85 Short";1
 57050-001P;"Rail Long Picatinny X Bolt Short";3
 57050-001S;"Rail Long Picatinny Marlin 444";0
@@ -1108,7 +1108,7 @@ SPM002;"Adaptateur prisme 21 (weaver) à prisme de 11 mm ";0
 57080-3080;"Embase Avant Weaver Sauer 202";1
 57080-3035;"Embase Avant Weaver Savage 110";1
 57080-3093;"Embase Avant Weaver Savage accutrigger";1
-57080-3051;"Embase Avant Weaver STEYR M";3
+57080-3051;"Embase Avant Weaver STEYR M";1
 57080-3088;"Embase Avant Weaver STEYR SBS 96 Export/Pro Hunter";1
 57080-3092;"Embase Avant Weaver Titan 3/6 Rößler";0
 57080-3047;"Embase Avant Weaver Verney Impact Plus";1
@@ -1690,7 +1690,7 @@ JPX240;"Munition Entrainement Pour JPX 6 (4 Charges)";0
 0/15226;"10100403 Embase Avant Verney-Carron L.A.";1
 2611/0050;"204110050 Verrou A Levier Reglable Prisme 11 Coude 16 BH 5";1
 2611/0060;"204110060 Verrou A Levier Reglable Prisme 11 Coude 16 BH 6";1
-2611/0085;"204110085 Verrou A Levier Reglable Prisme 11 Coude 16 BH 8.5";1
+2611/0085;"204110085 Verrou A Levier Reglable Prisme 11 Coude 16 BH 8.5";0
 2611/0090;"204110090 Verrou A Levier Reglable Prisme 11 Coude 16 BH 9";1
 2611/0095;"204110095 Verrou À Levier Reglable Prisme 11 Coude 16 BH 9.5";1
 2611/0100;"204110100 Verrou A Levier Reglable Prisme 11 Coude 7 BH 10";0
@@ -1885,7 +1885,7 @@ CG504;"Summit Black Sporting Eject. 12/76 81cm CI ";3
 1412/0080;"1412/0080 Partie Superieure Pied Arriere Rail ZM BH 8";1
 2412/0040;"2412/0040 Partie Superieure Pied Arriere Rail SR BH 4";1
 2412/0045;"2412/0045 Partie Superieure Pied Arriere Rail SR BH 4.5";1
-2412/0050;"1060405011 Partie Superieure Pied Arriere Rail SR BH5";3
+2412/0050;"1060405011 Partie Superieure Pied Arriere Rail SR BH5";1
 2412/0055;"2412/0055 Partie Suerieure Pied Arrierre Rail SR BH 5.5";1
 2412/0060;"1060406011 Partie Superieure Pied Arriere Rail SR BH 6";1
 2412/0065;"1060406511 Partie Superieure Pied Arriere Rail SR BH 6.5";1
@@ -2937,7 +2937,7 @@ PF1233-1;"Tourillon ressource + 2.5 Cal.12 Ref 233 ANCIEN MODELE";1
 PF1233-2;"Tourillon ressource + 2.5 Cal.20 Ref 233 ANCIEN MODELE";0
 PF1232-1;"Vis de charnière de devant Ref.232";10
 PF1233-3;"Tourillon ressource + 2.5 Cal.12 Ref 233 NOUVEAU MODELE";3
-PF1233-4;"Tourillon ressource + 2.5 Cal.20 Ref 233 NOUVEAU MODELE";10
+PF1233-4;"Tourillon ressource + 2.5 Cal.20 Ref 233 NOUVEAU MODELE";3
 PF1203;"Clef d'Ouverture Cal.12 FAIR Ref 203 Bronzée";0
 PF1203-1;"Clef d'Ouverture Cal.20 FAIR Ref 203 Bronzée";1
 PF1214;"Vis d'arrêt de tourillon ref.214";1
@@ -4944,7 +4944,7 @@ AEM300S;"!B!M4E1 cal.300BLK 10' barrel Black Quantum handguard";10
 DDM4101R3;"!B! MK18 Blk-FDE 10.3' Semi-Auto Cal.5.56 gde.main R3 (pica-mlok) amb";0
 DDM4142R3;"!B! M4A1 RIII 14.5 barrel cal.5.56 semi auto ambi full black rail";3
 DDM4141R3;"!B! M4A1 RIII 14.5' cal.5.56 semi auto. gde.main FDE R3 ambi.";0
-AEL5561;"!B!Lower reciever carcasse M4E1 Stripped anodisé black (lower nu)";1
+AEL5561;"!B!Lower reciever carcasse M4E1 Stripped anodisé black (lower nu)";0
 IS1111;"Fusil semi-auto cal. 12/76 Nero S canon 71cm Noir";10
 IS1161;"Fusil semi-auto cal. 12/76 Nero S canon 76cm Noir";10
 IS2211;"Fusil semi-auto cal. 12/76 impala Impala Bois canon 71cm ";1
@@ -4971,7 +4971,7 @@ CG667G;"INVICTUS IX Sporting Ascent Cal 12/76 can 76 cm CR GAUCHER";0
 CG667T;"INVICTUS IX Trap Ascent Cal 12/76 can 76 cm CR";0
 PFAB044A;"RAIL POUR POMPE MARTIAL ULTRASHORT";10
 OI0040;"INFIRAY clip on CPT13";1
-AEP014;"Aero precision AR15-M4 Breach Ambidextrous charging handle";10
+AEP014;"Aero precision AR15-M4 Breach Ambidextrous charging handle";3
 SOR505;"Casque Supreme Pro X Camo+ Coussinets Silicone";30
 G6113;"Chargeur Revolver Whinchester - PR776";30
 G624150;"Gamo Barillet Seul Pt80";1
@@ -5384,7 +5384,7 @@ CG593T;"INVICTUS 1 Trap Cal.12/70 76cm CI bande plate - CR";0
 CG597G;"INVICTUS 1 Ascent Trap 12/70 76cm CI Mi-haute fixe - CR -";1
 CG597;"INVICTUS 1 Ascent Trap 12/70 76cm CI Mi-haute fixe - CR ";0
 VI0252710;"Victrix Scepter SB 22 lr 1/10 27'";0
-VI0252710F;"Victrix Scepter SB 22 lr 1/10 27' fileté";0
+VI0252710F;2;0
 VI0252716F;"Victrix Scepter SB 22 lr 1/16 27' filete";0
 VI0252716;"Victrix Scepter SB 22 lr 1/16 27'";0
 VI025277F;"Victrix Scepter SB 22 lr 1/7 27' filete";0
