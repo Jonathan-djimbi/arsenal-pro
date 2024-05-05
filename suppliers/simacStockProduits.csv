@@ -487,7 +487,7 @@ G15405;"GAMO CFX 5.5 mm 19.9 joules ";1
 GA500J;"Holster GaII Pour Le Poignet";3
 GA500K;"Holster GaII Pour La Jambe";0
 JPX260;"Munition Oc Pour JPX-4 Entrainement";0
-JPX101;"Jet Protecteur Noir ( livre avec 1 cartouche OC)";1
+JPX101;"Jet Protecteur Noir ( livre avec 1 cartouche OC)";0
 JPX101L;"Jet Protecteur Noir LASER( livre avec 1 cartouche OC)";0
 EN6500;"XXAPXX BRUNOX GUN CARE CLOTH - BOX  5 x 6g (Carton x 12)";10
 EN6510;"BRUNOX GUN CARE OPEN LIQUID - 5 L (Carton x2)";30
@@ -496,7 +496,7 @@ EN6525;"BRUNOX GUN CARE SPRAY - 300ml (Carton X 12)";30
 EN6521;"BRUNOX GUN CARE SPRAY - 100 ml";30
 EN6505;"BRUNOX GUN CARE OPEN LIQUID - 100ml (Carton x12)";10
 EN6522;"XXAPXX BRUNOX GUN CARA PUMP SPRAY";30
-EN6540;"BRUNOX LUB & COR - SPRAY - 400ml (Carton x 6)";1
+EN6540;"BRUNOX LUB & COR - SPRAY - 400ml (Carton x 6)";0
 EN6535;"BRUNOX LUB & COR - SPRAY - 100ml (Carton X 12)";3
 EN6530;"BRUNOX LUB & COR - DROPPING BOTTLE - 100ml (Carton X 12)";10
 G4130;"Gamo Lunette LC4X32WR";30
@@ -1145,7 +1145,7 @@ SPM168;"Colliers Sports Match Diam.30 coude 25 BH 21 prisme 11 mm";3
 57060-002L;"Rail Long Picatinny acier Mauser M12";1
 57060-0080;"Rail Long Picatinny acier SAUER 202 standard";0
 57060-0089;"Rail Long Picatinny acier Zoli 1900, Carl Gustav";0
-57060-0112;"Rail Long Picatinny acier Remington 700 long ";1
+57060-0112;"Rail Long Picatinny acier Remington 700 long ";0
 57060-0003;"Rail Long Picatinny acier Browning Bar";1
 57060-2010;"Rail Long Picatinny Mauser 98 Acier 20 MOA";1
 57060-2012;"Rail Long Picatinny acier Remington 700 short 20MOA";1
@@ -3920,7 +3920,7 @@ FA20016;"XXAPXX FABARM Pompe SDASS 2 BLACK Cal 12/76 Can 76 cm  RAYE CI 4+1";3
 FA2006;"XXAPX FABARM Pompe SDASS 2 TRAQ. CAM Cal 12/76 Can 61 cm  RAYE CI 4+1";3
 FA5050;"FABARM Super AXIS SPORTING & HUNTING Eject 12/76 76cm- 3CI+3CEXT ";0
 FA5200;"FABARM Super Eject  ELOS N2 SPORTING AS Cal 12/76  76 cm- 4 CI CR";1
-FA5200G;"FABARM Super Eject  ELOS N2 SPORTING AS Cal 12/76  76 cm  Gaucher CR";1
+FA5200G;"FABARM Super Eject  ELOS N2 SPORTING AS Cal 12/76  76 cm  Gaucher CR";0
 FA1995V;"FABARM Pompe STF/12  PISTOLGRIP VIPER Cal 12/76 Can 61cm Rayé";0
 FA1995F;"FABARM Pompe STF/12  PISTOLGRIP F.E Cal 12/76 Can 61cm Rayé";0
 FA1995;"FABARM Pompe STF/12  PISTOL GRIP BLACK Cal12/76 Can 61cm Rayé 4+1";10
